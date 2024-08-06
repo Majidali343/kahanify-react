@@ -45,10 +45,10 @@ function Conditions() {
     </h1>
   </div>
         <div>
-        <h2 className="font-bold my-4 sm:my-5 md:my-6 lg:my-7 xl:my-8 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
+        <h2 className="font-bold my-4 sm:my-5 md:my-6 lg:my-7 xl:my-8 text-lg sm:text-xl md:text-xl lg:text-xl xl:text-xl">
   Last Updated: [01/12/2023]
 </h2>
-<p className="my-2 sm:my-3 md:my-4 lg:my-5 xl:my-6 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+<p className="my-2 sm:my-3 md:my-4 lg:my-5 xl:my-6 text-base sm:text-lg md:text-xl lg:text-xl xl:text-xl">
   Welcome to Kahanify.com, an audio stories web portal completely
             owned and governed by Kahanify.com, and have all rights reserved. By
             accessing or using our website and services, you agree to comply
@@ -56,7 +56,7 @@ function Conditions() {
             Please read these terms carefully before using our services.
           </p>
         </div>
-        <div className="my-4 sm:my-6 md:my-8 lg:my-10 xl:my-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
+        <div className="my-4 sm:my-6 md:my-8 lg:my-10 xl:my-12 ">
    <Accordion title="1. Membership and Access:">
             <div>
               <h2 className="my-3 pt-5 font-bold">

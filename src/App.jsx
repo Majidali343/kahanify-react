@@ -14,7 +14,7 @@ import ForgotPassword from './component/ResetPassword/ForgotPassword.jsx';
 import ResetPassword from './component/ResetPassword/ResetPassword.jsx';
 import Privacy from './component/Privacy Policy/Privacy.jsx';
 import Conditions from './component/Conditions/Conditions.jsx';
-
+import Refund from './component/Refund policy/Refund.jsx';
 function App() {
   return (
     <Router>
@@ -32,6 +32,8 @@ function App() {
           <Route path="Conditions" element={<Conditions/>} />
           <Route path="ForgotPassword" element={<ForgotPassword/>} />
           <Route path="reset-password" element={<ResetPassword />} />
+          <Route path="Refund" element={<Refund />} />
+          
         </Route>
       
         <Route path="FreeStory" element={<FreeStory/>} />

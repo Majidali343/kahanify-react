@@ -31,7 +31,7 @@ function Footer() {
             </li>
             <li>
               <NavLink
-                to="/refund-policy"
+                to="/Refund"
                 className="hover:text-gray-300"
                 aria-label="Refund Policy"
               >
