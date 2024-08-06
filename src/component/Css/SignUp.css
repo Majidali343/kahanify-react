@@ -1,0 +1,19 @@
+/* SignUp.css */
+.form-input {
+    border: 1px solid #d1d5db;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+  
+  button {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }
+  

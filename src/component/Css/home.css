@@ -1,0 +1,52 @@
+
+.list-right {
+    list-style-position: inside;
+    padding-left: 0; 
+  }
+  
+  .list-right ol {
+    counter-reset: list-item;
+  }
+  
+  .list-right li {
+    position: relative;
+    padding-right: 2.5rem;
+  }
+  
+  .list-right li::before {
+    content: counter(list-item) ".";
+    position: absolute;
+    right: 0; 
+    text-align: right;
+    width: 2rem; 
+  }
+  
+
+.responsive-background {
+  height: 100vh; 
+  background-size: cover;
+ 
+  background-repeat: no-repeat; 
+}
+
+
+@media (max-width: 600px) {
+  .responsive-background {
+    background-image: url('../../assets/HomepageMobile.png'); 
+    background-position: top center;
+  }
+}
+
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .responsive-background {
+    background-image: url('../../assets/asset14.png'); 
+  }
+}
+
+@media (min-width: 1025px) {
+  .responsive-background {
+    background-image: url('../../assets/Homepage.png'); 
+  }
+}
+
