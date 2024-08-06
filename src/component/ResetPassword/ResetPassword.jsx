@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
+export const API_URL = import.meta.env.VITE_API_URL;
 const ResetPassword = () => {
     const { search } = useLocation();
     const params = new URLSearchParams(search);
@@ -17,7 +17,7 @@ const ResetPassword = () => {
 
     const handleResetPassword = async (newPassword, confirmPassword) => {
         try {
-            const response = await fetch('http://localhost:8000/api/reset-password', {
+            const response = await fetch(`${API_URL}/api/reset-password`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,9 +32,9 @@ const ResetPassword = () => {
             
             const data = await response.json();
             if (response.ok) {
-                alert(data.message); // Show success message
+                alert(data.message); 
             } else {
-                alert(data.errors.password[0]); // Show error message
+                alert(data.errors.password[0]);
             }
         } catch (error) {
             console.error('Error:', error);
