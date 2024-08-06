@@ -86,7 +86,7 @@ function Profile() {
                 <span className='border-b-2 border-b-blue-500 py-3'> My p</span>rofile
               </h1>
             </div>
-            <div className="grid p-4 mt-6 bg-blue-100 grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+            <div className="grid p-4 mt-6 bg-blue-100 grid-cols-1 md:grid-cols-2 gap-4 ">
               <div className="flex flex-col">
                 <label htmlFor="name">Name</label>
                 <input

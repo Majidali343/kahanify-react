@@ -1,9 +1,19 @@
 import React from "react";
 import "../Css/contact.css";
 import Accordion from "../Conditions/Accordian";
+import { Helmet } from "react-helmet";
 function FAQs() {
   return (
     <>
+     <Helmet>
+        <title>Frequently Asked Questions - Kahanify</title>
+        <meta name="description" content="Find answers to frequently asked questions about Kahanify.com, including membership details, subscription management, and more." />
+        <meta name="keywords" content="FAQ, Kahanify, audio stories, membership, subscription, customer support" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Frequently Asked Questions - Kahanify" />
+        <meta property="og:description" content="Find answers to frequently asked questions about Kahanify.com, including membership details, subscription management, and more." />
+        <meta property="og:url" content="https://www.kahanify.com/faqs" />
+      </Helmet>
       <div className=" bg-[#18003c] text-white">
         <div className="text-center py-6">
           <h1 className="text-pink-600 text-xl animated-text">FAQ's</h1>
