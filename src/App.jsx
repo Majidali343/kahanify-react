@@ -25,7 +25,7 @@ function App() {
           <Route path="cart" element={<Cart/>} />
           <Route path="profile" element={<Profile/>} />
           <Route path="Paidcontent" element={<Paidcontent/>} />
-          <Route path="SearchBar" element={<SearchBar/>} />
+          
         </Route>
       
         <Route path="FreeStory" element={<FreeStory/>} />
