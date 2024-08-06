@@ -13,4 +13,18 @@
     animation: fadeIn 1.5s ease-in-out;
   }
   
+  @keyframes fadeRightToCenter {
+    0% {
+      opacity: 0;
+      transform: translateX(50px); 
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0); 
+    }
+  }
+  
+  .animated-heading {
+    animation: fadeRightToCenter 1.5s ease-in-out;
+  }
   

@@ -40,7 +40,7 @@ function Footer() {
             </li>
             <li>
               <NavLink
-                to="/faqs"
+                to="/FAQs"
                 className="hover:text-gray-300"
                 aria-label="FAQ's"
               >
