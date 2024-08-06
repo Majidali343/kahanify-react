@@ -1,0 +1,14 @@
+.typing-active {
+    color: rgb(245, 44, 78); 
+    transition: color 0.5s ease;
+  }
+  
+  .typing-complete {
+    color: rgb(255, 255, 174); 
+    transition: color 0.5s ease;
+  }
+  
+  button {
+    transition: color 0.5s ease, background-color 0.5s ease;
+  }
+  

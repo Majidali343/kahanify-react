@@ -13,7 +13,7 @@ function Footer() {
           <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 items-center">
             <li>
               <NavLink
-                to="/privacy-policy"
+                to="/Privacy"
                 className="hover:text-gray-300"
                 aria-label="Privacy Policy"
               >
@@ -22,7 +22,7 @@ function Footer() {
             </li>
             <li>
               <NavLink
-                to="/terms-and-conditions"
+                to="/Conditions"
                 className="hover:text-gray-300"
                 aria-label="Terms and Conditions"
               >
@@ -49,7 +49,7 @@ function Footer() {
             </li>
             <li>
               <NavLink
-                to="/contact"
+                to="/contact-us"
                 className="hover:text-gray-300 mr-3"
                 aria-label="Contact"
               >

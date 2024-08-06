@@ -12,6 +12,8 @@ import FreeStory from './component/FreeStory/FreeStory.jsx';
 import Paidcontent from './component/Paidcontent/Paidcontent.jsx';
 import ForgotPassword from './component/ResetPassword/ForgotPassword.jsx';
 import ResetPassword from './component/ResetPassword/ResetPassword.jsx';
+import Privacy from './component/Privacy Policy/Privacy.jsx';
+import Conditions from './component/Conditions/Conditions.jsx';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="cart" element={<Cart/>} />
           <Route path="profile" element={<Profile/>} />
           <Route path="Paidcontent" element={<Paidcontent/>} />
+          <Route path="Privacy" element={<Privacy/>} />
+          <Route path="Conditions" element={<Conditions/>} />
           <Route path="ForgotPassword" element={<ForgotPassword/>} />
           <Route path="reset-password" element={<ResetPassword />} />
         </Route>
