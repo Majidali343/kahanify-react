@@ -6,6 +6,7 @@ console.log('API_URL:', API_URL);
 
 export const login = async (data) => {
   try {
+    console.log (data)
     const response = await axios.post(`${API_URL}/login`, data);
     if (response.data.token) {
       Cookies.set('token', response.data.token, { expires: data.rememberMe ? 7 : 0.083 });
@@ -19,10 +20,10 @@ export const login = async (data) => {
 //git check
 export const signup = async (data) => {
   try {
-    const response = await axios.post(`${API_URL}/signup`, data);
-    if (response.data.token) {
-      Cookies.set('token', response.data.token, { expires: 0.083 });
-    }
+    
+    console.log (data)
+    const response = await axios.post(`${API_URL}/register`, data);
+    console.log (response)
     return response.data;
   } catch (error) {
     console.error('Error signing up:', error);
@@ -33,7 +34,7 @@ export const signup = async (data) => {
 export const getCurrentUser = async () => {
   try {
     const token = Cookies.get('token');
-    const response = await axios.get(`${API_URL}/current-user`, {
+    const response = await axios.get(`${API_URL}/usershow`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     return response.data;

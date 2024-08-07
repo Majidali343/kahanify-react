@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     const handleForgotPassword = async (email) => {
         
         try {
-            const response = await fetch( `${API_URL}/api/forgot-password`, {
+            const response = await fetch( `${API_URL}/forgot-password`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

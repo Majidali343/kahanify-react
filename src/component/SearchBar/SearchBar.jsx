@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Import the icon
+import { faSearch } from '@fortawesome/free-solid-svg-icons'; 
 
 const SearchBar = ({ items = [] }) => {
   const [query, setQuery] = useState('');
@@ -35,7 +35,7 @@ const SearchBar = ({ items = [] }) => {
           placeholder="Search..."
         />
         <FontAwesomeIcon
-          icon={faSearch} // Use the correct icon prop
+          icon={faSearch} 
           style={{
             color: "#0878af",
             position: 'absolute',

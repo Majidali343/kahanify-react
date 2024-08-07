@@ -25,9 +25,7 @@ function SignUp() {
     try {
       const response = await authService.signup(data);
       if (response) {
-        const userData = await authService.getCurrentUser();
-        dispatch(login({ user: userData, token: response.token })); ////
-        navigate("/");
+        navigate("/login");
       }
     } catch (error) {
       setError(error.response?.data?.message || error.message);

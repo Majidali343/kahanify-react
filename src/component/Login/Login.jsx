@@ -17,6 +17,7 @@ function Login() {
   const [error, setError] = useState("");
 
   const login = async (data) => {
+    console.log(data)
     setError("");
     try {
       const response = await authService.login(data);
@@ -96,7 +97,7 @@ function Login() {
 
           <div className='flex flex-col md:flex-row justify-between pt-6 text-sm'>
             <p>No account? <Link to='/signup' className='text-blue-600 hover:underline'> Sign Up</Link></p>
-            <p className="text-gray-700 hover:underline">Forgot Password?</p>
+            <Link to='/ForgotPassword' className="text-gray-700 hover:underline">Forgot Password?</Link>
           </div>
         </form>
       </div>
