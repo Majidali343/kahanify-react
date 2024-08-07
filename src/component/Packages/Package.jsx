@@ -51,7 +51,7 @@ function Package() {
             <img src={asset31} className="mb-3" alt="Annual" />
             <p className="text-2xl text-[#18003c] mb-3 font-bold">Annual Membership</p>
             <p className="font-bold mb-4 text-pink-700">Rs 1,460</p>
-            <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
+            <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
               onClick={() => addToCart('Annual Membership', 1460, asset31)}
             >
               Purchase
@@ -61,7 +61,7 @@ function Package() {
             <img src={asset32} className="mb-3" alt="Phone Icon" />
             <p className="text-2xl mb-3 font-bold text-[#18003c]">Monthly Membership</p>
             <p className="font-bold text-pink-700 mb-4">Rs 280</p>
-            <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
+            <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
               onClick={() => addToCart('Monthly Membership', 280, asset32)}
             >
               Purchase

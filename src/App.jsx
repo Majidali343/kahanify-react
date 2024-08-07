@@ -1,47 +1,52 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Home from './component/home/Home';
 import SignUp from './component/SignUp/SignUp';
 import Login from './component/Login/Login';
 import ContactUs from './component/ContactUs/ContactUs';
-import Package from './component/Packages/Package.jsx';
+import Package from './component/Packages/Package';
 import Layout from './component/Layout';
-import Cart from './component/cart/Cart.jsx';
-import Profile from './component/Profile/Profile.jsx';
-import FreeStory from './component/FreeStory/FreeStory.jsx';
-import Paidcontent from './component/Paidcontent/Paidcontent.jsx';
-import ForgotPassword from './component/ResetPassword/ForgotPassword.jsx';
-import ResetPassword from './component/ResetPassword/ResetPassword.jsx';
-import Privacy from './component/Privacy Policy/Privacy.jsx';
-import Conditions from './component/Conditions/Conditions.jsx';
-import Refund from './component/Refund policy/Refund.jsx';
-import FAQs from './component/FAQs/FAQs.jsx';
+import Cart from './component/cart/Cart';
+import Profile from './component/Profile/Profile';
+import FreeStory from './component/FreeStory/FreeStory';
+import Paidcontent from './component/Paidcontent/Paidcontent';
+import ForgotPassword from './component/ResetPassword/ForgotPassword';
+import ResetPassword from './component/ResetPassword/ResetPassword';
+import Privacy from './component/Privacy Policy/Privacy';
+import Conditions from './component/Conditions/Conditions';
+import Refund from './component/Refund policy/Refund';
+import FAQs from './component/FAQs/FAQs';
+import PrivateRoute from './component/PrivateRoute'
 
 function App() {
+  const isAuthenticated = useSelector((state) => state.auth.status);
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} /> 
+          <Route index element={<Home />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="login" element={<Login />} />
           <Route path="contact-us" element={<ContactUs />} />
-          <Route path="Package" element={<Package />} />
-          <Route path="cart" element={<Cart/>} />
-          <Route path="profile" element={<Profile/>} />
-          <Route path="Paidcontent" element={<Paidcontent/>} />
-          <Route path="Privacy" element={<Privacy/>} />
-          <Route path="Conditions" element={<Conditions/>} />
-          <Route path="ForgotPassword" element={<ForgotPassword/>} />
-          <Route path="reset-password" element={<ResetPassword />} />
-          <Route path="Refund" element={<Refund />} />
-          <Route path="FAQs" element={<FAQs />} />
           
+          <Route path="Package" element={<PrivateRoute element={<Package />} />} />
+          <Route path="cart" element={<PrivateRoute element={<Cart />} />} />
+          <Route path="profile" element={<PrivateRoute element={<Profile />} />} />
+          <Route path="Paidcontent" element={<PrivateRoute element={<Paidcontent />} />} />
+          <Route path="Privacy" element={<Privacy />}  />
+          <Route path="Conditions" element={<Conditions />} />
+          <Route path="ForgotPassword" element={<ForgotPassword />}  />
+          <Route path="reset-password" element={<ResetPassword />}  />
+          <Route path="Refund" element={<Refund />} />
+          <Route path="FAQs" element={<FAQs />}/>
         </Route>
-      
-        <Route path="FreeStory" element={<FreeStory/>} />
+        
+        <Route path="FreeStory" element={<FreeStory />} />
+        
+        <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />} />
       </Routes>
-      
     </Router>
   );
 }
