@@ -43,27 +43,30 @@ export const getCurrentUser = async () => {
   }
 };
 
-export const changepassword = async ( token, new_password, current_password, confirm_password) => {
+export const changepassword = async (new_password, current_password, confirm_password) => {
   try {
-    
-    console.log (token)
-    const response = await axios.post(`${API_URL}/updatepassword`,{
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-          Authorization : `Bearer ${token}`
-        },
-      body: JSON.stringify({
-          new_password,
-          current_password,
-          confirm_password
-        }),
-  });
-    console.log (response)
+    const token = Cookies.get('token');
+    console.log(token);
 
-    return response.passwords;
+    const response = await axios.post(
+      `${API_URL}/updatepassword`,
+      {
+        new_password,
+        current_password,
+        confirm_password
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+
+    console.log(response);
+
+    return response.data; 
   } catch (error) {
-    console.error('Error change password', error);
+    console.error('Error changing password', error);
     throw error;
   }
 };

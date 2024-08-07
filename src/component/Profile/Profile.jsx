@@ -4,7 +4,6 @@ import { asset34, asset35, asset36 } from '../imageLoader';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
 import { getCurrentUser, changepassword } from '../Service/api';  
-import Cookies from 'js-cookie';
 
 function Profile() {
   const [name, setName] = useState('');
@@ -17,7 +16,7 @@ function Profile() {
   const [error, setError] = useState('');  
   const [success, setSuccess] = useState(''); 
 
-  const token = Cookies.get('token');
+  
   const fileInputRef = useRef(null);
 
   
@@ -31,7 +30,6 @@ function Profile() {
     
     try {
       await changepassword({
-        token,
         new_password,
         current_password,
         confirm_password
