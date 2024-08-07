@@ -43,18 +43,17 @@ export const getCurrentUser = async () => {
   }
 };
 
-export const changepassword = async ( new_password, current_password, confirm_password) => {
+export const changepassword = async ( token, new_password, current_password, confirm_password) => {
   try {
     
-    console.log ("runing")
+    console.log (token)
     const response = await axios.post(`${API_URL}/updatepassword`,{
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          Authorization : `Bearer ${token}`
         },
       body: JSON.stringify({
-          
           new_password,
           current_password,
           confirm_password
