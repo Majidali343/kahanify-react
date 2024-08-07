@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { asset34, asset35, asset36 } from '../imageLoader';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
-import { getCurrentUser, changepassword } from '../Service/api';  
+import { getCurrentUser, changepassword, updateimage } from '../Service/api';  
 
 function Profile() {
   const [name, setName] = useState('');
@@ -12,7 +12,7 @@ function Profile() {
   const [new_password, setNewPassword] = useState('');
   const [confirm_password, setRetypeNewPassword] = useState('');
   const [experience, setExperience] = useState('');
-  const [profileImage, setProfileImage] = useState(asset34);
+  const [profileimage, setProfileImage] = useState(asset34);
   const [error, setError] = useState('');  
   const [success, setSuccess] = useState(''); 
 
@@ -68,17 +68,27 @@ function Profile() {
       fileInputRef.current.click(); 
     }
   };
-  const handleImageChange = (event) => {
-    const file = event.target.files[0]; 
+  const handleImageChange = async (event) => {
+    const file = event.target.files[0];
+    
     if (file) {
       const reader = new FileReader();
-      reader.onload = (e) => {
-        setProfileImage(e.target.result);
+      reader.onload = async (e) => {
+        const profileimage = e.target.result;
+        setProfileImage(profileimage);
+        
+        try {
+          await updateimage({ profileimage }); 
+          
+          setSuccess('Image updated successfully');
+        } catch (error) {
+          setError(error.response?.data?.message || error.message);
+        }
       };
       reader.readAsDataURL(file);
     }
   };
-
+  
   
 
   const dispatch = useDispatch();
@@ -96,7 +106,7 @@ function Profile() {
         <meta name="keywords" content="profile, update profile, change password, Kahanify, user experience" />
         <meta property="og:title" content="Profile Page - Kahanify" />
         <meta property="og:description" content="Manage your profile, change your password, and share your experience on Kahanify. Update your profile picture, contact information, and more." />
-        <meta property="og:image" content={profileImage} />
+        <meta property="og:image" content={profileimage} />
         <meta property="og:url" content="https://Kahanify.com/profile" />
         <meta property="og:type" content="profile" />
       </Helmet>
@@ -105,7 +115,7 @@ function Profile() {
           <div className="flex-none w-full md:w-3/12 mb-4 md:mb-0">
             <div className="relative w-full h-48 flex items-center justify-center">
               <div className="relative w-40 h-40 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
-                <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
+                <img src={profileimage} alt="Profile" className="w-full h-full object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 py-1 flex items-center justify-center">
                   <button onClick={handleCameraClick}>
                     <img className='w-4 h-4' src={asset36} alt="camera icon" />
