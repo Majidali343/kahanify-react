@@ -28,8 +28,10 @@ function SignUp() {
         navigate("/login");
       }
     } catch (error) {
-      setError(error.response?.data?.message || error.message);
+      setError(error.response.data.errors);
     }
+
+    
   };
 
   return (
@@ -49,7 +51,10 @@ function SignUp() {
       <div className="max-w-md w-full p-6 bg-white shadow-lg rounded-lg border border-gray-200">
         <h1 className='font-bold text-xl mb-2'>Sign Up</h1>
         
-        {error && <div className="text-red-500 text-center mb-4">{error}</div>}
+        {error.email ? <div className="text-red-500 text-center ">{error.email}</div> : ""}
+        {error.phone ? <div className="text-red-500 text-center ">{error.phone}</div> : ""}
+        {error.username ? <div className="text-red-500 text-center ">{error.username}</div> : ""}
+       
         {errors.username && <span className="text-red-500 text-sm">{errors.username.message}</span>} 
         {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>} 
         {errors.phone && <span className="text-red-500 text-sm">{errors.phone.message}</span>} 

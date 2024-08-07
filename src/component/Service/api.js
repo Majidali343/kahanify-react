@@ -20,13 +20,13 @@ export const login = async (data) => {
 export const signup = async (data) => {
   try {
     
-    console.log (data)
     const response = await axios.post(`${API_URL}/register`, data);
-    console.log (response)
     return response.data;
+
   } catch (error) {
-    console.error('Error signing up:', error);
-    throw error;
+    // console.error('Error signing up:', error.response.data.errors.email);
+    console.error('Error signing up:', error.response.data.errors);
+    throw  error;
   }
 };
 
