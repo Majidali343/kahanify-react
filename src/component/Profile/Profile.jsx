@@ -1,20 +1,67 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef , useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { asset34, asset35, asset36 } from '../imageLoader';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
+import { getCurrentUser, changepassword } from '../Service/api';  
+
 
 function Profile() {
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [retypeNewPassword, setRetypeNewPassword] = useState('');
+  const [current_password, setCurrentPassword] = useState('');
+  const [new_password, setNewPassword] = useState('');
+  const [confirm_password, setRetypeNewPassword] = useState('');
   const [experience, setExperience] = useState('');
   const [profileImage, setProfileImage] = useState(asset34);
-  const [error, setError] = useState('');
+  const [error, setError] = useState('');  
+  const [success, setSuccess] = useState(''); 
 
   const fileInputRef = useRef(null);
 
+  
+  const handlePasswordChange = async (event) => {
+    event.preventDefault();
+    if (new_password !== confirm_password) {
+      setError('Passwords do not match');
+      return;
+    }
+    setError('');
+    
+    try {
+      await changepassword({
+        new_password,
+        current_password,
+        confirm_password
+      });
+      setSuccess('Password changed successfully');
+    } catch (error) {
+      setError(error.response?.data?.message || error.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await getCurrentUser();
+        console.log(response); 
+
+        if (response && response.user) {
+          const user = response.user; 
+                    console.log(user); 
+          if (user.username) {
+            console.log(user.username); 
+            setName(user.username);    
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+  
+    fetchUserData();
+  }, []);
+  
 
   const handleCameraClick = () => {
     if (fileInputRef.current) {
@@ -32,13 +79,7 @@ function Profile() {
     }
   };
 
-  const handleSaveChanges = () => {
-    if (newPassword !== retypeNewPassword) {
-      setError('Passwords do not match');
-      return;
-    }
-    setError('');
-  };
+  
 
   const dispatch = useDispatch();
 
@@ -94,7 +135,7 @@ function Profile() {
                   id="name"
                   placeholder='First Name'
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  readOnly
                   className="border border-gray-300 p-2 w-full"
                 />
               </div>
@@ -105,6 +146,7 @@ function Profile() {
                   id="lastName"
                   placeholder='Last Name'
                   value={lastName}
+                  readOnly
                   onChange={(e) => setLastName(e.target.value)}
                   className="border border-gray-300 p-2 w-full"
                 />
@@ -112,38 +154,64 @@ function Profile() {
             </div>
             <div className="mt-4">
               <h3 className="text-lg pt-4 font-bold">Change Password</h3>
-              <div className="grid p-4 bg-blue-100 grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+              <div className='p-4 bg-blue-100'>
+              
+              <form onSubmit={handlePasswordChange}>
+              <div className="grid  grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+           
+              <div>
+                  <label htmlFor="newPassword">Current Password</label>
+                  <input
+                    type="password"
+                    id="currentPassword"
+                    value={current_password}
+                    placeholder='Enter password'
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    className="border border-gray-300 p-2 w-full"
+                  />
+                </div>
+                  
                 <div>
                   <label htmlFor="newPassword">New Password</label>
                   <input
                     type="password"
                     id="newPassword"
-                    value={newPassword}
+                    value={new_password}
                     placeholder='Enter password'
                     onChange={(e) => setNewPassword(e.target.value)}
                     className="border border-gray-300 p-2 w-full"
                   />
                 </div>
                 <div>
+                 
                   <label htmlFor="retypeNewPassword">Re-type New Password</label>
                   <input
                     type="password"
                     id="retypeNewPassword"
                     placeholder='Confirm password'
-                    value={retypeNewPassword}
+                    value={confirm_password}
                     onChange={(e) => setRetypeNewPassword(e.target.value)}
                     className="border border-gray-300 p-2 w-full"
                   />
                 </div>
-              </div>
-              {error && <p className="text-red-500 mt-2">{error}</p>}
-              <div className='flex flex-col md:flex-row justify-between mt-4'>
-                <button
-                  onClick={handleSaveChanges}
-                  className="bg-blue-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded mb-4 md:mb-0"
+              <div className='flex flex-col md:flex-row justify-end mt-4'>
+              <button
+                  type="submit"
+                  className="bg-blue-500 hover:bg-pink-700 text-white font-bold h-19 px-4 rounded mb-4 md:mb-0"
                 >
                   Save Changes
                 </button>
+               
+             </div>
+           
+              </div>
+              </form>
+              </div>
+              
+              {error && <p className="text-red-500 mt-2">{error}</p>}
+                {success && <p className="text-green-500 mt-2">{success}</p>}
+
+<div className='flex flex-col md:flex-row justify-start mt-4'>
                 <button onClick={handleLogout} className='rounded-xl flex justify-center px-3 py-2 bg-gray-300'>
                   <img className='w-3 self-center mx-1' src={asset35} alt="Logout" />
                   Logout
@@ -171,3 +239,5 @@ function Profile() {
 }
 
 export default Profile;
+
+// we need to post current new and confinm password in data in

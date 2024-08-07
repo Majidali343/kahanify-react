@@ -32,7 +32,16 @@ function Cart() {
     setCart(updatedCart);
     Cookies.set('cart', JSON.stringify(updatedCart));
   };
-
+  const month = (item) => {
+    let totalMonth;  
+    if (item.pricePerItem === 1460) {
+      totalMonth = 12 * item.quantity;
+    } else {
+      totalMonth = 1 * item.quantity;
+    }
+    return totalMonth;
+  }
+  
   const totalPrice = cart.reduce((total, item) => total + (item.pricePerItem * item.quantity), 0);
 
   return (

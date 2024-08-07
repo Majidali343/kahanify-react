@@ -1,14 +1,39 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { asset0 } from '../imageLoader';
-
+import { getCurrentUser } from '../Service/api';  
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
+  
+  const [name, setName] = useState('');
   const dispatch = useDispatch();
   const { userData: user, status: isLoggedIn } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await getCurrentUser();
+        console.log(response); 
+
+        if (response && response.user) {
+          const user = response.user; 
+                    console.log(user); 
+          if (user.username) {
+            console.log(user.username); 
+            setName(user.username);    
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+  
+    fetchUserData();
+  }, []);
+
 
   return (
     <header className="bg-white text-black py-2 border-b-4 border-[#ff0087]">
@@ -35,11 +60,8 @@ function Header() {
         <div className="mt-4 md:mt-0">
           {isLoggedIn ? (
             <Link to="/profile">
-              {user?.profilePicture ? (
-                <img src={user.profilePicture} alt="Profile Picture" className="h-8 w-8 rounded-full" />
-              ) : (
-                <div className="h-9  shadow-md transition-transform transform hover:scale-105 w-auto flex place-items-center font-bold px-3 rounded-full border border-black  bg-gray-300"><FontAwesomeIcon icon={faUser}  /> {user.username}</div>
-              )}
+                <div className="h-9  shadow-md transition-transform transform hover:scale-105 w-auto flex place-items-center font-bold px-3 rounded-full border border-black  bg-gray-300"><FontAwesomeIcon icon={faUser}  /> {name}</div>
+              
             </Link>
           ) : (
             <button 
