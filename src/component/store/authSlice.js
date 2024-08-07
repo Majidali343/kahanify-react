@@ -7,9 +7,19 @@ const initialState = {
   status: false,
 };
 
+const getAuthFromCookies = () => {
+  const userData = Cookies.get('userData');
+  const token = Cookies.get('token');
+  return {
+    userData: userData ? userData : null,
+    token: token || null,
+    status: !!token, 
+  };
+};
+
 const authSlice = createSlice({
   name: 'auth',
-  initialState,
+  initialState: getAuthFromCookies(), 
   reducers: {
     login: (state, action) => {
       const { user, token, rememberMe } = action.payload;

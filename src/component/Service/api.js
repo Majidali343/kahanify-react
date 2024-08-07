@@ -17,7 +17,6 @@ export const login = async (data) => {
     throw error;
   }
 };
-//git check
 export const signup = async (data) => {
   try {
     
