@@ -7,11 +7,17 @@ function SingleKahani() {
   const param = useParams();
   const id = param.id;
   const [data, setData] = useState(null);
+const [ audio , setAudio]=useState();
+const [ image , setImage]=useState();
+const [ views , setViews]=useState();
 
   const fetchStories = async () => {
     try {
       const response = await singleStory(id);
-      console.log(response.data)
+      console.log(response.data);
+      setAudio(response.data.audio);
+      setImage(response.data.image);
+      setViews(response.data.views)
     } catch (error) {
       console.error('Error fetching stories:', error);
     }
@@ -22,17 +28,15 @@ function SingleKahani() {
     fetchStories();
   }, []);
 
-  if (!data) {
-    return <div>Loading...</div>; 
-  }
+  
 
   return (
       <div>
      <div>
       <Singleplayer
-        audioSrc={data.audio}
-        imageSrc={`https://kahaniapi.realtechcrm.online/storage/${data.image}`}
-        viewCount={data.views}
+        audioSrc={`https://kahaniapi.realtechcrm.online/storage/${audio}`}
+        imageSrc={`https://kahaniapi.realtechcrm.online/storage/${image}`}
+        viewCount={views}
       />
     </div>
 

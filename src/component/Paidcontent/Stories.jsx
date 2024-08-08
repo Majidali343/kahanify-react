@@ -67,8 +67,8 @@ const Stories = () => {
       <div className="relative">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {filteredData.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
-            <Link to={`/kahani/${card.id}`} >
-            <div key={card.id} className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4">
+            <Link to={`/kahani/${card.kahani_id}`} >
+            <div key={card.kahani_id} className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4">
               <img src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} alt="story" className="w-full h-full object-cover mb-4" />
               <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
               <p className="text-gray-600 mb-2 text-right">{card.duration}</p>

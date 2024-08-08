@@ -9,6 +9,7 @@ function Paidcontent() {
     Listen Imagine Enjoy
 </h1>
 
+        <SearchBar/>
         
         <Stories />
 
