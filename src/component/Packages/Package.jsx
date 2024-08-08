@@ -1,14 +1,40 @@
-import React from 'react';
+import React , {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { asset31, asset32, asset33 } from "../imageLoader";
-import Cookies from 'js-cookie';
 import { Helmet } from 'react-helmet';
+import { getCurrentUser } from '../Service/api';  
  
+
 function Package() {
   const navigate = useNavigate();
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await getCurrentUser();
+        console.log(response); 
+
+        if (response && response.user) {
+          const user = response.user; 
+                    console.log(user); 
+          if (user.username) {
+            console.log(user.username); 
+            setName(user.username);    
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+  
+    fetchUserData();
+  }, []);
+
+
 
   const addToCart = (name, pricePerItem, image) => {
-    const existingCart = Cookies.get('cart');
+    const existingCart = sessionStorage.getItem('cart');
     const cart = existingCart ? JSON.parse(existingCart) : [];
 
     const itemIndex = cart.findIndex(item => item.name === name);
@@ -24,10 +50,9 @@ function Package() {
       });
     }
 
-    Cookies.set('cart', JSON.stringify(cart));
+    sessionStorage.setItem('cart', JSON.stringify(cart));
     navigate('/cart'); 
   };
-
   return (
     <>
     <Helmet>
@@ -50,19 +75,19 @@ function Package() {
           <div className="flex flex-col py-4 items-center">
             <img src={asset31} className="mb-3" alt="Annual" />
             <p className="text-2xl text-[#18003c] mb-3 font-bold">Annual Membership</p>
-            <p className="font-bold mb-4 text-pink-700">Rs 1,460</p>
+            <p className="font-bold mb-4 text-pink-700">Rs 2500</p>
             <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
-              onClick={() => addToCart('Annual Membership', 1460, asset31)}
+              onClick={() => addToCart('Annual Membership', 2500, asset31)}
             >
               Purchase
             </button>
           </div>
           <div className="flex flex-col py-4 items-center">
             <img src={asset32} className="mb-3" alt="Phone Icon" />
-            <p className="text-2xl mb-3 font-bold text-[#18003c]">Monthly Membership</p>
-            <p className="font-bold text-pink-700 mb-4">Rs 280</p>
+            <p className="text-2xl mb-3 font-bold text-[#18003c]">Life Time Membership</p>
+            <p className="font-bold text-pink-700 mb-4">Rs 7500</p>
             <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
-              onClick={() => addToCart('Monthly Membership', 280, asset32)}
+              onClick={() => addToCart(' Life Time Membership', 7500, asset32)}
             >
               Purchase
             </button>
@@ -74,7 +99,7 @@ function Package() {
         </div>
         <div className="flex bg-blue-100  items-center m-8 p-5 pl-12 border-l-4 border-green-500">
           <p className='pl-4'>You are logged in as username 
-            <span className='font-bold'> Muhammad Luqman</span>
+            <span className='font-bold'> {name}</span>
             if you would like to use a different account for this membership, log out now.
           </p>
         </div>

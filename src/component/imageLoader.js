@@ -30,7 +30,7 @@ import asset28 from "../assets/contact.png";
 import asset29 from "../assets/mail.svg";
 import asset30 from "../assets/phone.svg";
 import asset31 from "../assets/1year.jpg";
-import asset32 from "../assets/1month.jpg";
+import asset32 from "../assets/lifetime.avif";
 import asset33 from "../assets/cart-shopping-solid.svg"
 import asset34 from '../assets/userimage.jpg';
 import asset35 from '../assets/poweroff.svg';

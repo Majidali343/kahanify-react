@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
 import { Helmet } from 'react-helmet';
+import { getCurrentUser } from '../Service/api';  
+
 function Cart() {
   const [cart, setCart] = useState([]);
-  
+  const [name, setName] = useState('');
+
   useEffect(() => {
-    const cartData = Cookies.get('cart');
+    const cartData = sessionStorage.getItem('cart');
     if (cartData) {
       setCart(JSON.parse(cartData));
     }
@@ -13,38 +15,59 @@ function Cart() {
 
   const handleIncrement = (index) => {
     const updatedCart = [...cart];
-    updatedCart[index].quantity += 1;
-    setCart(updatedCart);
-    Cookies.set('cart', JSON.stringify(updatedCart));
+    if (updatedCart[index].name === 'Annual Membership') {
+      updatedCart[index].quantity += 1;
+      setCart(updatedCart);
+      sessionStorage.setItem('cart', JSON.stringify(updatedCart));
+    }
   };
   
   const handleDecrement = (index) => {
     const updatedCart = [...cart];
-    if (updatedCart[index].quantity > 1) {
+    if (updatedCart[index].quantity > 1 && updatedCart[index].name === 'Annual Membership') {
       updatedCart[index].quantity -= 1;
       setCart(updatedCart);
-      Cookies.set('cart', JSON.stringify(updatedCart));
+      sessionStorage.setItem('cart', JSON.stringify(updatedCart));
     }
   };
-
+  
   const handleRemove = (index) => {
     const updatedCart = cart.filter((_, i) => i !== index);
     setCart(updatedCart);
-    Cookies.set('cart', JSON.stringify(updatedCart));
+    sessionStorage.setItem('cart', JSON.stringify(updatedCart));
   };
-  const month = (item) => {
-    let totalMonth;  
-    if (item.pricePerItem === 1460) {
-      totalMonth = 12 * item.quantity;
-    } else {
-      totalMonth = 1 * item.quantity;
-    }
-    return totalMonth;
-  }
   
+  const handleCheckOut = () => {
+    if (cart.length > 0 ) {
+      alert("You cannot select both annual and lifetime memberships. Please choose one.");
+    } 
+  };
   const totalPrice = cart.reduce((total, item) => total + (item.pricePerItem * item.quantity), 0);
 
-  return (
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await getCurrentUser();
+        console.log(response); 
+
+        if (response && response.user) {
+          const user = response.user; 
+                    console.log(user); 
+          if (user.username) {
+            console.log(user.username); 
+            setName(user.username);    
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+  
+    fetchUserData();
+  }, []);
+
+
+return (
 <>
 <Helmet>
         <title>Your Cart - Kahanify</title>
@@ -119,7 +142,9 @@ function Cart() {
         <strong className='text-black'>Rs {totalPrice}</strong>
       </div>
     </div>
-    <button className="bg-blue-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded mt-4">
+    <button 
+    onClick={handleCheckOut}
+    className="bg-blue-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded mt-4">
       Proceed to Checkout
     </button>
   </div>
@@ -127,7 +152,7 @@ function Cart() {
 
       <div className="mt-8">
         <p className="flex bg-blue-100 items-center p-4 border-l-4 border-green-500">
-          You are logged in as <span className='pl-1 font-bold'>username</span>. If you would like to use a different account for this membership, log out now.
+          You are logged in as <span className='pl-1 font-bold'>{name}</span>. If you would like to use a different account for this membership, log out now.
         </p>
       </div>
 
