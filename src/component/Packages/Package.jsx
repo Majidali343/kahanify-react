@@ -3,33 +3,42 @@ import { useNavigate } from 'react-router-dom';
 import { asset31, asset32, asset33 } from "../imageLoader";
 import { Helmet } from 'react-helmet';
 import { getCurrentUser } from '../Service/api';  
- 
+import Paidcontent from '../Paidcontent/Paidcontent'; 
 
 function Package() {
+  
   const navigate = useNavigate();
   const [name, setName] = useState('');
+  const [membership, setMembership] = useState(false); 
   
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await getCurrentUser();
-        console.log(response); 
+        console.log(response);
 
         if (response && response.user) {
           const user = response.user; 
-                    console.log(user); 
+          console.log(user);
+
           if (user.username) {
             console.log(user.username); 
             setName(user.username);    
           }
         }
+
+        if (response && response.membership !== undefined) {
+          setMembership(response.membership); 
+          console.log(response.membership)
+        }
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
     };
-  
+
     fetchUserData();
   }, []);
+
 
 
 
@@ -53,6 +62,11 @@ function Package() {
     sessionStorage.setItem('cart', JSON.stringify(cart));
     navigate('/cart'); 
   };
+
+
+  if (membership==true) {
+    return <Paidcontent />; 
+  }
   return (
     <>
     <Helmet>

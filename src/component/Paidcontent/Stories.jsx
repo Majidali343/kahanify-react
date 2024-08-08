@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { asset3 } from '../imageLoader';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import StarRating from '../home/StarRating'; 
 import Filter from '../Filter/Filter'; 
 import { allStories } from '../Service/api';
@@ -18,8 +18,7 @@ const Stories = () => {
       try {
         const response = await allStories();
         if (response && response.data) {
-          setData(response.data);
-          setFilteredData(response.data); 
+          setData(response.data); 
         }
       } catch (error) {
         console.error('Error fetching stories:', error);
@@ -30,25 +29,21 @@ const Stories = () => {
   }, []);
 
   useEffect(() => {
-    setFilteredData(data); 
-    setCurrentIndex(0); 
-  }, [data]);
+    const applyFilter = () => {
+      const filteredStories = data.filter(story => favoriteIds.includes(story.kahani_id));
+      setFilteredData(filteredStories);
+      setCurrentIndex(0); 
+    };
+
+    applyFilter();
+  }, [data, favoriteIds]);
 
   const nextPage = () => {
-    if (currentIndex + cardsPerPage < filteredData.length) {
-      setCurrentIndex(currentIndex + cardsPerPage);
-    }
+    setCurrentIndex(prevIndex => Math.min(prevIndex + cardsPerPage, filteredData.length - cardsPerPage));
   };
 
   const prevPage = () => {
-    if (currentIndex - cardsPerPage >= 0) {
-      setCurrentIndex(currentIndex - cardsPerPage);
-    }
-  };
-
-  const handleFilter = (filteredStories) => {
-    setFilteredData(filteredStories);
-    setCurrentIndex(0); 
+    setCurrentIndex(prevIndex => Math.max(prevIndex - cardsPerPage, 0));
   };
 
   const handleRatingChange = (cardId, newRating) => {
@@ -58,36 +53,44 @@ const Stories = () => {
     }));
   };
 
+  const handleFilter = (filteredData) => {
+    setFilteredData(filteredData);
+    setCurrentIndex(0); 
+  };
+
   return (
     <div className="p-4">
-     
       <div className='flex justify-center'>
-        <Filter data={data} onFilter={handleFilter} favoriteIds={favoriteIds} />
+        <Filter data={data} favoriteIds={favoriteIds} onFilter={handleFilter} />
       </div>
       <div className="relative">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {filteredData.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
-            <Link to={`/kahani/${card.kahani_id}`} >
-            <div key={card.kahani_id} className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4">
-              <img src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} alt="story" className="w-full h-full object-cover mb-4" />
-              <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
-              <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
-              <div>
-                <div
-                  className="bg-cover flex justify-between text-black p-2 rounded cursor-pointer"
-                  style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px' }}
-                >
-                  <button className="block rounded border border-black mx-12 text-center text-xs p-1">3+</button>
-                  <p className="block text-gray-500 ml-2">{card.views}</p>
+            <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}>
+              <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4">
+                <img 
+                  src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} 
+                  alt="story" 
+                  className="w-full h-full object-cover mb-4" 
+                />
+                <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
+                <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
+                <div>
+                  <div
+                    className="bg-cover flex justify-between text-black p-2 rounded cursor-pointer"
+                    style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px' }}
+                  >
+                    <button className="block rounded border border-black mx-12 text-center text-xs p-1">3+</button>
+                    <p className="block text-gray-500 ml-2">{card.views}</p>
+                  </div>
+                </div>
+                <div className="flex items-center mt-2">
+                  <StarRating 
+                    rating={ratings[card.kahani_id] || 0} 
+                    onChange={(newRating) => handleRatingChange(card.kahani_id, newRating)} 
+                  />
                 </div>
               </div>
-              <div className="flex items-center mt-2">
-                <StarRating 
-                  rating={ratings[card.id] || 0} 
-                  onChange={(newRating) => handleRatingChange(card.id, newRating)} 
-                />
-              </div>
-            </div>
             </Link>
           ))}
         </div>
@@ -113,3 +116,4 @@ const Stories = () => {
 };
 
 export default Stories;
+//unlimit loop error

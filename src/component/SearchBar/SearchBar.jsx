@@ -1,27 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import { faSearch } from '@fortawesome/free-solid-svg-icons'; 
 
 const SearchBar = ({ items = [] }) => {
   const [query, setQuery] = useState('');
-  const [filteredItems, setFilteredItems] = useState([]);
 
-  useEffect(() => {
-    setFilteredItems(items);
-  }, [items]);
+  const filteredItems = useMemo(() => {
+    if (!query) return items;
+    return items.filter(item =>
+      item.toLowerCase().includes(query.toLowerCase())
+    );
+  }, [query, items]);
 
   const handleSearch = (event) => {
-    const value = event.target.value;
-    setQuery(value);
-
-    if (items && items.length > 0) {
-      const filtered = items.filter(item =>
-        item.toLowerCase().includes(value.toLowerCase())
-      );
-      setFilteredItems(filtered);
-    } else {
-      setFilteredItems([]);
-    }
+    setQuery(event.target.value);
   };
 
   return (

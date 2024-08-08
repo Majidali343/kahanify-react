@@ -11,6 +11,7 @@ function Header() {
   const [name, setName] = useState('');
   const dispatch = useDispatch();
   const { userData: user, status: isLoggedIn } = useSelector((state) => state.auth);
+  const [membership, setMembership] = useState(false); 
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -25,6 +26,11 @@ function Header() {
             console.log(user.username); 
             setName(user.username);    
           }
+          if (response && response.membership !== undefined) {
+            setMembership(response.membership); 
+            console.log(response.membership)
+          }
+  
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -38,10 +44,14 @@ function Header() {
   return (
     <header className="bg-white text-black py-2 border-b-4 border-[#ff0087]">
       <div className="container mx-auto flex flex-wrap items-center">
+       {membership==true?<Link to="Paidcontent" className="flex-shrink-0">
+          <img src={asset0} alt="Logo" className="h-[12vh] w-auto" />
+        </Link>:
         <Link to="/" className="flex-shrink-0">
           <img src={asset0} alt="Logo" className="h-[12vh] w-auto" />
         </Link>
 
+       } 
         <nav className="flex-1 flex justify-center  md:justify-center mt-4 md:mt-0">
           <ul className="flex space-x-4 items-end">
             {isLoggedIn && (
