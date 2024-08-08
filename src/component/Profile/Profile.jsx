@@ -15,7 +15,7 @@ function Profile() {
   const [profileimage, setProfileImage] = useState(asset34);
   const [error, setError] = useState('');  
   const [success, setSuccess] = useState(''); 
-
+  const [imageFile, setImageFile] = useState(null);
   
   const fileInputRef = useRef(null);
 
@@ -67,13 +67,13 @@ function Profile() {
     const fetchUserData = async () => {
       try {
         const response = await userprofile();
-        console.log(response); 
-
+        console.log(response);
+  
         if (response && response.user) {
-          const user = response.user; 
-                    console.log(user); 
+          const user = response.user;
+          console.log(user);
           if (user.profileimage) {
-            console.log(user.username); 
+            console.log(user.profileimage);
             setProfileImage(user.profileimage);    
           }
         }
@@ -83,7 +83,7 @@ function Profile() {
     };
   
     fetchUserData();
-  }, []);
+  }, [profileimage]); 
   
 
 
@@ -96,24 +96,25 @@ function Profile() {
 
  
  
-  const handleImageChange = async (e) => {
-  
-      
-    
-      
-        setProfileImage(e.target.files);
-     console.log(profileimage)
-        try {
-     
-          await updateimage(profileimage);
-          setSuccess('Image updated successfully');
-        } catch (error) {
-          setError(error.response?.data?.message || error.message);
-        }
-    
-    
-  };
  
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file);
+      const imageUrl = URL.createObjectURL(file);
+      setProfileImage(imageUrl);
+  
+      const formData = new FormData();
+      formData.append('profileimage', file);
+  
+      try {
+        await updateimage(formData);
+        setSuccess('Image updated successfully');
+      } catch (error) {
+        setError(error.response?.data?.message || error.message);
+      }
+    }
+  };
   
 
   const dispatch = useDispatch();
@@ -154,7 +155,8 @@ function Profile() {
               name="profileimages"
               accept=".png, .jpg, .jpeg"
               onChange={handleImageChange}
-              style={{ display: 'none' }} 
+              style={{ display: 'none' }}  
+              ref={fileInputRef} 
              />
           </div>
           <div className="flex-1">
@@ -276,4 +278,3 @@ function Profile() {
 
 export default Profile;
 
-// we need to post current new and confinm password in data in

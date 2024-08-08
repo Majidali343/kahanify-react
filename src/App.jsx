@@ -17,7 +17,8 @@ import Privacy from './component/Privacy Policy/Privacy';
 import Conditions from './component/Conditions/Conditions';
 import Refund from './component/Refund policy/Refund';
 import FAQs from './component/FAQs/FAQs';
-import PrivateRoute from './component/PrivateRoute'
+import PrivateRoute from './component/PrivateRoute';
+import SingleKahani from './component/PaidStories/SingleKahani';
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.status);
@@ -37,6 +38,7 @@ function App() {
           <Route path="Paidcontent" element={<PrivateRoute element={<Paidcontent />} />} />
           <Route path="Privacy" element={<Privacy />}  />
           <Route path="Conditions" element={<Conditions />} />
+          <Route path="kahani/:id" element={<SingleKahani />} />
           <Route path="ForgotPassword" element={<ForgotPassword />}  />
           <Route path="reset-password" element={<ResetPassword />}  />
           <Route path="Refund" element={<Refund />} />

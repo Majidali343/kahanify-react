@@ -1,27 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { asset1, asset3 } from '../imageLoader';
+import { asset3 } from '../imageLoader';
+import {Link} from "react-router-dom";
 import StarRating from '../home/StarRating'; 
 import Filter from '../Filter/Filter'; 
-
-const initialCards = Array(10).fill().map((_, index) => ({
-  id: index,
-  image: asset1,
-  title: "بھیڑیا اور چالاک بکری",
-  duration: "8min 53sec",
-  count: "729",
-  createdAt: new Date(2023, 0, index + 1), // Sample date
-}));
+import { allStories } from '../Service/api';
 
 const Stories = () => {
-  const [data, setData] = useState(initialCards);
-  const [filteredData, setFilteredData] = useState(initialCards);
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [ratings, setRatings] = useState(Array(initialCards.length).fill(0)); 
+  const [ratings, setRatings] = useState({});
   const [favoriteIds, setFavoriteIds] = useState([]);
-  const cardsPerPage = 6;
+  const cardsPerPage = 9;
 
   useEffect(() => {
-    setFilteredData(data);
+    const fetchStories = async () => {
+      try {
+        const response = await allStories();
+        if (response && response.data) {
+          setData(response.data);
+          setFilteredData(response.data); 
+        }
+      } catch (error) {
+        console.error('Error fetching stories:', error);
+      }
+    };
+
+    fetchStories();
+  }, []);
+
+  useEffect(() => {
+    setFilteredData(data); 
     setCurrentIndex(0); 
   }, [data]);
 
@@ -43,23 +52,24 @@ const Stories = () => {
   };
 
   const handleRatingChange = (cardId, newRating) => {
-    setRatings(prevRatings => {
-      const newRatings = [...prevRatings];
-      newRatings[cardId] = newRating;
-      return newRatings;
-    });
+    setRatings(prevRatings => ({
+      ...prevRatings,
+      [cardId]: newRating
+    }));
   };
 
   return (
     <div className="p-4">
+     
       <div className='flex justify-center'>
         <Filter data={data} onFilter={handleFilter} favoriteIds={favoriteIds} />
       </div>
       <div className="relative">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {filteredData.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
+            <Link to={`/kahani/${card.id}`} >
             <div key={card.id} className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4">
-              <img src={card.image} alt="story" className="w-full h-full object-cover mb-4" />
+              <img src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} alt="story" className="w-full h-full object-cover mb-4" />
               <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
               <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
               <div>
@@ -68,16 +78,17 @@ const Stories = () => {
                   style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px' }}
                 >
                   <button className="block rounded border border-black mx-12 text-center text-xs p-1">3+</button>
-                  <p className="block text-gray-500 ml-2">{card.count}</p>
+                  <p className="block text-gray-500 ml-2">{card.views}</p>
                 </div>
               </div>
               <div className="flex items-center mt-2">
                 <StarRating 
-                  rating={ratings[card.id]} 
+                  rating={ratings[card.id] || 0} 
                   onChange={(newRating) => handleRatingChange(card.id, newRating)} 
                 />
               </div>
             </div>
+            </Link>
           ))}
         </div>
         <div className="flex justify-center m-4">
@@ -102,4 +113,3 @@ const Stories = () => {
 };
 
 export default Stories;
-//

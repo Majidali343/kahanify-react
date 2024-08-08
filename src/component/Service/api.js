@@ -81,7 +81,8 @@ export const updateimage = async (profileimage) => {
   try {
     const token = Cookies.get('token');
     console.log(token);
-
+console.log('hello')
+console.log (profileimage)
     const response = await axios.post(
       `${API_URL}/updateProfile`,
       {
@@ -89,7 +90,8 @@ export const updateimage = async (profileimage) => {
       },
       {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          
         }
       }
     );
@@ -106,6 +108,21 @@ export const allStories = async () => {
   try {
     const token = Cookies.get('token');
     const response = await axios.get(`${API_URL}/getkahanis`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching current user:', error);
+    throw error;
+  }
+};
+
+
+////////////////////////////////
+export const singleStory = async (id) => {
+  try {
+    const token = Cookies.get('token');
+    const response = await axios.get(`${API_URL}/getsinglekahani/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     return response.data;
@@ -132,6 +149,33 @@ export const userprofile = async () => {
     console.log(response);
 
     return response.data;
+  } catch (error) {
+    console.error('Error update image', error);
+    throw error;
+  }
+};
+////////////
+export const parchacemembership = async (years,packagename, Price) => {
+  try {
+    const token = Cookies.get('token');
+    console.log("helllo");
+console.log(years,packagename, Price);
+
+    // const response = await axios.post(
+    //   `${API_URL}/updateProfile`,
+    //   {
+    //     years, packagename, Price   
+    //   },
+    //   {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+          
+    //     }
+    //   }
+    // );
+    // console.log(response);
+
+    
   } catch (error) {
     console.error('Error update image', error);
     throw error;

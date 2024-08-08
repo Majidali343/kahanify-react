@@ -8,7 +8,7 @@ import { getCurrentUser } from '../Service/api';
 function Package() {
   const navigate = useNavigate();
   const [name, setName] = useState('');
-
+  
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -33,17 +33,17 @@ function Package() {
 
 
 
-  const addToCart = (name, pricePerItem, image) => {
+  const addToCart = (packagename, pricePerItem, image) => {
     const existingCart = sessionStorage.getItem('cart');
     const cart = existingCart ? JSON.parse(existingCart) : [];
 
-    const itemIndex = cart.findIndex(item => item.name === name);
+    const itemIndex = cart.findIndex(item => item.packagename === packagename);
 
     if (itemIndex > -1) {
       cart[itemIndex].quantity += 1;
     } else {
       cart.push({
-        name,
+        packagename,
         pricePerItem,
         quantity: 1,
         image
@@ -108,7 +108,7 @@ function Package() {
             <h2 className="text-2xl font-bold mb-4">Membership Details</h2>
             <div className='text-sm'>
               <p className='mb-2'>This is an annual membership package.</p>
-              <p className='mb-2'>The price for membership is PKR1460 now.</p>
+              <p className='mb-2'>The price for membership is PKR2500 now.</p>
               <p className='mb-2'> Membership expires after 1 year (365 Days)</p></div>
           </div>
           <h3 className="text-xl font-bold mb-4 mt-4">For Manual Payments</h3>

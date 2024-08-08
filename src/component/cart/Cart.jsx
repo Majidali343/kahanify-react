@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { getCurrentUser } from '../Service/api';  
+import { getCurrentUser, parchacemembership } from '../Service/api';  
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -15,7 +15,7 @@ function Cart() {
 
   const handleIncrement = (index) => {
     const updatedCart = [...cart];
-    if (updatedCart[index].name === 'Annual Membership') {
+    if (updatedCart[index].packagename === 'Annual Membership') {
       updatedCart[index].quantity += 1;
       setCart(updatedCart);
       sessionStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -24,7 +24,7 @@ function Cart() {
   
   const handleDecrement = (index) => {
     const updatedCart = [...cart];
-    if (updatedCart[index].quantity > 1 && updatedCart[index].name === 'Annual Membership') {
+    if (updatedCart[index].quantity > 1 && updatedCart[index].packagename === 'Annual Membership') {
       updatedCart[index].quantity -= 1;
       setCart(updatedCart);
       sessionStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -37,17 +37,18 @@ function Cart() {
     sessionStorage.setItem('cart', JSON.stringify(updatedCart));
   };
   
-  const handleCheckOut = () => {
-    if (cart.length > 0 ) {
-      alert("You cannot select both annual and lifetime memberships. Please choose one.");
-    } 
-  };
+  
   const totalPrice = cart.reduce((total, item) => total + (item.pricePerItem * item.quantity), 0);
+
+
+
+  
+
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await getCurrentUser();
+        const response = await getCurrentUser( );
         console.log(response); 
 
         if (response && response.user) {
@@ -66,6 +67,26 @@ function Cart() {
     fetchUserData();
   }, []);
 
+
+  
+    const handleCheckOut = async () => {
+      try {
+        console.log("Proceeding to checkout...");
+    
+        const purchaseData = cart.map(item => ({
+          quantity: item.quantity,
+          packagename: item.packagename,
+          pricePerItem: item.pricePerItem,
+        }));
+    
+        await parchacemembership(name, purchaseData, totalPrice);
+    
+        console.log('Checkout successful!');
+      } catch (error) {
+        console.error('Error during checkout:', error);
+      }
+    };
+    
 
 return (
 <>
@@ -106,7 +127,7 @@ return (
               <div className="flex items-center">
                 <img src={item.image} alt="Product Image" className="w-20 h-20 mr-4" />
                 <div>
-                  <p className="text-lg font-medium">{item.name}</p>
+                  <p className="text-lg font-medium">{item.packagename}</p>
                   <p className="text-gray-500 pb-3">Rs {item.pricePerItem}</p>
                   <div className="items-center">
                     <div className='flex pb-4'>
