@@ -6,7 +6,7 @@ console.log('API_URL:', API_URL);
 //////////
 export const login = async (data) => {
   try {
-    console.log (data)
+    console.log(data)
     const response = await axios.post(`${API_URL}/login`, data);
     if (response.data.token) {
       Cookies.set('token', response.data.token, { expires: data.rememberMe ? 7 : 0.083 });
@@ -20,14 +20,14 @@ export const login = async (data) => {
 //////////
 export const signup = async (data) => {
   try {
-    
+
     const response = await axios.post(`${API_URL}/register`, data);
     return response.data;
 
   } catch (error) {
     // console.error('Error signing up:', error.response.data.errors.email);
     console.error('Error signing up:', error.response.data.errors);
-    throw  error;
+    throw error;
   }
 };
 ////////////
@@ -49,23 +49,28 @@ export const changepassword = async (new_password, current_password, confirm_pas
   try {
     const token = Cookies.get('token');
     console.log(token);
-
-    const response = await axios.post(
-      `${API_URL}/updatepassword`,
-      {
-        new_password,
-        current_password,
-        confirm_password
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
+    console.log(new_password, current_password, confirm_password)
+    if (confirm_password == new_password) {
+      const response = await axios.post(
+        `${API_URL}/updatepassword`,
+        {
+          new_password,
+          current_password,
+          confirm_password
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
-      }
-    );
-    console.log(response);
+      );
+      console.log(response);
 
-    return response.data; 
+      return response.data;
+    }else{
+      console.error("New Password and Conform password does not match ")
+    }
+
   } catch (error) {
     console.error('Error changing password', error);
     throw error;
@@ -90,7 +95,7 @@ export const updateimage = async (profileimage) => {
     );
     console.log(response);
 
-    return response.data; 
+    return response.data;
   } catch (error) {
     console.error('Error update image', error);
     throw error;
@@ -106,6 +111,29 @@ export const allStories = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching current user:', error);
+    throw error;
+  }
+};
+////////////////////////////////
+export const userprofile = async () => {
+  try {
+    const token = Cookies.get('token');
+    console.log(token);
+
+    const response = await axios.get(
+      `${API_URL}/usershow`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    console.log(response);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error update image', error);
     throw error;
   }
 };

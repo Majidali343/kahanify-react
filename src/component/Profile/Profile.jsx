@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { asset34, asset35, asset36 } from '../imageLoader';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
-import { getCurrentUser, changepassword, updateimage } from '../Service/api';  
+import { getCurrentUser, changepassword, updateimage, userprofile } from '../Service/api';  
 
 function Profile() {
   const [name, setName] = useState('');
@@ -63,32 +63,57 @@ function Profile() {
   }, []);
   
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await userprofile();
+        console.log(response); 
+
+        if (response && response.user) {
+          const user = response.user; 
+                    console.log(user); 
+          if (user.profileimage) {
+            console.log(user.username); 
+            setProfileImage(user.profileimage);    
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+  
+    fetchUserData();
+  }, []);
+  
+
+
+
   const handleCameraClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click(); 
     }
   };
-  const handleImageChange = async (event) => {
-    const file = event.target.files[0];
+
+ 
+ 
+  const handleImageChange = async (e) => {
+  
+      
     
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = async (e) => {
-        const profileimage = e.target.result;
-        setProfileImage(profileimage);
-        
+      
+        setProfileImage(e.target.files);
+     console.log(profileimage)
         try {
-          await updateimage({ profileimage }); 
-          
+     
+          await updateimage(profileimage);
           setSuccess('Image updated successfully');
         } catch (error) {
           setError(error.response?.data?.message || error.message);
         }
-      };
-      reader.readAsDataURL(file);
-    }
+    
+    
   };
-  
+ 
   
 
   const dispatch = useDispatch();
@@ -125,11 +150,12 @@ function Profile() {
             </div>
             <input
               type="file"
-              ref={fileInputRef}
+              required
+              name="profileimages"
+              accept=".png, .jpg, .jpeg"
               onChange={handleImageChange}
-              accept="image/*"
               style={{ display: 'none' }} 
-            />
+             />
           </div>
           <div className="flex-1">
             <div>
