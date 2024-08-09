@@ -23,15 +23,15 @@ import { Link } from 'react-router-dom';
     <div
       className="h-screen bg-cover  responsive-background"
     >   
-      <div className="flex ">
+      <div className="flex main">
         <div 
-          className="text-white text-center"
+          className="text-white text-center "
           style={{ margin: '10% 20% 8% 13%' }}
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-2">Kids Audio Stories</h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl mb-4">Listen Imagine Enjoy</h2>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl  heading text-pretty  mb-2">Kids  Audio  Stories</h1>
+          <h2 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl  2xl:text-3xl mb-4">Listen  Imagine  Enjoy</h2>
           <button
-            className="bg-blue-600 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl border-2 border-white text-white py-2 px-4 rounded transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
+            className="bg-blue-600 text-base sm:text-lg btn md:text-xl lg:text-xl xl:text-xl 2xl:text-2xl border border-white  text-white py-2 px-4 rounded-[6px] text-center transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
           >
             <Link to='/signup' > Get Started</Link>
             
@@ -43,15 +43,15 @@ import { Link } from 'react-router-dom';
     <div className="text-center  sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-8">
     <div className="w-full  p-4 sm:p-6 md:p-8 lg:p-10 xl:p-4">
       <div className="text-center mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-4">
-        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-[#18003c] border-b-2 border-[#18003c] mb-4 pb-2">
+        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl 2xl:text-3xl main font-bold text-[#1f1974] border-b-2 border-[#1f1974]  mb-4 pb-2">
           Audio Tales: Where Imagination Meets the Power of Sound.
         </h1>
       </div>
-      <div className="flex flex-col justify-center items-center text-center text-[#18003c] mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-12">
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12">
+      <div className="flex flex-col justify-center items-center text-center text-[#1f1974] mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-12">
+        <p className="text-sm pt-4 mb-4 sm:mb-6 md:mb-6 lg:mb-6 xl:mb-8">
           Kahanify brings the charm of storytelling to young minds. Embark on a captivating audio journey. Immerse in a world where stories come to life through the magic of sound. Our curated collection of audio stories is tailored for children, fostering imagination, language development, and a love for storytelling. Dive into a world of fanciful narratives, charming characters, and moralistic adventures, designed to spark interest and ignite the joy of listening in the hearts of the little ones. With Kahanify, every moment becomes an opportunity for young minds to explore, learn, and be delighted.
         </p>
-        <button className="bg-[#18003c] text-white py-2 px-4 rounded text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+        <button className="bg-blue-600 flex justify-center self-center text-white  px-3 py-2 text-sm   transition-transform duration-300 ease-in-out rounded transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
           <Link to='/signup'>Register Now</Link>
         </button>
       </div>
@@ -61,11 +61,11 @@ import { Link } from 'react-router-dom';
   <div class="w-full md:w-1/2 flex-shrink-0">
     <img src={asset1} alt="story" class="object-cover h-[50vh] md:h-full w-full" />
   </div>
-
-  <div class="w-full md:w-1/2 h-full bg-cover bg-center flex flex-col items-center justify-between p-4 sm:p-16 pt-[30px] sm:pt-[80px]"
+<div className='w-full md:w-1/2 h-full'>
+  <div class=" bg-cover bg-center flex flex-col items-center justify-between  sm:p-16 pt-[30px] sm:pt-[80px]"
         style={{ 
          backgroundImage: `url(${asset23})`,
-         backgroundSize: '70%',
+         backgroundSize: '85%',
          backgroundRepeat: 'no-repeat',
 
        }}
@@ -74,11 +74,12 @@ import { Link } from 'react-router-dom';
       <a href="#" class="hover:underline">FREE STORY</a>
     </h1>
   
-    <div class="flex flex-col items-center my-16 ">
+    <div class="flex flex-col items-center  mt-16 sm:mt-16 md:mt-18 lg:mt-48 xl:mt-60 2xl:mt-60 ">
       <p class="text-white font-bold text-lg mt-16 pt-8 md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
-      <button class="bg-white text-[#18003c] py-2 px-4 font-bold rounded hover:bg-pink-600 hover:text-white">
+      <button class="bg-white text-[#18003c] py-3 px-6 font-bold rounded hover:bg-pink-600 hover:text-white">
         <Link to='/FreeStory'>Listen Now</Link>
       </button>
+      </div>
     </div>
   </div>
 </div>
@@ -98,29 +99,29 @@ import { Link } from 'react-router-dom';
   </div>
 
 <div className="px-0 sm:px-8 mx-0 sm:mx-8">
-<div className='font-serif'>
+<div className='urdu leading-loose'>
 <h1 className='text-[#ff912c] text-center font-bold  text-2xl sm:text-4xl'>محترم والدین</h1>
-<p className='text-right text-gray-500 sm:text-xl m-4 sm:m-8 '>
+<p className='text-right  text-gray-500 leading-loose text-xl m-4 sm:m-8 '>
 چھوٹے بچے خود تو کہانیاں نہیں پڑھ سکتے، لیکن اگر ان کو کہانی سنائی جائے تو بہت شوق سے سنتے ہیں، اور باربار سنانے کی فرمائش کرتے ہیں۔ اگر ان کہانیوں میں کوئی مثبت پیغام ہو تو بارہا سننے کی وجہ سے وہ انہیں ہمیشہ یاد رہتا ہے اور بچوں کی شخصیت سازی میں بہترین کردار ادا کرتا ہے۔ لیکن آج کے اس مصروف دور میں اکثر والدین کو یہ فرصت میسر نہیں ہوتی کہ وہ بچوں کو باقاعدگی سے کہانیاں سنا سکیں۔
 
 </p>
 
-<p className='text-right text-gray-500 sm:text-xl  m-4 sm:m-8'>
+<p className='text-right text-gray-500 leading-loose text-xl  m-4 sm:m-8'>
 اسی لئے والدین کی سہولت کے پیش نظر  دے رہا ہے 3سال سے 10 سال تک کی عمر کے بچوں کے لئے دلچسپ اور سبق آموز آڈیو کہانیوں کا آن لائن ایکسس۔ رات کو سونے سے پہلے، دن میں آرام کے وقت یا پھرجب بھی جہاں بھی، بچے کہانی سننا چاہیں، آپ Kahanify کی ممبرشپ حاصل کرکے تمام آڈیو کہانیوں تک رسائی حاصل کر سکتے ہیں۔ اور بچوں کی من چاہی کہانیاں انہیں موبائل پر سنوا سکتے ہیں۔ اگر خود سے پڑھ کر سنانا چاہیں تو Kahanify پر تمام کہانیاں تحریری شکل میں موجود ہیں۔ ہماری ایک تحقیق کے نتیجے میں 2 سال سے 13 سال تک کے اکثر بچوں کو Kahanify کی آڈیو کہانیاں سننا پسند ہے۔
 </p>
-<h3 className= "text-right text-[#18003c] sm:text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-right text-[#18003c] leading-loose text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
 
 
-<p className='text-right text-gray-500 sm:text-xl  m-4 sm:m-8 '>
+<p className='text-right text-gray-500 leading-loose text-xl  m-4 sm:m-8 '>
 وہ والدین جو بچوں کو موبائل کا ایکسس نہیں دینا چاہتے وہ با آسانی آڈیو کہانی پلے کرکے موبائل سکرین لاک کر سکتے ہیں۔ بیک گراؤنڈ میں کہانی چلتی رہے گی اور بچے بھی موبائل ایکسس کے بغیر معیاری کونٹینٹ سے لطف اٹھاتے رہیں گے۔
 </p>
 
-<p className='text-right text-gray-500 sm:text-xl  m-4 sm:m-8'>
+<p className='text-right text-gray-500 leading-loose text-xl  m-4 sm:m-8'>
 معیاری اور بامقصد کونٹینٹ کی فراہمی کے لئے Kahanify کی ماہانہ اور سالانہ ممبرشپ کے تحت معمولی فیس رکھی گئی ہے۔ جس کے فائدے بیشمار ہونگے اور تفریح ہی تفریح میں بچے بہت سی اچھی باتیں سیکھیں گے۔
 </p>
 
 <h3 className= "text-right text-[#18003c] sm:text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
-<div className='text-right text-gray-500 sm:text-xl   m-4 sm:m-8'>
+<div className='text-right text-gray-500 leading-loose text-xl   m-4 sm:m-8'>
   <ol  className=' list-right list-inside space-y-2'>
     <li> آڈیو کہانیاں سننے سے بچوں کا حافظہ بہتر </li>
     <li>بچوں کے اٹینشن سپین ( توجہ کا دورانیہ) میں اضافہ ہوگا۔</li>
@@ -299,30 +300,33 @@ import { Link } from 'react-router-dom';
     
     <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right p-8">
     <div className='sm:flex  sm:flex-col sm:text-xl'>
-      <div className='font-serif'>
-  <h1 className='text-[#ff912c] font-bold my-8 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+      <div className='urdu flex flex-col items-center justify-center'>
+  <h1 className='gradient-text  font-bold py-8 text-3xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
     بچوں کے لیےنت نئی پر لطف کہانیاں
   </h1>
-  
-  <p className='text-white my-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+<div className='flex flex-col justify-start'>  
+  <p className='text-white my-2  ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
     <span className='inline-block'>اشتہارات سے پاک محفوظ تفریح</span>
-    <img className='inline-block w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:w-12 xl:h-12 ml-2' src={asset10} alt="logo" />
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
   </p>
   
-  <p className='text-white my-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
     <span className='inline-block'>چاہے آڈیو فائل پلے کریں یا خود سنائیں</span>
-    <img className='inline-block w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:w-12 xl:h-12 ml-2' src={asset10} alt="logo" />
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+
   </p>
   
-  <p className='text-white my-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+  <p className='text-white my-2' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
     <span className='inline-block'>بچوں کی بہترین تربیت میں مدد گار</span>
-    <img className='inline-block w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:w-12 xl:h-12 ml-2' src={asset10} alt="logo" />
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+
   </p>
   
-  <p className='text-white my-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
     <span className='inline-block'>کرے اجاگر بچوں کی تخلیقی صلاحیتیں</span>
-    <img className='inline-block w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:w-12 xl:h-12 ml-2' src={asset10} alt="logo" />
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
   </p>
+</div>
 </div>
     </div>
     </div>

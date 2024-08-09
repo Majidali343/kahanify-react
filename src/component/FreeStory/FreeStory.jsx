@@ -7,7 +7,7 @@ import audio from '../../assets/audio/Bheriya-aur-chalaak-Bakri.mp3'
 library.add(faPlay, faPause, faHeart, faBackward, faForward, faEye);
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-
+import '../Css/home.css'
 
 function FreeStory() {
   return (
@@ -35,72 +35,41 @@ function FreeStory() {
             <img src={asset9} alt="story" class="w-full h-full object-cover" />
           </div>
 
+       
           <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right p-8">
-            <div className="sm:flex sm:flex-col sm:text-xl">
-              <h1
-                className="text-[#ff912c] font-bold my-8 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
-                style={{ fontFamily: "Noto Nastaliq Urdu, serif" }}
-              >
-                بچوں کے لیےنت نئی پر لطف کہانیاں
-              </h1>
+    <div className='sm:flex  sm:flex-col sm:text-xl'>
+      <div className='urdu flex flex-col items-center justify-center'>
+  <h1 className='gradient-text  font-bold py-8 text-3xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    بچوں کے لیےنت نئی پر لطف کہانیاں
+  </h1>
+<div className='flex flex-col justify-start'>  
+  <p className='text-white my-2  ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>اشتہارات سے پاک محفوظ تفریح</span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+  </p>
+  
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>چاہے آڈیو فائل پلے کریں یا خود سنائیں</span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
 
-              <p
-                className="text-white my-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl"
-                style={{ fontFamily: "Noto Nastaliq Urdu, serif" }}
-              >
-                <span className="inline-block">
-                  اشتہارات سے پاک محفوظ تفریح
-                </span>
-                <img
-                  className="inline-block w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:w-12 xl:h-12 ml-2"
-                  src={asset10}
-                  alt="logo"
-                />
-              </p>
+  </p>
+  
+  <p className='text-white my-2' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>بچوں کی بہترین تربیت میں مدد گار</span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
 
-              <p
-                className="text-white my-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl"
-                style={{ fontFamily: "Noto Nastaliq Urdu, serif" }}
-              >
-                <span className="inline-block">
-                  چاہے آڈیو فائل پلے کریں یا خود سنائیں
-                </span>
-                <img
-                  className="inline-block w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:w-12 xl:h-12 ml-2"
-                  src={asset10}
-                  alt="logo"
-                />
-              </p>
+  </p>
+  
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>کرے اجاگر بچوں کی تخلیقی صلاحیتیں</span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+  </p>
+</div>
+</div>
+</div>          
+</div>
 
-              <p
-                className="text-white my-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl"
-                style={{ fontFamily: "Noto Nastaliq Urdu, serif" }}
-              >
-                <span className="inline-block">
-                  بچوں کی بہترین تربیت میں مدد گار
-                </span>
-                <img
-                  className="inline-block w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:w-12 xl:h-12 ml-2"
-                  src={asset10}
-                  alt="logo"
-                />
-              </p>
 
-              <p
-                className="text-white my-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl"
-                style={{ fontFamily: "Noto Nastaliq Urdu, serif" }}
-              >
-                <span className="inline-block">
-                  کرے اجاگر بچوں کی تخلیقی صلاحیتیں
-                </span>
-                <img
-                  className="inline-block w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:w-12 xl:h-12 ml-2"
-                  src={asset10}
-                  alt="logo"
-                />
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 

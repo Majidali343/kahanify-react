@@ -99,7 +99,7 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
   return (
     <div className="bg-[#18003c] w-full h-full p-0 m-0">
       <div className="flex flex-col items-center justify-center p-0 m-0">
-        <div className="text-white p-4 rounded-lg shadow-lg w-full max-w-lg">
+        <div className="text-white p-4 rounded-lg  w-full max-w-lg">
           <div className="text-center mb-4">
             <img
               src={imageSrc}
@@ -121,7 +121,7 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
             <span>{formatTime(duration)}</span>
           </div>
 
-          <div className="flex justify-between items-center mb-4 sm:p-4  rounded-lg shadow-md">
+          <div className="flex justify-between items-center mb-4 sm:p-4  rounded-lg ">
 
       <div className="flex items-center sm:mb-4 md:mb-0">
         <button

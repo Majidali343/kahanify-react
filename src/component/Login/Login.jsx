@@ -90,7 +90,7 @@ function Login() {
 
           <button 
             type="submit" 
-            className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-pink-600 hover:text-white transition-colors"
+            className="w-full btn bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-pink-600 hover:text-white transition-colors"
           >
             Sign In
           </button>

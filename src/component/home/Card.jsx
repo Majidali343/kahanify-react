@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { asset1, asset3 } from '../imageLoader';
 import StarRating from './StarRating'; 
 import {  famousStories } from '../Service/api';
+import {Link} from 'react-router-dom'
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -46,7 +47,9 @@ const Slider = () => {
             <p>No stories available.</p>
           ) : (
             cards.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
-              <div key={card.kahani_id} className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4">
+              <Link to='login'>
+
+<div key={card.kahani_id} className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4">
                 <img src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} alt="story" className="w-full h-full object-cover mb-4" />
                 <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
                 <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
@@ -61,13 +64,16 @@ const Slider = () => {
                 </div>
                 <div className="flex items-center mt-2">
                   <StarRating 
-                    rating={card.number_of_ratings} 
+                    rating={card.average_rating} 
+
 
                   />
+<p className='mx-3 text-gray-400'>{card.number_of_ratings}</p>
                 </div>
               </div>
-            ))
+              </Link>  ))
           )}
+          
         </div>
         <div className="flex justify-center m-4">
           <button
