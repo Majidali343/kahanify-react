@@ -155,29 +155,72 @@ export const userprofile = async () => {
   }
 };
 ////////////
-export const parchacemembership = async (years,packagename, Price) => {
+export const parchacemembership = async (memberpackage) => {
   try {
     const token = Cookies.get('token');
     console.log("helllo");
-console.log(years,packagename, Price);
+console.log(memberpackage);
 
-    // const response = await axios.post(
-    //   `${API_URL}/updateProfile`,
-    //   {
-    //     years, packagename, Price   
-    //   },
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-          
-    //     }
-    //   }
-    // );
-    // console.log(response);
+
+const data = JSON.stringify(memberpackage);
+
+const parsedData = JSON.parse(data);
+
+const firstElement = parsedData[0];
+
+if(firstElement.years){
+  var years =  firstElement.years;
+  var price =firstElement.price;
+  console.log(price)
+  const response = await axios.post(
+    `${API_URL}/createorder`,
+    {
+       price , years
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'    
+      }
+    }
+  );
+  console.log(response);
+  console.log (response.data.checkout_url);
+  window.location.href = response.data.checkout_url;
+}else{
+
+  var Price =firstElement.price;
+  const response = await axios.post(
+    `${API_URL}/createorder`,
+    {
+       Price 
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'    
+      }
+    }
+  );
+  console.log(response);
+  window.location.href = response.data.checkout_url;
+ 
+}
 
     
   } catch (error) {
     console.error('Error update image', error);
+    throw error;
+  }
+};
+///////////////////////////////
+export const famousStories = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/getfamouskahanis`, {
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching famous kahanis:', error);
     throw error;
   }
 };

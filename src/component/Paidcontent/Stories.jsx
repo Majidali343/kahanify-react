@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { asset3 } from '../imageLoader';
 import { Link } from "react-router-dom";
 import StarRating from '../home/StarRating'; 
@@ -15,6 +15,7 @@ const Stories = () => {
 
   useEffect(() => {
     const fetchStories = async () => {
+      console.log ("first")
       try {
         const response = await allStories();
         if (response && response.data) {
@@ -26,20 +27,24 @@ const Stories = () => {
     };
 
     fetchStories();
-  }, []);
+  }, []); 
 
-  useEffect(() => {
-    const applyFilter = () => {
-      const filteredStories = data.filter(story => favoriteIds.includes(story.kahani_id));
-      setFilteredData(filteredStories);
-      setCurrentIndex(0); 
-    };
+  const applyFilter = useCallback(() => {
+    const filteredStories = data.filter(story => favoriteIds.includes(story.kahani_id));
+    console.log ("Third")
 
-    applyFilter();
+    setFilteredData(filteredStories);
+    setCurrentIndex(0); 
   }, [data, favoriteIds]);
 
+  useEffect(() => {
+    console.log ("secound")
+
+    applyFilter();
+  }, [applyFilter]); 
+
   const nextPage = () => {
-    setCurrentIndex(prevIndex => Math.min(prevIndex + cardsPerPage, filteredData.length - cardsPerPage));
+    setCurrentIndex(prevIndex => Math.min(prevIndex + cardsPerPage));
   };
 
   const prevPage = () => {
@@ -54,18 +59,18 @@ const Stories = () => {
   };
 
   const handleFilter = (filteredData) => {
-    setFilteredData(filteredData);
+  setFilteredData(filteredData);
     setCurrentIndex(0); 
   };
 
   return (
     <div className="p-4">
       <div className='flex justify-center'>
-        <Filter data={data} favoriteIds={favoriteIds} onFilter={handleFilter} />
+        <Filter data={data}  onFilter={handleFilter} />
       </div>
       <div className="relative">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {filteredData.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
+          {filteredData.slice(currentIndex, currentIndex + cardsPerPage).map(card => ( 
             <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}>
               <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4">
                 <img 
@@ -73,6 +78,7 @@ const Stories = () => {
                   alt="story" 
                   className="w-full h-full object-cover mb-4" 
                 />
+                <h2 className="text-white text-xs">{card.created_at}</h2>
                 <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
                 <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
                 <div>
@@ -116,4 +122,3 @@ const Stories = () => {
 };
 
 export default Stories;
-//unlimit loop error

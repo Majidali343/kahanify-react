@@ -51,7 +51,7 @@ import { Link } from 'react-router-dom';
         <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl mb-4 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12">
           Kahanify brings the charm of storytelling to young minds. Embark on a captivating audio journey. Immerse in a world where stories come to life through the magic of sound. Our curated collection of audio stories is tailored for children, fostering imagination, language development, and a love for storytelling. Dive into a world of fanciful narratives, charming characters, and moralistic adventures, designed to spark interest and ignite the joy of listening in the hearts of the little ones. With Kahanify, every moment becomes an opportunity for young minds to explore, learn, and be delighted.
         </p>
-        <button className="bg-[#18003c] text-white py-2 px-4 rounded text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+        <button className="bg-[#18003c] text-white py-2 px-4 rounded text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
           <Link to='/signup'>Register Now</Link>
         </button>
       </div>
@@ -98,6 +98,7 @@ import { Link } from 'react-router-dom';
   </div>
 
 <div className="px-0 sm:px-8 mx-0 sm:mx-8">
+<div className='font-serif'>
 <h1 className='text-[#ff912c] text-center font-bold  text-2xl sm:text-4xl'>محترم والدین</h1>
 <p className='text-right text-gray-500 sm:text-xl m-4 sm:m-8 '>
 چھوٹے بچے خود تو کہانیاں نہیں پڑھ سکتے، لیکن اگر ان کو کہانی سنائی جائے تو بہت شوق سے سنتے ہیں، اور باربار سنانے کی فرمائش کرتے ہیں۔ اگر ان کہانیوں میں کوئی مثبت پیغام ہو تو بارہا سننے کی وجہ سے وہ انہیں ہمیشہ یاد رہتا ہے اور بچوں کی شخصیت سازی میں بہترین کردار ادا کرتا ہے۔ لیکن آج کے اس مصروف دور میں اکثر والدین کو یہ فرصت میسر نہیں ہوتی کہ وہ بچوں کو باقاعدگی سے کہانیاں سنا سکیں۔
@@ -134,9 +135,9 @@ import { Link } from 'react-router-dom';
   <p>Kahanify</p>
   </ol>  
 </div>
-
+</div>
 <div className='flex justify-center'>
-<button className="bg-[#18003c] text-white py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+<button className="bg-[#18003c] text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
   <Link to='/signup' > Register Now</Link></button>
   
 </div>
@@ -283,7 +284,7 @@ import { Link } from 'react-router-dom';
   <h1 className='text-[#ff912c] font-bold mt-8 text-xl sm:text-2xl'>  Unleash the magic of Urdu storytelling – Join Kahanify today!
   </h1>
   <div className='flex justify-center m-4 sm:m-8'>
-  <button className="bg-[#18003c] text-white py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+  <button className="bg-[#18003c] text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
   <Link to='/signup' > Register Now</Link></button>  
       </div>
 </div>
@@ -297,7 +298,8 @@ import { Link } from 'react-router-dom';
     </div>
     
     <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right p-8">
-    <div className='sm:flex sm:flex-col sm:text-xl'>
+    <div className='sm:flex  sm:flex-col sm:text-xl'>
+      <div className='font-serif'>
   <h1 className='text-[#ff912c] font-bold my-8 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
     بچوں کے لیےنت نئی پر لطف کہانیاں
   </h1>
@@ -322,6 +324,7 @@ import { Link } from 'react-router-dom';
     <img className='inline-block w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 xl:w-12 xl:h-12 ml-2' src={asset10} alt="logo" />
   </p>
 </div>
+    </div>
     </div>
   </div>
 </div>

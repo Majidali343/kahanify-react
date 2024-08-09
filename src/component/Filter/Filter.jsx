@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-const Filter = ({ data, onFilter, favoriteIds }) => {
-  const [filterOption, setFilterOption] = useState('newest');
-
-  // Callback for sorting/filtering data based on filter option
+const Filter = ({ data, onFilter  }) => {
+  const [filterOption, setFilterOption] = useState('default');
+  
   useEffect(() => {
     const handleFiltering = () => {
-      let sortedData = [...data];
+      let sortedData = [...data]; 
 
       switch (filterOption) {
         case 'newest':
@@ -15,23 +14,20 @@ const Filter = ({ data, onFilter, favoriteIds }) => {
         case 'oldest':
           sortedData.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
           break;
-        case 'favorite':
-          sortedData = sortedData.filter(card => favoriteIds.includes(card.id));
-          break;
         case 'popular':
           sortedData.sort((a, b) => b.rating - a.rating);
           break;
+        case 'default':
         default:
           break;
       }
 
-      onFilter(sortedData); // Trigger parent callback with filtered data
+      onFilter(sortedData); 
     };
 
-    handleFiltering(); // Call filtering logic
-  }, [filterOption, data, favoriteIds, onFilter]); // Proper dependencies
-
-  // Handle change in filter option
+    handleFiltering(); 
+  }, [filterOption, data,  onFilter]); 
+  
   const handleFilterChange = (event) => {
     setFilterOption(event.target.value);
   };
@@ -45,9 +41,9 @@ const Filter = ({ data, onFilter, favoriteIds }) => {
         value={filterOption} 
         onChange={handleFilterChange}
       >
+        <option value="default">Select</option>
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
-        <option value="favorite">Favorite</option>
         <option value="popular">Popular</option>
       </select>
     </div>

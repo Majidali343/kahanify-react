@@ -69,23 +69,39 @@ function Cart() {
 
 
   
-    const handleCheckOut = async () => {
-      try {
-        console.log("Proceeding to checkout...");
-    
+  const handleCheckOut = async () => {
+    try {
+      console.log("Proceeding to checkout...");
+      
+      const isAnnualMembership = cart.some(item => item.packagename === 'Annual Membership');
+      
+      if (isAnnualMembership) {
         const purchaseData = cart.map(item => ({
-          quantity: item.quantity,
-          packagename: item.packagename,
-          pricePerItem: item.pricePerItem,
+          price: totalPrice,
+          years: item.quantity
+          
         }));
-    
-        await parchacemembership(name, purchaseData, totalPrice);
-    
+       
+        
+        await parchacemembership(purchaseData);
         console.log('Checkout successful!');
-      } catch (error) {
-        console.error('Error during checkout:', error);
+        
+      } else {
+        const purchaseData = cart.map(item => ({
+          price: totalPrice
+        }));
+       
+        await parchacemembership(purchaseData);
+        console.log('Checkout successful!');
+
       }
-    };
+  
+
+    } catch (error) {
+      console.error('Error during checkout:', error);
+    }
+  };
+  
     
 
 return (
