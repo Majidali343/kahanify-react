@@ -89,8 +89,8 @@ function Package() {
           <div className="flex flex-col py-4 items-center">
             <img src={asset31} className="mb-3" alt="Annual" />
             <p className="text-2xl text-[#18003c] mb-3 font-bold">Annual Membership</p>
-            <p className="font-bold mb-4 text-pink-700">Rs 2500</p>
-            <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
+            <p className="font-bold mb-4 text-pink-600 text-xl"><span className='text-gray-500 line-through'>Rs 2500</span> <span className='underline'>Rs 1,460</span></p>
+            <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
               onClick={() => addToCart('Annual Membership', 2500, asset31)}
             >
               Purchase
@@ -99,8 +99,8 @@ function Package() {
           <div className="flex flex-col py-4 items-center">
             <img src={asset32} className="mb-3" alt="Phone Icon" />
             <p className="text-2xl mb-3 font-bold text-[#18003c]">Life Time Membership</p>
-            <p className="font-bold text-pink-700 mb-4">Rs 7500</p>
-            <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
+            <p className="font-bold text-pink-600 text-xl mb-4"> <span className='text-gray-500 line-through'>Rs 7500</span> <span className='underline'> Rs 4,990</span></p>
+            <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
               onClick={() => addToCart(' Life Time Membership', 7500, asset32)}
             >
               Purchase
