@@ -224,3 +224,30 @@ export const famousStories = async () => {
     throw error;
   }
 };
+/////////////////////
+
+export const postrating = async (kahani_id, rating) => {
+  try {
+    const token = Cookies.get('token');
+    console.log(token);
+console.log('Rate')
+console.log ( kahani_id, rating)
+    const response = await axios.post(
+      `${API_URL}/ratings`,
+      {kahani_id, rating
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          
+        }
+      }
+    );
+    console.log(response);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error update image', error);
+    throw error;
+  }
+};

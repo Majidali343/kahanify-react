@@ -1,11 +1,11 @@
-import { React, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Singleplayer from './Singleplayer';
 import { useParams } from 'react-router-dom';
 import { singleStory } from '../Service/api';
 import StarRating from '../home/StarRating';
 import { Link } from "react-router-dom";
 import "../Css/skahani.css";
-import { getCurrentUser } from '../Service/api';
+import { getCurrentUser, postrating } from '../Service/api';
 import { asset34 } from '../imageLoader';
 
 function SingleKahani() {
@@ -22,7 +22,7 @@ function SingleKahani() {
   const [comment, setComment] = useState('');
   const [name, setName] = useState('');
   const [profileimage, setProfileimage] = useState(asset34);
-
+  const [rating, setRating] = useState(0); // Added state for rating
 
   const fetchStories = async () => {
     try {
@@ -43,7 +43,6 @@ function SingleKahani() {
     fetchStories();
   }, []);
 
-
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -52,18 +51,15 @@ function SingleKahani() {
 
         if (response && response.user) {
           const user = response.user; 
-                    console.log(user); 
+          console.log(user); 
           if (user.username) {
             console.log(user.username); 
             setName(user.username);    
           }
-          if (user.profileimage==null) {
+          if (user.profileimage == null) {
             setProfileimage(asset34);
-             
-          }else
-          { 
+          } else {
             setProfileimage(user.profileimage);
-
           }
         }
       } catch (error) {
@@ -96,8 +92,6 @@ function SingleKahani() {
 
     const newComment = {
       id: new Date().getTime(),
-      
-      //image: 'https://flowbite.com/docs/images/people/profile-picture-2.jpg', 
       date: new Date().toLocaleDateString(),
       time: new Date().toLocaleTimeString(),
       text: comment
@@ -106,6 +100,18 @@ function SingleKahani() {
     setComments([newComment, ...comments]);
     setComment('');
     setIsInputFocused(false);
+  };
+
+  const handleRating = async (newRating) => {
+    try {
+      setRating(newRating); // Update local rating state
+      await postrating({
+        kahani_id: id, // Assuming kahani_id is the ID of the story
+        rating: newRating
+      });
+    } catch (error) {
+      console.error('Error posting rating:', error);
+    }
   };
 
   return (
@@ -191,7 +197,10 @@ function SingleKahani() {
       <div className="flex justify-center flex-col items-center p-4 ">
         <h1 className='text-xl text-center text-yellow-500 m-3'>Rate this Story</h1>
         <div>
-          <StarRating />
+          <StarRating
+            rating={rating}
+            onChange={handleRating} // Pass handleRating to StarRating
+          />
         </div>
         <div>
           <button 
@@ -208,3 +217,4 @@ function SingleKahani() {
 }
 
 export default SingleKahani;
+//axois Error
