@@ -1,65 +1,59 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { asset0 } from '../imageLoader';
-import { getCurrentUser } from '../Service/api';  
+import { getCurrentUser } from '../Service/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faUser} from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
-  
   const [name, setName] = useState('');
-  const dispatch = useDispatch();
+  const [membership, setMembership] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { userData: user, status: isLoggedIn } = useSelector((state) => state.auth);
-  const [membership, setMembership] = useState(false); 
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await getCurrentUser();
-        console.log(response); 
-
         if (response && response.user) {
-          const user = response.user; 
-                    console.log(user); 
+          const user = response.user;
           if (user.username) {
-            console.log(user.username); 
-            setName(user.username);    
+            setName(user.username);
           }
-          if (response && response.membership !== undefined) {
-            setMembership(response.membership); 
-            console.log(response.membership)
+          if (response.membership !== undefined) {
+            setMembership(response.membership);
           }
-  
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
     };
-  
     fetchUserData();
   }, []);
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   return (
     <header className="bg-white text-black py-2 border-b-4 border-[#ff0087]">
       <div className="container mx-auto flex flex-wrap items-center">
-       {membership==true?<Link to="Paidcontent" className="flex-shrink-0">
-          <img src={asset0} alt="Logo" className="h-[12vh] w-auto" />
-        </Link>:
-        <Link to="/" className="flex-shrink-0">
-          <img src={asset0} alt="Logo" className="h-[12vh] w-auto" />
+        <Link
+          to={membership ? "Paidcontent" : "/"}
+          className="flex-shrink-0"
+        >
+          <img src={asset0} alt="Logo" className="h-[8vh] md:h-[12vh] w-auto" />
         </Link>
 
-       } 
-        <nav className="flex-1 flex justify-center  md:justify-center mt-4 md:mt-0">
-          <ul className="flex space-x-4 items-end">
+        <nav className="flex-1 flex justify-center mt-4 md:mt-0">
+          <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
             {isLoggedIn && (
               <>
-                <li className='text-[#18003c] font-bold text-xl px-5 hover:text-pink-500'>
+                <li className="text-[#18003c] font-bold text-lg md:text-xl px-5 hover:text-pink-500">
                   <Link to="/Package">All Stories</Link>
                 </li>
-                <li className='text-[#18003c] font-bold text-xl hover:text-pink-500'>
+                <li className="text-[#18003c] font-bold text-lg md:text-xl hover:text-pink-500">
                   <Link to="/contact-us">Contact Us</Link>
                 </li>
               </>
@@ -67,17 +61,33 @@ function Header() {
           </ul>
         </nav>
 
-        <div className="mt-4 md:mt-0">
+        <div className="relative mt-4 md:mt-0">
           {isLoggedIn ? (
-            <Link to="/profile">
-                <div className="h-9  shadow-md transition-transform transform hover:scale-105 w-auto flex place-items-center font-bold px-3 rounded-full border border-black  bg-gray-300"><FontAwesomeIcon icon={faUser}  /> {name}</div>
-              
-            </Link>
+            <div className="flex items-center relative">
+              <button
+                onClick={toggleDropdown}
+                className="flex items-center h-8 md:h-9 shadow-md transition-transform transform w-auto px-3 rounded-full border border-black bg-gray-300 text-sm md:text-base"
+              >
+                <FontAwesomeIcon icon={faUser} className="mr-2" />
+                <span>{name}</span>
+              </button>
+              {isDropdownOpen && (
+                <div className="absolute right-0 mt-48 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                  <Link to="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    Profile
+                  </Link>
+                  <Link to="/membership" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    Membership Details
+                  </Link>
+                  <Link to="/order-details" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    Order Details
+                  </Link>
+                </div>
+              )}
+            </div>
           ) : (
-            <button 
-              className='bg-blue-500 px-4 py-2 mx-4 rounded hover:bg-[#ff0087] transition-transform duration-300 ease-in-out transform hover:scale-105'
-            >
-              <Link to="/login" className='text-white font-bold'>Login</Link>
+            <button className="bg-blue-500 px-4 py-2 rounded text-white font-bold hover:bg-[#ff0087] transition-transform duration-300 ease-in-out transform hover:scale-105">
+              <Link to="/login">Login</Link>
             </button>
           )}
         </div>
