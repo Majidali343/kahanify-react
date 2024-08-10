@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Filter = ({ data, onFilter  }) => {
+const Filter = ({ data, onFilter }) => {
   const [filterOption, setFilterOption] = useState('default');
   
   useEffect(() => {
@@ -8,14 +8,14 @@ const Filter = ({ data, onFilter  }) => {
       let sortedData = [...data]; 
 
       switch (filterOption) {
-        case 'newest':
-          sortedData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        case 'Latest':
+          sortedData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
           break;
-        case 'oldest':
-          sortedData.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        case 'Popular':
+          sortedData.sort((a, b) => b.views - a.views);
           break;
-        case 'popular':
-          sortedData.sort((a, b) => b.rating - a.rating);
+        case 'Favorite':
+          sortedData.sort((a, b) => b.average_rating - a.average_rating);
           break;
         case 'default':
         default:
@@ -26,7 +26,7 @@ const Filter = ({ data, onFilter  }) => {
     };
 
     handleFiltering(); 
-  }, [filterOption, data,  onFilter]); 
+  }, [filterOption, data, onFilter]); 
   
   const handleFilterChange = (event) => {
     setFilterOption(event.target.value);
@@ -42,9 +42,9 @@ const Filter = ({ data, onFilter  }) => {
         onChange={handleFilterChange}
       >
         <option value="default">Select</option>
-        <option value="newest">Newest</option>
-        <option value="oldest">Oldest</option>
-        <option value="popular">Popular</option>
+        <option value="Latest">Latest</option>
+        <option value="Favorite">Favorite</option>
+        <option value="Popular">Popular</option>
       </select>
     </div>
   );
