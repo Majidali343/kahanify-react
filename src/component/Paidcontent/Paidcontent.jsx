@@ -5,7 +5,7 @@ function Paidcontent() {
   return (
     <div>
         <div>
-          <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl p-4 sm:p-6 md:p-8 lg:p-8 xl:p-12 font-bold text-[#18003c] text-center'>
+          <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl pt-4 sm:pt-6 md:pt-6 lg:pt-6 xl:pt-6 font-bold text-[#18003c] text-center'>
     Listen Imagine Enjoy
 </h1>
 

@@ -10,7 +10,7 @@ const Stories = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
-  const [filter, setFilter] = useState('default'); // New state for filter
+  const [filter, setFilter] = useState('default'); 
   const cardsPerPage = 9;
 
   useEffect(() => {
