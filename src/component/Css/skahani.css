@@ -6,3 +6,16 @@
 .animate-shake {
     animation: shake 0.5s ease-in-out;
 }
+.article::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  .article::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+  }
+  
+  .article::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  

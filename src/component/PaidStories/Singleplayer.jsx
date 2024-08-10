@@ -11,7 +11,7 @@ import {
   faEye,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Singleplayer = ({ audioSrc, imageSrc, viewCount }) => {
+const Singleplayer = ({ audioSrc, imageSrc, viewCount, title, despcription }) => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [like, setLike] = useState(false);
@@ -99,7 +99,7 @@ const Singleplayer = ({ audioSrc, imageSrc, viewCount }) => {
   return (
     <div className="bg-[#18003c] w-full h-full p-0 m-0">
       <div className="flex flex-col items-center justify-center p-0 m-0">
-        <div className="text-white p-4 rounded-lg shadow-lg w-full max-w-lg">
+        <div className="text-white p-4 rounded-lg  w-full max-w-lg">
           <div className="text-center mb-4">
             <img
               src={imageSrc}
@@ -121,7 +121,7 @@ const Singleplayer = ({ audioSrc, imageSrc, viewCount }) => {
             <span>{formatTime(duration)}</span>
           </div>
 
-          <div className="flex justify-between items-center mb-4 sm:p-4  rounded-lg shadow-md">
+          <div className="flex justify-between items-center mb-4 sm:p-4  rounded-lg ">
 
       <div className="flex items-center sm:mb-4 md:mb-0">
         <button
@@ -232,10 +232,10 @@ const Singleplayer = ({ audioSrc, imageSrc, viewCount }) => {
         {showStory && (
           <>
             <h1 className="text-3xl font-bold py-4 pb-4">
-              بھیڑیا اور چالاک بکری
+              {title}
             </h1>
-            <p className="text-xl">
-             
+            <p className="leading-normal">
+           {despcription}  
             </p>
           </>
         )}

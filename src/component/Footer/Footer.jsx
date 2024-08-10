@@ -14,7 +14,7 @@ function Footer() {
             <li>
               <NavLink
                 to="/Privacy"
-                className="hover:text-gray-300"
+                className="hover:text-pink-600"
                 aria-label="Privacy Policy"
               >
                 Privacy Policy
@@ -23,7 +23,7 @@ function Footer() {
             <li>
               <NavLink
                 to="/Conditions"
-                className="hover:text-gray-300"
+                className="hover:text-pink-600"
                 aria-label="Terms and Conditions"
               >
                 Terms and Conditions
@@ -32,7 +32,7 @@ function Footer() {
             <li>
               <NavLink
                 to="/Refund"
-                className="hover:text-gray-300"
+                className="hover:text-pink-600"
                 aria-label="Refund Policy"
               >
                 Refund Policy
@@ -41,7 +41,7 @@ function Footer() {
             <li>
               <NavLink
                 to="/FAQs"
-                className="hover:text-gray-300"
+                className="hover:text-pink-600"
                 aria-label="FAQ's"
               >
                 FAQ's
@@ -50,7 +50,7 @@ function Footer() {
             <li>
               <NavLink
                 to="/contact-us"
-                className="hover:text-gray-300 mr-3"
+                className="hover:text-pink-600  mr-3"
                 aria-label="Contact"
               >
                 Contact
@@ -61,16 +61,16 @@ function Footer() {
         <div className="mt-4 md:mt-0">
           <ul className="flex justify-center space-x-2">
             <li>
-              <img src={asset24} alt="Icon 1" className="h-6 w-6 md:h-8 md:w-8" />
+              <img src={asset24} alt="Icon 1" className="h-6 w-6 hover:scale-105 md:h-8 md:w-8" />
             </li>
             <li>
-              <img src={asset25} alt="Icon 2" className="h-6 w-6 md:h-8 md:w-8" />
+              <img src={asset25} alt="Icon 2" className="h-6 w-6 md:h-8 hover:scale-105 md:w-8" />
             </li>
             <li>
-              <img src={asset26} alt="Icon 3" className="h-6 w-6 md:h-8 md:w-8" />
+              <img src={asset26} alt="Icon 3" className="h-6 w-6 md:h-8 hover:scale-105 md:w-8" />
             </li>
             <li>
-              <img src={asset27} alt="Icon 4" className="h-6 w-6 md:h-8 md:w-8" />
+              <img src={asset27} alt="Icon 4" className="h-6 w-6 md:h-8 hover:scale-105 md:w-8" />
             </li>
           </ul>
         </div>
