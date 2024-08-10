@@ -1,21 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { asset3 } from '../imageLoader';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import StarRating from '../home/StarRating'; 
-import Filter from '../Filter/Filter'; 
 import { allStories } from '../Service/api';
 
 const Stories = () => {
   const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [ratings, setRatings] = useState({});
-  const [favoriteIds, setFavoriteIds] = useState([]);
   const cardsPerPage = 9;
 
   useEffect(() => {
     const fetchStories = async () => {
-      console.log ("first")
       try {
         const response = await allStories();
         if (response && response.data) {
@@ -29,48 +24,26 @@ const Stories = () => {
     fetchStories();
   }, []); 
 
-  const applyFilter = useCallback(() => {
-    const filteredStories = data.filter(story => favoriteIds.includes(story.kahani_id));
-    console.log ("Third")
-
-    setFilteredData(filteredStories);
-    setCurrentIndex(0); 
-  }, [data, favoriteIds]);
-
-  useEffect(() => {
-    console.log ("secound")
-
-    applyFilter();
-  }, [applyFilter]); 
-
   const nextPage = () => {
-    setCurrentIndex(prevIndex => Math.min(prevIndex + cardsPerPage));
+    if (currentIndex + cardsPerPage < data.length) {
+      setCurrentIndex(currentIndex + cardsPerPage);
+    }
   };
 
   const prevPage = () => {
-    setCurrentIndex(prevIndex => Math.max(prevIndex - cardsPerPage, 0));
-  };
-
-  const handleRatingChange = (cardId, newRating) => {
-    setRatings(prevRatings => ({
-      ...prevRatings,
-      [cardId]: newRating
-    }));
-  };
-
-  const handleFilter = (filteredData) => {
-  setFilteredData(filteredData);
-    setCurrentIndex(0); 
+    if (currentIndex - cardsPerPage >= 0) {
+      setCurrentIndex(currentIndex - cardsPerPage);
+    }
   };
 
   return (
     <div className="p-4">
       <div className='flex justify-center'>
-        <Filter data={data}  onFilter={handleFilter} />
+        {/* Optional: Add any additional content here */}
       </div>
       <div className="relative">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {filteredData.slice(currentIndex, currentIndex + cardsPerPage).map(card => ( 
+          {data.slice(currentIndex, currentIndex + cardsPerPage).map(card => ( 
             <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}>
               <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4">
                 <img 
@@ -92,9 +65,9 @@ const Stories = () => {
                 </div>
                 <div className="flex items-center mt-2">
                   <StarRating 
-                    rating={ratings[card.kahani_id] || 0} 
-                    onChange={(newRating) => handleRatingChange(card.kahani_id, newRating)} 
+                    rating={card.average_rating} 
                   />
+                  <p className='mx-3 text-gray-400'>{card.number_of_ratings}</p>
                 </div>
               </div>
             </Link>
@@ -110,7 +83,7 @@ const Stories = () => {
           </button>
           <button
             onClick={nextPage}
-            disabled={currentIndex + cardsPerPage >= filteredData.length}
+            disabled={currentIndex + cardsPerPage >= data.length}
             className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400 mx-2"
           >
             Next
