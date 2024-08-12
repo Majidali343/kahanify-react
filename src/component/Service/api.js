@@ -361,3 +361,22 @@ export const updateReview = async () => {
   }
 };
 ////////////////////////////////////
+export const detail = async () => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', token);
+
+    const response = await axios.get(`${API_URL}/getmembership`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    console.log('Response Data:', response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error updating review:', error);
+    throw error;
+  }
+};
