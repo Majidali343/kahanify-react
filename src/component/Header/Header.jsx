@@ -80,7 +80,7 @@ function Header() {
             <div className="flex items-center relative">
               <button
                 onClick={toggleDropdown}
-                className="flex items-center h-8 md:h-9 shadow-md transition-transform transform w-auto px-3 rounded-full border border-black bg-gray-300 text-sm md:text-base"
+                className="flex items-center h-19 md:h-10 shadow-md transition-transform transform w-auto px-3 rounded-full border  bg-blue-100 text-sm md:text-base"
               >
                 <FontAwesomeIcon icon={faUser} className="mr-2" />
                 <span>{name}</span>
