@@ -228,15 +228,20 @@ export const famousStories = async () => {
 };
 /////////////////////
 
-export const postrating = async (kahani_id, rating) => {
+export const postrating = async (rate) => {
   try {
     const token = Cookies.get('token');
     console.log(token);
 console.log('Rate')
-console.log ( kahani_id, rating)
-    const response = await axios.post(
+console.log ( rate)
+var kahani_id =  rate.kahani_id;
+var rating =rate.rating;
+console.log ( rate.kahani_id)
+console.log ( rate.rating)
+
+const response = await axios.post(
       `${API_URL}/ratings`,
-      {kahani_id, rating
+      {kahani_id,rating
       },
       {
         headers: {

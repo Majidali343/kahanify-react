@@ -105,15 +105,16 @@ function SingleKahani() {
   const handleRating = async (newRating) => {
     try {
       setRating(newRating); 
-      await postrating({
+      const rate = {
         kahani_id: id, 
         rating: newRating
-      });
+      };
+      await postrating(rate);
     } catch (error) {
       console.error('Error posting rating:', error);
     }
   };
-
+  
   return (
     <div className='bg-[#18003c]'>
       <div>
