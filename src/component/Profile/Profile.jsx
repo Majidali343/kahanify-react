@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { asset34, asset35, asset36 } from '../imageLoader';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
-import { getCurrentUser, changepassword, updateimage, userprofile } from '../Service/api';  
+import { getCurrentUser, changepassword, updateimage, userprofile, sendReveiw } from '../Service/api';  
 
 function Profile() {
   const [name, setName] = useState('');
@@ -121,6 +121,19 @@ function Profile() {
   const handleLogout = () => {
     dispatch(logout());
   };
+
+const handleExperice = async (e) => {
+  try {
+    
+    await sendReveiw(experience);
+    setExperience(''); 
+    setSuccess('Thanks for share Experience');
+  } catch (error) {
+    console.error('Error posting reviw:', error);
+  }
+
+}
+
 
 
   return (
@@ -263,9 +276,13 @@ function Profile() {
                 onChange={(e) => setExperience(e.target.value)}
               />
               <div className='flex justify-end'> 
-                <button className="bg-blue-600 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded mt-2">
+                <button 
+                onClick={handleExperice}
+                className="bg-blue-600 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded mt-2">
                   Submit
                 </button>
+                {success && <p className="text-green-500 mt-2">{success}</p>}
+             
               </div>
             </div>
           </div>

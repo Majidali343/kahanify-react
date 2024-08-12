@@ -315,15 +315,15 @@ export const updatecomments = async (id) => {
   }
 };
 // ////////////////////////////////
-export const sendReveiw = async (review, username , createAt, userimage) => {
+export const sendReveiw = async (description) => {
   try {
     const token = Cookies.get('token');
     console.log(token);
 console.log('review')
-console.log (review, username , createAt, userimage)
+console.log (description)
     const response = await axios.post(
-      `${API_URL}/sendreview`,
-      {review, username , createAt, userimage
+      `${API_URL}/savetestimonials`,
+      {description
       },
       {
         headers: {
