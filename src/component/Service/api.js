@@ -259,15 +259,20 @@ const response = await axios.post(
   }
 };
 // /////////////////////////
-export const sendcomment = async (comment, username , createAt, userimage) => {
+export const sendcomment = async (commentData) => {
   try {
     const token = Cookies.get('token');
     console.log(token);
 console.log('comments')
-console.log (comment, username , createAt, userimage)
+console.log (commentData );
+var kahani_id =  commentData.kahani_id;
+var comment =commentData.text;
+console.log ( commentData.text)
+console.log ( commentData.kahani_id)
+
     const response = await axios.post(
-      `${API_URL}/sendcomments`,
-      {comment, username , createAt, userimage
+      `${API_URL}/savereview`,
+      { kahani_id,comment 
       },
       {
         headers: {
@@ -285,26 +290,27 @@ console.log (comment, username , createAt, userimage)
   }
 };
 ////////////////////////////////
-
-export const updatecomments = async () => {
+// here are api code
+export const updatecomments = async (id) => {
   try {
     const token = Cookies.get('token');
     console.log(token);
 
     const response = await axios.get(
-      `${API_URL}/comments`,
-
+      `${API_URL}/kahanireviews/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }
     );
+    console.log("this us j");
+   
     console.log(response);
 
     return response.data;
   } catch (error) {
-    console.error('Error update image', error);
+    console.error('Error updating comments', error);
     throw error;
   }
 };

@@ -5,7 +5,7 @@ import { singleStory } from '../Service/api';
 import StarRating from '../home/StarRating';
 import { Link } from "react-router-dom";
 import "../Css/skahani.css";
-import { getCurrentUser, postrating } from '../Service/api';
+import { postrating, sendcomment, updatecomments } from '../Service/api';
 import { asset34 } from '../imageLoader';
 
 function SingleKahani() {
@@ -20,20 +20,18 @@ function SingleKahani() {
   const [comments, setComments] = useState([]);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [comment, setComment] = useState('');
-  const [name, setName] = useState('');
-  const [profileimage, setProfileimage] = useState(asset34);
-  const [rating, setRating] = useState(0); 
+  const [rating, setRating] = useState(0);
 
   const fetchStories = async () => {
     try {
       const response = await singleStory(id);
-      console.log(response.data);
-      setAudio(response.data.audio);
-      setImage(response.data.image);
-      setViews(response.data.views);
-      setTitle(response.data.title);
-      setDescription(response.data.description);
-      setComments(response.data.comments || []); 
+      const storyData = response.data;
+      setAudio(storyData.audio);
+      setImage(storyData.image);
+      setViews(storyData.views);
+      setTitle(storyData.title);
+      setDescription(storyData.description);
+      setComments(storyData.comments || []);
     } catch (error) {
       console.error('Error fetching stories:', error);
     }
@@ -41,80 +39,69 @@ function SingleKahani() {
 
   useEffect(() => {
     fetchStories();
-  }, []);
+  }, [id]);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await getCurrentUser();
-        console.log(response); 
-
-        if (response && response.user) {
-          const user = response.user; 
-          console.log(user); 
-          if (user.username) {
-            console.log(user.username); 
-            setName(user.username);    
-          }
-          if (user.profileimage == null) {
-            setProfileimage(asset34);
-          } else {
-            setProfileimage(user.profileimage);
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
-  
-    fetchUserData();
-  }, []);
-
-  const handleFocus = () => {
-    setIsInputFocused(true);
-  };
-
-  const handleBlur = () => {
-    setIsInputFocused(false);
-  };
-
+  const handleFocus = () => setIsInputFocused(true);
+  const handleBlur = () => setIsInputFocused(false);
   const handleCancel = () => {
     setComment('');
     setIsInputFocused(false);
   };
 
-  const handleCommentChange = (e) => {
-    setComment(e.target.value);
+  const handleCommentChange = (e) => setComment(e.target.value);
+
+  const handleSubmit = async () => {
+    try {
+      const commentData = { kahani_id: id, text: comment };
+      await sendcomment(commentData);
+      setComment(''); 
+      setIsInputFocused(false); 
+      
+      
+      await fetchStories();
+      const response = await updatecomments(id);
+      setComments(response || []);
+    } catch (error) {
+      console.error('Error posting comment:', error);
+    }
   };
-
-  const handleSubmit = () => {
-    if (comment.trim() === '') return;
-
-    const newComment = {
-      id: new Date().getTime(),
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
-      text: comment
+  
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const response = await updatecomments(id);
+        setComments(response || []);
+      } catch (error) {
+        console.error('Error fetching comments:', error);
+      }
     };
-
-    setComments([newComment, ...comments]);
-    setComment('');
-    setIsInputFocused(false);
-  };
+  
+    if (id) { 
+      fetchComments();
+    }
+  }, [id]);
+  
 
   const handleRating = async (newRating) => {
     try {
-      setRating(newRating); 
-      const rate = {
-        kahani_id: id, 
-        rating: newRating
-      };
+      setRating(newRating);
+      const rate = { kahani_id: id, rating: newRating };
       await postrating(rate);
     } catch (error) {
       console.error('Error posting rating:', error);
     }
   };
-  
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
+
   return (
     <div className='bg-[#18003c]'>
       <div>
@@ -167,26 +154,24 @@ function SingleKahani() {
             {comments.length > 0 && (
               <article className="text-base article bg-[#18003c] h-[60vh] overflow-scroll overflow-x-auto w-full rounded-lg border-t border-gray-200">
                 {comments.map((comment) => (
-                  <div key={comment.id} className="p-6 ">
+                  <div key={comment.id} className="p-6">
                     <footer className="flex justify-between items-center mb-2">
                       <div className="flex items-center">
                         <p className="inline-flex items-center mr-3 text-sm font-semibold">
                           <img
                             className="mr-2 w-6 h-6 rounded-full"
-                            src={profileimage}
-                            alt={name}
+                            src={comment.user.profileimage || asset34}
+                            alt={comment.user.username || 'Anonymous'}
                           />
-                          {name}
+                          {comment.user.username || 'Anonymous'}
                         </p>
                         <p className="text-sm">
-                          <time dateTime={`${comment.date}T${comment.time}`} title={`${comment.date}, ${comment.time}`}>
-                            {comment.date} {comment.time}
-                          </time>
+                          {formatDate(comment.created_at)}
                         </p>
                       </div>
                     </footer>
                     <p className="text-gray-500">
-                      {comment.text}
+                      {comment.comment}
                     </p>
                   </div>
                 ))}
@@ -195,7 +180,7 @@ function SingleKahani() {
           </div>
         </section>
       </div>
-      <div className="flex justify-center flex-col items-center p-4 ">
+      <div className="flex justify-center flex-col items-center p-4">
         <h1 className='text-xl text-center text-yellow-500 m-3'>Rate this Story</h1>
         <div>
           <StarRating
@@ -204,7 +189,7 @@ function SingleKahani() {
           />
         </div>
         <div>
-          <button 
+        <button 
             className="bg-white text-[#18003c] mt-6 font-bold py-2 px-4 rounded-md hover:bg-pink-600 hover:text-white transition-colors"
           >
             <Link to='/Paidcontent'>
@@ -218,4 +203,3 @@ function SingleKahani() {
 }
 
 export default SingleKahani;
-//axois Error
