@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { asset0 } from '../imageLoader';
 import { getCurrentUser } from '../Service/api';
@@ -49,15 +49,29 @@ function Header() {
         <nav className="flex-1 flex justify-center mt-4 md:mt-0">
           <ul className="flex  md:flex-row  md:space-y-0 md:space-x-4 items-center">
             {isLoggedIn && (
-              <>
-                <li className="text-[#18003c] font-bold text-xs md:text-xl px-5 hover:text-pink-500">
-                  <Link to="/Package">All Stories</Link>
-                </li>
-                <li className="text-[#18003c] font-bold text-xs md:text-xl  hover:text-pink-500">
-                  <Link to="/contact-us">Contact Us</Link>
-                </li>
-              </>
-            )}
+                         <>
+                         <li>
+                           <NavLink
+                             to="/Package"
+                             className={({ isActive }) => 
+                               `font-bold text-xs md:text-xl px-5 hover:text-pink-500 ${isActive ? "text-pink-500" : "text-[#18003c]"}`
+                             }
+                           >
+                             All Stories
+                           </NavLink>
+                         </li>
+                         <li>
+                           <NavLink
+                             to="/contact-us"
+                             className={({ isActive }) => 
+                               `font-bold text-xs md:text-xl px-5 hover:text-pink-500 ${isActive ? "text-pink-500" : "text-[#18003c]"}`
+                             }
+                           >
+                             Contact Us
+                           </NavLink>
+                         </li>
+                       </>
+           )}
           </ul>
         </nav>
 
@@ -72,11 +86,11 @@ function Header() {
                 <span>{name}</span>
               </button>
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-48 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+                <div className=" absolute right-0 mt-48 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10  ">
                   <Link to="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Profile
                   </Link>
-                  <Link to="/membership" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+              <Link to="/membership" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Membership Details
                   </Link>
                   <Link to="/order-details" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
