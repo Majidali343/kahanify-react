@@ -47,13 +47,13 @@ function Header() {
         </Link>
 
         <nav className="flex-1 flex justify-center mt-4 md:mt-0">
-          <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
+          <ul className="flex  md:flex-row  md:space-y-0 md:space-x-4 items-center">
             {isLoggedIn && (
               <>
-                <li className="text-[#18003c] font-bold text-lg md:text-xl px-5 hover:text-pink-500">
+                <li className="text-[#18003c] font-bold text-xs md:text-xl px-5 hover:text-pink-500">
                   <Link to="/Package">All Stories</Link>
                 </li>
-                <li className="text-[#18003c] font-bold text-lg md:text-xl hover:text-pink-500">
+                <li className="text-[#18003c] font-bold text-xs md:text-xl  hover:text-pink-500">
                   <Link to="/contact-us">Contact Us</Link>
                 </li>
               </>

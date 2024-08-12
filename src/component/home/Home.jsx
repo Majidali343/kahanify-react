@@ -4,6 +4,7 @@ import Slider from './Card';
 import { Link } from 'react-router-dom';
  import "../Css/home.css"
  import { Helmet } from 'react-helmet';
+import Testimonial from '../Testimonial/Testimonial';
  function Home() {
   return (
     <>
@@ -57,11 +58,11 @@ import { Link } from 'react-router-dom';
       </div>
     </div>
   </div>
-  <div class="bg-[#18003c] h-full m-0 p-0 flex flex-col md:flex-row">
-  <div class="w-full md:w-1/2 flex-shrink-0">
+  <div class="bg-[#18003c] h-full m-0 p-0 flex flex-col lg:flex-row">
+  <div class="w-full lg:w-1/2 flex-shrink-0">
     <img src={asset1} alt="story" class="object-cover h-[50vh] md:h-full w-full" />
   </div>
-<div className='w-full md:w-1/2 h-full'>
+<div className='w-full lg:w-1/2 h-full'>
   <div class=" bg-cover bg-center flex flex-col items-center justify-between  sm:p-16 pt-[30px] sm:pt-[80px]"
         style={{ 
          backgroundImage: `url(${asset23})`,
@@ -76,7 +77,7 @@ import { Link } from 'react-router-dom';
   
     <div class="flex flex-col items-center  mt-16 sm:mt-16 md:mt-18 lg:mt-48 xl:mt-60 2xl:mt-60 ">
       <p class="text-white font-bold text-lg mt-16 pt-8 md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
-      <button class="bg-white text-[#18003c] py-3 px-6 font-bold rounded hover:bg-pink-600 hover:text-white">
+      <button class="bg-white text-[#18003c] py-3 my-4 px-6 font-bold rounded hover:bg-pink-600 hover:text-white">
         <Link to='/FreeStory'>Listen Now</Link>
       </button>
       </div>
@@ -331,8 +332,12 @@ import { Link } from 'react-router-dom';
     </div>
     </div>
   </div>
-</div>
+  
 
+</div>
+<div className='min-w-full bg-white'>
+<Testimonial/>
+</div>
    </>
   );
 }

@@ -105,7 +105,7 @@ function Profile() {
       setProfileImage(imageUrl);
   
       const formData = new FormData();
-      formData.append('profileimage', file);
+      formData.append('profileimage', file); 
   
       try {
         await updateimage(formData);
@@ -115,7 +115,6 @@ function Profile() {
       }
     }
   };
-  
 
   const dispatch = useDispatch();
 
@@ -141,7 +140,7 @@ function Profile() {
           <div className="flex-none w-full md:w-3/12 mb-4 md:mb-0">
             <div className="relative w-full h-48 flex items-center justify-center">
               <div className="relative w-40 h-40 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
-                <img src={profileimage} alt="Profile" className="w-full h-full object-cover" />
+                <img src= {profileimage} alt="Profile" className="w-full h-full object-cover" />
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 py-1 flex items-center justify-center">
                   <button onClick={handleCameraClick}>
                     <img className='w-4 h-4' src={asset36} alt="camera icon" />

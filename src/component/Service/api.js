@@ -77,32 +77,34 @@ export const changepassword = async (new_password, current_password, confirm_pas
   }
 };
 ///////////////
-export const updateimage = async (profileimage) => {
+export const updateimage = async (formData) => {
   try {
     const token = Cookies.get('token');
     console.log(token);
-console.log('hello')
-console.log (profileimage)
+    console.log('hello profile image');
+    console.log(formData);
+
     const response = await axios.post(
       `${API_URL}/updateProfile`,
-      {
-        profileimage
-      },
+      formData, 
       {
         headers: {
-          Authorization: `Bearer ${token}`,
-          
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
         }
       }
     );
     console.log(response);
+    console.log(response.data.user.profileimage );
+    console.log("This is response");
 
     return response.data;
   } catch (error) {
-    console.error('Error update image', error);
+    console.error('Error updating image', error);
     throw error;
   }
 };
+
 /////////////////////
 export const allStories = async () => {
   try {
@@ -251,3 +253,103 @@ console.log ( kahani_id, rating)
     throw error;
   }
 };
+// /////////////////////////
+export const sendcomment = async (comment, username , createAt, userimage) => {
+  try {
+    const token = Cookies.get('token');
+    console.log(token);
+console.log('comments')
+console.log (comment, username , createAt, userimage)
+    const response = await axios.post(
+      `${API_URL}/sendcomments`,
+      {comment, username , createAt, userimage
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          
+        }
+      }
+    );
+    console.log(response);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error sending comment', error);
+    throw error;
+  }
+};
+////////////////////////////////
+
+export const updatecomments = async () => {
+  try {
+    const token = Cookies.get('token');
+    console.log(token);
+
+    const response = await axios.get(
+      `${API_URL}/comments`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    console.log(response);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error update image', error);
+    throw error;
+  }
+};
+// ////////////////////////////////
+export const sendReveiw = async (review, username , createAt, userimage) => {
+  try {
+    const token = Cookies.get('token');
+    console.log(token);
+console.log('review')
+console.log (review, username , createAt, userimage)
+    const response = await axios.post(
+      `${API_URL}/sendreview`,
+      {review, username , createAt, userimage
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          
+        }
+      }
+    );
+    console.log(response);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error sending comment', error);
+    throw error;
+  }
+};
+////////////////////////
+export const updatereveiw = async () => {
+  try {
+    const token = Cookies.get('token');
+    console.log(token);
+
+    const response = await axios.get(
+      `${API_URL}/reveiw`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+    console.log(response);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error update image', error);
+    throw error;
+  }
+};
+////////////////////////////////////

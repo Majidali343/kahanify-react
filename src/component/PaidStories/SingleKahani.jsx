@@ -22,7 +22,7 @@ function SingleKahani() {
   const [comment, setComment] = useState('');
   const [name, setName] = useState('');
   const [profileimage, setProfileimage] = useState(asset34);
-  const [rating, setRating] = useState(0); // Added state for rating
+  const [rating, setRating] = useState(0); 
 
   const fetchStories = async () => {
     try {
@@ -104,9 +104,9 @@ function SingleKahani() {
 
   const handleRating = async (newRating) => {
     try {
-      setRating(newRating); // Update local rating state
+      setRating(newRating); 
       await postrating({
-        kahani_id: id, // Assuming kahani_id is the ID of the story
+        kahani_id: id, 
         rating: newRating
       });
     } catch (error) {
@@ -199,7 +199,7 @@ function SingleKahani() {
         <div>
           <StarRating
             rating={rating}
-            onChange={handleRating} // Pass handleRating to StarRating
+            onChange={handleRating}
           />
         </div>
         <div>
