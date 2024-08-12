@@ -341,25 +341,22 @@ console.log (description)
   }
 };
 ////////////////////////
-export const updatereveiw = async () => {
+export const updateReview = async () => {
   try {
     const token = Cookies.get('token');
-    console.log(token);
+    console.log('Token:', token);
 
-    const response = await axios.get(
-      `${API_URL}/reveiw`,
-
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+    const response = await axios.get(`${API_URL}/gettestimonials`, {
+      headers: {
+        Authorization: `Bearer ${token}`
       }
-    );
-    console.log(response);
+    });
+
+    console.log('Response Data:', response.data);
 
     return response.data;
   } catch (error) {
-    console.error('Error update image', error);
+    console.error('Error updating review:', error);
     throw error;
   }
 };
