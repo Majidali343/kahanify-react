@@ -5,7 +5,7 @@ import { singleStory } from '../Service/api';
 import StarRating from '../home/StarRating';
 import { Link } from "react-router-dom";
 import "../Css/skahani.css";
-import { postrating, sendcomment, updatecomments } from '../Service/api';
+import { postrating, sendcomment, updatecomments , veiws} from '../Service/api';
 import { asset34 } from '../imageLoader';
 
 function SingleKahani() {
@@ -40,6 +40,19 @@ function SingleKahani() {
   useEffect(() => {
     fetchStories();
   }, [id]);
+
+  const fetchView = async () => {
+    try {
+      const response = await veiws(id);
+    } catch (error) {
+      console.error('Error fetching stories:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchView();
+    }, [id]);
+
 
   const handleFocus = () => setIsInputFocused(true);
   const handleBlur = () => setIsInputFocused(false);

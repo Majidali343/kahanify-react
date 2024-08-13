@@ -372,11 +372,31 @@ export const detail = async () => {
       }
     });
 
-    console.log('Response Data:', response.data);
-
+    console.log('This is Response Data:', response.data);
     return response.data;
+    
   } catch (error) {
     console.error('Error updating review:', error);
+    throw error;
+  }
+};
+////////////////////
+export const veiws = async (id) => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', token);
+
+    const response = await axios.get(`${API_URL}/kahani/addview/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    console.log('This is Response Data:', response.data);
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error updating view:', error);
     throw error;
   }
 };

@@ -90,10 +90,10 @@ function Header() {
                   <Link to="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Profile
                   </Link>
-              <Link to="/membership" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+              <Link to="/Member" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Membership Details
                   </Link>
-                  <Link to="/order-details" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                  <Link to="Order" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                     Order Details
                   </Link>
                 </div>

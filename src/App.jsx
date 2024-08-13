@@ -19,7 +19,8 @@ import Refund from './component/Refund policy/Refund';
 import FAQs from './component/FAQs/FAQs';
 import PrivateRoute from './component/PrivateRoute';
 import SingleKahani from './component/PaidStories/SingleKahani';
-
+import Order from './component/OrderDetai/Order';
+import Member from './component/MemberShip/Member';
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.status);
 
@@ -35,6 +36,9 @@ function App() {
           <Route path="Package" element={<PrivateRoute element={<Package />} />} />
           <Route path="cart" element={<PrivateRoute element={<Cart />} />} />
           <Route path="profile" element={<PrivateRoute element={<Profile />} />} />
+          <Route path="Order" element={<PrivateRoute element={<Order/>} />} />
+          <Route path="Member" element={<PrivateRoute element={<Member/>} />} />
+          
           <Route path="Paidcontent" element={<PrivateRoute element={<Paidcontent />} />} />
           <Route path="Privacy" element={<Privacy />}  />
           <Route path="Conditions" element={<Conditions />} />
