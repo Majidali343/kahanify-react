@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { asset34, asset35, asset36 } from '../imageLoader';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
-import { getCurrentUser, changepassword, updateimage, userprofile, sendReveiw } from '../Service/api';  
+import { getCurrentUser, changepassword, updateimage, userprofile, sendReveiw,getlogout } from '../Service/api';  
 
 function Profile() {
   const [name, setName] = useState('');
@@ -118,10 +118,16 @@ function Profile() {
 
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    try {
+      const response = await getlogout();
+      console.log(response); 
+      dispatch(logout());
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
-
+  
 const handleExperice = async (e) => {
   try {
     

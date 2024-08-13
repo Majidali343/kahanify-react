@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import StarRating from '../home/StarRating'; 
 import { allStories } from '../Service/api';
 import SearchBar from '../SearchBar/SearchBar'; 
-
+import Loader from '../loader/Loader';
 const Stories = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -12,9 +12,11 @@ const Stories = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState('default'); 
   const cardsPerPage = 9;
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchStories = async () => {
+      setLoading(true);
       try {
         const response = await allStories();
         if (response && response.data) {
@@ -23,6 +25,8 @@ const Stories = () => {
         }
       } catch (error) {
         console.error('Error fetching stories:', error);
+      }finally {
+        setLoading(false); 
       }
     };
 
@@ -70,6 +74,13 @@ const Stories = () => {
   const hasSearchResults = searchQuery && hasResults;
 
   return (
+   <div>
+    {loading ?
+      
+     <Loader />
+       
+     : (
+
     <div className="p-4">
       <SearchBar onSearch={handleSearch} />
      < div className='flex items-center justify-center'>
@@ -140,6 +151,7 @@ const Stories = () => {
       ) : (
         <p className="text-gray-500 mt-2 text-center">{searchQuery ? 'No search results found!' : 'No stories available!'}</p>
       )}
+    </div>   )}
     </div>
   );
 };

@@ -4,15 +4,17 @@ import { asset31, asset32, asset33 } from "../imageLoader";
 import { Helmet } from 'react-helmet';
 import { getCurrentUser } from '../Service/api';  
 import Paidcontent from '../Paidcontent/Paidcontent'; 
-
+import Loader from '../loader/Loader';
 function Package() {
   
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [membership, setMembership] = useState(false); 
+  const [loading, setLoading] = useState(false);
   
   useEffect(() => {
     const fetchUserData = async () => {
+      setLoading(true);
       try {
         const response = await getCurrentUser();
         console.log(response);
@@ -33,6 +35,8 @@ function Package() {
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
+      }finally {
+        setLoading(false); 
       }
     };
 
@@ -63,12 +67,17 @@ function Package() {
     navigate('/cart'); 
   };
 
+  if (loading) {
+    return <Loader />;
+  }
+
 
   if (membership==true) {
     return <Paidcontent />; 
   }
   return (
     <>
+
     <Helmet>
         <title>Kahanify - Membership Packages</title>
         <meta name="description" content="Get access to all the audio stories on Kahanify with our annual and monthly membership packages. Enjoy unlimited stories and more!" />

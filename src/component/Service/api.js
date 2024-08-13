@@ -400,3 +400,16 @@ export const veiws = async (id) => {
     throw error;
   }
 };
+//////////////
+export const getlogout = async () => {
+  try {
+    const token = Cookies.get('token');
+    const response = await axios.get(`${API_URL}/logout`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching current user:', error);
+    throw error;
+  }
+};
