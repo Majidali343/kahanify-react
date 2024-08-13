@@ -66,7 +66,8 @@ const Testimonial = () => {
             <div className={`flex justify-center transform transition-transform duration-500 `}>
               <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-gray-300">
                 <img
-                   src={testimonial.user.profileimage || asset34}
+                src={`https://kahaniapi.realtechcrm.online/storage/app/public/${testimonial.user.profileimage}` || asset34}
+                  
                   alt="User Profile"
                   className="w-full h-full object-cover cursor-pointer"
                   onClick={() => setCurrentIndex(index)}

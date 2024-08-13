@@ -173,7 +173,7 @@ function SingleKahani() {
                         <p className="inline-flex items-center mr-3 text-sm font-semibold">
                           <img
                             className="mr-2 w-6 h-6 rounded-full"
-                            src={comment.user.profileimage || asset34}
+                            src={`https://kahaniapi.realtechcrm.online/storage/app/public/${comment.user.profileimage}` || asset34}
                             alt={comment.user.username || 'Anonymous'}
                           />
                           {comment.user.username || 'Anonymous'}
