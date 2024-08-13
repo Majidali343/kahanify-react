@@ -36,11 +36,15 @@ import asset34 from '../assets/userimage.jpg';
 import asset35 from '../assets/poweroff.svg';
 import asset36 from "../assets/camera.svg";
 import asset37 from "../assets/Banner.png";
+import asset38 from "../assets/back.png";
+import asset39 from "../assets/next.png";
+import asset40 from "../assets/LogoWhite.png";
+
 
 export { asset0, asset1, asset2, asset3, asset4, asset5, asset6, asset7,
     asset8, asset9, asset10, asset11, asset12, asset13, asset14, asset15,
     asset16, asset17, asset18, asset19, asset20, asset21, asset22, asset23,
     asset24, asset25, asset26, asset27, asset28, asset29, asset30, asset31, asset32
-    , asset33,asset34, asset35, asset36 ,asset37
+    , asset33,asset34, asset35, asset36 ,asset37,asset38, asset39 ,asset40
 
 };

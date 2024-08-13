@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {asset38, asset39 ,asset40} from '../imageLoader' ;
 import {
   faPlay,
   faPause,
@@ -146,7 +147,9 @@ const Singleplayer = ({ audioSrc, imageSrc, viewCount, title, despcription }) =>
           className="text-sm sm:text-lg md:text-xl mx-2"
           aria-label="Rewind 10 seconds"
         >
-          <FontAwesomeIcon icon={faBackward} />
+<img src={asset38} alt="back" className="h-10 w-8" />
+
+          {/* <FontAwesomeIcon icon={faBackward} /> */}
         </button>
         <button
           onClick={togglePlayPause}
@@ -164,7 +167,9 @@ const Singleplayer = ({ audioSrc, imageSrc, viewCount, title, despcription }) =>
           className="text-sm sm:text-lg md:text-xl mx-2"
           aria-label="Forward 10 seconds"
         >
-          <FontAwesomeIcon icon={faForward} />
+<img src={asset39} alt="back" className="h-10 w-8" />
+
+          {/* <FontAwesomeIcon icon={faForward} /> */}
         </button>
       </div>
 
@@ -203,7 +208,9 @@ const Singleplayer = ({ audioSrc, imageSrc, viewCount, title, despcription }) =>
               </button>
             </div>{" "}
             <div className="flex items-center">
-              <FontAwesomeIcon icon={faEye} className="text-xl mx-2" />
+<img src={asset40} alt="back" className="h-10 w-10 mr-2" />
+              
+              {/* <FontAwesomeIcon icon={faEye} className="text-xl mx-2" /> */}
               <span>{viewCount}</span>
             </div>
           </div>

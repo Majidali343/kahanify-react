@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {asset38, asset39 ,asset40} from '../imageLoader' ;
 import {
   faPlay,
   faPause,
@@ -129,8 +130,8 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
           className="text-sm sm:text-lg md:text-xl mx-2"
           aria-label="Decrease Playback Speed"
         >
-          <FontAwesomeIcon icon={faBackward} />
-        </button>
+            <FontAwesomeIcon icon={faBackward} />
+            </button>
         <span className="mx-2 text-sm sm:text-lg md:text-xl">{playbackRate}x</span>
         <button
           onClick={increasePlaybackSpeed}
@@ -146,7 +147,8 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
           className="text-sm sm:text-lg md:text-xl mx-2"
           aria-label="Rewind 10 seconds"
         >
-          <FontAwesomeIcon icon={faBackward} />
+<img src={asset38} alt="back" className="h-10 w-8" />
+          {/* <FontAwesomeIcon icon={faBackward} /> */}
         </button>
         <button
           onClick={togglePlayPause}
@@ -164,7 +166,9 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
           className="text-sm sm:text-lg md:text-xl mx-2"
           aria-label="Forward 10 seconds"
         >
-          <FontAwesomeIcon icon={faForward} />
+<img src={asset39} alt="next" className="h-10 w-8" />
+      
+          {/* <FontAwesomeIcon icon={faForward} /> */}
         </button>
       </div>
 
@@ -203,8 +207,10 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
               </button>
             </div>{" "}
             <div className="flex items-center">
-              <FontAwesomeIcon icon={faEye} className="text-xl mx-2" />
-              <span>{viewCount}</span>
+<img src={asset40} alt="eye" className="h-10 w-10 mr-3" />
+              
+              {/* <FontAwesomeIcon icon={faEye} className="text-xl mx-2" /> */}
+              <span>{viewCount}<span>k</span> </span>
             </div>
           </div>
 
@@ -230,11 +236,12 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
         style={{ fontFamily: "Noto Nastaliq Urdu, sans-serif" }}
       >
         {showStory && (
-          <>
+          <div className="px-28 pb-6">
             <h1 className="text-3xl font-bold py-4 pb-4">
               بھیڑیا اور چالاک بکری
             </h1>
-            <p className="text-xl">
+           <div className="text-base leading-8">
+            <p >
               ایک چرواہا روز اپنی بکریوں کو چرانے لے جاتا دن بھر گھومنے کے
               باوجود اس کی بکریوں کا پیٹ نہ بھرتا۔ کیونکہ اس گھر کے قریب کی ساری
               گھاس بکریاں اور دوسرے جانور پہلے ہی کھا چکے تھے۔ اس کے گھر سے کچھ
@@ -323,7 +330,8 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
               گھاس سے اپنا پیٹ بھر سکتے تھے۔ دیکھا بچو، ہمت و حوصلہ رکھنے اور
               حاضر دماغی سے بڑی سے بڑی مشکل حل ہو جاتی ہے
             </p>
-          </>
+            </div>
+          </div>
         )}
       </div>
 

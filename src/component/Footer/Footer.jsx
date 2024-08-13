@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import { asset24, asset25, asset26, asset27 } from "../imageLoader";
 
 function Footer() {
@@ -61,16 +61,29 @@ function Footer() {
         <div className="mt-4 md:mt-0">
           <ul className="flex justify-center space-x-2">
             <li>
+              <Link to = 'https://www.facebook.com/KahanifyOfficial'>
               <img src={asset24} alt="Icon 1" className="h-6 w-6 hover:scale-105 md:h-8 md:w-8" />
+              </Link>
             </li>
             <li>
+            <Link to = 'https://www.instagram.com/kahanifyofficial/'>
+
               <img src={asset25} alt="Icon 2" className="h-6 w-6 md:h-8 hover:scale-105 md:w-8" />
+              </Link>
+              
             </li>
             <li>
+            
               <img src={asset26} alt="Icon 3" className="h-6 w-6 md:h-8 hover:scale-105 md:w-8" />
+              
+            
             </li>
             <li>
-              <img src={asset27} alt="Icon 4" className="h-6 w-6 md:h-8 hover:scale-105 md:w-8" />
+            <Link to = 'https://www.youtube.com/channel/UCnrRuc4QSzlenj_Soet80uQ'>
+            
+              <img src={asset27} alt="Icon 4" className="h-6 w-6 md:h-8 hover:scale-105  md:w-8" />
+              </Link>
+            
             </li>
           </ul>
         </div>
