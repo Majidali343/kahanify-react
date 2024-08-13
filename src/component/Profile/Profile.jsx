@@ -118,17 +118,22 @@ function Profile() {
 
   const dispatch = useDispatch();
 
-  const handleLogout = async () => {
-    try {
-      const response = await getlogout();
-      console.log(response); 
-      dispatch(logout());
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
+  // const handleLogout = async () => {
+  //   try {
+  //     const response = await getlogout();
+  //     console.log(response); 
+  //     dispatch(logout());
+  //   } catch (error) {
+  //     console.error('Error logging out:', error);
+  //   }
+  // };
+  const handleLogout = () => {
+    dispatch(logout());
+
   };
+
   
-const handleExperice = async (e) => {
+  const handleExperice = async (e) => {
   try {
     
     await sendReveiw(experience);

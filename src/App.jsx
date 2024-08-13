@@ -21,36 +21,35 @@ import PrivateRoute from './component/PrivateRoute';
 import SingleKahani from './component/PaidStories/SingleKahani';
 import Order from './component/OrderDetai/Order';
 import Member from './component/MemberShip/Member';
+import ScrollToTop from './component/ScrollToTop/ScrollToTop';
+
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.status);
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="login" element={<Login />} />
           <Route path="contact-us" element={<ContactUs />} />
-          
           <Route path="Package" element={<PrivateRoute element={<Package />} />} />
           <Route path="cart" element={<PrivateRoute element={<Cart />} />} />
           <Route path="profile" element={<PrivateRoute element={<Profile />} />} />
-          <Route path="Order" element={<PrivateRoute element={<Order/>} />} />
-          <Route path="Member" element={<PrivateRoute element={<Member/>} />} />
-          
+          <Route path="Order" element={<PrivateRoute element={<Order />} />} />
+          <Route path="Member" element={<PrivateRoute element={<Member />} />} />
           <Route path="Paidcontent" element={<PrivateRoute element={<Paidcontent />} />} />
-          <Route path="Privacy" element={<Privacy />}  />
+          <Route path="Privacy" element={<Privacy />} />
           <Route path="Conditions" element={<Conditions />} />
           <Route path="kahani/:id" element={<SingleKahani />} />
-          <Route path="ForgotPassword" element={<ForgotPassword />}  />
-          <Route path="reset-password" element={<ResetPassword />}  />
+          <Route path="ForgotPassword" element={<ForgotPassword />} />
+          <Route path="reset-password" element={<ResetPassword />} />
           <Route path="Refund" element={<Refund />} />
-          <Route path="FAQs" element={<FAQs />}/>
+          <Route path="FAQs" element={<FAQs />} />
         </Route>
-        
         <Route path="FreeStory" element={<FreeStory />} />
-        
         <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />} />
       </Routes>
     </Router>

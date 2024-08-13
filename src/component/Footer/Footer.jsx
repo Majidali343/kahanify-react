@@ -3,6 +3,7 @@ import { NavLink,Link } from 'react-router-dom';
 import { asset24, asset25, asset26, asset27 } from "../imageLoader";
 
 function Footer() {
+
   return (
     <footer className="bg-[#18003c] text-white py-4 border-t-4 border-[#ff0087]">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
