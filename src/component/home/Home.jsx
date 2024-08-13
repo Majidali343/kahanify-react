@@ -110,7 +110,7 @@ import Testimonial from '../Testimonial/Testimonial';
 <p className='text-right text-gray-500 leading-loose text-xl  m-4 sm:m-8'>
 اسی لئے والدین کی سہولت کے پیش نظر  دے رہا ہے 3سال سے 10 سال تک کی عمر کے بچوں کے لئے دلچسپ اور سبق آموز آڈیو کہانیوں کا آن لائن ایکسس۔ رات کو سونے سے پہلے، دن میں آرام کے وقت یا پھرجب بھی جہاں بھی، بچے کہانی سننا چاہیں، آپ Kahanify کی ممبرشپ حاصل کرکے تمام آڈیو کہانیوں تک رسائی حاصل کر سکتے ہیں۔ اور بچوں کی من چاہی کہانیاں انہیں موبائل پر سنوا سکتے ہیں۔ اگر خود سے پڑھ کر سنانا چاہیں تو Kahanify پر تمام کہانیاں تحریری شکل میں موجود ہیں۔ ہماری ایک تحقیق کے نتیجے میں 2 سال سے 13 سال تک کے اکثر بچوں کو Kahanify کی آڈیو کہانیاں سننا پسند ہے۔
 </p>
-<h3 className= "text-right text-[#18003c] leading-loose text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-right text-[#18003c] font-sans leading-loose text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
 
 
 <p className='text-right text-gray-500 leading-loose text-xl  m-4 sm:m-8 '>
@@ -121,7 +121,7 @@ import Testimonial from '../Testimonial/Testimonial';
 معیاری اور بامقصد کونٹینٹ کی فراہمی کے لئے Kahanify کی ماہانہ اور سالانہ ممبرشپ کے تحت معمولی فیس رکھی گئی ہے۔ جس کے فائدے بیشمار ہونگے اور تفریح ہی تفریح میں بچے بہت سی اچھی باتیں سیکھیں گے۔
 </p>
 
-<h3 className= "text-right text-[#18003c] sm:text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-right text-[#18003c] font-sans sm:text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
 <div className='text-right text-gray-500 leading-loose text-xl   m-4 sm:m-8'>
   <ol  className=' list-right list-inside space-y-2'>
     <li> آڈیو کہانیاں سننے سے بچوں کا حافظہ بہتر </li>
