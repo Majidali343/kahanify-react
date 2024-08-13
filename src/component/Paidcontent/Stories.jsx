@@ -124,7 +124,7 @@ const Stories = () => {
                       <StarRating 
                         rating={card.average_rating} 
                       />
-                      <p className='mx-3 text-gray-400'>{card.number_of_ratings}</p>
+                      <p className='mx-3 text-gray-400'>{Number(card.average_rating).toFixed(1)}</p>
                     </div>
                   </div>
                 </Link>
