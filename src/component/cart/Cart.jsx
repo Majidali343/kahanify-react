@@ -73,8 +73,14 @@ function Cart() {
     try {
       console.log("Proceeding to checkout...");
       
+      if (cart.length !== 1) {
+        alert("You must have exactly one item in your cart to proceed to checkout.");
+        return;
+      }
+    
+
       const isAnnualMembership = cart.some(item => item.packagename === 'Annual Membership');
-      
+      if(cart.lenght=1){
       if (isAnnualMembership) {
         const purchaseData = cart.map(item => ({
           price: totalPrice,
@@ -95,11 +101,17 @@ function Cart() {
         console.log('Checkout successful!');
 
       }
-  
+
+    }else{
+      alert ("You have two imtems in cart")
+        }
+        
 
     } catch (error) {
       console.error('Error during checkout:', error);
     }
+
+
   };
   
     

@@ -31,6 +31,7 @@ const authSlice = createSlice({
       Cookies.set('userData', JSON.stringify(user), { expires: cookieExpiry });
       Cookies.set('token', token, { expires: cookieExpiry });
     },
+    
     logout: (state) => {
       state.userData = null;
       state.token = null;
