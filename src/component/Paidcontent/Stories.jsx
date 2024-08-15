@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { asset3 } from '../imageLoader';
 import { Link } from 'react-router-dom';
 import StarRating from '../home/StarRating'; 
-import { allStories } from '../Service/api';
+import { allStories , favouritestories} from '../Service/api';
 import SearchBar from '../SearchBar/SearchBar'; 
 import Loader from '../loader/Loader';
 const Stories = () => {
@@ -30,9 +30,29 @@ const Stories = () => {
         setLoading(false); 
       }
     };
-
+    
     fetchStories();
   }, []); 
+  
+  
+  
+  const fetchfavourite = async () => {
+    setLoading(true);
+    try {
+      const response = await favouritestories();
+      if (response && response.data) {
+        console.log(response);
+        setData(response.data);
+        setFilteredData(response.data); 
+      }else{
+        setFilteredData([]); 
+      }
+    } catch (error) {
+      console.error('Error fetching stories:', error);
+    }finally {
+      setLoading(false); 
+    }
+  };
 
   useEffect(() => {
     let results = data.filter(item =>
@@ -42,7 +62,7 @@ const Stories = () => {
     if (filter === 'Latest') {
       results = results.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     } else if (filter === 'Favorite') {
-      results = results.sort((a, b) => b.number_of_ratings - a.number_of_ratings);
+      fetchfavourite();
     } else if (filter === 'Popular') {
       results = results.sort((a, b) => b.views - a.views);
     }

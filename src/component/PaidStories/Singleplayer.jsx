@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {asset38, asset39 ,asset40} from '../imageLoader' ;
+import {likekahani , isfavourite} from '../Service/api';
 import {
   faPlay,
   faPause,
@@ -12,7 +13,9 @@ import {
   faEye,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Singleplayer = ({ audioSrc, imageSrc, viewCount, title, despcription }) => {
+const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, despcription }) => {
+
+  
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [like, setLike] = useState(false);
@@ -34,11 +37,13 @@ const Singleplayer = ({ audioSrc, imageSrc, viewCount, title, despcription }) =>
     const audio = audioRef.current;
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
     audio.addEventListener("timeupdate", handleTimeUpdate);
+    checkfavourite();
 
     return () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
       audio.removeEventListener("timeupdate", handleTimeUpdate);
     };
+    
   }, []);
 
   useEffect(() => {
@@ -65,8 +70,29 @@ const Singleplayer = ({ audioSrc, imageSrc, viewCount, title, despcription }) =>
     audioRef.current.currentTime += 10;
   };
 
+  const checkfavourite = async () => {
+    try {
+      
+      const response = await isfavourite(id);
+      setLike(response.liked)
+    } catch (error) {
+      console.error('Error fetching stories:', error);
+    }
+  };
+
+  const fetchView = async () => {
+    try {
+      
+      const response = await likekahani(id);
+      console.log(response)
+    } catch (error) {
+      console.error('Error fetching stories:', error);
+    }
+  };
+
   const handleLike = () => {
     setLike(!like);
+    fetchView();
   };
 
   const formatTime = (seconds) => {
