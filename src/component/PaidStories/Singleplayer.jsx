@@ -14,11 +14,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 
-const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, despcription }) => {
+const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, description }) => {
 
   
 
-const Singleplayer = ({ audioSrc, imageSrc, viewCount, title, description }) => {
 
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
