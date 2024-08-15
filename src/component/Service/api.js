@@ -1,5 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+// import { useDispatch } from 'react-redux';
+// import { logout } from '../store/authSlice';
 
 export const API_URL = import.meta.env.VITE_API_URL;
 console.log('API_URL:', API_URL);
@@ -25,13 +27,14 @@ export const signup = async (data) => {
     return response.data;
 
   } catch (error) {
-    // console.error('Error signing up:', error.response.data.errors.email);
     console.error('Error signing up:', error.response.data.errors);
     throw error;
   }
 };
 ////////////
 export const getCurrentUser = async () => {
+  // const dispatch = useDispatch();
+
   try {
     const token = Cookies.get('token');
     const response = await axios.get(`${API_URL}/usershow`, {
@@ -39,6 +42,13 @@ export const getCurrentUser = async () => {
     });
     return response.data;
   } catch (error) {
+    console.error('Error fetching current user:', error.response.data.message);
+    if (error.response && error.response.data && error.response.data.message === "Unauthenticated.") {
+      // dispatch(logout());
+    
+      Cookies.remove('userData');
+      Cookies.remove('token');
+    }    
     console.error('Error fetching current user:', error);
     throw error;
   }
@@ -114,7 +124,7 @@ export const allStories = async () => {
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching current user:', error);
+    console.error('Error fetching Khanifiy:', error);
     throw error;
   }
 };

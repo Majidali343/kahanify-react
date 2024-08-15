@@ -24,6 +24,7 @@ const Stories = () => {
           setFilteredData(response.data); 
         }
       } catch (error) {
+        console.log('sdkjasbdkjsadashdasjhdasldhsaldsldhsajdhkashDLKASHBCAHCBIDSHC');
         console.error('Error fetching stories:', error);
       }finally {
         setLoading(false); 
