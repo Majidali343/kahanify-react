@@ -1,42 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { Link , NavLink } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { asset0 } from '../imageLoader';
 import { getCurrentUser } from '../Service/api';
 import { FaRegUser } from "react-icons/fa6";
 import { FaSortDown } from "react-icons/fa";
+
 function Header() {
   const [name, setName] = useState('');
   const [membership, setMembership] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { userData: user, status: isLoggedIn } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await getCurrentUser();
-        if (response && response.user) {
-          const user = response.user;
-          if (user.username) {
-            setName(user.username);
-          }
-          if (response.membership !== undefined) {
-            setMembership(response.membership);
-          }
+  // Fetch user data using a memoized callback to avoid unnecessary re-fetching
+  const fetchUserData = useCallback(async () => {
+    try {
+      const response = await getCurrentUser();
+      if (response && response.user) {
+        const user = response.user;
+        if (user.username) {
+          setName(user.username);
         }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
+        if (response.membership !== undefined) {
+          setMembership(response.membership);
+        }
       }
-    };
-    fetchUserData();
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
   }, []);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchUserData();
+    }
+  }, [isLoggedIn, fetchUserData]);
+
   const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+    setIsDropdownOpen(prev => !prev);
   };
 
   return (
-    <header className="bg-white text-black py-2 px-4 border-b-4 border-[#ff0087]">
+<header className="bg-white text-black py-2 px-4 border-b-4 border-[#ff0087]">
       <div className="container  flex flex-wrap items-center">
         <Link
           to={membership ? "Paidcontent" : "/"}
@@ -107,7 +112,7 @@ function Header() {
         </div>
       </div>
     </header>
-  );
+      );
 }
 
 export default Header;
