@@ -129,7 +129,19 @@ export const allStories = async () => {
     throw error;
   }
 };
-
+/////////////////////
+export const favouritestories = async () => {
+  try {
+    const token = Cookies.get('token');
+    const response = await axios.get(`${API_URL}/favouritekahanis`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching Khanifiy:', error);
+    throw error;
+  }
+};
 
 ////////////////////////////////
 export const singleStory = async (id) => {
@@ -409,6 +421,49 @@ export const veiws = async (id) => {
     
   } catch (error) {
     console.error('Error updating view:', error);
+    throw error;
+  }
+};
+
+export const isfavourite = async (id) => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', token);
+
+    const response = await axios.get(`${API_URL}/isFavourite/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    console.log('This is Response Data:', response.data);
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error updating view:', error);
+    throw error;
+  }
+};
+
+
+
+////////////////////
+export const likekahani = async (id) => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', token);
+   var kahani_id = id ;
+    const response = await axios.post(`${API_URL}/addFavourite`, {kahani_id} ,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    console.log('This is Response Data:', response.data);
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error adding like:', error);
     throw error;
   }
 };

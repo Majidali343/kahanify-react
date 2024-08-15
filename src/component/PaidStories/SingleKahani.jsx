@@ -131,6 +131,8 @@ function SingleKahani() {
    
       <div>
         <Singleplayer
+
+          id={id}
           audioSrc={`https://kahaniapi.realtechcrm.online/storage/${audio}`}
           imageSrc={`https://kahaniapi.realtechcrm.online/storage/${image}`}
           viewCount={views}
