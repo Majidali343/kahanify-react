@@ -110,7 +110,7 @@ function Package() {
             <p className="text-2xl mb-3 font-bold text-[#18003c]">Life Time Membership</p>
             <p className="font-bold text-pink-600 text-xl mb-4"> <span className='text-gray-500 line-through'>Rs 7500</span> <span className='underline'> Rs 4,990</span></p>
             <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
-              onClick={() => addToCart(' Life Time Membership', 7500, asset32)}
+              onClick={() => addToCart(' Life Time Membership', 4,990, asset32)}
             >
               Purchase
             </button>
