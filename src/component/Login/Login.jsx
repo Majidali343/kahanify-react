@@ -47,9 +47,9 @@ function Login() {
         
         <h1 className="text-black font-bold py-2 px-4 mb-4 text-xl rounded-t-lg">Sign In</h1>
         
-        {error && <div className="text-red-500 text-center mb-4">{error}</div>}
-        {errors.username_or_email && <span className="text-red-500 text-sm">{errors.username_or_email.message}</span>}
-        {errors.password && <span className="text-red-500 text-sm">{errors.password.message}</span>}
+        {error && <div className="text-red-500 font-bold text-center mb-4">{error}</div>}
+        {errors.username_or_email && <span className="text-red-500 font-bold text-sm">{errors.username_or_email.message}</span>}
+        {errors.password && <span className="text-red-500 font-bold text-sm">{errors.password.message}</span>}
         
         <form onSubmit={handleSubmit(login)}>
           <div className="mb-4 relative">

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 // import { useDispatch } from 'react-redux';
 // import { logout } from '../store/authSlice';
 
@@ -308,6 +309,7 @@ console.log ( commentData.kahani_id)
     return response.data;
   } catch (error) {
     console.error('Error sending comment', error);
+    toast.error('You have already commented on this post.');
     throw error;
   }
 };

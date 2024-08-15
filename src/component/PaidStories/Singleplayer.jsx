@@ -13,9 +13,13 @@ import {
   faEye,
 } from "@fortawesome/free-solid-svg-icons";
 
+
 const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, despcription }) => {
 
   
+
+const Singleplayer = ({ audioSrc, imageSrc, viewCount, title, description }) => {
+
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [like, setLike] = useState(false);
@@ -267,8 +271,9 @@ const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, despcription }
             <h1 className="text-3xl font-bold py-4 pb-4">
               {title}
             </h1>
-            <p className="leading-normal">
-           {despcription}  
+            <p className=" text-sm leading-7">
+           {description}  
+
             </p>
           </>
         )}

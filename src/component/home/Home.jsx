@@ -29,10 +29,10 @@ import Testimonial from '../Testimonial/Testimonial';
           className="text-white text-center "
           style={{ margin: '10% 20% 8% 13%' }}
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl  heading text-pretty  mb-2">Kids  Audio  Stories</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl  heading text-pretty  mb-2">Unlimited  Audio  Stories</h1>
           <h2 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl  2xl:text-3xl mb-4">Listen  Imagine  Enjoy</h2>
           <button
-            className="bg-blue-600 text-base sm:text-lg btn md:text-xl lg:text-xl xl:text-xl 2xl:text-2xl border border-white  text-white py-2 px-4 rounded-[6px] text-center transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
+            className="bg-blue-600 text-base sm:text-lg btn md:text-xl lg:text-xl xl:text-xl 2xl:text-2xl   text-white py-2 px-4 rounded-[6px] text-center transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
           >
             <Link to='/signup' > Get Started</Link>
             
@@ -44,15 +44,15 @@ import Testimonial from '../Testimonial/Testimonial';
     <div className="text-center  sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-8">
     <div className="w-full  p-4 sm:p-6 md:p-8 lg:p-10 xl:p-4">
       <div className="text-center mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-4">
-        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-3xl 2xl:text-3xl main font-bold text-[#1f1974] border-b-2 border-[#1f1974]  mb-4 pb-2">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-sans lg:text-3xl xl:text-3xl 2xl:text-3xl main mx-20 font-bold text-[#200899] border-b border-[#200899]  mb-4 pb-2">
           Audio Tales: Where Imagination Meets the Power of Sound.
         </h1>
       </div>
-      <div className="flex flex-col justify-center items-center text-center text-[#1f1974] mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-12">
-        <p className="text-sm pt-4 mb-4 sm:mb-6 md:mb-6 lg:mb-6 xl:mb-8">
+      <div className="flex flex-col justify-center items-center font-sans text-center text-[#200899] mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-12">
+        <p className="text-sm pt-2 mb-4 sm:mb-6 md:mb-6 lg:mb-6 leading-relaxed xl:mb-8">
           Kahanify brings the charm of storytelling to young minds. Embark on a captivating audio journey. Immerse in a world where stories come to life through the magic of sound. Our curated collection of audio stories is tailored for children, fostering imagination, language development, and a love for storytelling. Dive into a world of fanciful narratives, charming characters, and moralistic adventures, designed to spark interest and ignite the joy of listening in the hearts of the little ones. With Kahanify, every moment becomes an opportunity for young minds to explore, learn, and be delighted.
         </p>
-        <button className="bg-blue-600 flex justify-center self-center text-white  px-3 py-2 text-sm   transition-transform duration-300 ease-in-out rounded transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+        <button className="bg-blue-700 font-bold flex justify-center self-center text-white  px-3 py-2 text-sm   transition-transform duration-300 ease-in-out rounded transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
           <Link to='/signup'>Register Now</Link>
         </button>
       </div>
@@ -337,6 +337,7 @@ import Testimonial from '../Testimonial/Testimonial';
 </div>
 <div className='min-w-full bg-white'>
 <Testimonial/>
+
 </div>
    </>
   );

@@ -45,22 +45,22 @@ function SignUp() {
       
       </Helmet>
       
-      <h1 className='font-bold text-center text-[#18003c] text-2xl md:text-3xl my-4'>Create Account To Start Your Membership</h1>
+      <h1 className='font-bold text-center text-blue-700 text-2xl md:text-3xl my-4'>Create Account To Start Your Membership</h1>
       <h1 className='text-center text-xl md:text-2xl mb-4'>Few more steps and you're done!</h1>
     
       <div className="max-w-md w-full p-6 bg-white shadow-lg rounded-lg border border-gray-200">
         <h1 className='font-bold text-xl mb-2'>Sign Up</h1>
         
-        {error.email ? <div className="text-red-500 text-center ">{error.email}</div> : ""}
-        {error.phone ? <div className="text-red-500 text-center ">{error.phone}</div> : ""}
-        {error.username ? <div className="text-red-500 text-center ">{error.username}</div> : ""}
+        {/* {error.email ? <div className="text-red-500 font-bold text-center ">{error.email}</div> : ""} */}
+        {/* {error.phone ? <div className="text-red-500 font-bold text-center ">{error.phone}</div> : ""} */}
+        {/* {error.username ? <div className="text-red-500 font-bold text-center ">{error.username}</div> : ""} */}
        
-        {errors.username && <span className="text-red-500 text-sm">{errors.username.message}</span>} 
-        {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>} 
-        {errors.phone && <span className="text-red-500 text-sm">{errors.phone.message}</span>} 
-        {errors.password && <span className="text-red-500 text-sm">{errors.password.message}</span>} 
-        {errors.confirmPassword && <span className="text-red-500 text-sm">{errors.confirmPassword.message}</span>} 
-        {errors.terms && <span className="text-red-500 text-sm">{errors.terms.message}</span>} 
+        {errors.username && <span className="text-red-500 font-bold text-sm">{errors.username.message}</span>} 
+        {errors.email && <span className="text-red-500 font-bold text-sm">{errors.email.message}</span>} 
+        {/* {errors.phone && <span className="text-red-500 font-bold text-sm">{errors.phone.message}</span>}  */}
+        {errors.password && <span className="text-red-500 font-bold text-sm">{errors.password.message}</span>} 
+        {errors.confirmPassword && <span className="text-red-500 font-bold text-sm">{errors.confirmPassword.message}</span>} 
+        {errors.terms && <span className="text-red-500 font-bold text-sm">{errors.terms.message}</span>} 
 
 
         <form onSubmit={handleSubmit(create)}>
@@ -89,17 +89,23 @@ function SignUp() {
             <FontAwesomeIcon icon={faEnvelope} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           </div>
 
-          <div className="mb-4 relative">
+          {/* <div className="mb-4 relative">
             <input
               type="tel"
               id="phone"
               name="phone"
-              {...register('phone', { required: 'Phone Number is required' })} 
+              {...register('phone', { 
+                required: 'Phone Number is required',
+                pattern: {
+                  value: /^[0-9]*$/,
+                  message: 'Phone Number must be numeric'
+                }
+              })} 
               className="form-input transition-all duration-300 ease-in-out border-gray-300 rounded-md w-full py-2 px-3 pl-10 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Phone Number"
             />
             <FontAwesomeIcon icon={faPhone} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
-          </div>
+          </div> */}
 
           <div className="mb-4 relative flex items-center">
             <input
@@ -153,8 +159,12 @@ function SignUp() {
           </div>
 
           <div className="mb-4 flex items-center">
+            <input type="checkbox"   className="mr-2" />
+            <label  className="text-sm text-gray-700">Send me emails about updates on Kahanify </label>
+          </div>
+          <div className="mb-4 flex items-center">
             <input type="checkbox" id="terms" name="terms" {...register('terms', { required: 'You must accept the terms' })} className="mr-2" />
-            <label htmlFor="terms" className="text-sm text-gray-700">I accept the Terms of Service and Privacy Policy</label>
+            <label htmlFor="terms" className="text-sm text-gray-700">Accept <span className='text-blue-500' >Terms & Conditions</span></label>
           </div>
 
           <button 
