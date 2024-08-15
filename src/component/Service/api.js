@@ -58,12 +58,12 @@ export const getCurrentUser = async () => {
 
 //////////////////////
 
-export const changepassword = async (new_password, current_password, confirm_password) => {
+export const changepassword = async (new_password, current_password) => {
   try {
     const token = Cookies.get('token');
     console.log(token);
-    console.log(new_password, current_password, confirm_password)
-    if (confirm_password == new_password) {
+    console.log(new_password, current_password)
+    
       const response = await axios.post(
         `${API_URL}/updatepassword`,
         {
@@ -77,16 +77,16 @@ export const changepassword = async (new_password, current_password, confirm_pas
         }
       );
       console.log(response);
+      console.log(response);
+ 
+      
 
       return response.data;
-    }else{
-      console.error("New Password and Conform password does not match ")
-    }
-
+   
   } catch (error) {
-    console.error('Error changing password', error);
-    handleUnauthenticated();
-
+    toast.error(error.response.data.new_password[0]);
+    console.error('Error changing password', error.response.data.new_password);
+    
     throw error;
   }
 };

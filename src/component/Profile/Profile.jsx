@@ -31,8 +31,8 @@ function Profile() {
     try {
       await changepassword({
         new_password,
-        current_password,
-        confirm_password
+        current_password
+        
       });
       setSuccess('Password changed successfully');
     } catch (error) {
@@ -122,6 +122,7 @@ function Profile() {
     try {
       const response = await getlogout();
       console.log(response); 
+  window.location.href = 'login'; 
      
     } catch (error) {
       console.error('Error logging out:', error);
@@ -266,7 +267,7 @@ function Profile() {
               </form>
               </div>
               
-              {error && <p className="text-red-500 font-bold mt-2">{error}</p>}
+              {/* {error && <p className="text-red-500 font-bold mt-2">{error.response.data.new_password}</p>} */}
                 {success && <p className="text-green-500 font-bold mt-2">{success}</p>}
 
 <div className='flex flex-col md:flex-row justify-start mt-4'>
