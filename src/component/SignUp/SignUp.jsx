@@ -52,8 +52,8 @@ function SignUp() {
         <h1 className='font-bold text-xl mb-2'>Sign Up</h1>
         
         {/* {error.email ? <div className="text-red-500 font-bold text-center ">{error.email}</div> : ""} */}
-        {/* {error.phone ? <div className="text-red-500 font-bold text-center ">{error.phone}</div> : ""} */}
-        {/* {error.username ? <div className="text-red-500 font-bold text-center ">{error.username}</div> : ""} */}
+        {error.phone ? <div className="text-red-500 font-bold text-center ">{error.phone}</div> : ""}
+        {error.username ? <div className="text-red-500 font-bold text-center ">{error.username}</div> : ""}
        
         {errors.username && <span className="text-red-500 font-bold text-sm">{errors.username.message}</span>} 
         {errors.email && <span className="text-red-500 font-bold text-sm">{errors.email.message}</span>} 

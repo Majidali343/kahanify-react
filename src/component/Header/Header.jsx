@@ -105,7 +105,7 @@ function Header() {
             </div>
           ) : (
             <button className="bg-blue-500 px-4 py-2 rounded text-white font-bold hover:bg-[#ff0087] transition-transform duration-300 ease-in-out transform hover:scale-105">
-              <Link to="/login">Sign Up</Link>
+              <Link to="/login">Sign In</Link>
             </button>
           )}
         </div>
