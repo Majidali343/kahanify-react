@@ -16,8 +16,11 @@ import {
 
 const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, description }) => {
 
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> 99a8c0683924e222a583f6e2aff44c726dbef48b
 
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -283,4 +286,4 @@ const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, description })
   );
 };
 
-export default Singleplayer;
+export default Singleplayer 
