@@ -266,8 +266,8 @@ function Profile() {
               </form>
               </div>
               
-              {error && <p className="text-red-500 mt-2">{error}</p>}
-                {success && <p className="text-green-500 mt-2">{success}</p>}
+              {error && <p className="text-red-500 font-bold mt-2">{error}</p>}
+                {success && <p className="text-green-500 font-bold mt-2">{success}</p>}
 
 <div className='flex flex-col md:flex-row justify-start mt-4'>
                 <button onClick={handleLogout} className='rounded-xl flex justify-center px-3 py-2 bg-gray-300'>
@@ -288,10 +288,12 @@ function Profile() {
                 onClick={handleExperice}
                 className="bg-blue-600 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded mt-2">
                   Submit
-                </button>
-                {success && <p className="text-green-500 mt-2">{success}</p>}
-             
+                </button> 
+                <br />
+              
               </div>
+              {success && <p className="text-green-500 font-bold mt-2">{success}</p>}
+             
             </div>
           </div>
         </div>

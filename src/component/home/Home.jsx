@@ -335,7 +335,7 @@ import Testimonial from '../Testimonial/Testimonial';
   
 
 </div>
-<div className='min-w-full bg-white'>
+<div className='w-aut bg-white'>
 <Testimonial/>
 
 </div>

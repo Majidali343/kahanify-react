@@ -4,6 +4,12 @@ import { toast } from 'react-toastify';
 // import { useDispatch } from 'react-redux';
 // import { logout } from '../store/authSlice';
 
+const handleUnauthenticated = () => {
+  Cookies.remove('userData');
+  Cookies.remove('token');
+  window.location.href = 'login'; 
+};
+
 export const API_URL = import.meta.env.VITE_API_URL;
 console.log('API_URL:', API_URL);
 //////////
@@ -44,13 +50,8 @@ export const getCurrentUser = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching current user:', error.response.data.message);
-    if (error.response && error.response.data && error.response.data.message === "Unauthenticated.") {
-      // dispatch(logout());
-    
-      Cookies.remove('userData');
-      Cookies.remove('token');
-    }    
     console.error('Error fetching current user:', error);
+    handleUnauthenticated();
     throw error;
   }
 };
@@ -84,6 +85,8 @@ export const changepassword = async (new_password, current_password, confirm_pas
 
   } catch (error) {
     console.error('Error changing password', error);
+    handleUnauthenticated();
+
     throw error;
   }
 };
@@ -112,6 +115,8 @@ export const updateimage = async (formData) => {
     return response.data;
   } catch (error) {
     console.error('Error updating image', error);
+    handleUnauthenticated();
+
     throw error;
   }
 };
@@ -126,6 +131,8 @@ export const allStories = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching Khanifiy:', error);
+    handleUnauthenticated();
+
     throw error;
   }
 };
@@ -176,6 +183,8 @@ export const userprofile = async () => {
     return response.data;
   } catch (error) {
     console.error('Error update image', error);
+    handleUnauthenticated();
+
     throw error;
   }
 };
@@ -235,6 +244,8 @@ if(firstElement.years){
     
   } catch (error) {
     console.error('Error update image', error);
+    handleUnauthenticated();
+
     throw error;
   }
 };
@@ -277,6 +288,8 @@ const response = await axios.post(
 
     return response.data;
   } catch (error) {
+    handleUnauthenticated();
+
     console.error('Error update image', error);
     throw error;
   }
@@ -309,6 +322,7 @@ console.log ( commentData.kahani_id)
     return response.data;
   } catch (error) {
     console.error('Error sending comment', error);
+    handleUnauthenticated();
     toast.error('You have already commented on this post.');
     throw error;
   }
@@ -335,6 +349,8 @@ export const updatecomments = async (id) => {
     return response.data;
   } catch (error) {
     console.error('Error updating comments', error);
+    handleUnauthenticated();
+
     throw error;
   }
 };
@@ -361,6 +377,8 @@ console.log (description)
     return response.data;
   } catch (error) {
     console.error('Error sending comment', error);
+    handleUnauthenticated();
+
     throw error;
   }
 };

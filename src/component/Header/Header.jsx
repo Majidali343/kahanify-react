@@ -12,7 +12,6 @@ function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { userData: user, status: isLoggedIn } = useSelector((state) => state.auth);
 
-  // Fetch user data using a memoized callback to avoid unnecessary re-fetching
   const fetchUserData = useCallback(async () => {
     try {
       const response = await getCurrentUser();
@@ -41,7 +40,7 @@ function Header() {
   };
 
   return (
-<header className="bg-white text-black py-2 px-4 border-b-4 border-[#ff0087]">
+<header className="bg-white text-black py-2 px-2 border-b-4 border-[#ff0087]">
       <div className="container  flex flex-wrap items-center">
         <Link
           to={membership ? "Paidcontent" : "/"}
