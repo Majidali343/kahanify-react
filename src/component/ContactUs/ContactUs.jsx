@@ -61,15 +61,17 @@ function ContactUs() {
             <Link to="mailto:info@kahanify.com" className="flex flex-col items-center">
               <img src={asset29} className="w-8 h-8 mb-2" alt="Email Icon" />
               <p className="text-2xl font-bold">Email</p>
+              <p className="font-bold">info@kahanify.com</p>
             </Link>
-            <p className="font-bold">info@kahanify.com</p>
+            
           </div>
           <div className="flex flex-col py-4 items-center text-white">
             <Link to="tel:+923320516548" className="flex flex-col items-center">
               <img src={asset30} className="w-8 h-8 mb-2" alt="Phone Icon" />
               <p className="text-2xl font-bold">Phone</p>
-            </Link>
-            <p className="font-bold">+92 332 0516548</p>
+        
+              <p className="font-bold">+92 332 0516548</p>
+                  </Link>
           </div>
         </div>
       </div>

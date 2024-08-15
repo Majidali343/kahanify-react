@@ -8,14 +8,14 @@ function Footer() {
     <footer className="bg-[#18003c] text-white py-4 border-t-4 border-[#ff0087]">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
         <div className="text-center md:text-left mb-4 md:mb-0">
-          <p className="text-xs">Copyright © 2024 Khanify | Powered by Kahanify</p>
+          <p className="text-xs ">Copyright © 2024 Khanify | Powered by Kahanify</p>
         </div>
-        <nav className="w-full flex justify-center ">
+        <nav className=" flex justify-center ">
           <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 items-center">
             <li>
               <NavLink
                 to="/Privacy"
-                className="hover:text-pink-600"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
                 aria-label="Privacy Policy"
               >
                 Privacy Policy
@@ -24,7 +24,7 @@ function Footer() {
             <li>
               <NavLink
                 to="/Conditions"
-                className="hover:text-pink-600"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
                 aria-label="Terms and Conditions"
               >
                 Terms and Conditions
@@ -33,7 +33,7 @@ function Footer() {
             <li>
               <NavLink
                 to="/Refund"
-                className="hover:text-pink-600"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
                 aria-label="Refund Policy"
               >
                 Refund Policy
@@ -42,7 +42,7 @@ function Footer() {
             <li>
               <NavLink
                 to="/FAQs"
-                className="hover:text-pink-600"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
                 aria-label="FAQ's"
               >
                 FAQ's
@@ -51,7 +51,7 @@ function Footer() {
             <li>
               <NavLink
                 to="/contact-us"
-                className="hover:text-pink-600  mr-3"
+                className="hover:text-pink-600  mr-3 md:text-sm lg:text-base"
                 aria-label="Contact"
               >
                 Contact
@@ -63,26 +63,26 @@ function Footer() {
           <ul className="flex justify-center space-x-2">
             <li>
               <Link to = 'https://www.facebook.com/KahanifyOfficial'>
-              <img src={asset24} alt="Icon 1" className="h-6 w-6 hover:scale-105 md:h-8 md:w-8" />
+              <img src={asset24} alt="Icon 1" className="h-6 w-6 hover:scale-105 md:h-6 md:w-6" />
               </Link>
             </li>
             <li>
-            <Link to = 'https://www.instagram.com/kahanifyofficial/'>
+            <Link to = 'https://www.instagram.com/kahanifyofficial/' >
 
-              <img src={asset25} alt="Icon 2" className="h-6 w-6 md:h-8 hover:scale-105 md:w-8" />
+              <img src={asset25} alt="Icon 2" className="h-6 w-6 md:h-6 hover:scale-105 md:w-6" />
               </Link>
               
             </li>
             <li>
             
-              <img src={asset26} alt="Icon 3" className="h-6 w-6 md:h-8 hover:scale-105 md:w-8" />
+              <img src={asset26} alt="Icon 3" className="h-6 w-6 md:h-6 hover:scale-105 md:w-6" />
               
             
             </li>
             <li>
             <Link to = 'https://www.youtube.com/channel/UCnrRuc4QSzlenj_Soet80uQ'>
             
-              <img src={asset27} alt="Icon 4" className="h-6 w-6 md:h-8 hover:scale-105  md:w-8" />
+              <img src={asset27} alt="Icon 4" className="h-6 w-6 md:h-6 hover:scale-105  md:w-6" />
               </Link>
             
             </li>

@@ -68,8 +68,13 @@ function Package() {
   };
 
   if (loading) {
-    return <Loader />;
+    return (
+      <div className="flex justify-center items-center min-h-[100vh] w-full">
+    
+    <Loader />
+    </div>)
   }
+
 
 
   if (membership==true) {

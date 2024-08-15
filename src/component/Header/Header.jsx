@@ -3,9 +3,8 @@ import { Link , NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { asset0 } from '../imageLoader';
 import { getCurrentUser } from '../Service/api';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-
+import { FaRegUser } from "react-icons/fa6";
+import { FaSortDown } from "react-icons/fa";
 function Header() {
   const [name, setName] = useState('');
   const [membership, setMembership] = useState(false);
@@ -37,8 +36,8 @@ function Header() {
   };
 
   return (
-    <header className="bg-white text-black py-2 border-b-4 border-[#ff0087]">
-      <div className="container mx-auto flex flex-wrap items-center">
+    <header className="bg-white text-black py-2 px-4 border-b-4 border-[#ff0087]">
+      <div className="container  flex flex-wrap items-center">
         <Link
           to={membership ? "Paidcontent" : "/"}
           className="flex-shrink-0"
@@ -82,9 +81,10 @@ function Header() {
                 onClick={toggleDropdown}
                 className="flex items-center h-19 md:h-10 shadow-md transition-transform transform w-auto px-3 rounded-full border  bg-blue-100 text-sm md:text-base"
               >
-                <FontAwesomeIcon icon={faUser} className="mr-2" />
-                <span>{name}</span>
-              </button>
+                <FaRegUser />
+      <span className='ml-1'>hey, {name}</span>
+      <FaSortDown />
+           </button>
               {isDropdownOpen && (
                 <div className=" absolute right-0 mt-48 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-10  ">
                   <Link to="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
@@ -101,7 +101,7 @@ function Header() {
             </div>
           ) : (
             <button className="bg-blue-500 px-4 py-2 rounded text-white font-bold hover:bg-[#ff0087] transition-transform duration-300 ease-in-out transform hover:scale-105">
-              <Link to="/login">Login</Link>
+              <Link to="/login">Sign Up</Link>
             </button>
           )}
         </div>

@@ -78,7 +78,11 @@ const Stories = () => {
    <div>
     {loading ?
       
-     <Loader />
+
+        <div className="flex justify-center items-center min-h-[100vh] w-full">
+      
+      <Loader />
+      </div>
        
      : (
 

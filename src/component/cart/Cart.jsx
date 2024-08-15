@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { getCurrentUser, parchacemembership } from '../Service/api';  
+import { getCurrentUser, parchacemembership } from '../Service/api'; 
+import { toast } from 'react-toastify'; 
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -74,7 +75,9 @@ function Cart() {
       console.log("Proceeding to checkout...");
       
       if (cart.length !== 1) {
-        alert("You must have exactly one item in your cart to proceed to checkout.");
+        
+    toast.error('You must have exactly one item in your cart to proceed to checkout.');
+        
         return;
       }
     
@@ -103,8 +106,9 @@ function Cart() {
       }
 
     }else{
-      alert ("You have two imtems in cart")
-        }
+        
+      toast.error('You must have exactly one item in your cart to proceed to checkout.');
+    }
         
 
     } catch (error) {

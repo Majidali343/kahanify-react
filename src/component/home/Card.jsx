@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { asset1, asset3 } from '../imageLoader';
 import StarRating from './StarRating'; 
-import {  famousStories } from '../Service/api';
-import {Link} from 'react-router-dom'
-
+import { famousStories } from '../Service/api';
+import { Link, useNavigate } from 'react-router-dom';
+import Loader from '../loader/Loader';
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [ratings, setRatings] = useState([]);
   const [cards, setCards] = useState([]);
- 
+  const navigate = useNavigate();
+  
+  const isLoggedIn = useSelector(state => state.auth.status);
+
   const cardsPerPage = 6;
 
   useEffect(() => {
@@ -26,6 +29,14 @@ const Slider = () => {
     fetchStories();
   }, []);
 
+  const handleCardClick = () => {
+    if (isLoggedIn) {
+      navigate(`Package`);
+    } else {
+      navigate('/login');
+    }
+  };
+
   const nextPage = () => {
     if (currentIndex + cardsPerPage < cards.length) {
       setCurrentIndex(currentIndex + cardsPerPage);
@@ -38,19 +49,29 @@ const Slider = () => {
     }
   };
 
-
   return (
-    <div className="p-4">
+    <div className="p-4 mx-3 md:mx-6">
       <div className="relative">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {cards.length === 0 ? (
-            <p>No stories available.</p>
+
+              <div className="min-h-[30vh] w-[50vw] m-auto justify-end items-end flex">
+            
+            <Loader />
+            </div>
           ) : (
             cards.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
-              <Link to='login'>
-
-<div key={card.kahani_id} className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4">
-                <img src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} alt="story" className="w-full h-full object-cover mb-4" />
+              <div 
+                key={card.kahani_id} 
+                className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4"
+                onClick={() => handleCardClick(card.kahani_id)}
+                style={{ cursor: 'pointer' }}
+              >
+                <img 
+                  src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} 
+                  alt="story" 
+                  className="w-full h-full object-cover mb-4" 
+                />
                 <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
                 <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
                 <div>
@@ -65,15 +86,12 @@ const Slider = () => {
                 <div className="flex items-center mt-2">
                   <StarRating 
                     rating={card.average_rating} 
-
-
                   />
-<p className='mx-3 text-gray-400'>{Number(card.average_rating).toFixed(1)}</p>
+                  <p className='mx-3 text-gray-400'>{Number(card.average_rating).toFixed(1)}</p>
                 </div>
               </div>
-              </Link>  ))
+            ))
           )}
-          
         </div>
         <div className="flex justify-center m-4">
           <button
