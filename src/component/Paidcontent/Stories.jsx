@@ -42,7 +42,7 @@ const Stories = () => {
       const response = await favouritestories();
       if (response && response.data) {
         console.log(response);
-        setData(response.data);
+        // setData(response.data);
         setFilteredData(response.data); 
       }else{
         setFilteredData([]); 
