@@ -57,6 +57,7 @@ export const getCurrentUser = async () => {
 };
 
 //////////////////////
+
 export const changepassword = async (new_password, current_password, confirm_password) => {
   try {
     const token = Cookies.get('token');
@@ -68,7 +69,6 @@ export const changepassword = async (new_password, current_password, confirm_pas
         {
           new_password,
           current_password,
-          confirm_password
         },
         {
           headers: {
