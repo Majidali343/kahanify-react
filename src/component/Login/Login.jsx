@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
@@ -15,7 +15,29 @@ function Login() {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm(); 
   const [error, setError] = useState("");
+const[membership , setMembership]=useState();
+  
+  const fetchUserData = useCallback(async () => {
+    try {
+      const response = await getCurrentUser();
+      if (response && response.user) {
+        const user = response.user;
+       
+        if (response.membership !== undefined) {
+          setMembership(response.membership);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }, []);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchUserData();
+    }
+  }, [isLoggedIn, fetchUserData]);
+  
   const login = async (data) => {
     console.log(data)
     setError("");
@@ -27,7 +49,12 @@ function Login() {
           token: response.token, 
           rememberMe: data.remember_me 
         }));
+       if(membership=='true'){
+        navigate("Paidcontent");
+       } else{
         navigate("/");
+       }
+        
       }
     } catch (error) {
       setError(error.response?.data?.message || error.message);
