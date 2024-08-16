@@ -182,7 +182,7 @@ export const userprofile = async () => {
     return response.data;
   } catch (error) {
     console.error('Error update image', error);
-    handleUnauthenticated();
+    
 
     throw error;
   }
@@ -243,7 +243,6 @@ if(firstElement.years){
     
   } catch (error) {
     console.error('Error update image', error);
-    handleUnauthenticated();
 
     throw error;
   }
@@ -287,7 +286,6 @@ const response = await axios.post(
 
     return response.data;
   } catch (error) {
-    handleUnauthenticated();
 
     console.error('Error update image', error);
     throw error;
@@ -321,7 +319,7 @@ console.log ( commentData.kahani_id)
     return response.data;
   } catch (error) {
     console.error('Error sending comment', error);
-    handleUnauthenticated();
+
     toast.error('You have already commented on this post.');
     throw error;
   }
@@ -348,7 +346,7 @@ export const updatecomments = async (id) => {
     return response.data;
   } catch (error) {
     console.error('Error updating comments', error);
-    handleUnauthenticated();
+
 
     throw error;
   }
@@ -376,7 +374,6 @@ console.log (description)
     return response.data;
   } catch (error) {
     console.error('Error sending comment', error);
-    handleUnauthenticated();
 
     throw error;
   }

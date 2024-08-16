@@ -43,12 +43,12 @@ function App() {
           <Route path="Paidcontent" element={<PrivateRoute element={<Paidcontent />} />} />
           <Route path="Privacy" element={<Privacy />} />
           <Route path="Conditions" element={<Conditions />} />
-          <Route path="kahani/:id" element={<SingleKahani />} />
           <Route path="ForgotPassword" element={<ForgotPassword />} />
           <Route path="reset-password" element={<ResetPassword />} />
           <Route path="Refund" element={<Refund />} />
           <Route path="FAQs" element={<FAQs />} />
         </Route>
+        <Route path="kahani/:id" element={<SingleKahani />} />
         <Route path="FreeStory" element={<FreeStory />} />
         <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />} />
       </Routes>
