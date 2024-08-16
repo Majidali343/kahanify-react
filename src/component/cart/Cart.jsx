@@ -136,7 +136,7 @@ return (
 
 
 
-    <div className="container mx-auto md:mx-11 py-8">
+    <div className="container mx-auto md:px-11 py-8">
       <h2 className="text-2xl font-bold text-center mb-4">Get Access to All The Audio Stories on Kahanify</h2>
 
       <div className="flex flex-col md:flex-row">
