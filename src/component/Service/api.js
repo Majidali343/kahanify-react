@@ -115,8 +115,7 @@ export const updateimage = async (formData) => {
     return response.data;
   } catch (error) {
     console.error('Error updating image', error);
-    handleUnauthenticated();
-
+   
     throw error;
   }
 };

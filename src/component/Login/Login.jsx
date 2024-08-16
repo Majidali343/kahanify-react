@@ -15,29 +15,8 @@ function Login() {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm(); 
   const [error, setError] = useState("");
-const[membership , setMembership]=useState();
   
-  const fetchUserData = useCallback(async () => {
-    try {
-      const response = await getCurrentUser();
-      if (response && response.user) {
-        const user = response.user;
-       
-        if (response.membership !== undefined) {
-          setMembership(response.membership);
-        }
-      }
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
-  }, []);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      fetchUserData();
-    }
-  }, [isLoggedIn, fetchUserData]);
-  
   const login = async (data) => {
     console.log(data)
     setError("");
@@ -49,18 +28,14 @@ const[membership , setMembership]=useState();
           token: response.token, 
           rememberMe: data.remember_me 
         }));
-       if(membership=='true'){
-        navigate("Paidcontent");
-       } else{
-        navigate("/");
-       }
+        navigate("/Package");
         
       }
     } catch (error) {
       setError(error.response?.data?.message || error.message);
     }
   };
-  
+
   return (
     <div className="container mx-auto flex items-center justify-center h-[80vh] p-4">
       <div className="max-w-md w-full p-6 bg-white shadow-lg rounded-lg border border-gray-200">
@@ -75,8 +50,8 @@ const[membership , setMembership]=useState();
         <h1 className="text-black font-bold py-2 px-4 mb-4 text-xl rounded-t-lg">Sign In</h1>
         
         {error && <div className="text-red-500 font-bold text-center mb-4">{error}</div>}
-        {errors.username_or_email && <span className="text-red-500 font-bold text-sm">{errors.username_or_email.message}</span>}
-        {errors.password && <span className="text-red-500 font-bold text-sm">{errors.password.message}</span>}
+        {errors.username_or_email && <span className="text-red-500 text-center font-bold text-sm">{errors.username_or_email.message}</span>}
+        {errors.password && <span className="text-red-500 font-bold text-center text-sm">{errors.password.message}</span>}
         
         <form onSubmit={handleSubmit(login)}>
           <div className="mb-4 relative">

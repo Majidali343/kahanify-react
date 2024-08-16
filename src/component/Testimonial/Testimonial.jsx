@@ -53,7 +53,7 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="container  px-4 py-16">
+    <div className="container   py-16">
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold text-[#18003c] mb-4">What our Members Think About Us?</h2>
         <p className="text-[#18003c] text-sm">

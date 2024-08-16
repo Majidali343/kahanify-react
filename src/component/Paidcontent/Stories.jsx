@@ -124,10 +124,10 @@ const Stories = () => {
            {hasSearchResults || searchQuery === '' ? (
         <>
           <div className="relative">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-2 md:mx-6 gap-4">
               {filteredData.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
                 <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}>
-                  <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col mx-8 p-4">
+                  <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col mx-4 p-4">
                     <img 
                       src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} 
                       alt="story" 

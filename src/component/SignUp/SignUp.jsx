@@ -55,12 +55,12 @@ function SignUp() {
         {error.phone ? <div className="text-red-500 font-bold text-center "><p>{error.phone}</p><br /></div> : ""}
         {error.username ? <div className="text-red-500 font-bold text-center "><p>{error.username}</p><br /></div> : ""}
        
-        {errors.username && <span className="text-red-500 font-bold text-sm"><p>{errors.username.message}</p><br /></span>} 
-        {errors.email && <span className="text-red-500 font-bold text-sm"> <p>{errors.email.message}</p> <br /></span>} 
+        {errors.username && <span className="text-red-500 font-bold text-center text-sm"><p>{errors.username.message}</p><br /></span>} 
+        {errors.email && <span className="text-red-500 font-bold  text-center text-sm"> <p>{errors.email.message}</p> <br /></span>} 
         {/* {errors.phone && <span className="text-red-500 font-bold text-sm">{errors.phone.message}</span>}  */}
-        {errors.password && <span className="text-red-500 font-bold text-sm"><p>{errors.password.message}</p><br /></span>} 
-        {errors.confirmPassword && <span className="text-red-500 font-bold text-sm"><p>{errors.confirmPassword.message} </p><br /></span>} 
-        {errors.terms && <span className="text-red-500 font-bold text-sm"><p>{errors.terms.message}</p> <br /></span>} 
+        {errors.password && <span className="text-red-500 font-bold text-center text-sm"><p>{errors.password.message}</p><br /></span>} 
+        {errors.confirmPassword && <span className="text-red-500 text-center font-bold text-sm"><p>{errors.confirmPassword.message} </p><br /></span>} 
+        {errors.terms && <span className="text-red-500 font-bold text-center text-sm"><p>{errors.terms.message}</p> <br /></span>} 
 
 
         <form onSubmit={handleSubmit(create)}>

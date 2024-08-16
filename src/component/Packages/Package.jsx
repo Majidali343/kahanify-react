@@ -127,7 +127,7 @@ function Package() {
         </div>
         <div className="flex bg-blue-100  items-center m-8 p-5 pl-12 border-l-4 border-green-500">
           <p className='pl-4'>You are logged in as username 
-            <span className='font-bold'> {name}</span>
+            <span className='font-bold mx-1'> {name}</span>
             if you would like to use a different account for this membership, log out now.
           </p>
         </div>

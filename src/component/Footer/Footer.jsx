@@ -60,29 +60,29 @@ function Footer() {
           </ul>
         </nav>
         <div className="mt-4 md:mt-0">
-          <ul className="flex justify-center space-x-2">
+          <ul className="flex justify-center  space-x-2">
             <li>
               <Link to = 'https://www.facebook.com/KahanifyOfficial'>
-              <img src={asset24} alt="Icon 1" className="h-6 w-6 hover:scale-105 md:h-6 md:w-6" />
+              <img src={asset24} alt="Icon 1" className="h-6 w-6 hover:scale-105 mx-3 md:h-6 md:w-6" />
               </Link>
             </li>
             <li>
             <Link to = 'https://www.instagram.com/kahanifyofficial/' >
 
-              <img src={asset25} alt="Icon 2" className="h-6 w-6 md:h-6 hover:scale-105 md:w-6" />
+              <img src={asset25} alt="Icon 2" className="h-6 w-6 md:h-6 hover:scale-105 mx-3 md:w-6" />
               </Link>
               
             </li>
             <li>
             
-              <img src={asset26} alt="Icon 3" className="h-6 w-6 md:h-6 hover:scale-105 md:w-6" />
+              <img src={asset26} alt="Icon 3" className="h-6 w-6 md:h-6 hover:scale-105 mx-3 md:w-6" />
               
             
             </li>
             <li>
             <Link to = 'https://www.youtube.com/channel/UCnrRuc4QSzlenj_Soet80uQ'>
             
-              <img src={asset27} alt="Icon 4" className="h-6 w-6 md:h-6 hover:scale-105  md:w-6" />
+              <img src={asset27} alt="Icon 4" className="h-6 w-6 md:h-6 hover:scale-105 mx-3 md:w-6" />
               </Link>
             
             </li>

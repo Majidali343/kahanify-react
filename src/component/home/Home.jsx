@@ -58,9 +58,9 @@ import Testimonial from '../Testimonial/Testimonial';
       </div>
     </div>
   </div>
-  <div class="bg-[#18003c] h-full m-0 p-0 flex flex-col lg:flex-row">
+  <div class="bg-[#18003c] lg:h-[110vh] md:h-auto m-0 p-0 flex flex-col lg:flex-row">
   <div class="w-full lg:w-1/2 flex-shrink-0">
-    <img src={asset1} alt="story" class="object-cover h-[50vh] md:h-full w-full" />
+    <img src={asset1} alt="story" class=" object-cover h-[50vh] md:h-full w-full" />
   </div>
 <div className='w-full lg:w-1/2 h-full'>
   <div class=" bg-cover bg-center flex flex-col items-center justify-between  sm:p-16 pt-[30px] sm:pt-[80px]"
@@ -75,9 +75,9 @@ import Testimonial from '../Testimonial/Testimonial';
       <a href="#" class="hover:underline">FREE STORY</a>
     </h1>
   
-    <div class="flex flex-col items-center  mt-16 sm:mt-16 md:mt-18 lg:mt-48 xl:mt-60 2xl:mt-60 ">
+    <div class="flex flex-col items-center  mt-16 sm:mt-16 md:mt-24 lg:mt-14 xl:mt-44 2xl:mt-60 ">
       <p class="text-white font-bold text-lg mt-16 pt-8 md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
-      <button class="bg-white text-[#18003c] py-3 my-4 px-6 font-bold rounded hover:bg-pink-600 hover:text-white">
+      <button class="bg-white text-[#18003c] py-3  my-4 px-6 font-bold rounded hover:bg-pink-600 hover:text-white">
         <Link to='/FreeStory'>Listen Now</Link>
       </button>
       </div>
@@ -89,12 +89,12 @@ import Testimonial from '../Testimonial/Testimonial';
 
 <div>
 <div>
-  <h1 className='text-center  text-4xl text-[#18003c] p-4 font-bold '>
+  <h1 className='text-center  text-4xl text-[#18003c] py-4 mt-4 font-bold '>
   POPULAR STORIES
   </h1>
 </div>
 
-<div class="p-4">
+<div class="px-4">
 </div>
 <Slider />
   </div>
@@ -328,6 +328,10 @@ import Testimonial from '../Testimonial/Testimonial';
     <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
   </p>
 </div>
+<button class="bg-white text-[#18003c] text-center urdu px-3 py-2 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
+        <Link to='/signup'> رجسٹر کریں</Link>
+      </button>
+     
 </div>
     </div>
     </div>
@@ -335,8 +339,11 @@ import Testimonial from '../Testimonial/Testimonial';
   
 
 </div>
-<div className='w-aut bg-white'>
+<div className=' flex flex-col justify-center items-center bg-white'>
+
+<div className='w-[80vw]'>
 <Testimonial/>
+  </div>
 
 </div>
    </>
