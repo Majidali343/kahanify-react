@@ -179,7 +179,7 @@ function SingleKahani() {
               </div>
             </form>
             {comments.length > 0 && (
-              <article className="text-base article bg-[#18003c] h-[60vh] overflow-scroll overflow-x-auto w-full rounded-lg border-t border-gray-200">
+              <article className="text-base article bg-[#18003c]  overflow-scroll overflow-x-auto w-full rounded-lg border-t border-gray-200">
                 {comments.map((comment) => (
                   <div key={comment.id} className="p-6">
                     <footer className="flex justify-between items-center mb-2">

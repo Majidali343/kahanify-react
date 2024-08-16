@@ -139,10 +139,10 @@ const Stories = () => {
                     <div>
                       <div
                         className="bg-cover flex justify-between text-black p-2 rounded cursor-pointer"
-                        style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px' }}
+                        style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px', content:'contain' }}
                       >
                         <button className="block rounded border border-black mx-12 text-center text-xs p-1">3+</button>
-                        <p className="block text-gray-500 ml-2">{card.views}</p>
+                        <p className="block text-gray-500 mr-6">{card.views}</p>
                       </div>
                     </div>
                     <div className="flex items-center mt-2">
