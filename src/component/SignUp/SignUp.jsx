@@ -51,7 +51,7 @@ function SignUp() {
       <div className="max-w-md w-full p-6 bg-white shadow-lg rounded-lg border border-gray-200">
         <h1 className='font-bold text-xl mb-2'>Sign Up</h1>
         
-        {/* {error.email ? <div className="text-red-500 font-bold text-center ">{error.email}</div> : ""} */}
+        {error.email ? <div className="text-red-500 font-bold text-center ">{error.email}</div> : ""}
         {error.phone ? <div className="text-red-500 font-bold text-center "><p>{error.phone}</p><br /></div> : ""}
         {error.username ? <div className="text-red-500 font-bold text-center "><p>{error.username}</p><br /></div> : ""}
        
