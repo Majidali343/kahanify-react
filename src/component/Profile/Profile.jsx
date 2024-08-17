@@ -1,9 +1,13 @@
-import React, { useState, useRef , useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 import { asset34, asset35, asset36 } from '../imageLoader';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
-import { getCurrentUser, changepassword, updateimage, userprofile, sendReveiw,getlogout } from '../Service/api';  
+import Cookies from 'js-cookie';
+import { getCurrentUser, updateimage, userprofile, sendReveiw, getlogout } from '../Service/api';
+export const API_URL = import.meta.env.VITE_API_URL;
 
 function Profile() {
   const [name, setName] = useState('');
@@ -13,13 +17,13 @@ function Profile() {
   const [confirm_password, setRetypeNewPassword] = useState('');
   const [experience, setExperience] = useState('');
   const [profileimage, setProfileImage] = useState(asset34);
-  const [error, setError] = useState('');  
-  const [success, setSuccess] = useState(''); 
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [imageFile, setImageFile] = useState(null);
-  
+
   const fileInputRef = useRef(null);
 
-  
+
   const handlePasswordChange = async (event) => {
     event.preventDefault();
     if (new_password !== confirm_password) {
@@ -27,89 +31,113 @@ function Profile() {
       return;
     }
     setError('');
-    
+    console.log(new_password, "jhjehfj")
+    console.log(current_password, "ccccccccc")
+
+    const token = Cookies.get('token');
+
     try {
-      await changepassword({
-        new_password,
-        current_password
-        
-      });
-      setSuccess('Password changed successfully');
+
+
+      const response = await axios.post(
+        `${API_URL}/updatepassword`,
+        {
+          new_password,
+          current_password,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json'
+          }
+        }
+      );
+
+      toast.success(response.data.message)
+
     } catch (error) {
-      setError(error.response?.data?.message || error.message);
+
+         toast.error(error.response.data.message);
     }
+
   };
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await getCurrentUser();
-        console.log(response); 
+        console.log(response);
 
         if (response && response.user) {
-          const user = response.user; 
-                    console.log(user); 
+          const user = response.user;
+          console.log(user);
           if (user.username) {
-            console.log(user.username); 
-            setName(user.username);    
+            console.log(user.username);
+            setName(user.username);
           }
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
     };
-  
+
     fetchUserData();
   }, []);
-  
+
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await userprofile();
         console.log(response);
-  
+
         if (response && response.user) {
           const user = response.user;
           console.log(user);
           if (user.profileimage) {
             console.log(user.profileimage);
+<<<<<<< HEAD
             // setProfileImage(user.profileimage); 
             const image =(user.profileimage);    
 
         setProfileImage(`https://kahaniapi.realtechcrm.online/storage/app/public/${image}`);
        }
+=======
+            // setProfileImage(user.profileimage);    
+            setProfileImage(`https://kahaniapi.realtechcrm.online/storage/app/public/${user.profileimage}`);
+          }
+>>>>>>> f3673cbb346319a94b8b04d6457b9923decc2053
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
     };
-  
+
     fetchUserData();
-  }, [profileimage]); 
-  
+  }, [profileimage]);
+
 
 
 
   const handleCameraClick = () => {
     if (fileInputRef.current) {
-      fileInputRef.current.click(); 
+      fileInputRef.current.click();
     }
   };
 
- 
- 
- 
+
+
+
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
       setImageFile(file);
       const imageUrl = URL.createObjectURL(file);
       setProfileImage(imageUrl);
-  
+
       const formData = new FormData();
-      formData.append('profileimage', file); 
-  
+      formData.append('profileimage', file);
+
       try {
         await updateimage(formData);
         setSuccess('Image updated successfully');
@@ -119,32 +147,32 @@ function Profile() {
     }
   };
 
- 
+
 
   const handleLogout = async () => {
     try {
       const response = await getlogout();
-      console.log(response); 
-  window.location.href = 'login'; 
-     
+      console.log(response);
+      window.location.href = 'login';
+
     } catch (error) {
       console.error('Error logging out:', error);
     }
   };
- 
 
-  
+
+
   const handleExperice = async (e) => {
-  try {
-    
-    await sendReveiw(experience);
-    setExperience(''); 
-    setSuccess('Thanks for share Experience');
-  } catch (error) {
-    console.error('Error posting reviw:', error);
-  }
+    try {
 
-}
+      await sendReveiw(experience);
+      setExperience('');
+      setSuccess('Thanks for share Experience');
+    } catch (error) {
+      console.error('Error posting reviw:', error);
+    }
+
+  }
 
 
 
@@ -167,7 +195,7 @@ function Profile() {
               <div className="relative w-40 h-40 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
                 {/* <img src={`https://kahaniapi.realtechcrm.online/storage/app/public/${profileimage}`} alt="Profile" className="w-full h-full object-cover" /> */}
                 <img src={profileimage} alt="Profile" className="w-full h-full object-cover" />
-   
+
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 py-1 flex items-center justify-center">
                   <button onClick={handleCameraClick}>
                     <img className='w-4 h-4' src={asset36} alt="camera icon" />
@@ -181,9 +209,9 @@ function Profile() {
               name="profileimages"
               accept=".png, .jpg, .jpeg"
               onChange={handleImageChange}
-              style={{ display: 'none' }}  
-              ref={fileInputRef} 
-             />
+              style={{ display: 'none' }}
+              ref={fileInputRef}
+            />
           </div>
           <div className="flex-1">
             <div>
@@ -219,63 +247,63 @@ function Profile() {
             <div className="mt-4">
               <h3 className="text-lg pt-4 font-bold">Change Password</h3>
               <div className='p-4 bg-blue-100'>
-              
-              <form onSubmit={handlePasswordChange}>
-              <div className="grid  grid-cols-1 md:grid-cols-2 gap-4 mt-2">
-           
-              <div>
-                  <label htmlFor="newPassword">Current Password</label>
-                  <input
-                    type="password"
-                    id="currentPassword"
-                    value={current_password}
-                    placeholder='Enter password'
-                    onChange={(e) => setCurrentPassword(e.target.value)}
-                    className="border border-gray-300 p-2 w-full"
-                  />
-                </div>
-                  
-                <div>
-                  <label htmlFor="newPassword">New Password</label>
-                  <input
-                    type="password"
-                    id="newPassword"
-                    value={new_password}
-                    placeholder='Enter password'
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    className="border border-gray-300 p-2 w-full"
-                  />
-                </div>
-                <div>
-                 
-                  <label htmlFor="retypeNewPassword">Re-type New Password</label>
-                  <input
-                    type="password"
-                    id="retypeNewPassword"
-                    placeholder='Confirm password'
-                    value={confirm_password}
-                    onChange={(e) => setRetypeNewPassword(e.target.value)}
-                    className="border border-gray-300 p-2 w-full"
-                  />
-                </div>
-              <div className='flex flex-col md:flex-row justify-end mt-4'>
-              <button
-                  type="submit"
-                  className="bg-blue-500 hover:bg-pink-700 text-white font-bold h-19 px-4 rounded mb-4 md:mb-0"
-                >
-                  Save Changes
-                </button>
-               
-             </div>
-           
-              </div>
-              </form>
-              </div>
-              
-              {error && <p className="text-red-500 font-bold mt-2">{error}</p>}
-                {success && <p className="text-green-500 font-bold mt-2">{success}</p>}
 
-<div className='flex flex-col md:flex-row justify-start mt-4'>
+                <form onSubmit={handlePasswordChange}>
+                  <div className="grid  grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+
+                    <div>
+                      <label htmlFor="newPassword">Current Password</label>
+                      <input
+                        type="password"
+                        id="currentPassword"
+                        value={current_password}
+                        placeholder='Enter password'
+                        onChange={(e) => setCurrentPassword(e.target.value)}
+                        className="border border-gray-300 p-2 w-full"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="newPassword">New Password</label>
+                      <input
+                        type="password"
+                        id="newPassword"
+                        value={new_password}
+                        placeholder='Enter password'
+                        onChange={(e) => setNewPassword(e.target.value)}
+                        className="border border-gray-300 p-2 w-full"
+                      />
+                    </div>
+                    <div>
+
+                      <label htmlFor="Confirm password">Re-type New Password</label>
+                      <input
+                        type="password"
+                        id="Confirm password"
+                        placeholder='Confirm password'
+                        value={confirm_password}
+                        onChange={(e) => setRetypeNewPassword(e.target.value)}
+                        className="border border-gray-300 p-2 w-full"
+                      />
+                    </div>
+                    <div className='flex flex-col md:flex-row justify-end mt-4'>
+                      <button
+                        type="submit"
+                        className="bg-blue-500 hover:bg-pink-700 text-white font-bold h-19 px-4 rounded mb-4 md:mb-0"
+                      >
+                        Save Changes
+                      </button>
+
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+
+              {error && <p className="text-red-500 font-bold mt-2">{error}</p>}
+              {success && <p className="text-green-500 font-bold mt-2">{success}</p>}
+
+              <div className='flex flex-col md:flex-row justify-start mt-4'>
                 <button onClick={handleLogout} className='rounded-xl flex justify-center px-3 py-2 bg-gray-300'>
                   <img className='w-3 self-center mx-1' src={asset35} alt="Logout" />
                   Logout
@@ -289,17 +317,17 @@ function Profile() {
                 value={experience}
                 onChange={(e) => setExperience(e.target.value)}
               />
-              <div className='flex justify-end'> 
-                <button 
-                onClick={handleExperice}
-                className="bg-blue-600 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded mt-2">
+              <div className='flex justify-end'>
+                <button
+                  onClick={handleExperice}
+                  className="bg-blue-600 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded mt-2">
                   Submit
-                </button> 
+                </button>
                 <br />
-              
+
               </div>
               {success && <p className="text-green-500 font-bold mt-2">{success}</p>}
-             
+
             </div>
           </div>
         </div>
