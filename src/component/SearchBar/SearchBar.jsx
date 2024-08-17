@@ -13,7 +13,7 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <div className='flex flex-col items-center'>
-      <div className='relative w-1/3'>
+      <div className='relative w-1/2 md:w-1/3'>
         <input
           type="text"
           value={query}
