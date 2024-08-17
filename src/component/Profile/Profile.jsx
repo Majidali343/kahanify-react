@@ -96,17 +96,9 @@ function Profile() {
           console.log(user);
           if (user.profileimage) {
             console.log(user.profileimage);
-<<<<<<< HEAD
-            // setProfileImage(user.profileimage); 
-            const image =(user.profileimage);    
-
-        setProfileImage(`https://kahaniapi.realtechcrm.online/storage/app/public/${image}`);
-       }
-=======
             // setProfileImage(user.profileimage);    
             setProfileImage(`https://kahaniapi.realtechcrm.online/storage/app/public/${user.profileimage}`);
           }
->>>>>>> f3673cbb346319a94b8b04d6457b9923decc2053
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
