@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {asset38, asset39 ,asset40} from '../imageLoader' ;
+import { Link } from "react-router-dom";
 import {
   faPlay,
   faPause,
@@ -64,9 +65,12 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
   const handleForward = () => {
     audioRef.current.currentTime += 10;
   };
-
+ const handleClose =()=>{
+  setShowStory(false);
+ }
   const handleLike = () => {
     setLike(!like);
+
   };
 
   const formatTime = (seconds) => {
@@ -99,6 +103,21 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
 
   return (
     <div className="bg-[#18003c] w-full h-full p-0 m-0">
+      <div className='min-w-full  '>
+<ul className="flex justify-between align-center">
+  <li>
+<img src={asset40} alt="logo" className="h-20 w-20 p-5" />
+</li>
+  <li className="p-5">
+  <Link to="/login" >
+                <button className="bg-white  px-4 py-2 rounded text-[#18003c] font-bold hover:bg-[#ff0087] transition-transform duration-300 ease-in-out transform hover:scale-105">
+                  Sign In
+                </button>
+              </Link>
+
+  </li>
+</ul>
+</div>
       <div className="flex flex-col items-center justify-center p-0 m-0">
         <div className="text-white p-4 rounded-lg  w-full max-w-lg">
           <div className="text-center mb-4">
@@ -203,7 +222,9 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
                 className={`text-xl ${like ? "text-red-500" : "text-gray-500"}`}
                 aria-label="Like"
               >
+                <Link to='Package'>
                 <FontAwesomeIcon icon={faHeart} />
+                </Link>
               </button>
             </div>{" "}
             <div className="flex items-center">
@@ -331,7 +352,13 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
               حاضر دماغی سے بڑی سے بڑی مشکل حل ہو جاتی ہے
             </p>
             </div>
+            <div className="p-4 flex justify-center items-center" onClick={handleClose}>
+            <button className=" text-white flex justify-center items-center font-bold rounded hover:text-pink-500 font-sans hover:underline "> 
+              Close
+            </button>
+            </div>
           </div>
+          
         )}
       </div>
 

@@ -2,11 +2,11 @@ import React from 'react'
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faPause, faHeart, faBackward, faForward, faEye } from '@fortawesome/free-solid-svg-icons';
-import { asset37 ,asset10 ,asset9 } from '../imageLoader';
+import { asset37 ,asset10 ,asset9, asset24, asset25, asset26, asset27 } from '../imageLoader';
 import audio from '../../assets/audio/Bheriya-aur-chalaak-Bakri.mp3'
 library.add(faPlay, faPause, faHeart, faBackward, faForward, faEye);
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import '../Css/home.css'
 
 function FreeStory() {
@@ -23,20 +23,23 @@ function FreeStory() {
     <meta property="og:type" content="website" />
   </Helmet>
     <div>
+    
+
+
       <AudioPlayer
         audioSrc={audio}
         imageSrc={asset37}
         viewCount={5.6}
       />
 
-<div class="bg-[#18003c] sm:h-[80vh] md:h-[100vh] lg:h-[80vh] xl:h-[75vh] h-auto m-0 p-0">
-        <div class="flex flex-col md:flex-row h-full w-full">
-          <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
-            <img src={asset9} alt="story" class="w-full h-full object-cover" />
-          </div>
 
-       
-          <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right p-8">
+<div class="bg-[#18003c] sm:h-[80vh] md:h-[100vh] lg:h-[90vh] xl:h-[90vh] h-auto m-0 p-0">
+  <div class="flex flex-col md:flex-row h-full w-full">
+    <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
+      <img src={asset9} alt="story" class="w-full h-full object-cover" />
+    </div>
+    
+    <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right p-8">
     <div className='sm:flex  sm:flex-col sm:text-xl'>
       <div className='urdu flex flex-col items-center justify-center'>
   <h1 className='gradient-text  font-bold py-8 text-3xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
@@ -65,13 +68,17 @@ function FreeStory() {
     <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
   </p>
 </div>
+<button class="bg-white text-[#18003c] text-center urdu px-8 py-3 md:mt-16 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
+        <Link to='/signup'> رجسٹر کریں</Link>
+      </button>
+     
 </div>
-</div>          
+    </div>
+    </div>
+  </div>
+  
+
 </div>
-
-
-        </div>
-      </div>
 
       <div className="bg-[#18003c] flex items-center justify-center">
         <div className="p-8">
@@ -99,6 +106,96 @@ function FreeStory() {
           </div>
         </div>
       </div>
+    </div>
+    <div>
+
+    <footer className="bg-[#18003c] text-white py-4 border-t border-yellow-500">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div className="text-center md:text-left mb-4 md:mb-0">
+          <p className="text-xs ">Copyright © 2024 Khanify | Powered by Kahanify</p>
+        </div>
+        <nav className=" flex justify-center ">
+          <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 items-center">
+            <li>
+              <NavLink
+                to="/Privacy"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
+                aria-label="Privacy Policy"
+              >
+                Privacy Policy
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/Conditions"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
+                aria-label="Terms and Conditions"
+              >
+                Terms and Conditions
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/Refund"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
+                aria-label="Refund Policy"
+              >
+                Refund Policy
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/FAQs"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
+                aria-label="FAQ's"
+              >
+                FAQ's
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact-us"
+                className="hover:text-pink-600  mr-3 md:text-sm lg:text-base"
+                aria-label="Contact"
+              >
+                Contact
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <div className="mt-4 md:mt-0">
+          <ul className="flex justify-center  space-x-2">
+            <li>
+              <Link to = 'https://www.facebook.com/KahanifyOfficial'>
+              <img src={asset24} alt="Icon 1" className="h-6 w-6 hover:scale-105 mx-3 md:h-6 md:w-6" />
+              </Link>
+            </li>
+            <li>
+            <Link to = 'https://www.instagram.com/kahanifyofficial/' >
+
+              <img src={asset25} alt="Icon 2" className="h-6 w-6 md:h-6 hover:scale-105 mx-3 md:w-6" />
+              </Link>
+              
+            </li>
+            <li>
+            
+              <img src={asset26} alt="Icon 3" className="h-6 w-6 md:h-6 hover:scale-105 mx-3 md:w-6" />
+              
+            
+            </li>
+            <li>
+            <Link to = 'https://www.youtube.com/channel/UCnrRuc4QSzlenj_Soet80uQ'>
+            
+              <img src={asset27} alt="Icon 4" className="h-6 w-6 md:h-6 hover:scale-105 mx-3 md:w-6" />
+              </Link>
+            
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+
     </div>
     </>
   )

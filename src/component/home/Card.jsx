@@ -63,7 +63,7 @@ const Slider = () => {
             cards.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
               <div 
                 key={card.kahani_id} 
-                className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col p-4"
+                className="bg-white shadow-lg rounded-lg lg:mx-4 overflow-hidden flex flex-col p-4"
                 onClick={() => handleCardClick(card.kahani_id)}
                 style={{ cursor: 'pointer' }}
               >
@@ -76,7 +76,7 @@ const Slider = () => {
                 <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
                 <div>
                   <div
-                    className="bg-cover flex justify-between text-black p-2 rounded cursor-pointer"
+                    className="xl:bg-contain bg:cover bg-no-repeat flex justify-between text-black p-2 rounded cursor-pointer"
                     style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px' }}
                   >
                     <button className="block rounded border border-black mx-12 text-center text-xs p-1">3+</button>

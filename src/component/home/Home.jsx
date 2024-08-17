@@ -27,7 +27,7 @@ import Testimonial from '../Testimonial/Testimonial';
       <div className="flex main">
         <div 
           className="text-white text-center "
-          style={{ margin: '10% 20% 8% 13%' }}
+          style={{ margin: '14% 20% 8% 5%' }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl  heading text-pretty  mb-2">Unlimited  Audio  Stories</h1>
           <h2 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl  2xl:text-3xl mb-4">Listen  Imagine  Enjoy</h2>
@@ -41,18 +41,18 @@ import Testimonial from '../Testimonial/Testimonial';
       </div>
     </div>
     
-    <div className="text-center  sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-8">
-    <div className="w-full  p-4 sm:p-6 md:p-8 lg:p-10 xl:p-4">
-      <div className="text-center mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-4">
+    <div className="flex justify-center items-center flex-col  sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-8">
+    <div className=" p-4 sm:p-6 md:p-8 md:mx-5 lg:p-10 xl:p-4">
+      <div className="text-center mx-2 w-auto sm:mx-4 md:mx-6 lg:mx-8 xl:mx-4">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-sans lg:text-3xl xl:text-3xl 2xl:text-3xl main mx-20 font-bold text-[#200899] border-b border-[#200899]  mb-4 pb-2">
           Audio Tales: Where Imagination Meets the Power of Sound.
         </h1>
       </div>
-      <div className="flex flex-col justify-center items-center font-sans text-center text-[#200899] mx-2 sm:mx-4 md:mx-6 lg:mx-8 xl:mx-12">
+      <div className="flex flex-col justify-center items-center font-sans text-center text-[#200899] mx-2 sm:mx-4 md:mx-6 lg:mx-12 xl:mx-12">
         <p className="text-sm pt-2 mb-4 sm:mb-6 md:mb-6 lg:mb-6 leading-relaxed xl:mb-8">
           Kahanify brings the charm of storytelling to young minds. Embark on a captivating audio journey. Immerse in a world where stories come to life through the magic of sound. Our curated collection of audio stories is tailored for children, fostering imagination, language development, and a love for storytelling. Dive into a world of fanciful narratives, charming characters, and moralistic adventures, designed to spark interest and ignite the joy of listening in the hearts of the little ones. With Kahanify, every moment becomes an opportunity for young minds to explore, learn, and be delighted.
         </p>
-        <button className="bg-blue-700 font-bold flex justify-center self-center text-white  px-3 py-2 text-sm   transition-transform duration-300 ease-in-out rounded transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+        <button className="bg-blue-700 font-bold flex justify-center self-center text-white  px-4 py-2 text-sm   transition-transform duration-300 ease-in-out  transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
           <Link to='/signup'>Register Now</Link>
         </button>
       </div>
@@ -63,7 +63,7 @@ import Testimonial from '../Testimonial/Testimonial';
     <img src={asset1} alt="story" class=" object-cover h-[50vh] md:h-full w-full" />
   </div>
 <div className='w-full lg:w-1/2 h-full'>
-  <div class=" bg-cover bg-center flex flex-col items-center justify-between  sm:p-16 pt-[30px] sm:pt-[80px]"
+  <div class=" bg-cover bg-center flex flex-col items-center justify-between  sm:p-16 lg:p-7 pt-[30px] sm:pt-[80px]"
         style={{ 
          backgroundImage: `url(${asset23})`,
          backgroundSize: '85%',
@@ -71,14 +71,14 @@ import Testimonial from '../Testimonial/Testimonial';
 
        }}
   >
-    <h1 class="text-white font-bold text-4xl md:text-5xl  sm:px-0 sm:m-o sm:text-xl mb-16 px-8 mt-10  text-center">
-      <a href="#" class="hover:underline">FREE STORY</a>
+    <h1 class="text-white font-bold text-4xl md:text-5xl  sm:px-0 sm:m-o sm:text-xl  mb-16  lg:mb-0 px-8   text-center">
+      <a  class="hover:underline">FREE STORY</a>
     </h1>
   
-    <div class="flex flex-col items-center  mt-16 sm:mt-16 md:mt-24 lg:mt-14 xl:mt-44 2xl:mt-60 ">
-      <p class="text-white font-bold text-lg mt-16 pt-8 md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
-      <button class="bg-white text-[#18003c] py-3  my-4 px-6 font-bold rounded hover:bg-pink-600 hover:text-white">
-        <Link to='/FreeStory'>Listen Now</Link>
+    <div class="flex flex-col items-center  mt-16 sm:mt-16 md:mt-24 lg:mt-24 xl:mt-44 2xl:mt-60 ">
+      <p class="text-white font-bold text-lg mt-16 lg:mt-40 pt-8  md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
+      <button class="bg-white text-[#18003c] py-2  my-4 lg:my-10 px-5 font-bold  hover:bg-pink-600 hover:text-white">
+        <Link to='/FreeStory'>Try For Free</Link>
       </button>
       </div>
     </div>
@@ -89,7 +89,7 @@ import Testimonial from '../Testimonial/Testimonial';
 
 <div>
 <div>
-  <h1 className='text-center  text-4xl text-[#18003c] py-4 mt-4 font-bold '>
+  <h1 className='text-center  text-4xl lg:text-6xl text-[#18003c] py-4 mt-4 font-bold '>
   POPULAR STORIES
   </h1>
 </div>
@@ -139,8 +139,8 @@ import Testimonial from '../Testimonial/Testimonial';
 </div>
 </div>
 <div className='flex justify-center'>
-<button className="bg-[#18003c] text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
-  <Link to='/signup' > Register Now</Link></button>
+<button className="bg-blue-700 urdu  text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+  <Link to='/signup' > رجسٹر کریں</Link></button>
   
 </div>
 
@@ -293,7 +293,7 @@ import Testimonial from '../Testimonial/Testimonial';
 </div>
 
 
-<div class="bg-[#18003c] sm:h-[80vh] md:h-[100vh] lg:h-[80vh] xl:h-[75vh] h-auto m-0 p-0">
+<div class="bg-[#18003c] sm:h-[80vh] md:h-[100vh] lg:h-[100vh] xl:h-[95vh] h-auto m-0 p-0">
   <div class="flex flex-col md:flex-row h-full w-full">
     <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
       <img src={asset9} alt="story" class="w-full h-full object-cover" />
@@ -328,7 +328,7 @@ import Testimonial from '../Testimonial/Testimonial';
     <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
   </p>
 </div>
-<button class="bg-white text-[#18003c] text-center urdu px-3 py-2 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
+<button class="bg-white text-[#18003c] text-center urdu px-8 py-3 md:mt-16 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
         <Link to='/signup'> رجسٹر کریں</Link>
       </button>
      

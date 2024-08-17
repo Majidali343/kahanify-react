@@ -41,8 +41,8 @@ function Header() {
 
   return (
     <header className="bg-white text-black border-b-4 border-[#ff0087]">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-4">
+        <div className="relative flex h-20 items-center justify-between">
           {/* Mobile Menu Button */}
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <button

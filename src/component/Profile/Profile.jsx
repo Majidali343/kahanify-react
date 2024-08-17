@@ -74,8 +74,10 @@ function Profile() {
           console.log(user);
           if (user.profileimage) {
             console.log(user.profileimage);
-            // setProfileImage(user.profileimage);    
-        setProfileImage(`https://kahaniapi.realtechcrm.online/storage/app/public/${user.profileimage}`);
+            // setProfileImage(user.profileimage); 
+            const image =(user.profileimage);    
+
+        setProfileImage(`https://kahaniapi.realtechcrm.online/storage/app/public/${image}`);
        }
         }
       } catch (error) {
