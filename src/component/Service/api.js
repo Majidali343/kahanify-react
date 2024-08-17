@@ -4,10 +4,12 @@ import { toast } from 'react-toastify';
 // import { useDispatch } from 'react-redux';
 // import { logout } from '../store/authSlice';
 
-const handleUnauthenticated = () => {
-  Cookies.remove('userData');
+const handleUnauthenticated = (error) => {
+  if(error.response.data.message== "Unauthenticated." )
+ { Cookies.remove('userData');
   Cookies.remove('token');
   window.location.href = 'login'; 
+}
 };
 
 export const API_URL = import.meta.env.VITE_API_URL;
@@ -51,7 +53,7 @@ export const getCurrentUser = async () => {
   } catch (error) {
     console.error('Error fetching current user:', error.response.data.message);
     console.error('Error fetching current user:', error);
-    handleUnauthenticated();
+    handleUnauthenticated(error);
     throw error;
   }
 };
@@ -96,7 +98,7 @@ export const allStories = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching Khanifiy:', error);
-    handleUnauthenticated();
+    handleUnauthenticated(error);
 
     throw error;
   }

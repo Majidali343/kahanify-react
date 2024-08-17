@@ -99,7 +99,9 @@ function Profile() {
             // setProfileImage(user.profileimage);    
             setProfileImage(`https://kahaniapi.realtechcrm.online/storage/app/public/${user.profileimage}`);
           }
+
         }
+
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
