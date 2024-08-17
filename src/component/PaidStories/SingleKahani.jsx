@@ -133,8 +133,8 @@ function SingleKahani() {
         <Singleplayer
 
           id={id}
-          audioSrc={`https://kahaniapi.realtechcrm.online/storage/${audio}`}
-          imageSrc={`https://kahaniapi.realtechcrm.online/storage/${image}`}
+          audioSrc={`http://127.0.0.1:8000/storage/${audio}`}
+          imageSrc={`http://127.0.0.1:8000/storage/${image}`}
           viewCount={views}
           title={title}
           description={description}
@@ -187,7 +187,7 @@ function SingleKahani() {
                         <p className="inline-flex items-center mr-3 text-sm font-semibold">
                           <img
                             className="mr-2 w-6 h-6 rounded-full"
-                            src={`https://kahaniapi.realtechcrm.online/storage/app/public/${comment.user.profileimage}` || asset34}
+                            src={`http://127.0.0.1:8000/storage/app/public/${comment.user.profileimage}` || asset34}
                             alt={comment.user.username || 'Anonymous'}
                           />
                           {comment.user.username || 'Anonymous'}

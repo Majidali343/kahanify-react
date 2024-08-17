@@ -56,41 +56,7 @@ export const getCurrentUser = async () => {
   }
 };
 
-//////////////////////
 
-export const changepassword = async (new_password, current_password) => {
-  try {
-    const token = Cookies.get('token');
-    console.log(token);
-    console.log(new_password, current_password)
-    
-      const response = await axios.post(
-        `${API_URL}/updatepassword`,
-        {
-          new_password,
-          current_password,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      );
-      console.log(response);
-      console.log(response);
- 
-      
-
-      return response.data;
-   
-  } catch (error) {
-    toast.error(error.response.data.new_password[0]);
-    console.error('Error changing password', error.response.data.new_password);
-    
-    throw error;
-  }
-};
-///////////////
 export const updateimage = async (formData) => {
   try {
     const token = Cookies.get('token');
