@@ -10,12 +10,16 @@ import { Link } from 'react-router-dom';
 import '../Css/SignUp.css';
 import { Helmet } from 'react-helmet';
 import { toast } from 'react-toastify';
+import load from '../../assets/Loader.gif'
+
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
@@ -23,6 +27,8 @@ function SignUp() {
   
   const create = async (data) => {
     setError("");
+    setLoading(true);
+
     try {
       const response = await authService.signup(data);
       if (response) {
@@ -31,6 +37,8 @@ function SignUp() {
       }
     } catch (error) {
       setError(error.response.data.errors);
+    }finally {
+      setLoading(false); 
     }
 
     
@@ -172,9 +180,12 @@ function SignUp() {
           <button 
             type="submit" 
             id="signup-btn"
-            className="w-full btn bg-blue-500 text-white font-bold py-2 px-4 rounded-md shadow-md transition-transform transform hover:scale-105 hover:bg-pink-600"
+            className="w-full btn bg-blue-500 text-white flex items-center justify-center font-bold py-2 px-4 rounded-md shadow-md transition-transform transform hover:scale-105 hover:bg-pink-600"
           >
-            Sign Up
+            {
+            loading ?<img src={load} alt="load" className='h-6 w-6' />  : ' Sign Up'
+          }
+           
           </button>
         </form>
 

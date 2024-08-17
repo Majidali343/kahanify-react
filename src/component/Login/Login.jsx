@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { login as authLogin } from '../store/authSlice'; 
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
+import load from '../../assets/Loader.gif'
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,11 +16,13 @@ function Login() {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm(); 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   
 
   const login = async (data) => {
     console.log(data)
     setError("");
+    setLoading(true);
     try {
       const response = await authService.login(data);
       if (response) {
@@ -33,6 +36,8 @@ function Login() {
       }
     } catch (error) {
       setError(error.response?.data?.message || error.message);
+    }finally {
+      setLoading(false); 
     }
   };
 
@@ -92,9 +97,11 @@ function Login() {
 
           <button 
             type="submit" 
-            className="w-full btn bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-pink-600 hover:text-white transition-colors"
-          >
-            Sign In
+            className="w-full btn flex items-center justify-center bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-pink-600 hover:text-white transition-colors"
+          >{
+            loading ?<img src={load} alt="load" className='h-6 w-6' />  : 'Sign In'
+          }
+            
           </button>
 
           <div className='flex flex-col md:flex-row justify-between pt-6 text-sm'>
