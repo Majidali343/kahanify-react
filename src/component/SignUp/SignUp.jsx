@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import '../Css/SignUp.css';
 import { Helmet } from 'react-helmet';
+import { toast } from 'react-toastify';
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,6 +26,7 @@ function SignUp() {
     try {
       const response = await authService.signup(data);
       if (response) {
+        
         navigate("/login");
       }
     } catch (error) {
@@ -164,7 +166,7 @@ function SignUp() {
           </div>
           <div className="mb-4 flex items-center">
             <input type="checkbox" id="terms" name="terms" {...register('terms', { required: 'You must accept the terms' })} className="mr-2" />
-            <label htmlFor="terms" className="text-sm text-gray-700">Accept <span className='text-blue-500' >Terms & Conditions</span></label>
+            <label htmlFor="terms" className="text-sm text-gray-700">Accept <Link to="/Conditions" className='text-blue-500' >Terms & Conditions</Link></label>
           </div>
 
           <button 

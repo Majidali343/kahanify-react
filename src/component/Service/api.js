@@ -33,6 +33,7 @@ export const signup = async (data) => {
   try {
 
     const response = await axios.post(`${API_URL}/register`, data);
+    toast.success("Signup successful!");
     return response.data;
 
   } catch (error) {
