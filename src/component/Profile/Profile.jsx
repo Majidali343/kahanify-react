@@ -97,7 +97,7 @@ function Profile() {
           if (user.profileimage) {
             console.log(user.profileimage);
             // setProfileImage(user.profileimage);    
-            setProfileImage(`http://127.0.0.1:8000/storage/app/public/${user.profileimage}`);
+            setProfileImage(`https://kahaniapi.realtechcrm.online/storage/app/public/${user.profileimage}`);
           }
         }
       } catch (error) {
