@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { updateReview } from '../Service/api';
 import { asset34 } from '../imageLoader';
+import { FaArrowRight } from "react-icons/fa6";
+import { FaArrowLeft } from "react-icons/fa";
 
 const Testimonial = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -61,10 +63,11 @@ const Testimonial = () => {
         <div className="relative flex items-center">
           <button 
             onClick={handlePrev} 
-            className="absolute left-0 z-10 p-2 bg-gray-200 text-gray-700 rounded-full h-10 w-10 hover:bg-gray-300"
+            className=" left-0 z-10 p-2 bg-gray-200 text-gray-700 rounded-full h-10 w-10 hover:bg-gray-300"
             aria-label="Previous Testimonial"
           >
-            &lt;
+            <FaArrowLeft className='self-center' />
+
           </button>
           <div className="w-full overflow-hidden">
             <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
@@ -87,10 +90,10 @@ const Testimonial = () => {
           </div>
           <button 
             onClick={handleNext} 
-            className="absolute right-0 z-10 p-2 bg-gray-200 text-gray-700 rounded-full h-10 w-10 hover:bg-gray-300"
+            className=" right-0 z-10 p-2 bg-gray-200 text-gray-700 rounded-full h-10 w-10 hover:bg-gray-300"
             aria-label="Next Testimonial"
           >
-            &gt;
+            <FaArrowRight  className='self-center'/>
           </button>
         </div>
       )}

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Typing from "react-typing-effect";
 import "../Css/privacy.css";
+import { Link } from "react-router-dom";
+
 
 function Privacy() {
   const [openSection, setOpenSection] = useState(null);
@@ -35,7 +37,7 @@ function Privacy() {
     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold">
       Privacy Policy for
       <Typing
-        className={`px-2 ${
+        className={`px-2 text-[#ff0087] ${
           typingComplete ? "typing-complete" : "typing-active"
         }`}
         text={[" Kahanify.com"]}
@@ -369,7 +371,7 @@ function Privacy() {
                   {" "}
                   If you have any questions or concerns about this Privacy
                   Policy, please contact us at [{" "}
-                  <span className="text-pink-500"> contact@kahanify.com </span>
+                  <span className="text-[#ff0087]"> <Link to="mailto:contact@kahanify.com">contact@kahanify.com</Link> </span>
                   ].
                 </p>
                 <p>
@@ -387,7 +389,7 @@ function Privacy() {
 
 const Section = ({ isOpen, onToggle, title, content }) => (
   <div
-    className={`border-2 border-transparent hover:border-t-pink-600 hover:border-b-pink-600 transition-all duration-300 mb-8 ${
+    className={`border-2 border-transparent hover:border-t-[#ff0087] hover:border-b-pink-600 transition-all duration-300 mb-8 ${
       isOpen ? "border-pink-600 border-4 border-y" : ""
     }`}
   >
@@ -402,7 +404,7 @@ const Section = ({ isOpen, onToggle, title, content }) => (
         {content}
         <button
           onClick={onToggle}
-          className="bg-transparent text-pink-600 font-bold py-2 px-4 mt-4 hover:text-orange-300 transition-all duration-300"
+          className="bg-transparent text-[#ff0087] font-bold py-2 px-4 mt-4 hover:text-orange-300 transition-all duration-300"
         >
           CLOSE
         </button>
@@ -411,7 +413,7 @@ const Section = ({ isOpen, onToggle, title, content }) => (
     {!isOpen && (
       <button
         onClick={onToggle}
-        className="bg-transparent text-pink-600 font-bold py-2 px-4 mt-4 hover:text-orange-300 transition-all duration-300"
+        className="bg-transparent text-[#ff0087] font-bold py-2 px-4 mt-4 hover:text-orange-300 transition-all duration-300"
       >
         READ MORE
       </button>

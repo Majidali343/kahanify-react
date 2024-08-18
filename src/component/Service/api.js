@@ -80,6 +80,7 @@ export const updateimage = async (formData) => {
     console.log(response);
     console.log(response.data.user.profileimage );
     console.log("This is response");
+    toast.success("Profile image update successful!");
 
     return response.data;
   } catch (error) {
@@ -170,10 +171,10 @@ const parsedData = JSON.parse(data);
 
 const firstElement = parsedData[0];
 
-if(firstElement.years){
+if(firstElement.years != "undefined"){
   var years =  firstElement.years;
   var price =firstElement.price;
-  console.log(price)
+  console.log(price, years)
   const response = await axios.post(
     `${API_URL}/createorder`,
     {
@@ -288,8 +289,14 @@ console.log ( commentData.kahani_id)
     return response.data;
   } catch (error) {
     console.error('Error sending comment', error);
+if(error.response.data.message== "The comment field is required." ){
 
-    toast.error('You have already commented on this post.');
+  toast.error('The comment field is empty.');
+}else if (error.response.data.message=="You have already reviewed this kahani.")
+{toast.error('You have already commented on this post.');}
+else{
+  toast.error('Network Error');
+}    
     throw error;
   }
 };

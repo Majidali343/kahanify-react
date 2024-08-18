@@ -2,10 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { getCurrentUser, parchacemembership } from '../Service/api'; 
 import { toast } from 'react-toastify'; 
+import load from '../../assets/Loader.gif'
+import { useNavigate } from 'react-router-dom'; 
+import Paidcontent from '../Paidcontent/Paidcontent';
 
 function Cart() {
   const [cart, setCart] = useState([]);
   const [name, setName] = useState('');
+  const [membership, setMembership] = useState(false); 
+  
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const cartData = sessionStorage.getItem('cart');
@@ -63,6 +70,10 @@ function Cart() {
             setName(user.username);    
           }
         }
+         if (response && response.membership !== undefined) {
+          setMembership(response.membership); 
+          console.log(response.membership)
+        }
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -72,6 +83,7 @@ function Cart() {
   }, []);
 
   const handleCheckOut = async () => {
+    setLoading(true);
     try {
       console.log("Proceeding to checkout...");
       
@@ -88,12 +100,21 @@ function Cart() {
       
       await parchacemembership(purchaseData);
       console.log('Checkout successful!');
+      navigate("/Paidcontent");
+
       sessionStorage.removeItem('cart');    
     } catch (error) {
       console.error('Error during checkout:', error);
+    }finally {
+      setLoading(false); 
     }
   };
   
+
+  if (membership==true) {
+    return <Paidcontent />; 
+  }
+
   return (
     <>
       <Helmet>
@@ -108,7 +129,7 @@ function Cart() {
         <meta name="twitter:image" content="URL-to-your-image" />
       </Helmet>
 
-      <div className="container mx-auto md:px-16 py-8">
+      <div className="container mx-auto px-3 sm:px-3 md:px-16 py-8">
         <h2 className="text-2xl font-bold text-center mb-4">Get Access to All The Audio Stories on Kahanify</h2>
 
         <div className="flex flex-col md:flex-row">
@@ -119,8 +140,8 @@ function Cart() {
                   <th className="text-left">
                     <button className='bg-gray-100 px-5 py-2 border-0 text-sm'>Product</button>
                   </th>
-                  <th className="text-right">
-                    <button className='bg-gray-100 px-5 py-2 border-0 text-sm'>Total</button>
+                  <th className="text-right pl-0 md:pl-0 sm:pl-14">
+                    <button className='bg-gray-100 px-5 py-2 sm:text-end border-0 text-sm'>Total</button>
                   </th>
                 </tr>
               </thead>
@@ -175,14 +196,16 @@ function Cart() {
             </div>
             <button 
               onClick={handleCheckOut}
-              className="bg-blue-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded mt-4">
-              Proceed to Checkout
+              className="bg-blue-500 hover:bg-pink-600 text-white flex items-center justify-center font-bold py-2 px-4 rounded mt-4">
+              {
+            loading ?<img src={load} alt="load" className='h-6 w-6' />  : 'Proceed to Checkout'
+          }
             </button>
           </div>
         </div>
 
         <div className="mt-8">
-          <p className="flex bg-blue-100 items-center p-4 border-l-4 border-green-500">
+          <p className=" bg-blue-100  p-4 border-l-4 border-green-500">
             You are logged in as <span className='pl-1 font-bold'>{name}</span>. If you would like to use a different account for this membership, log out now.
           </p>
         </div>

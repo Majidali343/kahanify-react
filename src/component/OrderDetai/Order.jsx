@@ -32,7 +32,7 @@ function Order() {
 
   return (
     <>
-      <div  className="p-4 md:p-14 mx-2 md:mx-52">
+      <div  className="p-4 md:p-14 mx-2 md:mx-52 min-h-[98vh]">
         <div className="flex-1">
           <div>
             <h1 className="font-bold text-xl border-b-2 pb-3">

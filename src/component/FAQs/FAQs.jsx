@@ -2,6 +2,7 @@ import React from "react";
 import "../Css/contact.css";
 import Accordion from "../Conditions/Accordian";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 function FAQs() {
   return (
     <>
@@ -16,7 +17,7 @@ function FAQs() {
       </Helmet>
       <div className=" bg-[#18003c] text-white">
         <div className="text-center py-6">
-          <h1 className="text-pink-600 text-xl animated-text">FAQ's</h1>
+          <h1 className="text-[#ff0087] text-xl animated-text">FAQ's</h1>
           <h1 className="text-6xl  font-bold animated-heading">
             Frequently Asked Questions
           </h1>
@@ -72,7 +73,7 @@ function FAQs() {
                   Users can manage their subscriptions in their account settings
                   on the Kahanify.com website. If assistance is needed, our
                   customer support team can be contacted at [
-                  <span className="text-pink-600"> contact@kahanify.com </span>{" "}
+                  <span className="text-[#ff0087]"> <Link to="mailto:contact@kahanify.com">contact@kahanify.com</Link> </span>{" "}
                   ].
                 </p>
               </div>
@@ -95,7 +96,7 @@ function FAQs() {
                   In the rare event of technical issues preventing access to the
                   subscribed content, users are encouraged to contact our
                   customer support at [
-                  <span className="text-pink-500"> contact@kahanify.com </span>{" "}
+                  <span className="text-[#ff0087]"> <Link to="mailto:contact@kahanify.com">contact@kahanify.com</Link> </span>{" "}
                   ] we will investigate the matter promptly and, if necessary,
                   may provide a refund or credit for the affected period at our
                   discretion.
@@ -160,7 +161,7 @@ function FAQs() {
                 <p className="my-3 pt-5 ">
                   We welcome user suggestions and feedback! You can reach out to
                   us at [
-                  <span className="text-pink-500"> contact@kahanify.com </span>{" "}
+                  <span className="text-[#ff0087]"><Link to="mailto:contact@kahanify.com">contact@kahanify.com</Link> </span>{" "}
                   ]to share your ideas, comments, or recommendations.
                 </p>
               </div>
@@ -181,7 +182,7 @@ function FAQs() {
                 <p className="my-3 pt-5 ">
                   For any further assistance or inquiries, please reach out to
                   our customer support team at [
-                  <span className="text-pink-600"> contact@kahanify.com </span>{" "}
+                  <span className="text-[#ff0087]"> <Link to="mailto:contact@kahanify.com">contact@kahanify.com</Link> </span>{" "}
                   ]. We’re here to help!{" "}
                 </p>
               </div>

@@ -106,7 +106,8 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
       <div className='min-w-full  '>
 <ul className="flex justify-between align-center">
   <li>
-<img src={asset40} alt="logo" className="h-20 w-20 p-5" />
+    <Link to='/'> <img src={asset40} alt="logo" className="h-20 w-20 p-5" />
+ </Link>
 </li>
   <li className="p-5">
   <Link to="/login" >
@@ -251,17 +252,17 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
         </h1>
       </div>
       <div
-        className={`text-white px-8 mx-8 pt-8 text-right read-story transition-opacity duration-500 ease-in-out ${
+        className={`text-white md:px-8 md:mx-8 sm:px-4 px-4 mx-0 pt-8 text-right read-story transition-opacity duration-500 ease-in-out ${
           showStory ? "opacity-100" : "opacity-0"
         }`}
         style={{ fontFamily: "Noto Nastaliq Urdu, sans-serif" }}
       >
         {showStory && (
-          <div className="px-28 pb-6">
-            <h1 className="text-3xl font-bold py-4 pb-4">
+          <div className=" pb-6 px-4 sm:px-0 md:px-28">
+            <h1 className="md:text-3xl sm:text font-bold py-4 pb-4">
               بھیڑیا اور چالاک بکری
             </h1>
-           <div className="text-base leading-8">
+           <div className="  md:text-base text-base sm:text-sm leading-9 md:leading-10">
             <p >
               ایک چرواہا روز اپنی بکریوں کو چرانے لے جاتا دن بھر گھومنے کے
               باوجود اس کی بکریوں کا پیٹ نہ بھرتا۔ کیونکہ اس گھر کے قریب کی ساری

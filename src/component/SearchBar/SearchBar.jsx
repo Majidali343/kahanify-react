@@ -19,7 +19,7 @@ const SearchBar = ({ onSearch }) => {
           value={query}
           className='border-blue-500 my-8 px-4 border-2 rounded-full w-full h-12 pl-10'
           onChange={handleSearch}
-          placeholder="Search..."
+          placeholder="Urdu Search..."
         />
         <FontAwesomeIcon
           icon={faSearch} 

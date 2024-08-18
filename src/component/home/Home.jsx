@@ -22,14 +22,14 @@ import Testimonial from '../Testimonial/Testimonial';
 
 
     <div
-      className="h-screen bg-cover  responsive-background"
+      className="h-screen bg-cover   responsive-background"
     >   
-      <div className="flex main">
+      <div className="flex main   ">
         <div 
-          className="text-white text-center "
+          className="text-white text-center rest  "
           style={{ margin: '14% 20% 8% 5%' }}
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl  heading text-pretty  mb-2">Unlimited  Audio  Stories</h1>
+          <h1 className="text-3xl sm:text-4xl  md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl  heading text-pretty  mb-2">Unlimited  Audio  Stories</h1>
           <h2 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl  2xl:text-3xl mb-4">Listen  Imagine  Enjoy</h2>
           <button
             className="bg-blue-600 text-base sm:text-lg btn md:text-xl lg:text-xl xl:text-xl 2xl:text-2xl   text-white py-2 px-4 rounded-[6px] text-center transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
@@ -49,7 +49,7 @@ import Testimonial from '../Testimonial/Testimonial';
         </h1>
       </div>
       <div className="flex flex-col justify-center items-center font-sans text-center text-[#200899] mx-2 sm:mx-4 md:mx-6 lg:mx-12 xl:mx-12">
-        <p className="text-sm pt-2 mb-4 sm:mb-6 md:mb-6 lg:mb-6 leading-relaxed xl:mb-8">
+        <p className="text-[0.95rem] pt-2 mb-4 sm:mb-6 md:mb-6 lg:mb-6 leading-relaxed xl:mb-8">
           Kahanify brings the charm of storytelling to young minds. Embark on a captivating audio journey. Immerse in a world where stories come to life through the magic of sound. Our curated collection of audio stories is tailored for children, fostering imagination, language development, and a love for storytelling. Dive into a world of fanciful narratives, charming characters, and moralistic adventures, designed to spark interest and ignite the joy of listening in the hearts of the little ones. With Kahanify, every moment becomes an opportunity for young minds to explore, learn, and be delighted.
         </p>
         <button className="bg-blue-700 font-bold flex justify-center self-center text-white  px-4 py-2 text-sm   transition-transform duration-300 ease-in-out  transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
@@ -71,13 +71,13 @@ import Testimonial from '../Testimonial/Testimonial';
 
        }}
   >
-    <h1 class="text-white font-bold text-4xl md:text-5xl  sm:px-0 sm:m-o sm:text-xl  mb-16  lg:mb-0 px-8   text-center">
+    <h1 class="text-white font-bold text-4xl md:text-5xl  sm:px-0 sm:m-o sm:text-xl mt-10 mb-16  lg:mb-0 px-8   text-center">
       <a  class="hover:underline">FREE STORY</a>
     </h1>
   
-    <div class="flex flex-col items-center  mt-16 sm:mt-16 md:mt-24 lg:mt-24 xl:mt-44 2xl:mt-60 ">
-      <p class="text-white font-bold text-lg mt-16 lg:mt-40 pt-8  md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
-      <button class="bg-white text-[#18003c] py-2  my-4 lg:my-10 px-5 font-bold  hover:bg-pink-600 hover:text-white">
+    <div class="flex flex-col items-center  mt-16 sm:mt-16 md:mt-24 lg:mt-0 xl:mt-30 2xl:mt-60 ">
+      <p class="text-white font-bold text-lg mt-16 lg:mt-72 pt-8 lg:pt-24  md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
+      <button class="bg-white text-[#18003c] py-2  my-4 lg:my-10 lg:mt-16 px-5 font-bold  hover:bg-pink-600 hover:text-white">
         <Link to='/FreeStory'>Try For Free</Link>
       </button>
       </div>
@@ -264,9 +264,9 @@ import Testimonial from '../Testimonial/Testimonial';
 <p className='text-gray-500 text-sm font-bold  my-3 '> Urdu stories play a pivotal role in educating and entertaining children. They foster language development, nurture creativity, and impart important life lessons. By incorporating these stories into a child’s routine, parents and educators can contribute significantly to their holistic growth.</p>
 <h3 className= "text-[#18003c]  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
 
-<h1 className='text-[#ff912c] font-bold mt-6 '>FAQs About Urdu Stories</h1>
+<h1 className='text-[#ff912c] font-bold mt-6  '>FAQs About Urdu Stories</h1>
 
-<ol className='list-decimal'>
+<ol className='list-decimal  mx-3'>
   <li className='text-black-500 text-sm font-bold  my-3'>Are Urdu stories suitable for non-Urdu speakers?</li>
 <p className='text-gray-500 text-sm font-bold  my-3 '> Urdu stories can be enjoyed by anyone, regardless of language background. English translations or bilingual versions are often available.</p>
   

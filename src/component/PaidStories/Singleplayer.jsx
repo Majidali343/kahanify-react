@@ -117,6 +117,9 @@ const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, description })
   const handleVolumeChange = (e) => {
     setVolume(parseFloat(e.target.value));
   };
+const handleClose =() =>{
+  setShowStory(false);
+}
 
   const muteVolume = () => {
     setVolume(0);
@@ -264,15 +267,20 @@ const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, description })
         style={{ fontFamily: "Noto Nastaliq Urdu, sans-serif" }}
       >
         {showStory && (
-          <>
+          <div className="px-2 md:px-7 lg:px-24">
             <h1 className="text-3xl font-bold py-4 pb-4">
               {title}
             </h1>
-            <p className=" text-sm leading-7">
+            <p className=" text-sm  leading-7">
            {description}  
-
             </p>
-          </>
+            <div className="p-4 flex justify-center items-center" onClick={handleClose}>
+            <button className=" text-white flex justify-center items-center font-bold rounded hover:text-pink-500 font-sans hover:underline "> 
+              Close
+            </button>
+            </div>
+
+          </div>
         )}
       </div>
 

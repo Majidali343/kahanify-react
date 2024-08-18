@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import Typing from "react-typing-effect";
 import "../Css/privacy.css";
+import { Link } from "react-router-dom";
 
 function Refund() {
   const [typingComplete, setTypingComplete] = useState(false);
@@ -35,7 +36,7 @@ function Refund() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold">
           Refund Policy for
             <Typing
-              className={`px-2 ${
+              className={`px-2 text-[#ff0087] ${
                 typingComplete ? "typing-complete" : "typing-active"
               }`}
               text={[" Kahanify.com"]}
@@ -59,7 +60,7 @@ function Refund() {
           </p>
         </div>
 
-        <div className="border-2 border-transparent hover:border-t-pink-600 hover:border-b-pink-600 transition-all duration-300 mb-3">
+        <div className="border-2 border-transparent hover:border-t-[#ff0087] hover:border-b-[#ff0087] transition-all duration-300 mb-3">
           <h1 className="text-2xl font-semibold px-4  cursor-pointer">
             1. No Refund Policy:
           </h1>
@@ -71,7 +72,7 @@ function Refund() {
           </div>
         </div>
 
-        <div className="border-2 border-transparent hover:border-t-pink-600 hover:border-b-pink-600 transition-all duration-300 mb-8">
+        <div className="border-2 border-transparent hover:border-t-[#ff0087] hover:border-b-[#ff0087] transition-all duration-300 mb-8">
           <h1 className="text-2xl font-semibold px-4 py-2 cursor-pointer">
             2. Subscription Duration:
           </h1>
@@ -83,7 +84,7 @@ function Refund() {
         </div>
 
 
-        <div className="border-2 border-transparent hover:border-t-pink-600 hover:border-b-pink-600 transition-all duration-300 mb-3">
+        <div className="border-2 border-transparent hover:border-t-[#ff0087] hover:border-b-[#ff0087] transition-all duration-300 mb-3">
           <h1 className="text-2xl font-semibold px-4  cursor-pointer">
             3. Billing and Automatic Renewal:
           </h1>
@@ -95,13 +96,13 @@ function Refund() {
 
           <div className="px-4 ">
             <h2 className="font-bold my-4"> b. Billing Disputes:</h2>
-          <p>In the event of a billing dispute or unauthorized charges, users are encouraged to contact our customer support at [<span className="text-pink-600">contact@kahanify.com</span>]. to seek resolution. However, this does not guarantee a refund
+          <p>In the event of a billing dispute or unauthorized charges, users are encouraged to contact our customer support at [<span className="text-[#ff0087]"><Link to="mailto:contact@kahanify.com">contact@kahanify.com</Link></span>]. to seek resolution. However, this does not guarantee a refund
              </p>
           </div>
         </div>
 
 
-        <div className="border-2 border-transparent hover:border-t-pink-600 hover:border-b-pink-600 transition-all duration-300 mb-3">
+        <div className="border-2 border-transparent hover:border-t-[#ff0087] hover:border-b-[#ff0087] transition-all duration-300 mb-3">
           <h1 className="text-2xl font-semibold px-4  cursor-pointer">
             4. Exceptions:
           </h1>
@@ -113,17 +114,17 @@ function Refund() {
           </div>
         </div>
 
-        <div className="border-2 border-transparent hover:border-t-pink-600 hover:border-b-pink-600 transition-all duration-300 mb-3">
+        <div className="border-2 border-transparent hover:border-t-[#ff0087] hover:border-b-[#ff0087] transition-all duration-300 mb-3">
           <h1 className="text-2xl font-semibold px-4  cursor-pointer">
             5. Contact Us:
           </h1>
           <div className="p-4 ">
           <p>
-          If you have any questions or concerns regarding this Refund Policy, please contact us at [ <span  className="text-pink-600">contact@kahanify.com</span>].</p>
+          If you have any questions or concerns regarding this Refund Policy, please contact us at [ <span  className="text-[#ff0087]"><Link to="mailto:contact@kahanify.com">contact@kahanify.com</Link></span>].</p>
           </div>
         </div>
 
-        <div className="border-2 border-transparent hover:border-t-pink-600 hover:border-b-pink-600 transition-all duration-300 ">
+        <div className="border-2 border-transparent hover:border-t-[#ff0087] hover:border-b-[#ff0087] transition-all duration-300 ">
           <h1 className="text-2xl font-semibold px-4  cursor-pointer">
             6. Changes to Refund Policy:
           </h1>

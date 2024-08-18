@@ -1,6 +1,8 @@
 import React from "react";
 import Accordion from "./Accordian.jsx";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+
 function Conditions() {
   return (
     <>
@@ -41,7 +43,7 @@ function Conditions() {
   <div>
     <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-4xl py-4 sm:py-6 font-bold text-center">
       Terms and Conditions of Use for{" "}
-      <span className="text-pink-600">Kahanify.com</span>
+      <span className="text-[#ff0087]">Kahanify.com</span>
     </h1>
   </div>
         <div>
@@ -170,7 +172,7 @@ function Conditions() {
               <p>
                 In the event of a billing dispute or unauthorized charges, users
                 are encouraged to contact our customer support at
-                [<span className="text-pink-500">contact@kahanify.com</span>] to seek resolution. However, this does
+                [<span className="text-[#ff0087]"><Link to="mailto:contact@kahanify.com">contact@kahanify.com</Link></span>] to seek resolution. However, this does
                 not guarantee a refund.
               </p>
             </div>
@@ -207,9 +209,9 @@ function Conditions() {
             </div>
           </Accordion>
 
-          <Accordion title="11. Changes to Terms and Conditions:">
+          <Accordion title="12. Contact Us:">
             <div>
-              <p className="my-3 pt-5 ">If you have any questions or concerns regarding these Terms and Conditions, please contact us at [<span className="text-pink-600"> contact@kahanify.com</span>]. By using Kahanify.com, you agree to abide by these Terms and Conditions of Use.
+              <p className="my-3 pt-5 ">If you have any questions or concerns regarding these Terms and Conditions, please contact us at [<span className="text-[#ff0087]">  <Link to="mailto:contact@kahanify.com">contact@kahanify.com</Link> </span>]. By using Kahanify.com, you agree to abide by these Terms and Conditions of Use.
 
               </p>
             </div>

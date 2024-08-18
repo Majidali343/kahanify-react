@@ -88,7 +88,7 @@ function FreeStory() {
             </h1>
           </div>
           <div className="flex flex-col justify-center items-center text-center text-white sm:pl-8 sm:pr-8 sm:m-4">
-            <p className="sm:mb-6 text-base">
+            <p className="sm:my-6 my-6 text-base">
               Kahanify brings the charm of storytelling to young minds. Embark
               on a captivating audio journey. Immerse in a world where stories
               come to life through the magic of sound. Our curated collection of

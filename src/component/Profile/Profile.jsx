@@ -8,6 +8,8 @@ import { logout } from '../store/authSlice';
 import Cookies from 'js-cookie';
 import { getCurrentUser, updateimage, userprofile, sendReveiw, getlogout } from '../Service/api';
 export const API_URL = import.meta.env.VITE_API_URL;
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function Profile() {
   const [name, setName] = useState('');
@@ -20,8 +22,12 @@ function Profile() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [imageFile, setImageFile] = useState(null);
+const [email, setEmail]= useState('')
+const fileInputRef = useRef(null);
+const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const fileInputRef = useRef(null);
 
 
   const handlePasswordChange = async (event) => {
@@ -71,6 +77,7 @@ function Profile() {
         if (response && response.user) {
           const user = response.user;
           console.log(user);
+setEmail(user.email);
           if (user.username) {
             console.log(user.username);
             setName(user.username);
@@ -226,12 +233,12 @@ function Profile() {
                 />
               </div>
               <div className="flex flex-col">
-                <label htmlFor="lastName">Last Name</label>
+                <label htmlFor="lastName">Email</label>
                 <input
                   type="text"
                   id="lastName"
-                  placeholder='Last Name'
-                  value={lastName}
+                  placeholder='Email'
+                  value={email}
                   readOnly
                   onChange={(e) => setLastName(e.target.value)}
                   className="border border-gray-300 p-2 w-full"
@@ -245,7 +252,7 @@ function Profile() {
                 <form onSubmit={handlePasswordChange}>
                   <div className="grid  grid-cols-1 md:grid-cols-2 gap-4 mt-2">
 
-                    <div>
+                    {/* <div>
                       <label htmlFor="newPassword">Current Password</label>
                       <input
                         type="password"
@@ -279,7 +286,65 @@ function Profile() {
                         onChange={(e) => setRetypeNewPassword(e.target.value)}
                         className="border border-gray-300 p-2 w-full"
                       />
-                    </div>
+                    </div> */}
+                 
+                 <div className="relative">
+              <label htmlFor="currentPassword">Current Password</label>
+              <input
+                type={showCurrentPassword ? 'text' : 'password'}
+                id="currentPassword"
+                value={current_password}
+                placeholder='Enter password'
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                className="border border-gray-300 p-2 w-full"
+              />
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+              >
+                <FontAwesomeIcon icon={showCurrentPassword ? faEye : faEyeSlash} className="h-5 w-5 pt-6 text-gray-500" />
+              </button>
+            </div>
+
+            <div className="relative">
+              <label htmlFor="newPassword">New Password</label>
+              <input
+                type={showNewPassword ? 'text' : 'password'}
+                id="newPassword"
+                value={new_password}
+                placeholder='Enter password'
+                onChange={(e) => setNewPassword(e.target.value)}
+                className="border border-gray-300 p-2 w-full"
+              />
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                onClick={() => setShowNewPassword(!showNewPassword)}
+              >
+                <FontAwesomeIcon icon={showNewPassword ? faEye : faEyeSlash} className="h-5 w-5 pt-6 text-gray-500" />
+              </button>
+            </div>
+
+            <div className="relative">
+              <label htmlFor="confirmPassword">Re-type New Password</label>
+              <input
+                type={showConfirmPassword ? 'text' : 'password'}
+                id="confirmPassword"
+                placeholder='Confirm password'
+                value={confirm_password}
+                onChange={(e) => setRetypeNewPassword(e.target.value)}
+                className="border border-gray-300 p-2 w-full"
+              />
+              <button
+                type="button"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                <FontAwesomeIcon icon={showConfirmPassword ? faEye : faEyeSlash} className="h-5 pt-6 w-5 text-gray-500" />
+              </button>
+            </div>
+                 
                     <div className='flex flex-col md:flex-row justify-end mt-4'>
                       <button
                         type="submit"
@@ -295,7 +360,7 @@ function Profile() {
               </div>
 
               {error && <p className="text-red-500 font-bold mt-2">{error}</p>}
-              {success && <p className="text-green-500 font-bold mt-2">{success}</p>}
+              {/* {success && <p className="text-green-500 font-bold mt-2">{success}</p>} */}
 
               <div className='flex flex-col md:flex-row justify-start mt-4'>
                 <button onClick={handleLogout} className='rounded-xl flex justify-center px-3 py-2 bg-gray-300'>

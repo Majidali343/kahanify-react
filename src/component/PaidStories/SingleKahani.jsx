@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Singleplayer from './Singleplayer';
 import { useParams } from 'react-router-dom';
-import { singleStory } from '../Service/api';
-import StarRating from '../home/StarRating';
-import { Link } from "react-router-dom";
+import { singleStory, getlogout } from '../Service/api';
+// import StarRating from '../home/StarRating';
+import Star from '../Star';
+import { Link, NavLink } from "react-router-dom";
 import "../Css/skahani.css";
 import { postrating, sendcomment, updatecomments , veiws} from '../Service/api';
-import { asset34 } from '../imageLoader';
+import { asset34 ,asset40 ,asset10 ,asset9, asset24, asset25, asset26, asset27} from '../imageLoader';
 import { Helmet } from 'react-helmet';
+import { FaRegUser } from "react-icons/fa";
+import { FaSortDown } from "react-icons/fa";
+import Loader from '../loader/Loader';
+import loadi from '../../assets/Loader.gif'
 
 
 function SingleKahani() {
@@ -23,8 +28,13 @@ function SingleKahani() {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [load, setLoad] = useState(false);
+  // const[CommentLoad, setCommentLoad] = useState(false);
 
   const fetchStories = async () => {
+    setLoading(true);
     try {
       const response = await singleStory(id);
       const storyData = response.data;
@@ -36,6 +46,8 @@ function SingleKahani() {
       setComments(storyData.comments || []);
     } catch (error) {
       console.error('Error fetching stories:', error);
+    }finally {
+      setLoading(false); 
     }
   };
 
@@ -66,29 +78,35 @@ function SingleKahani() {
   const handleCommentChange = (e) => setComment(e.target.value);
 
   const handleSubmit = async () => {
+    setLoad(true);
     try {
       const commentData = { kahani_id: id, text: comment };
       await sendcomment(commentData);
       setComment(''); 
       setIsInputFocused(false); 
       
-      
-      await fetchStories();
+        await fetchStories();
       const response = await updatecomments(id);
       setComments(response || []);
     } catch (error) {
       console.error('Error posting comment:', error);
+    }finally {
+      setLoad(false); 
     }
   };
   
   useEffect(() => {
     const fetchComments = async () => {
+      // setCommentLoad(true);
       try {
         const response = await updatecomments(id);
         setComments(response || []);
       } catch (error) {
         console.error('Error fetching comments:', error);
       }
+      // finally{
+      //   setCommentLoad(false);
+      // }
     };
   
     if (id) { 
@@ -117,6 +135,21 @@ function SingleKahani() {
     });
   };
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(prev => !prev);
+  };
+
+  const handleLogout = async () => {
+    try {
+      const response = await getlogout();
+      console.log(response);
+      window.location.href = 'login';
+
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
   return (
     <div className='bg-[#18003c]'>
          <Helmet>
@@ -130,15 +163,63 @@ function SingleKahani() {
   </Helmet>
    
       <div>
-        <Singleplayer
 
-          id={id}
-          audioSrc={`https://kahaniapi.realtechcrm.online/storage/${audio}`}
-          imageSrc={`https://kahaniapi.realtechcrm.online/storage/${image}`}
-          viewCount={views}
-          title={title}
-          description={description}
-        />
+      <div className='min-w-full  bg-[#18003c]'>
+<ul className="flex justify-between align-center">
+  <li>
+  <Link to="/Paidcontent" >
+<img src={asset40} alt="logo" className="h-20 w-20 p-5" />
+</Link>
+</li>
+  <li className="p-5">
+
+  <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="relative">
+                <button
+                  onClick={toggleDropdown}
+                  className="relative flex items-center  rounded-3xl px-2 py-2 bg-white text-sm text-gray-600  focus:outline-none focus:ring-2 focus:ring-white"
+                >
+                  <span className="sr-only">Open user menu</span>
+                  <FaRegUser  className='h-10 w-6'/>
+                  <FaSortDown  />
+                </button>
+                {isDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5">
+                    <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Profile
+                    </Link>
+                    <Link to="/Member" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Membership Details
+                    </Link>
+                    <Link to="Order" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Order Details
+                    </Link>
+                    
+                    <Link  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    <button onClick={handleLogout} className='border-none'>
+                  Logout
+                </button>
+             
+                    </Link>
+                  </div>
+                )}
+              </div>
+          </div>
+  </li>
+</ul>
+</div>
+{
+            loading ? <div className='flex justify-center items-center'> <Loader /> </div> : 
+            <Singleplayer
+    
+              id={id}
+              audioSrc={`https://kahaniapi.realtechcrm.online/storage/${audio}`}
+              imageSrc={`https://kahaniapi.realtechcrm.online/storage/${image}`}
+              viewCount={views}
+              title={title}
+              description={description}
+            />
+          }
       </div>
       <div>
         <section className="bg-[#18003c] text-[#ffffff] py-8 lg:py-16 antialiased">
@@ -171,23 +252,33 @@ function SingleKahani() {
                 </button>
                 <button
                   type="button"
-                  className="bg-white text-[#18003c] m-3 font-bold py-2 px-4 rounded hover:bg-pink-600 hover:text-white transition-colors"
+                  className="bg-white text-[#18003c] m-3 font-bold py-2 flex justify-center items-center px-4 rounded hover:bg-pink-600 hover:text-white transition-colors"
                   onClick={handleSubmit}
                 >
-                  Comment
+                  
+                {
+            load ? <img src={loadi} alt="load" className='h-6 w-6' />  : "Comment"}
+  
                 </button>
               </div>
+       
             </form>
             {comments.length > 0 && (
               <article className="text-base article bg-[#18003c]  overflow-scroll overflow-x-auto w-full rounded-lg border-t border-gray-200">
+              {/* {
+            CommentLoad ? <div className='flex justify-center items-center'> <Loader /> </div> : 
+       <div> */}
                 {comments.map((comment) => (
                   <div key={comment.id} className="p-6">
-                    <footer className="flex justify-between items-center mb-2">
+                   
+                   <footer className="flex justify-between items-center mb-2">
                       <div className="flex items-center">
                         <p className="inline-flex items-center mr-3 text-sm font-semibold">
                           <img
                             className="mr-2 w-6 h-6 rounded-full"
-                            src={`https://kahaniapi.realtechcrm.online/storage/app/public/${comment.user.profileimage}` || asset34}
+                            // src={  `https://kahaniapi.realtechcrm.online/storage/app/public/${comment.user.profileimage}` || asset34}
+                            src={ comment.user.profileimage ? `https://kahaniapi.realtechcrm.online/storage/app/public/${comment.user.profileimage}` : asset34}
+                       
                             alt={comment.user.username || 'Anonymous'}
                           />
                           {comment.user.username || 'Anonymous'}
@@ -202,6 +293,7 @@ function SingleKahani() {
                     </p>
                   </div>
                 ))}
+                {/* </div> } */}
               </article>
             )}
           </div>
@@ -209,10 +301,11 @@ function SingleKahani() {
       </div>
       <div className="flex justify-center flex-col items-center p-4">
         <h1 className='text-xl text-center text-yellow-500 m-3'>Rate this Story</h1>
-        <div>
-          <StarRating
+        <div className='py-6'>
+          <Star
             rating={rating}
             onChange={handleRating}
+            
           />
         </div>
         <div>
@@ -225,6 +318,94 @@ function SingleKahani() {
           </button>
         </div>
       </div>
+    
+      <footer className="bg-[#18003c] text-white py-4 border-t border-yellow-500">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <div className="text-center md:text-left mb-4 md:mb-0">
+          <p className="text-xs ">Copyright © 2024 Khanify | Powered by Kahanify</p>
+        </div>
+        <nav className=" flex justify-center ">
+          <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 items-center">
+            <li>
+              <NavLink
+                to="/Privacy"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
+                aria-label="Privacy Policy"
+              >
+                Privacy Policy
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/Conditions"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
+                aria-label="Terms and Conditions"
+              >
+                Terms and Conditions
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/Refund"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
+                aria-label="Refund Policy"
+              >
+                Refund Policy
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/FAQs"
+                className="hover:text-pink-600 md:text-sm lg:text-base"
+                aria-label="FAQ's"
+              >
+                FAQ's
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/contact-us"
+                className="hover:text-pink-600  mr-3 md:text-sm lg:text-base"
+                aria-label="Contact"
+              >
+                Contact
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <div className="mt-4 md:mt-0">
+          <ul className="flex justify-center  space-x-2">
+            <li>
+              <Link to = 'https://www.facebook.com/KahanifyOfficial'>
+              <img src={asset24} alt="Icon 1" className="h-6 w-6 hover:scale-105 mx-3 md:h-6 md:w-6" />
+              </Link>
+            </li>
+            <li>
+            <Link to = 'https://www.instagram.com/kahanifyofficial/' >
+
+              <img src={asset25} alt="Icon 2" className="h-6 w-6 md:h-6 hover:scale-105 mx-3 md:w-6" />
+              </Link>
+              
+            </li>
+            <li>
+            
+              <img src={asset26} alt="Icon 3" className="h-6 w-6 md:h-6 hover:scale-105 mx-3 md:w-6" />
+              
+            
+            </li>
+            <li>
+            <Link to = 'https://www.youtube.com/channel/UCnrRuc4QSzlenj_Soet80uQ'>
+            
+              <img src={asset27} alt="Icon 4" className="h-6 w-6 md:h-6 hover:scale-105 mx-3 md:w-6" />
+              </Link>
+            
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    
     </div>
   );
 }
