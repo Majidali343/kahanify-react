@@ -100,7 +100,7 @@ function Cart() {
       
       await parchacemembership(purchaseData);
       console.log('Checkout successful!');
-      navigate("/Paidcontent");
+      // navigate("/Paidcontent");
 
       sessionStorage.removeItem('cart');    
     } catch (error) {

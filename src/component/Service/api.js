@@ -195,7 +195,9 @@ if(firstElement.years != "undefined"){
   window.location.href = response.data.checkout_url;
 }else{
 
-  var Price =firstElement.price;
+  // var Price =firstElement.price;
+  var price = 1;
+  
   const response = await axios.post(
     `${API_URL}/createorder`,
     {
