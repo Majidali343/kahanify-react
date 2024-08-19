@@ -82,7 +82,7 @@ function Header() {
               <div className="relative hidden sm:block">
                 <button
                   onClick={toggleDropdown}
-                  className="relative flex items-center rounded-full px-2 py-2 bg-blue-100 text-sm text-gray-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
+                  className="relative flex items-center rounded-full px-2 py-2 bg-blue-100 text-sm text-gray-600  focus:outline-none focus:ring-2 focus:ring-white"
                 >
                   <span className="sr-only">Open user menu</span>
                   <FaRegUser />

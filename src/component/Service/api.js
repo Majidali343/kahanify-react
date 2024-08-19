@@ -469,7 +469,10 @@ export const getlogout = async () => {
     const response = await axios.get(`${API_URL}/logout`, {
       headers: { Authorization: `Bearer ${token}` }
     });
+    
+    sessionStorage.removeItem('cart'); 
     return response.data;
+    
   } catch (error) {
     console.error('Error fetching current user:', error);
     throw error;
