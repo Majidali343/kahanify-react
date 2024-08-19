@@ -1,5 +1,5 @@
 import React , {useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { asset31, asset32, asset33 } from "../imageLoader";
 import { Helmet } from 'react-helmet';
 import { getCurrentUser } from '../Service/api';  
@@ -101,7 +101,7 @@ function Package() {
 
         <div className="container mx-auto flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-12 px-8 py-6">
           <div className="flex flex-col py-4 items-center">
-            <img src={asset31} className="mb-3" alt="Annual" />
+         <Link to='/Yearly'>   <img src={asset31} className="mb-3" alt="Annual" /></Link>
             <p className="text-2xl text-[#18003c] mb-3 font-bold">Annual Membership</p>
             <p className="font-bold mb-4 text-pink-600 text-xl"><span className='text-gray-500 line-through'>Rs 2500</span> <span className='underline'>Rs 1,460</span></p>
             <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
@@ -111,7 +111,7 @@ function Package() {
             </button>
           </div>
           <div className="flex flex-col py-4 items-center">
-            <img src={asset32} className="mb-3" alt="Phone Icon" />
+            <Link to='/Lifetime'><img src={asset32} className="mb-3" alt="Phone Icon" /></Link>
             <p className="text-2xl mb-3 font-bold text-[#18003c]">Life Time Membership</p>
             <p className="font-bold text-pink-600 text-xl mb-4"> <span className='text-gray-500 line-through'>Rs 7500</span> <span className='underline'> Rs 4,990</span></p>
             <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"

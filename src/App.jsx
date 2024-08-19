@@ -22,6 +22,8 @@ import SingleKahani from './component/PaidStories/SingleKahani';
 import Order from './component/OrderDetai/Order';
 import Member from './component/MemberShip/Member';
 import ScrollToTop from './component/ScrollToTop/ScrollToTop';
+import Lifetime from './component/Lifemember/Lifetime';
+import Yearly from './component/yearly/Yearly';
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.status);
@@ -47,6 +49,9 @@ function App() {
           <Route path="reset-password" element={<ResetPassword />} />
           <Route path="Refund" element={<Refund />} />
           <Route path="FAQs" element={<FAQs />} />
+          <Route path="Lifetime" element={<Lifetime />} />
+          <Route path="Yearly" element={<Yearly/>} />
+
         </Route>
         <Route path="kahani/:id" element={<SingleKahani />} />
         <Route path="FreeStory" element={<FreeStory />} />

@@ -173,12 +173,15 @@ const firstElement = parsedData[0];
 
 if(firstElement.years != "undefined"){
   var years =  firstElement.years;
-  var price =firstElement.price;
+  // var price =firstElement.price;
+  var price = 1;
+
   console.log(price, years)
   const response = await axios.post(
     `${API_URL}/createorder`,
     {
-       price , years
+       price
+        , years
     },
     {
       headers: {
