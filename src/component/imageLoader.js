@@ -21,7 +21,7 @@ import asset19 from "../assets/asset19.svg";
 import asset20 from "../assets/asset20.svg";
 import asset21 from "../assets/asset21.svg";
 import asset22 from "../assets/asset22.svg";
-import asset23 from "../assets/asset23.png";
+import asset23 from "../assets/Kahani1.png";
 import asset24 from "../assets/1.svg";
 import asset25 from "../assets/2.svg";
 import asset26 from "../assets/3.svg";

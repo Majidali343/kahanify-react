@@ -62,12 +62,14 @@ import Testimonial from '../Testimonial/Testimonial';
   <div class="w-full lg:w-1/2 flex-shrink-0">
     <img src={asset1} alt="story" class=" object-cover h-[50vh] md:h-full w-full" />
   </div>
-<div className='w-full lg:w-1/2 h-full'>
+{/* <div className='w-full lg:w-1/2 h-full'>
   <div class=" bg-cover bg-center flex flex-col items-center justify-between  sm:p-16 lg:p-7 pt-[30px] sm:pt-[80px]"
         style={{ 
          backgroundImage: `url(${asset23})`,
          backgroundSize: '85%',
          backgroundRepeat: 'no-repeat',
+
+  filter: brightness(0) invert(1);
 
        }}
   >
@@ -81,8 +83,35 @@ import Testimonial from '../Testimonial/Testimonial';
         <Link to='/FreeStory'>Try For Free</Link>
       </button>
       </div>
+    </div> */}
+  {/* </div> */}
+
+  <div className='w-full lg:w-1/2 h-full flex items-center justify-center flex-col'>
+  
+  <div> 
+    <h1 class="text-white font-bold text-4xl md:text-5xl  sm:px-0 sm:m-o sm:text-xl mt-10 mb-10 md:mb-10 lg:mb-10   px-8   text-center">
+      <a  class="hover:underline">FREE STORY</a>
+    </h1>
     </div>
+  <div className='mt-6 sm:mt-6 md:mt-0 lg:mt-8 xl:mt-8 2xl:mt-10'>
+    <img src={asset23} alt="Kahani"    style={{ 
+         filter: 'brightness(1) invert(0)',
+  
+
+       }}/>
   </div>
+  <div class="flex flex-col items-center  mt-8 sm:mt-8 md:mt-10 lg:mt-8 xl:mt-8 2xl:mt-16">
+      <p class="text-white font-bold text-lg   md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
+      <button class="bg-white text-[#18003c] py-2  my-4 lg:my-10 lg:mt-10 px-5 font-bold  hover:bg-pink-600 hover:text-white">
+        <Link to='/FreeStory'>Try For Free</Link>
+      </button>
+      </div>
+   
+  
+  </div>
+
+
+
 </div>
 
 
@@ -110,7 +139,7 @@ import Testimonial from '../Testimonial/Testimonial';
 <p className='text-right text-gray-500 leading-loose text-xl  m-4 sm:m-8'>
 اسی لئے والدین کی سہولت کے پیش نظر  دے رہا ہے 3سال سے 10 سال تک کی عمر کے بچوں کے لئے دلچسپ اور سبق آموز آڈیو کہانیوں کا آن لائن ایکسس۔ رات کو سونے سے پہلے، دن میں آرام کے وقت یا پھرجب بھی جہاں بھی، بچے کہانی سننا چاہیں، آپ Kahanify کی ممبرشپ حاصل کرکے تمام آڈیو کہانیوں تک رسائی حاصل کر سکتے ہیں۔ اور بچوں کی من چاہی کہانیاں انہیں موبائل پر سنوا سکتے ہیں۔ اگر خود سے پڑھ کر سنانا چاہیں تو Kahanify پر تمام کہانیاں تحریری شکل میں موجود ہیں۔ ہماری ایک تحقیق کے نتیجے میں 2 سال سے 13 سال تک کے اکثر بچوں کو Kahanify کی آڈیو کہانیاں سننا پسند ہے۔
 </p>
-<h3 className= "text-right text-[#18003c] font-sans leading-loose text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-right text-blue-700 font-sans leading-loose text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
 
 
 <p className='text-right text-gray-500 leading-loose text-xl  m-4 sm:m-8 '>
@@ -121,7 +150,7 @@ import Testimonial from '../Testimonial/Testimonial';
 معیاری اور بامقصد کونٹینٹ کی فراہمی کے لئے Kahanify کی ماہانہ اور سالانہ ممبرشپ کے تحت معمولی فیس رکھی گئی ہے۔ جس کے فائدے بیشمار ہونگے اور تفریح ہی تفریح میں بچے بہت سی اچھی باتیں سیکھیں گے۔
 </p>
 
-<h3 className= "text-right text-[#18003c] font-sans sm:text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-right text-blue-700 font-sans sm:text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
 <div className='text-right text-gray-500 leading-loose text-xl   m-4 sm:m-8'>
   <ol  className=' list-right list-inside space-y-2'>
     <li> آڈیو کہانیاں سننے سے بچوں کا حافظہ بہتر </li>
@@ -139,7 +168,7 @@ import Testimonial from '../Testimonial/Testimonial';
 </div>
 </div>
 <div className='flex justify-center'>
-<button className="bg-blue-700 urdu  text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+<button className="bg-[#18003c] urdu  text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
   <Link to='/signup' > رجسٹر کریں</Link></button>
   
 </div>
@@ -207,7 +236,7 @@ import Testimonial from '../Testimonial/Testimonial';
 <p className='text-gray-500 text-sm font-bold  my-4 '>Embark on a storytelling adventure with Kahanify. Whether you’re rediscovering childhood favorites or exploring new narratives, our platform promises an immersive and rewarding experience.
 </p>
 
-<h3 className= "text-[#18003c]  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
 
 
 <h1 className='text-[#ff912c] text-xl sm:text-3xl font-bold mt-8 '>Urdu Stories: Nurturing Imagination and Values in Children</h1>
@@ -225,7 +254,7 @@ import Testimonial from '../Testimonial/Testimonial';
 <p className='text-gray-500 text-sm font-bold  my-3 '>Urdu stories come in various forms, from traditional written narratives to modern audio adaptations. They include moral stories, adventure tales, and bedtime fables, each designed to impart important life lessons.
 </p>
 
-<h3 className= "text-[#18003c]  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
 <h1 className='text-[#ff912c] font-bold mt-6 '>Benefits of Reading Urdu Stories</h1>
 <p className='text-gray-500 text-sm font-bold  my-3 '>Reading Urdu stories benefits children in multiple ways. It enhances language skills, promotes empathy, and stimulates imagination. Moreover, these stories often convey valuable moral teachings in a subtle and engaging manner.
 </p>
@@ -243,7 +272,7 @@ import Testimonial from '../Testimonial/Testimonial';
 
 <h1 className='text-[#ff912c] font-bold mt-6 '>Tips for Making Story Time Engaging</h1>
 <p className='text-gray-500 text-sm font-bold  my-3 '> To maximize the benefits of Urdu stories, incorporate interactive elements and use engaging reading techniques. This not only captures children’s attention but also fosters a love for storytelling.</p>
-<h3 className= "text-[#18003c]  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
 
 
 <h1 className='text-[#ff912c] font-bold mt-6 '>Incorporating Moral Lessons in Urdu Stories</h1>
@@ -252,7 +281,7 @@ import Testimonial from '../Testimonial/Testimonial';
 
 <h1 className='text-[#ff912c] font-bold mt-6 '>Audio Stories: A Modern Approach</h1>
 <p className='text-gray-500 text-sm font-bold  my-3 '> Audio stories provide a dynamic way to experience Urdu narratives. They offer convenience and accessibility, allowing children to enjoy stories anytime, anywhere.</p>
-<h3 className= "text-[#18003c]  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
 
 <h1 className='text-[#ff912c] font-bold mt-6 '>Encouraging Children to Create Their Own Urdu Stories</h1>
 <p className='text-gray-500 text-sm font-bold  my-3 '> Encouraging children to write or narrate their own Urdu stories promotes creativity and self-expression. This process enhances language skills and boosts confidence in young storytellers.</p>
@@ -262,7 +291,7 @@ import Testimonial from '../Testimonial/Testimonial';
 
 <h1 className='text-[#ff912c] font-bold mt-6 '>Conclusion</h1>
 <p className='text-gray-500 text-sm font-bold  my-3 '> Urdu stories play a pivotal role in educating and entertaining children. They foster language development, nurture creativity, and impart important life lessons. By incorporating these stories into a child’s routine, parents and educators can contribute significantly to their holistic growth.</p>
-<h3 className= "text-[#18003c]  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
 
 <h1 className='text-[#ff912c] font-bold mt-6  '>FAQs About Urdu Stories</h1>
 
