@@ -44,7 +44,7 @@ function Header() {
 
   return (
     <header className="bg-white text-black border-b-4 border-[#ff0087]">
-      <div className=" max-w-7xl w-[87%] md:w-[90%] xl:w-[112%] px-2 sm:px-6 lg:px-4">
+      <div className=" mx-auto lg:mx-8 max-w-full px-2 sm:px-6 lg:px-4">
         <div className="relative flex h-20 items-center justify-between">
           <div className="flex flex-1 items-center justify-between md:justify-between">
             <div className={`flex ${isLoggedIn ? 'sm:justify-center' : 'sm:justify-start'} flex-shrink-0 items-center`}>
@@ -77,7 +77,7 @@ function Header() {
             )}
           </div>
 
-          <div className="absolute inset-y-0 right-0 flex items-center  pr-2 sm:static sm:inset-auto sm:ml-16 sm:pr-0">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-16 sm:pr-0">
             {isLoggedIn ? (
               <div className="relative hidden sm:block">
                 <button
