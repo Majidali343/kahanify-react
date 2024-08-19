@@ -196,7 +196,7 @@ if(firstElement.years != "undefined"){
 }else{
 
   // var Price =firstElement.price;
-  var price = 1;
+  var Price = 1;
   
   const response = await axios.post(
     `${API_URL}/createorder`,
