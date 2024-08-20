@@ -204,7 +204,7 @@ const Stories = () => {
   </div>
 </InfiniteScroll>
           ) : (
-            <p className="text-gray-500 mt-2 text-center min-h-[50vh]">{searchQuery ? 'No search results found!' : 'No stories available!'}</p>
+            <p className="text-gray-500 mt-8 font-bold  text-center min-h-[50vh]">{searchQuery ? 'No search results found!' : 'No stories available!'}</p>
           )}
         </div>
       )}
