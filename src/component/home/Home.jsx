@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
  import "../Css/home.css"
  import { Helmet } from 'react-helmet';
 import Testimonial from '../Testimonial/Testimonial';
- function Home() {
+import Pic from '../../assets/Mom.png';
+
+function Home() {
   return (
     <>
 
@@ -322,13 +324,13 @@ import Testimonial from '../Testimonial/Testimonial';
 </div>
 
 
-<div class="bg-[#18003c] sm:h-[80vh] md:h-[100vh] lg:h-[100vh] xl:h-[95vh] h-auto m-0 p-0">
+<div class="bg-[#18003c]  h-auto m-0 p-0">
   <div class="flex flex-col md:flex-row h-full w-full">
     <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
-      <img src={asset9} alt="story" class="w-full h-full object-cover" />
+      <img src={Pic} alt="story" class="w-full h-full object-cover" />
     </div>
     
-    <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right p-8">
+    <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right ">
     <div className='sm:flex  sm:flex-col sm:text-xl'>
       <div className='urdu flex flex-col items-center justify-center'>
   <h1 className='gradient-text  font-bold py-8 text-3xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
@@ -357,7 +359,7 @@ import Testimonial from '../Testimonial/Testimonial';
     <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
   </p>
 </div>
-<button class="bg-white text-[#18003c] text-center urdu px-8 py-3 md:my-10 lg:my-12 xl:my-16 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
+<button class="bg-white text-[#18003c] text-center urdu px-8 py-3 md:my-10 lg:my-8 xl:my-10 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
         <Link to='/signup'> رجسٹر کریں</Link>
       </button>
      

@@ -206,7 +206,7 @@ function Cart() {
             </div>
             <button 
               onClick={handleCheckOut}
-              className="bg-blue-500 hover:bg-pink-600 text-white flex items-center justify-center font-bold py-2 px-4 rounded mt-4">
+              className="bg-blue-500 hover:text-pink-600 text-white flex items-center justify-center font-bold py-2 px-4 rounded mt-4">
               {
             loading ?<img src={load} alt="load" className='h-6 w-6' />  : 'Proceed to Checkout'
           }
