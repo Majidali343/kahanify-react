@@ -64,7 +64,7 @@ const Stories = () => {
       const response = await favouritestories();
       if (response && response.data) {
         setFilteredData(response.data);
-        setHasMore(false);
+        // setHasMore(false);
       } else {
         setFilteredData([]);
       }
@@ -90,6 +90,11 @@ const Stories = () => {
 
     setFilteredData(results);
     setCurrentIndex(0);
+    if (filter !== 'Favorite') {
+      setHasMore(results.length > cardsPerPage);
+    } else {
+      setHasMore(false); 
+    } 
   }, [searchQuery, data, filter]);
 
   const handleSearch = (query) => {
@@ -109,7 +114,7 @@ const Stories = () => {
         return prevIndex;
       }
     });
-  };
+  };  
 
   const hasResults = filteredData.length > 0;
   const hasSearchResults = searchQuery && hasResults;
@@ -156,51 +161,50 @@ const Stories = () => {
           </div>
           
           {hasSearchResults || searchQuery === '' ? (
-            <InfiniteScroll
-              dataLength={filteredData.slice(0, currentIndex + cardsPerPage).length}
-              next={loadMoreData}
-              hasMore={hasMore}
-              // loader={} 
-              loader={
-              <img src={Load} alt="Loading..." className="w-10 h-10" />
-             } 
-              
-              // endMessage={<p className="text-gray-500 text-center">No more stories to load</p>}
+  <InfiniteScroll
+  dataLength={filteredData.slice(0, currentIndex + cardsPerPage).length}
+  next={loadMoreData}
+  hasMore={hasMore}
+  loader={
+    <div className='flex justify-center items-center'>
+    <img src={Load} alt="Loading..." className="w-10 h-10" />
+  </div>}
+  endMessage={<p className="text-gray-500 text-center">No more stories to load</p>}
+>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-2 md:mx-6 gap-4">
+    {filteredData.slice(0, currentIndex + cardsPerPage).map(card => (
+      <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}>
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col mx-4 p-4">
+          <img 
+            src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} 
+            alt="story" 
+            className="w-full h-full object-cover mb-4" 
+          />
+          <h2 className="text-white text-xs">{card.created_at}</h2>
+          <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
+          <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
+          <div>
+            <div
+              className="xl:bg-contain bg:cover bg-no-repeat flex justify-between text-black p-2 rounded cursor-pointer"
+              style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px' }}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-2 md:mx-6 gap-4">
-                {filteredData.slice(0, currentIndex + cardsPerPage).map(card => (
-                  <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}>
-                    <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col mx-4 p-4">
-                      <img 
-                        src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} 
-                        alt="story" 
-                        className="w-full h-full object-cover mb-4" 
-                      />
-                      <h2 className="text-white text-xs">{card.created_at}</h2>
-                      <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
-                      <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
-                      <div>
-                        <div
-                          className="xl:bg-contain bg:cover bg-no-repeat flex justify-between text-black p-2 rounded cursor-pointer"
-                          style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px' }}
-                        >
-                          <button className="block rounded border border-black mx-12 text-center text-xs p-1">3+</button>
-                          <p className="block text-gray-500 ">{card.views}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center mt-2">
-                        <StarRating 
-                          rating={card.average_rating} 
-                        />
-                        <p className='mx-3 text-gray-400'>{Number(card.average_rating).toFixed(1)}</p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </InfiniteScroll>
+              <button className="block rounded border border-black mx-12 text-center text-xs p-1">3+</button>
+              <p className="block text-gray-500 ">{card.views}</p>
+            </div>
+          </div>
+          <div className="flex items-center mt-2">
+            <StarRating 
+              rating={card.average_rating} 
+            />
+            <p className='mx-3 text-gray-400'>{Number(card.average_rating).toFixed(1)}</p>
+          </div>
+        </div>
+      </Link>
+    ))}
+  </div>
+</InfiniteScroll>
           ) : (
-            <p className="text-gray-500 mt-2 text-center min-h-[100vh]">{searchQuery ? 'No search results found!' : 'No stories available!'}</p>
+            <p className="text-gray-500 mt-2 text-center min-h-[50vh]">{searchQuery ? 'No search results found!' : 'No stories available!'}</p>
           )}
         </div>
       )}
