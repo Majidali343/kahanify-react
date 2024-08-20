@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css';
 import { updateReview } from '../Service/api';
 import { asset34 } from '../imageLoader';
-import { FaArrowRight } from "react-icons/fa6";
-import { FaArrowLeft } from "react-icons/fa";
 
 const Testimonial = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [testimonials, setTestimonials] = useState([]);
-  const [image, setImage] = useState(asset34);
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -17,12 +14,6 @@ const Testimonial = () => {
         const data = await updateReview();
         if (data && Array.isArray(data)) {
           setTestimonials(data);
-          if (data.length > 0) {
-            const firstReview = data[0];
-            setDescription(firstReview.description || ''); // Handle empty description
-            setName(firstReview.user.username || ''); // Handle empty name
-            setImage(firstReview.user.profileimage ? `https://kahaniapi.realtechcrm.online/storage/app/public/${firstReview.user.profileimage}` : asset34);
-          }
         }
       } catch (error) {
         console.error('Error fetching testimonials:', error);
@@ -32,72 +23,72 @@ const Testimonial = () => {
     fetchReviews();
   }, []);
 
-  useEffect(() => {
-    if (testimonials.length > 0) {
-      const currentReview = testimonials[currentIndex];
-      setDescription(currentReview.description || ''); // Handle empty description
-      setName(currentReview.user.username || ''); // Handle empty name
-      setImage(currentReview.user.profileimage ? `https://kahaniapi.realtechcrm.online/storage/app/public/${currentReview.user.profileimage}` : asset34);
-    }
-  }, [currentIndex, testimonials]);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
-  };
-
   return (
-    <div className="slider-container mx-auto py-16">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-[#18003c] mb-4">What our Members Think About Us?</h2>
-        <p className="text-[#18003c] text-sm">{description}</p>
-      </div>
-      {testimonials.length === 0 ? (
-        <div className="text-center py-16">
-          <p className="text-lg font-semibold text-gray-600">No reviews available at the moment.</p>
+    <section className="py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14 flex flex-col justify-center items-center max-sm:gap-8">
+          {/* <h2 className="text-4xl text-center font-bold text-gray-900 lg:text-left">Testimonials</h2> */}
+         
+          <h2 className="text-3xl font-bold text-center text-[#18003c] mb-4">What our Members Think About Us?</h2>
+   
         </div>
-      ) : (
-        <div className="relative flex items-center">
-          <button 
-            onClick={handlePrev} 
-            className=" left-0 z-10 p-2 bg-gray-200 text-gray-700 rounded-full h-10 w-10 hover:bg-gray-300"
-            aria-label="Previous Testimonial"
-          >
-            <FaArrowLeft className='self-center' />
 
-          </button>
-          <div className="w-full overflow-hidden">
-            <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="flex-shrink-0 w-full p-2">
-                  <div className="flex flex-col items-center px-2">
-                    <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-gray-300 mb-4">
-                      <img
-                        src={testimonial.user.profileimage ? `https://kahaniapi.realtechcrm.online/storage/app/public/${testimonial.user.profileimage}` : asset34}
-                        alt="User Profile"
-                        className="w-full h-full object-cover cursor-pointer"
-                        onClick={() => setCurrentIndex(index)}
-                      />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-800">{testimonial.user.username}</h3>
-                  </div>
+        {/* Swiper Wrapper */}
+        <Swiper
+          modules={[Navigation, Pagination]}
+          navigation
+          pagination={{ clickable: true }}
+          spaceBetween={28}
+          slidesPerView={3}
+          centeredSlides={true}
+          loop={true}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 28,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 32,
+            },
+          }}
+          className="mySwiper"
+        >
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={index} className="group bg-white border border-solid border-gray-300 rounded-2xl p-6 transition-all duration-500 hover:border-indigo-600">
+              <div className="flex items-center mb-9 gap-2 text-amber-500">
+                {/* Placeholder for rating icons */}
+                <svg className="w-5 h-5" viewBox="0 0 18 17" fill="currentColor" />
+                <svg className="w-5 h-5" viewBox="0 0 18 17" fill="currentColor" />
+                <svg className="w-5 h-5" viewBox="0 0 18 17" fill="currentColor" />
+                <svg className="w-5 h-5" viewBox="0 0 18 17" fill="currentColor" />
+                <svg className="w-5 h-5" viewBox="0 0 18 17" fill="currentColor" />
+              </div>
+              <p className="text-lg text-gray-500 leading-8 mb-9 group-hover:text-gray-800">
+                {testimonial.description || 'No description provided.'}
+              </p>
+              <div className="flex items-center gap-5">
+                <img
+                  className="rounded-full w-14 h-14"
+                  src={testimonial.user.profileimage ? `https://kahaniapi.realtechcrm.online/storage/app/public/${testimonial.user.profileimage}` : asset34}
+                  alt="avatar"
+                />
+                <div className="grid gap-1">
+                  <h5 className="text-gray-900 font-medium group-hover:text-indigo-600">
+                    {testimonial.user.username || 'Anonymous'}
+                  </h5>
+                  {/* <span className="text-sm leading-6 text-gray-500">{testimonial.user.position || 'Position'}</span> */}
                 </div>
-              ))}
-            </div>
-          </div>
-          <button 
-            onClick={handleNext} 
-            className=" right-0 z-10 p-2 bg-gray-200 text-gray-700 rounded-full h-10 w-10 hover:bg-gray-300"
-            aria-label="Next Testimonial"
-          >
-            <FaArrowRight  className='self-center'/>
-          </button>
-        </div>
-      )}
-    </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </section>
   );
 };
 
