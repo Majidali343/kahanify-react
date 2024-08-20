@@ -275,7 +275,7 @@ const handleClose =() =>{
            {description}  
             </p>
             <div className="p-4 flex justify-center items-center" onClick={handleClose}>
-            <button className=" text-white flex justify-center items-center font-bold rounded hover:text-yellow-500 font-sans hover:underline "> 
+            <button className="  flex justify-center items-center font-bold rounded text-yellow-500 font-sans hover:underline "> 
               Close
             </button>
             </div>
