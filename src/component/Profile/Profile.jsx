@@ -178,7 +178,8 @@ setEmail(user.email);
 
       await sendReveiw(experience);
       setExperience('');
-      setSuccess('Thanks for sharing your valuable experience');
+      toast.success('Thanks for sharing your valuable experience');
+      // setSuccess('Thanks for sharing your valuable experience');
     } catch (error) {
       console.error('Error posting reviw:', error);
     }
