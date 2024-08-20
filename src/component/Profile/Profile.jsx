@@ -209,7 +209,7 @@ setEmail(user.email);
 
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 py-1 flex items-center justify-center">
                   <button onClick={handleCameraClick}>
-                    <img className='w-4 h-4' src={asset36} alt="camera icon" />
+                    <img className='w-6 h-6' src={asset36} alt="camera icon" />
                   </button>
                 </div>
               </div>
