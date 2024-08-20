@@ -327,13 +327,13 @@ function Home() {
 <div class="bg-[#18003c]  h-auto m-0 p-0">
   <div class="flex flex-col md:flex-row h-full w-full">
     <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
-      <img src={Pic} alt="story" class="w-full h-full object-cover" />
+      <img src={Pic} alt="story" class="w-full sm:h-[100vh] h-auto xl:h-full object-cover" />
     </div>
     
     <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right ">
-    <div className='sm:flex  sm:flex-col sm:text-xl'>
-      <div className='urdu flex flex-col items-center justify-center'>
-  <h1 className='gradient-text  font-bold py-8 text-3xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <div className='sm:flex   sm:flex-col sm:text-xl'>
+      <div className='urdu flex flex-col items-center h-[100vh] md:h-auto  justify-center'>
+  <h1 className='gradient-text  font-bold py-8 text-xl md:text-3xl ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
     بچوں کے لیےنت نئی پر لطف کہانیاں
   </h1>
 <div className='flex flex-col justify-start'>  
@@ -359,7 +359,7 @@ function Home() {
     <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
   </p>
 </div>
-<button class="bg-white text-[#18003c] text-center urdu px-8 py-3 md:my-10 lg:my-8 xl:my-10 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
+<button class="bg-white text-[#18003c] text-center urdu px-8 py-3 my-8  md:my-10 lg:my-8 xl:my-10 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
         <Link to='/signup'> رجسٹر کریں</Link>
       </button>
      
@@ -372,7 +372,7 @@ function Home() {
 </div>
 <div className=' flex flex-col justify-center items-center bg-white'>
 
-<div className='w-[80vw]'>
+<div className='w-[90vw]'>
 <Testimonial/>
   </div>
 
