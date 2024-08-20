@@ -169,7 +169,7 @@ const Stories = () => {
     <div className='flex justify-center items-center'>
     <img src={Load} alt="Loading..." className="w-10 h-10" />
   </div>}
-  endMessage={<p className="text-gray-500 text-center">No more stories to load</p>}
+  endMessage={<p className="text-gray-500 py-4 font-bold text-center">No more stories to load</p>}
 >
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-2 md:mx-6 gap-4">
     {filteredData.slice(0, currentIndex + cardsPerPage).map(card => (
