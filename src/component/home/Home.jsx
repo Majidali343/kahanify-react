@@ -197,7 +197,7 @@ import Testimonial from '../Testimonial/Testimonial';
 <p className='text-gray-500 text-sm font-bold  my-4 '><span className='text-black'>Family-Friendly:</span>Kids’ bedtime stories to thought-provoking moral tales.
 </p>
 
-<h3 className= "text-[#18003c]  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700   hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
 
 <h1 className='text-[#ff912c] font-bold mt-8 '>Membership Benefits</h1>
 <p className='text-black-500 text-sm font-bold  my-4 '>Unlock a world of Urdu storytelling with a Kahanify membership:</p>
