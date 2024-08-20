@@ -22,6 +22,7 @@ export const login = async (data) => {
     if (response.data.token) {
       Cookies.set('token', response.data.token, { expires: data.rememberMe ? 7 : 0.083 });
     }
+    toast.success("SignIn successful!");
     return response.data;
   } catch (error) {
     console.error('Error logging in:', error);

@@ -3,6 +3,7 @@ import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faPause, faHeart, faBackward, faForward, faEye } from '@fortawesome/free-solid-svg-icons';
 import { asset37 ,asset10 ,asset9, asset24, asset25, asset26, asset27 } from '../imageLoader';
+import Pic from '../../assets/Mom.png';
 import audio from '../../assets/audio/Bheriya-aur-chalaak-Bakri.mp3'
 library.add(faPlay, faPause, faHeart, faBackward, faForward, faEye);
 import { Helmet } from 'react-helmet';
@@ -36,7 +37,7 @@ function FreeStory() {
 <div class="bg-[#18003c] sm:h-[80vh] md:h-[100vh] lg:h-[90vh] xl:h-[90vh] h-auto m-0 p-0">
   <div class="flex flex-col md:flex-row h-full w-full">
     <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
-      <img src={asset9} alt="story" class="w-full h-full object-cover" />
+      <img src={Pic} alt="story" class="w-full h-full object-cover" />
     </div>
     
     <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right p-8">

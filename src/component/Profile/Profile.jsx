@@ -10,6 +10,7 @@ import { getCurrentUser, updateimage, userprofile, sendReveiw, getlogout } from 
 export const API_URL = import.meta.env.VITE_API_URL;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+// import { useForm } from 'react-hook-form';
 
 function Profile() {
   const [name, setName] = useState('');
@@ -32,6 +33,15 @@ const [showCurrentPassword, setShowCurrentPassword] = useState(false);
 
   const handlePasswordChange = async (event) => {
     event.preventDefault();
+     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,20}$/;
+    if (new_password.length < 8 || new_password.length > 20) {
+      toast.error('Password must be between 8 and 20 characters long.')
+      return ;
+    }
+    if (!passwordRegex.test(new_password)) {
+      toast.error('Password must include at least 1 uppercase letter, 1 lowercase letter, and 1 number.');
+      return ;
+    }
     if (new_password !== confirm_password) {
       setError('Passwords do not match');
       return;
@@ -60,7 +70,7 @@ const [showCurrentPassword, setShowCurrentPassword] = useState(false);
       );
 
       toast.success(response.data.message)
-
+      handleLogout();
     } catch (error) {
 
          toast.error(error.response.data.message);
@@ -141,7 +151,7 @@ setEmail(user.email);
 
       try {
         await updateimage(formData);
-        setSuccess('Image updated successfully');
+        // setSuccess('Image updated successfully');
       } catch (error) {
         setError(error.response?.data?.message || error.message);
       }
@@ -168,7 +178,7 @@ setEmail(user.email);
 
       await sendReveiw(experience);
       setExperience('');
-      setSuccess('Thanks for share Experience');
+      setSuccess('Thanks for sharing your valuable experience');
     } catch (error) {
       console.error('Error posting reviw:', error);
     }
@@ -229,7 +239,7 @@ setEmail(user.email);
                   placeholder='First Name'
                   value={name}
                   readOnly
-                  className="border border-gray-300 p-2 w-full"
+                  className="border hover:text-gray-500 border-gray-300 p-2 w-full"
                 />
               </div>
               <div className="flex flex-col">
@@ -241,7 +251,7 @@ setEmail(user.email);
                   value={email}
                   readOnly
                   onChange={(e) => setLastName(e.target.value)}
-                  className="border border-gray-300 p-2 w-full"
+                  className="border border-gray-300 hover:text-gray-500 p-2 w-full"
                 />
               </div>
             </div>

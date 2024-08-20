@@ -4,7 +4,7 @@ import { useParams, Link, NavLink } from 'react-router-dom';
 import { singleStory, getlogout, postrating, sendcomment, updatecomments, veiws } from '../Service/api';
 import Star from '../Star';
 import "../Css/skahani.css";
-import { asset34, asset40, asset10, asset9, asset24, asset25, asset26, asset27 } from '../imageLoader';
+import { asset34, asset41, asset10, asset9, asset24, asset25, asset26, asset27 } from '../imageLoader';
 import { Helmet } from 'react-helmet';
 import { FaRegUser, FaSortDown } from "react-icons/fa";
 import Loader from '../loader/Loader';
@@ -149,7 +149,7 @@ function SingleKahani() {
         <ul className="flex justify-between align-center">
           <li>
             <Link to="/Paidcontent">
-              <img src={asset40} alt="logo" className="h-20 w-20 p-5" />
+            <img src={asset41} alt="logo" className="h-24 w-24 " />
             </Link>
           </li>
           <li className="p-5">

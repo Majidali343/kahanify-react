@@ -52,7 +52,7 @@ import Testimonial from '../Testimonial/Testimonial';
         <p className="text-[0.95rem] pt-2 mb-4 sm:mb-6 md:mb-6 lg:mb-6 leading-relaxed xl:mb-8">
           Kahanify brings the charm of storytelling to young minds. Embark on a captivating audio journey. Immerse in a world where stories come to life through the magic of sound. Our curated collection of audio stories is tailored for children, fostering imagination, language development, and a love for storytelling. Dive into a world of fanciful narratives, charming characters, and moralistic adventures, designed to spark interest and ignite the joy of listening in the hearts of the little ones. With Kahanify, every moment becomes an opportunity for young minds to explore, learn, and be delighted.
         </p>
-        <button className="bg-blue-700 font-bold flex justify-center self-center text-white  px-4 py-2 text-sm   transition-transform duration-300 ease-in-out  transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+        <button className="bg-blue-700 rounded font-bold flex justify-center self-center text-white  px-6 py-3 text-sm   transition-transform duration-300 ease-in-out  transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
           <Link to='/signup'>Register Now</Link>
         </button>
       </div>
@@ -102,7 +102,7 @@ import Testimonial from '../Testimonial/Testimonial';
   </div>
   <div class="flex flex-col items-center  mt-8 sm:mt-8 md:mt-10 lg:mt-8 xl:mt-8 2xl:mt-16">
       <p class="text-white font-bold text-lg   md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
-      <button class="bg-white text-[#18003c] py-2  my-4 lg:my-10 lg:mt-10 px-5 font-bold  hover:bg-pink-600 hover:text-white">
+      <button class="bg-white text-[#18003c] py-2 text-lg my-4 lg:my-10 lg:mt-10 px-7 font-bold  hover:bg-pink-600 hover:text-white">
         <Link to='/FreeStory'>Try For Free</Link>
       </button>
       </div>
@@ -168,7 +168,7 @@ import Testimonial from '../Testimonial/Testimonial';
 </div>
 </div>
 <div className='flex justify-center'>
-<button className="bg-[#18003c] urdu  text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+<button className="bg-blue-700 urdu  text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
   <Link to='/signup' > رجسٹر کریں</Link></button>
   
 </div>
@@ -315,7 +315,7 @@ import Testimonial from '../Testimonial/Testimonial';
   <h1 className='text-[#ff912c] font-bold mt-8 text-xl sm:text-2xl'>  Unleash the magic of Urdu storytelling – Join Kahanify today!
   </h1>
   <div className='flex justify-center m-4 sm:m-8'>
-  <button className="bg-[#18003c] text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+  <button className="bg-blue-700 text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
   <Link to='/signup' > Register Now</Link></button>  
       </div>
 </div>
@@ -357,7 +357,7 @@ import Testimonial from '../Testimonial/Testimonial';
     <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
   </p>
 </div>
-<button class="bg-white text-[#18003c] text-center urdu px-8 py-3 md:mt-16 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
+<button class="bg-white text-[#18003c] text-center urdu px-8 py-3 md:my-10 lg:my-12 xl:my-16 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
         <Link to='/signup'> رجسٹر کریں</Link>
       </button>
      

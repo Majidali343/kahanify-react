@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 export const API_URL = import.meta.env.VITE_API_URL;
 import { toast } from 'react-toastify';
+import load from '../../assets/Loader.gif'
 
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -12,6 +15,7 @@ const ForgotPassword = () => {
     };
 
     const handleForgotPassword = async (email) => {
+    setLoading(true);
         
         try {
             const response = await fetch( `${API_URL}/forgot-password`, {
@@ -32,7 +36,9 @@ const ForgotPassword = () => {
         } catch (error) {
             console.error('Error:', error);
             toast.error('An error occurred. Please try again later.');
-        }
+        } finally{
+            setLoading(false); 
+          }
     };
     
 
@@ -59,7 +65,9 @@ const ForgotPassword = () => {
             </div>
             <button type="submit"
              className="bg-blue-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded mb-4 md:mb-0"
-            >Send Reset Link</button>
+            >{
+                loading ?<img src={load} alt="load" className='h-6 w-6' />  : 'Send Reset Link'
+              }</button>
         </form>
 </div>
 

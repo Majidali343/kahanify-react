@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {asset38, asset39 ,asset40} from '../imageLoader' ;
+import {asset38, asset41, asset39 ,asset40} from '../imageLoader' ;
 import { Link } from "react-router-dom";
 import {
   faPlay,
@@ -106,7 +106,7 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
       <div className='min-w-full  '>
 <ul className="flex justify-between align-center">
   <li>
-    <Link to='/'> <img src={asset40} alt="logo" className="h-20 w-20 p-5" />
+    <Link to='/'> <img src={asset41} alt="logo" className="h-24 w-24 " />
  </Link>
 </li>
   <li className="p-5">
@@ -354,7 +354,7 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
             </p>
             </div>
             <div className="p-4 flex justify-center items-center" onClick={handleClose}>
-            <button className=" text-white flex justify-center items-center font-bold rounded hover:text-pink-500 font-sans hover:underline "> 
+            <button className=" text-white flex justify-center items-center font-bold rounded hover:text-yellow-500 font-sans hover:underline "> 
               Close
             </button>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { getCurrentUser, parchacemembership } from '../Service/api'; 
+import { getCurrentUser, parchacemembership, getlogout  } from '../Service/api'; 
 import { toast } from 'react-toastify'; 
 import load from '../../assets/Loader.gif'
 import { useNavigate } from 'react-router-dom'; 
@@ -110,6 +110,16 @@ function Cart() {
     }
   };
   
+  const handleLogout = async () => {
+    try {
+      await getlogout();
+      window.location.href = 'login';
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
+
 
   if (membership==true) {
     return <Paidcontent />; 
@@ -162,7 +172,7 @@ function Cart() {
                                 <button className='border px-3 py-1' onClick={() => handleIncrement(index)}>+</button>
                               </div>
                             )}
-                            <p className='text-sm cursor-pointer hover:underline' onClick={() => handleRemove(index)}>Remove items</p>
+                            <p className='text-sm cursor-pointer hover:underline hover:bg-pink-600' onClick={() => handleRemove(index)}>Remove items</p>
                           </div>
                         </div>
                       </div>
@@ -183,7 +193,7 @@ function Cart() {
               <h3 className="text-end font-bold mb-2">Cart Totals</h3>
               <div className="border-y p-5 flex justify-between">
                 <p className="text-gray-500">Add a coupon</p>
-                <input type="text" className="border-none p-1 " />
+                <input type="text" className="border-b border-gray-500 p-1 " />
               </div>
               <div className="border-y p-5 flex justify-between">
                 <p className="text-gray-500">Subtotal</p>
@@ -206,7 +216,9 @@ function Cart() {
 
         <div className="mt-8">
           <p className=" bg-blue-100  p-4 border-l-4 border-green-500">
-            You are logged in as <span className='pl-1 font-bold'>{name}</span>. If you would like to use a different account for this membership, log out now.
+            You are logged in as <span className='pl-1 font-bold'>{name}</span>. If you would like to use a different account for this membership,
+            <button onClick={handleLogout} className="block bg-transparent hover:text-pink-600 hover:underline border-none"> log out now.</button>
+            
           </p>
         </div>
 
