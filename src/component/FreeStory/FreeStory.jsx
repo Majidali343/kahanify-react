@@ -34,13 +34,13 @@ function FreeStory() {
       />
 
 
-<div class="bg-[#18003c] sm:h-[80vh] md:h-[100vh] lg:h-[90vh] xl:h-[90vh] h-auto m-0 p-0">
+<div class="bg-[#18003c]  h-auto m-0 p-0">
   <div class="flex flex-col md:flex-row h-full w-full">
     <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
       <img src={Pic} alt="story" class="w-full h-full object-cover" />
     </div>
     
-    <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right p-8">
+    <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right ">
     <div className='sm:flex  sm:flex-col sm:text-xl'>
       <div className='urdu flex flex-col items-center justify-center'>
   <h1 className='gradient-text  font-bold py-8 text-3xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
