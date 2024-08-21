@@ -83,7 +83,7 @@ const Slider = () => {
                     <button className="flex self-center rounded border border-black mx-12 text-center font-bold text-xs p-1">3+</button>
                     <p className=" text-gray-500 flex self-center text-sm ml-2">{card.views}</p>
                   </div> */}
-                <div className='w-full h-auto flex justify-between items-center bg-[#ecf8fc]'>
+                <div className='w-full h-auto flex justify-between items-center bg-gray-100'>
                   <div className='p-1 flex'>
 <button className='bg-[#200899] text-white px-1 rounded-lg '>PG</button>
                   <button className="flex self-center  mx-2 rounded border border-black  text-center font-bold text-xs p-1">3+</button>
