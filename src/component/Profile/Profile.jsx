@@ -114,7 +114,7 @@ setEmail(user.email);
           if (user.profileimage) {
             console.log(user.profileimage);
             // setProfileImage(user.profileimage);    
-            setProfileImage(`https://kahaniapi.realtechcrm.online/storage/app/public/${user.profileimage}`);
+            setProfileImage(`https://kahanifylaravel.kahanify.com/storage/app/public/${user.profileimage}`);
           }
 
         }
@@ -205,7 +205,7 @@ setEmail(user.email);
           <div className="flex-none w-full md:w-3/12 mb-4 md:mb-0">
             <div className="relative w-full h-48 flex items-center justify-center">
               <div className="relative w-40 h-40 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
-                {/* <img src={`https://kahaniapi.realtechcrm.online/storage/app/public/${profileimage}`} alt="Profile" className="w-full h-full object-cover" /> */}
+                {/* <img src={`https://kahanifylaravel.kahanify.com/storage/app/public/${profileimage}`} alt="Profile" className="w-full h-full object-cover" /> */}
                 <img src={profileimage} alt="Profile" className="w-full h-full object-cover" />
 
                 <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 py-1 flex items-center justify-center">

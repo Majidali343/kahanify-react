@@ -69,7 +69,7 @@ const Slider = () => {
                 style={{ cursor: 'pointer' }}
               >
                 <img 
-                  src={`https://kahaniapi.realtechcrm.online/storage/${card.image}`} 
+                  src={`https://kahanifylaravel.kahanify.com/storage/${card.image}`} 
                   alt="story" 
                   className="w-full h-full object-cover mb-4" 
                 />
