@@ -11,6 +11,7 @@ import { FaHeart } from "react-icons/fa";
 import { TiStopwatch } from "react-icons/ti";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Load from '../../assets/Loader.gif'
+import fav from'../../assets/Fav.png';
 
 const Stories = () => {
   const [data, setData] = useState([]);
@@ -184,13 +185,26 @@ const Stories = () => {
           <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
           <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
           <div>
-            <div
+            {/* <div
               className="xl:bg-contain bg:cover bg-no-repeat flex justify-between text-black p-2 rounded cursor-pointer"
               style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px' }}
             >
               <button className="block rounded border border-black mx-12 text-center text-xs p-1">3+</button>
               <p className="block text-gray-500 ">{card.views}</p>
-            </div>
+            </div> */}
+
+<div className='w-full h-auto flex justify-between items-center bg-[#ecf8fc]'>
+                  <div className='p-1 flex'>
+<button className='bg-[#200899] text-white px-1 rounded-lg '>PG</button>
+                  <button className="flex self-center  mx-2 rounded border border-black  text-center font-bold text-xs p-1">3+</button>
+                  </div>
+                  <div className='p-1 flex'>
+                    <img src={fav} alt="icon" className='h-8 w-8' />
+                  <p className=" text-gray-500 flex self-center text-sm ml-2">{card.views}</p>
+                  </div>
+
+                </div>
+                
           </div>
           <div className="flex items-center mt-2">
             <StarRating 

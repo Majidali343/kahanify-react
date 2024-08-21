@@ -101,7 +101,7 @@ function FreeStory() {
               moment becomes an opportunity for young minds to explore, learn,
               and be delighted.
             </p>
-            <button className="bg-white text-[#18003c] py-2 px-4 rounded hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+            <button className="bg-white text-[#18003c] py-2 px-4 rounded hover:text-white hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
               <Link to="/signup"> Register Now</Link>
             </button>
           </div>

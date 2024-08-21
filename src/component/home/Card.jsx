@@ -5,6 +5,7 @@ import StarRating from './StarRating';
 import { famousStories } from '../Service/api';
 import { Link, useNavigate } from 'react-router-dom';
 import Loader from '../loader/Loader';
+import fav from'../../assets/Fav.png';
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cards, setCards] = useState([]);
@@ -75,13 +76,24 @@ const Slider = () => {
                 <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
                 <p className="text-gray-600 mb-2 text-right">{card.duration}</p>
                 <div>
-                  <div
+                  {/* <div
                     className="xl:bg-contain bg:cover bg-no-repeat flex justify-between items-center text-black p-2 rounded cursor-pointer"
-                    style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px' }}
+                    style={{ backgroundImage: `url(${asset3})`, width: '100%', height: 'auto' }}
                   >
                     <button className="flex self-center rounded border border-black mx-12 text-center font-bold text-xs p-1">3+</button>
                     <p className=" text-gray-500 flex self-center text-sm ml-2">{card.views}</p>
+                  </div> */}
+                <div className='w-full h-auto flex justify-between items-center bg-[#ecf8fc]'>
+                  <div className='p-1 flex'>
+<button className='bg-[#200899] text-white px-1 rounded-lg '>PG</button>
+                  <button className="flex self-center  mx-2 rounded border border-black  text-center font-bold text-xs p-1">3+</button>
                   </div>
+                  <div className='p-1 flex'>
+                    <img src={fav} alt="icon" className='h-8 w-8' />
+                  <p className=" text-gray-500 flex self-center text-sm ml-2">{card.views}</p>
+                  </div>
+
+                </div>
                 </div>
                 <div className="flex items-center mt-2">
                   <StarRating 
