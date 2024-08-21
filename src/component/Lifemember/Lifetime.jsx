@@ -1,7 +1,7 @@
 import React from 'react';
 import Year from '../../assets/life.avif';
 import { asset31 } from '../imageLoader';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link} from 'react-router-dom';
 
 function Lifetime() {
   const navigate = useNavigate();
@@ -70,7 +70,7 @@ function Lifetime() {
         <h1 className="text-2xl font-bold text-gray-800 mb-4">Related Products</h1>
         <div className="flex flex-col items-start bg-white  overflow-hidden">
        <div className='flex items-center justify-center flex-col'>
-          <img src={asset31} alt="Related Product" className=" object-cover mb-4" />
+        <Link to='/Yearly'>  <img src={asset31} alt="Related Product" className=" object-cover mb-4" /></Link>
           <p className="text-xl font-bold text-center text-gray-800 mb-2">Annual Membership</p>
           <p className="text-xl font-bold text-center  mb-4">
             <span className=" text-[#dddcb4] line-through">Rs 2500</span> <span className="text-[#b7af54] underline">Rs 1,460</span>

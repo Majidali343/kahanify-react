@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Annual from '../../assets/annual.jpg';
 import { asset32 } from '../imageLoader';
 
@@ -67,7 +67,7 @@ function Yearly() {
         <h1 className="text-2xl font-bold text-gray-800 mb-4">Related Products</h1>
         <div className="flex flex-col items-start bg-white overflow-hidden">
           <div className='flex items-center justify-center flex-col py-4'>
-            <img src={asset32} alt="Related Product" className="object-cover mb-4" />
+          <Link to='/Lifetime'>   <img src={asset32} alt="Related Product" className="object-cover mb-4" /> </Link>
             <p className="text-xl font-bold text-center text-gray-800 mb-2">Life Time Membership</p>
             <p className="text-xl font-bold text-center mb-4">
               <span className="text-[#dddcb4] line-through">Rs 7500</span> <span className="text-[#b7af54] underline">Rs 4,990</span>

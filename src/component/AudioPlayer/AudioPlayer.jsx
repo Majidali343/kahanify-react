@@ -111,7 +111,7 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
 </li>
   <li className="p-5">
   <Link to="/login" >
-                <button className="bg-white  px-4 py-2 rounded text-[#18003c] font-bold hover:bg-[#ff0087] transition-transform duration-300 ease-in-out transform hover:scale-105">
+                <button className="bg-white hover:text-white  px-4 py-2 rounded text-[#18003c] font-bold hover:bg-[#ff0087] transition-transform duration-300 ease-in-out transform hover:scale-105">
                   Sign In
                 </button>
               </Link>
