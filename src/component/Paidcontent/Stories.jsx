@@ -175,11 +175,11 @@ const Stories = () => {
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-2 md:mx-6 gap-4">
     {filteredData.slice(0, currentIndex + cardsPerPage).map(card => (
       <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}>
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-[340px] w-[340px]  mx-4 p-4">
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col   mx-4 p-4">
           <img 
             src={`https://kahanifylaravel.kahanify.com/storage/${card.image}`} 
             alt="story" 
-            className="w-full h-full object-cover mb-4" 
+            className="h-[340px] w-[340px] object-cover mb-4" 
           />
           <h2 className="text-white text-xs">{card.created_at}</h2>
           <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
