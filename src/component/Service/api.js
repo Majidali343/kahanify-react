@@ -291,7 +291,7 @@ console.log ( commentData.kahani_id)
       }
     );
     console.log(response);
-    toast.success("Comment Added send for Review");
+    toast.success("Comment Added & Sent for Review");
 
     return response.data;
   } catch (error) {
