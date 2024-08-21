@@ -193,7 +193,7 @@ const Stories = () => {
               <p className="block text-gray-500 ">{card.views}</p>
             </div> */}
 
-<div className='w-full h-auto flex justify-between items-center bg-[#ecf8fc]'>
+<div className='w-full h-auto flex justify-between items-center bg-gray-100'>
                   <div className='p-1 flex'>
 <button className='bg-[#200899] text-white px-1 rounded-lg '>PG</button>
                   <button className="flex self-center  mx-2 rounded border border-black  text-center font-bold text-xs p-1">3+</button>
