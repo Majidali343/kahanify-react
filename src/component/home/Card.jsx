@@ -79,8 +79,8 @@ const Slider = () => {
                     className="xl:bg-contain bg:cover bg-no-repeat flex justify-between items-center text-black p-2 rounded cursor-pointer"
                     style={{ backgroundImage: `url(${asset3})`, width: '100%', height: '40px' }}
                   >
-                    <button className="block rounded border border-black mx-12 text-center self-center text-xs p-1">3+</button>
-                    <p className="block text-gray-500 self-center ml-2">{card.views}</p>
+                    <button className="flex self-center rounded border border-black mx-12 text-center font-bold text-xs p-1">3+</button>
+                    <p className=" text-gray-500 flex self-center text-sm ml-2">{card.views}</p>
                   </div>
                 </div>
                 <div className="flex items-center mt-2">

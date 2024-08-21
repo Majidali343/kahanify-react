@@ -131,14 +131,14 @@ function Package() {
             if you would like to use a different account for this membership, log out now.
           </p>
         </div>
-        <div className="p-4 bg-white rounded-lg shadow-md m-8">
-          <div className='text-[#18003c]'>
+        <div className="p-4 bg-white rounded-lg  m-8">
+          {/* <div className='text-[#18003c]'>
             <h2 className="text-2xl font-bold mb-4">Membership Details</h2>
             <div className='text-sm'>
               <p className='mb-2'>This is an annual membership package.</p>
               <p className='mb-2'>The price for membership is PKR2500 now.</p>
               <p className='mb-2'> Membership expires after 1 year (365 Days)</p></div>
-          </div>
+          </div> */}
           <h3 className="text-xl font-bold mb-4 mt-4">For Manual Payments</h3>
           <div className='text-sm'>
             <p className='mb-2'>Bank Transfer:</p>

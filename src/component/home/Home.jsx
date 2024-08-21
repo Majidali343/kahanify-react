@@ -31,12 +31,26 @@ function Home() {
           className="text-white text-center rest  "
           style={{ margin: '14% 20% 8% 5%' }}
         >
-          <h1 className="text-3xl sm:text-4xl  md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl  heading text-pretty  mb-2">Unlimited  Audio  Stories</h1>
-          <h2 className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl  2xl:text-3xl mb-4">Listen  Imagine  Enjoy</h2>
+          <h1
+  style={{
+    textShadow: '1px 1px 2px rgba(0, 0, 0, 1.6)',
+    WebkitTextStroke: '1px rgba(0, 0, 0, 1.8)', 
+    textShadow: '1px 1px 2px rgba(0, 0, 0, 1.6)' 
+  }}
+
+          className="text-3xl sm:text-4xl  md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-6xl  heading text-pretty  mb-2">Unlimited  Audio  Stories</h1>
+          <h2
+          
+  style={{
+    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)',
+    WebkitTextStroke: '1px rgba(0, 0, 0, 0.4)', 
+    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' 
+  }}
+          className="text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl text-bold 2xl:text-3xl mb-4">Listen  Imagine  Enjoy</h2>
           <button
             className="bg-blue-600 text-base sm:text-lg btn md:text-xl lg:text-xl xl:text-xl 2xl:text-2xl   text-white py-2 px-4 rounded-[6px] text-center transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
           >
-            <Link to='/signup' > Get Started</Link>
+            <Link to='/signup' > Get Started </Link>
             
           </button>
         </div>

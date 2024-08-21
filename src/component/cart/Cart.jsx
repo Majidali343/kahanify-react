@@ -124,6 +124,11 @@ function Cart() {
   if (membership==true) {
     return <Paidcontent />; 
   }
+  
+  const packageItem = cart.find(item => item.packagename === 'Annual Membership' || 'Life Time Membership ');
+  const packageName = packageItem ? packageItem.packagename : 'Membership';
+  const packagePrice = packageItem ? packageItem.pricePerItem : 0;
+  
 
   return (
     <>
@@ -224,9 +229,13 @@ function Cart() {
 
         <div className="mt-8">
           <h3 className="text-xl font-bold pb-3">Membership Details</h3>
-          <p className="text-gray-500 pb-2">This is an annual membership package.</p>
-          <p className="text-gray-500 pb-2">The price for membership is PKR1460 now.</p>
-          <p className="text-gray-500 pb-2">Membership expires after 1 year (365 Days)</p>
+          <p className="text-gray-500 pb-2">This is an {packageName} package.</p>
+          <p className="text-gray-500 pb-2">The price for membership is PKR{packagePrice} now.</p>
+          {packageName === 'Annual Membership' && (
+            <p className="text-gray-500 pb-2">Membership expires after 1 year (365 Days)</p>
+          )}
+
+          {/* <p className="text-gray-500 pb-2">Membership expires after 1 year (365 Days)</p> */}
         </div>
       </div>
     </>
