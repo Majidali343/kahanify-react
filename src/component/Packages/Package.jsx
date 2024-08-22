@@ -1,17 +1,18 @@
-import React , {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { asset31, asset32, asset33 } from "../imageLoader";
 import { Helmet } from 'react-helmet';
 import { getCurrentUser } from '../Service/api';  
 import Paidcontent from '../Paidcontent/Paidcontent'; 
 import Loader from '../loader/Loader';
+
 function Package() {
-  
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [membership, setMembership] = useState(false); 
   const [loading, setLoading] = useState(false);
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     const fetchUserData = async () => {
       setLoading(true);
@@ -35,16 +36,13 @@ function Package() {
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
-      }finally {
+      } finally {
         setLoading(false); 
       }
     };
 
     fetchUserData();
   }, []);
-
-
-
 
   const addToCart = (packagename, pricePerItem, image) => {
     const existingCart = sessionStorage.getItem('cart');
@@ -67,23 +65,29 @@ function Package() {
     navigate('/cart'); 
   };
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-[100vh] w-full">
-    
-    <Loader />
-    </div>)
+        <Loader />
+      </div>
+    );
   }
 
-
-
-  if (membership==true) {
+  if (membership) {
     return <Paidcontent />; 
   }
+
   return (
     <>
-
-    <Helmet>
+      <Helmet>
         <title>Kahanify - Membership Packages</title>
         <meta name="description" content="Get access to all the audio stories on Kahanify with our annual and monthly membership packages. Enjoy unlimited stories and more!" />
         <meta name="keywords" content="audio stories, Kahanify, membership, annual membership, monthly membership, unlimited stories" />
@@ -101,9 +105,14 @@ function Package() {
 
         <div className="container mx-auto flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-12 px-8 py-6">
           <div className="flex flex-col py-4 items-center">
-         <Link to='/Yearly'>   <img src={asset31} className="mb-3" alt="Annual" /></Link>
+            <Link to='/Yearly'>   
+              <img src={asset31} className="mb-3" alt="Annual" />
+            </Link>
             <p className="text-2xl text-[#18003c] mb-3 font-bold">Annual Membership</p>
-            <p className="font-bold mb-4 text-pink-600 text-xl"><span className='text-gray-500 line-through'>Rs 2500</span> <span className='underline'>Rs 1,460</span></p>
+            <p className="font-bold mb-4 text-pink-600 text-xl">
+              <span className='text-gray-500 line-through'>Rs 2500</span> 
+              <span className='underline'>Rs 1,460</span>
+            </p>
             <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
               onClick={() => addToCart('Annual Membership', 1460 , asset31)}
             >
@@ -111,9 +120,14 @@ function Package() {
             </button>
           </div>
           <div className="flex flex-col py-4 items-center">
-            <Link to='/Lifetime'><img src={asset32} className="mb-3" alt="Phone Icon" /></Link>
+            <Link to='/Lifetime'>
+              <img src={asset32} className="mb-3" alt="Phone Icon" />
+            </Link>
             <p className="text-2xl mb-3 font-bold text-[#18003c]">Life Time Membership</p>
-            <p className="font-bold text-pink-600 text-xl mb-4"> <span className='text-gray-500 line-through'>Rs 7500</span> <span className='underline'> Rs 4,990</span></p>
+            <p className="font-bold text-pink-600 text-xl mb-4">
+              <span className='text-gray-500 line-through'>Rs 7500</span> 
+              <span className='underline'> Rs 4,990</span>
+            </p>
             <button className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
               onClick={() => addToCart(' Life Time Membership', 4990 , asset32)}
             >
@@ -123,22 +137,17 @@ function Package() {
         </div>
 
         <div className="flex bg-gray-100 items-center m-8 p-3 border-t border-sky-600">
-          <img src={asset33} alt="#" className="w-4 h-4 mr-3" /><span className='text-gray-800'>Your cart is currently empty.</span>
+          <img src={asset33} alt="#" className="w-4 h-4 mr-3" />
+          <span className='text-gray-800'>Your cart is currently empty.</span>
         </div>
-        <div className="flex bg-blue-100  items-center m-8 p-5 pl-12 border-l-4 border-green-500">
-          <p className='pl-4'>You are logged in as username 
+        <div className="flex bg-blue-100 items-center m-8 p-5 pl-12 border-l-4 border-green-500">
+          <p className='pl-4'>
+            You are logged in as username 
             <span className='font-bold mx-1'> {name}</span>
             if you would like to use a different account for this membership, log out now.
           </p>
         </div>
         <div className="p-4 bg-white rounded-lg  m-8">
-          {/* <div className='text-[#18003c]'>
-            <h2 className="text-2xl font-bold mb-4">Membership Details</h2>
-            <div className='text-sm'>
-              <p className='mb-2'>This is an annual membership package.</p>
-              <p className='mb-2'>The price for membership is PKR2500 now.</p>
-              <p className='mb-2'> Membership expires after 1 year (365 Days)</p></div>
-          </div> */}
           <h3 className="text-xl font-bold mb-4 mt-4">For Manual Payments</h3>
           <div className='text-sm'>
             <p className='mb-2'>Bank Transfer:</p>
@@ -146,10 +155,70 @@ function Package() {
             <p className='mb-2'>IBAN/ACCOUNT NUMBER:<span className='font-bold text-black'> PK26BKIP0305000028870001 </span></p>
             <p className='mb-2'>BANK ISLAMI PAKISTAN LTD.</p>
             <p className='mb-2'>EasyPaisa:<span className='font-bold text-black'> 0345 8556127</span></p>
-            <p className="text-sm text-gray-400"> <span className='font-bold'> Note:</span> For manual payments, please share screenshot of transaction on WhatsApp: <span className='font-bold text-black'>0332-0516548</span> </p>
+            <p className="text-sm text-gray-400">
+              <span className='font-bold'> Note:</span> For manual payments, please share screenshot of transaction on WhatsApp: 
+              <span className='font-bold text-black'>0332-0516548</span>
+            </p>
+            <button 
+              onClick={handleOpenModal}
+              className="bg-[#18003c] text-white my-8 py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
+            >
+              Manual Payment
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/3">
+            <div className='flex justify-between'>
+            <h3 className="text-xl font-bold mb-4">Manual Payment Form</h3>
+            <button
+              className=" text-black text-xl hover:text-gray-700"
+              onClick={handleCloseModal}
+            >
+              &times;
+            </button>
+            </div>
+            <form>
+              <div className="mb-4">
+                <label htmlFor="package-name" className="block text-sm font-medium text-gray-700">Package Name</label>
+                <input
+                  type="text"
+                  id="package-name"
+                  className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="bank-name" className="block text-sm font-medium text-gray-700">Bank Name</label>
+                <select
+                  id="bank-name"
+                  className="mt-1 block w-full py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option value="bank1">BANK ISLAMI PAKISTAN LTD.</option>
+                  <option value="bank2">EasyPaisa</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label htmlFor="payment-proof" className="block text font-medium text-gray-700">Upload Payment Proof</label>
+                <input
+                  type="file"
+                  id="payment-proof"
+                  className="mt-1 block w-full border py-1 sm:text-sm"
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-[#18003c] text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }

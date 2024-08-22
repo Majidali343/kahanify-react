@@ -31,7 +31,7 @@ function Lifetime() {
     <div className="p-8  ">
       {/* Main Membership Details */}
       <div className="flex flex-col md:flex-row items-center bg-white  rounded-lg overflow-hidden">
-        <div className="md:w-1/2 p-4">
+        <div className=" p-4">
           <img src={Year} alt="Annual Membership" className="w-full h-[350px] object-cover" />
         </div>
         <div className="md:w-1/2 md:self-start p-4">
