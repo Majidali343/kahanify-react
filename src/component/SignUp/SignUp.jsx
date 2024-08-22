@@ -98,7 +98,7 @@ function SignUp() {
             <FontAwesomeIcon icon={faEnvelope} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           </div>
 
-          {/* <div className="mb-4 relative">
+          <div className="mb-4 relative">
             <input
               type="tel"
               id="phone"
@@ -114,7 +114,7 @@ function SignUp() {
               placeholder="Phone Number"
             />
             <FontAwesomeIcon icon={faPhone} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
-          </div> */}
+          </div>
 
           <div className="mb-4 relative flex items-center">
             <input
