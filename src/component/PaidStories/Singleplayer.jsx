@@ -135,7 +135,7 @@ const handleClose =() =>{
             <img
               src={imageSrc}
               alt="Audio Thumbnail"
-              className="mx-auto w-full h-full"
+               className="mx-auto w-[300px] h-[300px] md:w-[480px] md:h-[480px]"
             />
           </div>
 
