@@ -239,7 +239,7 @@ try {
                   type="file"
                   id="payment-proof"
                   onChange={(e) => setPaymentProof(e.target.files[0])}
-                  className="mt-1 block w-full border py-1 sm:text-sm"
+                  className="mt-1 block w-full border-none py-1 sm:text-sm"
                 />
               </div>
               <button

@@ -235,6 +235,7 @@ function Cart() {
             <p className="text-gray-500 pb-2">Membership expires after 1 year (365 Days)</p>
           )}
 
+
           {/* <p className="text-gray-500 pb-2">Membership expires after 1 year (365 Days)</p> */}
         </div>
       </div>

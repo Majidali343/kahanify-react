@@ -508,3 +508,68 @@ const package_name=PackageName;
     throw error;
   }
 };
+//////////
+export const postCoupon = async ( code ) => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', code);
+         const response = await axios.post(`${API_URL}/send-coupen`,code  ,{
+      headers: {
+        Authorization: `Bearer ${token}`,        
+      }
+    });
+
+    console.log('This is Response  Coupon:', response.data);
+    toast.success("Discound Add!");
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error coupen code:', error);
+  
+  toast.error('Error');
+    throw error;
+  }
+};
+///
+export const getdiscount = async () => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', token);
+
+    const response = await axios.get(`${API_URL}/discount`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    console.log('This is Response Data:', response.data);
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error updating review:', error);
+    throw error;
+  }
+};
+/////////////////
+//////////
+export const postReply = async ( replyData ) => { 
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', replyData);
+         const response = await axios.post(`${API_URL}/send-coupen`,replyData  ,{
+      headers: {
+        Authorization: `Bearer ${token}`,        
+      }
+    });
+
+    console.log('This is Response  Reply:', response.data);
+    toast.success("Discound Add!");
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error coupen Reply:', error);
+  
+  toast.error('Error');
+    throw error;
+  }
+};
