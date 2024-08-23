@@ -481,23 +481,30 @@ export const getlogout = async () => {
   }
 };
 ///////////////////
-export const Manual = async ( formData, PackageName ,BankName) => {
+export const Manual = async ( PackageName ,BankName, payment_image ) => {
   try {
     const token = Cookies.get('token');
-    console.log('Token:', formData, PackageName ,BankName);
- 
-    //  var kahani_id = id ;
-    // const response = await axios.post(`${API_URL}/addFavourite`, {kahani_id} ,{
-    //   headers: {
-    //     Authorization: `Bearer ${token}`
-    //   }
-    // });
+    console.log('Token:', payment_image);
+ const bank_name=BankName;
+const package_name=PackageName;
 
-    console.log('This is Response Data:', response.data);
+
+         const response = await axios.post(`${API_URL}/manual-payment`,{bank_name , package_name, payment_image}  ,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+
+      }
+    });
+
+    console.log('This is Response  Data of form:', response.data);
+    toast.success("Manual Bill Post successful!");
     return response.data;
     
   } catch (error) {
-    console.error('Error adding like:', error);
+    console.error('Error adding manul:', error);
+  ;
+  
     throw error;
   }
 };

@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { getCurrentUser, Manual } from '../Service/api';  
 import Paidcontent from '../Paidcontent/Paidcontent'; 
 import Loader from '../loader/Loader';
+import { toast } from 'react-toastify';
 
 function Package() {
   const navigate = useNavigate();
@@ -91,16 +92,15 @@ function Package() {
   const handleSubmit = async (event) => {
 
     event.preventDefault();
-    const formData = new FormData();
-  if (paymentProof) {
-    formData.append('paymentProof', paymentProof);
-  }
+  
+
 const PackageName=packageName;
 const BankName=bankName;
+const payment_image=paymentProof;
 try {
-  await Manual(formData, PackageName ,BankName );
+  await Manual( PackageName ,BankName, payment_image );
  } catch (error) {
-  setError(error.response?.data?.message || error.message);
+  toast.error(error.response?.data?.message || error.message);
 }
   }
 
@@ -223,7 +223,7 @@ try {
                   <option value="default">Select Bank</option>
 
                   <option value="BANK ISLAMI PAKISTAN LTD">BANK ISLAMI PAKISTAN LTD.</option>
-                  <option value="EasyPaisa">EasyPaisa</option>
+                  <option value="EasyPaisa">Easy Paisa</option>
                 </select>
               </div>
               <div className="mb-4">
