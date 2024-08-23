@@ -13,7 +13,7 @@ function Package() {
   const [membership, setMembership] = useState(false); 
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [packageName, setPackageName] = useState('');
+  const [packageName, setPackageName] = useState('default');
   const [bankName, setBankName] = useState('default');
   const [paymentProof, setPaymentProof] = useState(null);
   
@@ -204,13 +204,20 @@ try {
             <form>
               <div className="mb-4">
                 <label htmlFor="package-name" className="block text-sm font-medium text-gray-700">Package Name</label>
-                <input
+                <select
                   type="text"
                   id="package-name"
                   value={packageName}
                   onChange={(e) => setPackageName(e.target.value)}                
                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
+                >
+
+<option value="default">Select Package</option>
+
+                  <option value="Annual Membership">Annual Membership</option>
+                  <option value="Life Time Membership">Life Time Membership</option>
+                </select>
+
               </div>
               <div className="mb-4">
                 <label htmlFor="bank-name" className="block text-sm font-medium text-gray-700">Bank Name</label>
