@@ -480,3 +480,24 @@ export const getlogout = async () => {
     throw error;
   }
 };
+///////////////////
+export const Manual = async ( formData, PackageName ,BankName) => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', formData, PackageName ,BankName);
+ 
+    //  var kahani_id = id ;
+    // const response = await axios.post(`${API_URL}/addFavourite`, {kahani_id} ,{
+    //   headers: {
+    //     Authorization: `Bearer ${token}`
+    //   }
+    // });
+
+    console.log('This is Response Data:', response.data);
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error adding like:', error);
+    throw error;
+  }
+};

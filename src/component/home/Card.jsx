@@ -64,7 +64,7 @@ const Slider = () => {
             cards.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
               <div 
                 key={card.kahani_id} 
-                className="bg-white shadow-lg rounded-lg lg:mx-4 overflow-hidden flex flex-col p-4"
+                className="bg-white  rounded-lg lg:mx-4 overflow-hidden flex flex-col p-4"
                 onClick={() => handleCardClick(card.kahani_id)}
                 style={{ cursor: 'pointer' }}
               >

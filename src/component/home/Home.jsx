@@ -79,7 +79,7 @@ function Home() {
   </div>
   <div class="bg-[#18003c] lg:h-[110vh] md:h-auto m-0 p-0 flex flex-col lg:flex-row">
   <div class="w-full lg:w-1/2 flex-shrink-0">
-    <img src={asset1} alt="story" class=" object-cover h-[50vh] md:h-full w-full" />
+    <img src={asset1} alt="story" class=" object-fill h-[50vh] md:h-full w-full" />
   </div>
 {/* <div className='w-full lg:w-1/2 h-full'>
   <div class=" bg-cover bg-center flex flex-col items-center justify-between  sm:p-16 lg:p-7 pt-[30px] sm:pt-[80px]"

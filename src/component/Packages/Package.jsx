@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { asset31, asset32, asset33 } from "../imageLoader";
 import { Helmet } from 'react-helmet';
-import { getCurrentUser } from '../Service/api';  
+import { getCurrentUser, Manual } from '../Service/api';  
 import Paidcontent from '../Paidcontent/Paidcontent'; 
 import Loader from '../loader/Loader';
 
@@ -12,7 +12,10 @@ function Package() {
   const [membership, setMembership] = useState(false); 
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [packageName, setPackageName] = useState('');
+  const [bankName, setBankName] = useState('default');
+  const [paymentProof, setPaymentProof] = useState(null);
+  
   useEffect(() => {
     const fetchUserData = async () => {
       setLoading(true);
@@ -83,6 +86,22 @@ function Package() {
 
   if (membership) {
     return <Paidcontent />; 
+  }
+
+  const handleSubmit = async (event) => {
+
+    event.preventDefault();
+    const formData = new FormData();
+  if (paymentProof) {
+    formData.append('paymentProof', paymentProof);
+  }
+const PackageName=packageName;
+const BankName=bankName;
+try {
+  await Manual(formData, PackageName ,BankName );
+ } catch (error) {
+  setError(error.response?.data?.message || error.message);
+}
   }
 
   return (
@@ -188,6 +207,8 @@ function Package() {
                 <input
                   type="text"
                   id="package-name"
+                  value={packageName}
+                  onChange={(e) => setPackageName(e.target.value)}                
                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
@@ -195,10 +216,14 @@ function Package() {
                 <label htmlFor="bank-name" className="block text-sm font-medium text-gray-700">Bank Name</label>
                 <select
                   id="bank-name"
+                  value={bankName}
+                  onChange={(e) => setBankName(e.target.value)}                
                   className="mt-1 block w-full py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
-                  <option value="bank1">BANK ISLAMI PAKISTAN LTD.</option>
-                  <option value="bank2">EasyPaisa</option>
+                  <option value="default">Select Bank</option>
+
+                  <option value="BANK ISLAMI PAKISTAN LTD">BANK ISLAMI PAKISTAN LTD.</option>
+                  <option value="EasyPaisa">EasyPaisa</option>
                 </select>
               </div>
               <div className="mb-4">
@@ -206,11 +231,12 @@ function Package() {
                 <input
                   type="file"
                   id="payment-proof"
+                  onChange={(e) => setPaymentProof(e.target.files[0])}
                   className="mt-1 block w-full border py-1 sm:text-sm"
                 />
               </div>
               <button
-                type="submit"
+                onClick={handleSubmit}
                 className="bg-[#18003c] text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
               >
                 Submit
