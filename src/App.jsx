@@ -24,6 +24,7 @@ import Member from './component/MemberShip/Member';
 import ScrollToTop from './component/ScrollToTop/ScrollToTop';
 import Lifetime from './component/Lifemember/Lifetime';
 import Yearly from './component/yearly/Yearly';
+import MemberRoute from './component/Memberroute'; 
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.status);
@@ -42,7 +43,7 @@ function App() {
           <Route path="profile" element={<PrivateRoute element={<Profile />} />} />
           <Route path="Order" element={<PrivateRoute element={<Order />} />} />
           <Route path="Member" element={<PrivateRoute element={<Member />} />} />
-          <Route path="Paidcontent" element={<PrivateRoute element={<Paidcontent />} />} />
+          {/* <Route path="Paidcontent" element={<PrivateRoute element={<Paidcontent />} />} /> */}
           <Route path="Privacy" element={<Privacy />} />
           <Route path="Conditions" element={<Conditions />} />
           <Route path="ForgotPassword" element={<ForgotPassword />} />
@@ -51,9 +52,12 @@ function App() {
           <Route path="FAQs" element={<FAQs />} />
           <Route path="Lifetime" element={<Lifetime />} />
           <Route path="Yearly" element={<Yearly/>} />
-
+       
+          <Route path="Paidcontent" element={<MemberRoute component={Paidcontent} />} />
         </Route>
-        <Route path="kahani/:id" element={<SingleKahani />} />
+
+        <Route path="kahani/:id" element={<MemberRoute component={SingleKahani} />} />
+        {/* <Route path="kahani/:id" element={<SingleKahani />} /> */}
         <Route path="FreeStory" element={<FreeStory />} />
         <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />} />
       </Routes>
