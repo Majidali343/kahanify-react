@@ -68,7 +68,8 @@ function SingleKahani() {
     try {
       const response = await updatecomments(id);
       setComments(response);
-    setReplies(response.data.replies);
+    setReplies(response);
+    console.log ('hfhfhfhihfe',response);
 
     } catch (error) {
       console.error('Error fetching comments:', error);
@@ -334,21 +335,25 @@ function SingleKahani() {
       </div>
     )}
      {/* Render replies */}
-     {replies[comment.id] && replies[comment.id].map(reply => (
-      <div key={reply.id} className="p-4 ml-8 border-l border-gray-200">
-        <p className="text-sm font-semibold">
-          <img
-            className="mr-2 w-6 h-6 rounded-full"
-            src={reply.user.profileimage ? `https://kahanifylaravel.kahanify.com/storage/app/public/${reply.user.profileimage}` : asset34}
-            alt={reply.user.username || 'Anonymous'}
-          />
-          {reply.user.username || 'Anonymous'}
-        </p>
-        <p className="text-gray-500">{reply.text}</p>
-        <p className="text-xs text-gray-400">{formatDate(reply.created_at)}</p>
+     {comment.replies.length > 0 && (
+      <div className="ml-8 mt-4">
+        {comment.replies.map((reply) => (
+          <div key={reply.id} className="py-4 ">
+            <p className="text-sm font-semibold">
+              <img
+                className="mr-2 w-6 h-6 rounded-full"
+                src={reply.user.profileimage ? `https://kahanifylaravel.kahanify.com/storage/app/public/${reply.user.profileimage}` : asset34}
+                alt={reply.user.username || 'Anonymous'}
+              />
+              {reply.user.username || 'Anonymous'}
+            </p>
+            <p className="text-gray-500">{reply.message}</p>
+            <p className="text-xs text-gray-400">{formatDate(reply.created_at)}</p>
+          </div>
+        ))}
       </div>
-    ))}
-                  </div>
+    )}
+                 </div>
                 ))}
               </article>
             )}
