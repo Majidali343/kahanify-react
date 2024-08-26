@@ -7,7 +7,11 @@ import { Link } from 'react-router-dom';
 import Testimonial from '../Testimonial/Testimonial';
 import Pic from '../../assets/Mom.png';
 import { MdNavigateNext } from "react-icons/md";
+import PopupModal from './PopupModal';
 function Home() {
+ 
+
+ 
   return (
     <>
 
@@ -22,6 +26,10 @@ function Home() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
+      <PopupModal />
+      {/* {popupVisible && <Popup message="We are launching Kahanify mobile application" onClose={handleClosePopup} />} */}
+
+  
 
     <div
       className="h-screen bg-cover   responsive-background"

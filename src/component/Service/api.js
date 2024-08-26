@@ -531,43 +531,43 @@ export const postCoupon = async ( code ) => {
   }
 };
 ///
-export const getdiscount = async () => {
-  try {
-    const token = Cookies.get('token');
-    console.log('Token:', token);
+// export const getdiscount = async () => {
+//   try {
+//     const token = Cookies.get('token');
+//     console.log('Token:', token);
 
-    const response = await axios.get(`${API_URL}/discount`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
+//     const response = await axios.get(`${API_URL}/discount`, {
+//       headers: {
+//         Authorization: `Bearer ${token}`
+//       }
+//     });
 
-    console.log('This is Response Data:', response.data);
-    return response.data;
+//     console.log('This is Response Data:', response.data);
+//     return response.data;
     
-  } catch (error) {
-    console.error('Error updating review:', error);
-    throw error;
-  }
-};
+//   } catch (error) {
+//     console.error('Error updating review:', error);
+//     throw error;
+//   }
+// };
 /////////////////
 //////////
 export const postReply = async ( replyData ) => { 
   try {
     const token = Cookies.get('token');
     console.log('Token:', replyData);
-         const response = await axios.post(`${API_URL}/send-coupen`,replyData  ,{
+         const response = await axios.post(`${API_URL}/reply`,replyData  ,{
       headers: {
         Authorization: `Bearer ${token}`,        
       }
     });
 
     console.log('This is Response  Reply:', response.data);
-    toast.success("Discound Add!");
+    toast.success("reply Add!");
     return response.data;
     
   } catch (error) {
-    console.error('Error coupen Reply:', error);
+    console.error('Error in Reply:', error);
   
   toast.error('Error');
     throw error;

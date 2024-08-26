@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { getCurrentUser, parchacemembership, getlogout  } from '../Service/api'; 
+import { getCurrentUser, parchacemembership, getlogout, postCoupon  } from '../Service/api'; 
 import { toast } from 'react-toastify'; 
 import load from '../../assets/Loader.gif'
 import { useNavigate } from 'react-router-dom'; 
@@ -10,7 +10,8 @@ function Cart() {
   const [cart, setCart] = useState([]);
   const [name, setName] = useState('');
   const [membership, setMembership] = useState(false); 
-  
+  const [couponCode, setCouponCode] = useState('');
+  const [discount, setDiscount] = useState(0); 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -55,7 +56,9 @@ function Cart() {
       return total +(item.pricePerItem * item.quantity) ; 
     }
     return total + item.pricePerItem ;
-  }, 0);
+  // }, 0);
+}, 0) - discount; // Subtract discount from total price
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -116,6 +119,18 @@ function Cart() {
       window.location.href = 'login';
     } catch (error) {
       console.error('Error logging out:', error);
+    }
+  };
+
+  const handleApplyCoupon = async () => {
+    try {
+      const response = await postCoupon({ code: couponCode });
+      if (response && response.discount) {
+        setDiscount(response.discount);
+        toast.success('Discount applied!');
+      }
+    } catch (error) {
+      console.error('Error applying coupon:', error);
     }
   };
 
@@ -197,8 +212,20 @@ function Cart() {
             <div>
               <h3 className="text-end font-bold mb-2">Cart Totals</h3>
               <div className="border-y p-5 flex justify-between">
-                <p className="text-gray-500">Add a coupon</p>
-                <input type="text" className="border-b border-gray-500 p-1 " />
+                {/* <p className="text-gray-500">Add a coupon</p> */}
+                {/* <button className="text-gray-500" onClick={handleApplyCoupon}>Add a coupon</button> */}
+                {couponCode ? (
+        <button className="bg-blue-500 p-2 rounded text-white hover:bg-pink-500" onClick={handleApplyCoupon}>
+          Apply coupon
+        </button>
+      ) : (
+        <p className="text-gray-500">Add a coupon</p>
+      )}
+
+                <input type="text"
+                  value={couponCode}
+                  onChange={(e) => setCouponCode(e.target.value)}
+                className="border-b border-gray-500 p-1 " />
               </div>
               <div className="border-y p-5 flex justify-between">
                 <p className="text-gray-500">Subtotal</p>
