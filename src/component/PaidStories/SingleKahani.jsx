@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import Singleplayer from './Singleplayer';
 import { useParams, Link, NavLink } from 'react-router-dom';
-import { singleStory, getlogout, postrating, sendcomment, updatecomments, veiws } from '../Service/api';
+import { singleStory, getlogout, postrating, sendcomment, updatecomments, veiws,  postReply } from '../Service/api';
 import Star from '../Star';
 import "../Css/skahani.css";
 import { asset34, asset41, asset10, asset9, asset24, asset25, asset26, asset27 } from '../imageLoader';
@@ -26,6 +26,11 @@ function SingleKahani() {
   const [loading, setLoading] = useState(true);
   const [loadingComments, setLoadingComments] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
+
+  const [replyTo, setReplyTo] = useState(null); // Track which comment is being replied to
+  const [replyText, setReplyText] = useState(''); // Track the text of the reply
+  const [replies, setReplies] = useState({}); // Store replies by comment ID
+  const [isReplying, setIsReplying] = useState(false); // Control visibility of the reply input field
 
   const fetchStory = async () => {
     setLoading(true);
@@ -63,6 +68,8 @@ function SingleKahani() {
     try {
       const response = await updatecomments(id);
       setComments(response);
+    setReplies(response.data.replies);
+
     } catch (error) {
       console.error('Error fetching comments:', error);
     } finally {
@@ -83,6 +90,24 @@ function SingleKahani() {
     setIsInputFocused(false);
   };
 
+  const handleReplySubmit = async () => {
+    if (!replyText.trim()) return;
+  // add loader
+    try {
+    const comment_id= replyTo;
+    const message = replyText
+      const replyData = { 
+        comment_id , message
+        };
+      await postReply(replyData); 
+      setReplyText('');
+      setReplyTo(null);
+      setIsReplying(false);
+      await fetchComments(); 
+    } catch (error) {
+      console.error('Error posting reply:', error);
+    }
+  };
   const handleCommentChange = (e) => setComment(e.target.value);
 
   const handleSubmit = async () => {
@@ -99,6 +124,13 @@ function SingleKahani() {
       setSubmitLoading(false);
     }
   };
+
+  const handleReplyClick = (commentId) => {
+    setReplyTo(commentId);
+    setReplyText(''); // Clear any existing text in the reply input field
+    setIsReplying(true); // Show the reply input field
+  };
+  
 
   const handleRating = async (newRating) => {
     try {
@@ -236,9 +268,9 @@ function SingleKahani() {
           </form>
           {loadingComments ? <div className='flex justify-center items-center'> <Loader /> </div> : 
             comments.length > 0 && (
-              <article className="text-base article bg-[#18003c] overflow-scroll overflow-x-auto w-full rounded-lg border-t border-gray-200">
+              <article className="text-base article bg-[#18003c] overflow-scroll overflow-x-auto w-full ">
                 {comments.map((comment) => (
-                  <div key={comment.id} className="p-6">
+                  <div key={comment.id} className="p-6  border-b border-gray-200">
                     <footer className="flex justify-between items-center mb-2">
                       <div className="flex items-center">
                         <p className="inline-flex items-center mr-3 text-sm font-semibold">
@@ -259,13 +291,63 @@ function SingleKahani() {
                     </p>
                     <div class="flex items-center mt-4 space-x-4">
             <button type="button"
-                class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium">
+        onClick={() => handleReplyClick(comment.id)}
+               class="flex items-center text-sm text-gray-500 hover:underline dark:text-gray-400 font-medium">
                 <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
                 </svg>
                 Reply
             </button>
         </div>
+        {/* Render reply input field */}
+    {isReplying && replyTo === comment.id && (
+      <div className="py-2 px-4 mb-4 bg-[#18003c] ">
+        <input 
+        type='text'
+          
+          value={replyText}
+          onChange={(e) => setReplyText(e.target.value)}
+          className="px-0 w-full text-sm text-[#ffffff] border-b border-gray-200 focus:ring-0 focus:outline-none bg-[#18003c]"
+          placeholder="Write a reply..."
+          required
+        />
+        <div className='m-3 flex justify-end'>
+          <button
+            type="button"
+            className="bg-[#18003c] text-white m-3 font-bold py-2 px-4 text-sm rounded hover:bg-pink-600 hover:text-white transition-colors"
+            onClick={() => {
+              setReplyText('');
+              setReplyTo(null);
+              setIsReplying(false);
+            }}
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            className="bg-white text-[#18003c] m-3 font-bold py-2 flex justify-center text-sm items-center px-4 rounded hover:bg-pink-600 hover:text-white transition-colors"
+            onClick={handleReplySubmit}
+          >
+            {submitLoading ? <img src={loadi} alt="load" className='h-6 w-6' /> : "Reply"}
+          </button>
+        </div>
+      </div>
+    )}
+     {/* Render replies */}
+     {replies[comment.id] && replies[comment.id].map(reply => (
+      <div key={reply.id} className="p-4 ml-8 border-l border-gray-200">
+        <p className="text-sm font-semibold">
+          <img
+            className="mr-2 w-6 h-6 rounded-full"
+            src={reply.user.profileimage ? `https://kahanifylaravel.kahanify.com/storage/app/public/${reply.user.profileimage}` : asset34}
+            alt={reply.user.username || 'Anonymous'}
+          />
+          {reply.user.username || 'Anonymous'}
+        </p>
+        <p className="text-gray-500">{reply.text}</p>
+        <p className="text-xs text-gray-400">{formatDate(reply.created_at)}</p>
+      </div>
+    ))}
                   </div>
                 ))}
               </article>

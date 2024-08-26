@@ -44,21 +44,26 @@ function Cart() {
       sessionStorage.setItem('cart', JSON.stringify(updatedCart));
     }
   };
-  
+  // const discountAmount = (discount/ 100);
   const handleRemove = (index) => {
     const updatedCart = cart.filter((_, i) => i !== index);
     setCart(updatedCart);
     sessionStorage.setItem('cart', JSON.stringify(updatedCart));
-  };
-  
+  };  
   const totalPrice = cart.reduce((total, item) => {
     if (item.packagename === 'Annual Membership') {
       return total +(item.pricePerItem * item.quantity) ; 
     }
     return total + item.pricePerItem ;
-  // }, 0);
-}, 0) - discount; // Subtract discount from total price
+  }, 0);
+// }, 0) - discountAmount; 
+const discountAmount = (discount / 100) * totalPrice;
 
+// Apply discount
+const finalPrice = totalPrice - discountAmount;
+
+
+// const discountAmount = (discount/ 100) * totalPrice;
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -124,10 +129,11 @@ function Cart() {
 
   const handleApplyCoupon = async () => {
     try {
-      const response = await postCoupon({ code: couponCode });
-      if (response && response.discount) {
-        setDiscount(response.discount);
-        toast.success('Discount applied!');
+      let coupon_code = couponCode;
+      const response = await postCoupon({  coupon_code });
+      if (response && response.discount_percentage) {
+        setDiscount(response.discount_percentage);
+        // toast.success('Discount applied!');
       }
     } catch (error) {
       console.error('Error applying coupon:', error);
@@ -233,7 +239,7 @@ function Cart() {
               </div>
               <div className="p-5 flex justify-between font-bold">
                 <p>Total</p>
-                <strong className='text-black'>Rs {totalPrice}</strong>
+                <strong className='text-black'>Rs {finalPrice}</strong>
               </div>
             </div>
             <button 

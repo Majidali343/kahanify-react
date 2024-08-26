@@ -509,11 +509,13 @@ const package_name=PackageName;
   }
 };
 //////////
-export const postCoupon = async ( code ) => {
+export const postCoupon = async ( coupon_code) => {
   try {
+    
     const token = Cookies.get('token');
-    console.log('Token:', code);
-         const response = await axios.post(`${API_URL}/send-coupen`,code  ,{
+    console.log('Token:', coupon_code);
+         const response = await axios.post(`${API_URL}/coupon/discount`,coupon_code
+  ,{
       headers: {
         Authorization: `Bearer ${token}`,        
       }
@@ -552,11 +554,19 @@ export const postCoupon = async ( code ) => {
 // };
 /////////////////
 //////////
-export const postReply = async ( replyData ) => { 
+export const postReply = async ( commentid  ) => { 
   try {
     const token = Cookies.get('token');
-    console.log('Token:', replyData);
-         const response = await axios.post(`${API_URL}/reply`,replyData  ,{
+    console.log('Token:', token);
+    const comment_id = commentid.comment_id;
+    const message = commentid.message;
+
+    
+    console.log('Comment Id:', comment_id);
+    
+    console.log('Message:', message);
+    
+         const response = await axios.post(`${API_URL}/postreply`,{comment_id , message}  ,{
       headers: {
         Authorization: `Bearer ${token}`,        
       }
@@ -569,7 +579,7 @@ export const postReply = async ( replyData ) => {
   } catch (error) {
     console.error('Error in Reply:', error);
   
-  toast.error('Error');
+  toast.error('Error in reply');
     throw error;
   }
 };
