@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import store from '../../assets/store.png'
 import { IoClose } from "react-icons/io5";
+import mobile from '../../assets/mbil.png'
 const PopupModal = () => {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -23,9 +24,13 @@ const PopupModal = () => {
               </div>
             <h2 className="text-xl font-bold mb-4">We are launching Kahanify mobile application</h2>
             <p className="mb-4">Stay tuned for more updates and exciting features coming soon!</p>
-            <div className="flex justify-center">
-            <img src={store} alt="store" />
-
+            <div className="flex justify-center ">
+            <div>
+            <img src={mobile} alt="mobile" className='h-60' />
+            </div>
+              <div className='flex items-center justify-center'>
+            <img src={store} alt="store"  className='h-40 '/>
+            </div>
             </div>
           </div>
         </div>
