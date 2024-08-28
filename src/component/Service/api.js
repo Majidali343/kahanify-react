@@ -291,7 +291,7 @@ console.log ( commentData.kahani_id)
       }
     );
     console.log(response);
-    toast.success("Comment Added & Sent for Review");
+    toast.success("Comment Added ");
 
     return response.data;
   } catch (error) {
@@ -583,3 +583,23 @@ export const postReply = async ( commentid  ) => {
     throw error;
   }
 };
+export const getPackages = async () => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', token);
+
+    const response = await axios.get(`${API_URL}/Packages`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    console.log('This is Response Packages:', response.data);
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error updating Packages:', error);
+    throw error;
+  }
+};
+/////////////////

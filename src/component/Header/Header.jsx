@@ -57,7 +57,7 @@ function Header() {
               <nav className="hidden sm:flex sm:items-center sm:justify-center flex-1">
                 <div className="flex space-x-4">
                   <NavLink
-                    to="/Package"
+                    to={membership ? "/Paidcontent" : "/Package"}
                     className={({ isActive }) =>
                       `font-bold text-xs md:text-xl px-5 hover:text-pink-500 ${isActive ? "text-pink-500" : "text-[#18003c]"}`
                     }
@@ -92,6 +92,8 @@ function Header() {
                 {isDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5">
                     <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Profile</Link>
+                <Link to="/Package" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Packages Details</Link>
+                   
                     <Link to="/Member" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Membership Details</Link>
                     <Link to="Order" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Order Details</Link>
                     <button onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600 border-none">Logout</button>
@@ -157,6 +159,8 @@ function Header() {
               <div className="border-t border-gray-200 mt-4 pt-2">
                 <h4 className="block  px-4 py-2 text-sm text-center font-bold text-gray-700 hover:bg-gray-100 border-b">{name} </h4>
                 <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Profile</Link>
+                <Link to="/Package" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Packages Details</Link>
+
                 <Link to="/Member" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Membership Details</Link>
                 <Link to="Order" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Order Details</Link>
                 <button onClick={handleLogout} className="block  px-4 py-2 text-sm text-gray-700 hover:text-pink-600 border-none">Logout</button>

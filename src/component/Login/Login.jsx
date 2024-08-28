@@ -8,7 +8,10 @@ import { useForm } from 'react-hook-form';
 import { login as authLogin } from '../store/authSlice'; 
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
-import load from '../../assets/Loader.gif'
+import load from '../../assets/Loader.gif';
+import {getCurrentUser} from '../Service/api';
+import Loader from '../loader/Loader';
+
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,7 +20,10 @@ function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm(); 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [membership, setMembership] = useState(null);   
+  const [loadi, setLoadi] = useState(false);
   
+
 
   const login = async (data) => {
     console.log(data)
@@ -31,9 +37,13 @@ function Login() {
           token: response.token, 
           rememberMe: data.remember_me 
         }));
-        navigate("/Package");
         
+        const userResponse = await authService.getCurrentUser();
+        if (userResponse && userResponse.membership !== undefined) {
+          navigate(userResponse.membership ? "/Paidcontent" : "/Package");
+        }
       }
+      
     } catch (error) {
       setError(error.response?.data?.message || error.message);
     }finally {

@@ -85,10 +85,7 @@ function Package() {
     );
   }
 
-  if (membership) {
-    return <Paidcontent />; 
-  }
-
+  
   const handleSubmit = async (event) => {
 
     event.preventDefault();
