@@ -583,12 +583,13 @@ export const postReply = async ( commentid  ) => {
     throw error;
   }
 };
+// ///////////////////////
 export const getPackages = async () => {
   try {
     const token = Cookies.get('token');
     console.log('Token:', token);
 
-    const response = await axios.get(`${API_URL}/Packages`, {
+    const response = await axios.get(`${API_URL}/getpackage`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -603,3 +604,22 @@ export const getPackages = async () => {
   }
 };
 /////////////////
+export const getSinglePackages = async (id) => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', token);
+
+    const response = await axios.get(`${API_URL}/package/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    console.log('This is Response  single Packages:', response.data);
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error updating single  Packages:', error);
+    throw error;
+  }
+};

@@ -22,28 +22,28 @@ function Cart() {
     }
   }, []);
 
-  const handleIncrement = (index) => {
-    const updatedCart = [...cart];
-    if (updatedCart[index].packagename === 'Annual Membership') {
-      updatedCart[index].quantity += 1;
-      setCart(updatedCart);
-      sessionStorage.setItem('cart', JSON.stringify(updatedCart));
-    }
-  };
+  // const handleIncrement = (index) => {
+  //   const updatedCart = [...cart];
+  //   if (updatedCart[index].packagename === 'Annual Membership') {
+  //     updatedCart[index].quantity += 1;
+  //     setCart(updatedCart);
+  //     sessionStorage.setItem('cart', JSON.stringify(updatedCart));
+  //   }
+  // };
   
-  const handleDecrement = (index) => {
-    const updatedCart = [...cart];
-    if (updatedCart[index].packagename === 'Annual Membership') {
-      if (updatedCart[index].quantity > 1) {
-        updatedCart[index].quantity -= 1;
-      } else {
-        // Remove item from cart if quantity is 0
-        updatedCart.splice(index, 1);
-      }
-      setCart(updatedCart);
-      sessionStorage.setItem('cart', JSON.stringify(updatedCart));
-    }
-  };
+  // const handleDecrement = (index) => {
+  //   const updatedCart = [...cart];
+  //   if (updatedCart[index].packagename === 'Annual Membership') {
+  //     if (updatedCart[index].quantity > 1) {
+  //       updatedCart[index].quantity -= 1;
+  //     } else {
+  //       // Remove item from cart if quantity is 0
+  //       updatedCart.splice(index, 1);
+  //     }
+  //     setCart(updatedCart);
+  //     sessionStorage.setItem('cart', JSON.stringify(updatedCart));
+  //   }
+  // };
   // const discountAmount = (discount/ 100);
   const handleRemove = (index) => {
     const updatedCart = cart.filter((_, i) => i !== index);
@@ -51,12 +51,12 @@ function Cart() {
     sessionStorage.setItem('cart', JSON.stringify(updatedCart));
   };  
   const totalPrice = cart.reduce((total, item) => {
-    if (item.packagename === 'Annual Membership') {
-      return total +(item.pricePerItem * item.quantity) ; 
-    }
+    // if (item.packagename === 'Annual Membership') {
+    //   return total +(item.pricePerItem * item.quantity) ; 
+    // }
     return total + item.pricePerItem ;
   }, 0);
-// }, 0) - discountAmount; 
+
 const discountAmount = (discount / 100) * totalPrice;
 
 // Apply discount
@@ -142,9 +142,9 @@ const finalPrice = totalPrice - discountAmount;
 
 
 
-  if (membership==true) {
-    return <Paidcontent />; 
-  }
+  // if (membership==true) {
+  //   return <Paidcontent />; 
+  // }
   
   const packageItem = cart.find(item => item.packagename === 'Annual Membership' || 'Life Time Membership ');
   const packageName = packageItem ? packageItem.packagename : 'Membership';
@@ -186,18 +186,22 @@ const finalPrice = totalPrice - discountAmount;
                   <tr key={index}>
                     <td className="py-2">
                       <div className="flex items-center">
-                        <img src={item.image} alt="Product Image" className="w-20 h-20 mr-4" />
+                        <img 
+                        // src={item.image} 
+        src={`https://kahanifylaravel.kahanify.com/storage/app/public/${item.image}`}
+                        
+                        alt="Product Image" className="w-20 h-20 mr-4" />
                         <div>
                           <p className="text-lg font-medium">{item.packagename}</p>
                           <p className="text-gray-500 pb-3">Rs {item.pricePerItem}</p>
                           <div className="items-center">
-                            {item.packagename === 'Annual Membership' && (
+                            {/* {item.packagename === 'Annual Membership' && (
                               <div className='flex pb-4'>
                                 <button className='border px-3 py-1' onClick={() => handleDecrement(index)}>-</button>
                                 <button className='mx-2'>{item.quantity}</button>
                                 <button className='border px-3 py-1' onClick={() => handleIncrement(index)}>+</button>
                               </div>
-                            )}
+                            )} */}
                             <p className='text-sm cursor-pointer hover:underline hover:text-pink-600' onClick={() => handleRemove(index)}>Remove items</p>
                           </div>
                         </div>
@@ -205,8 +209,8 @@ const finalPrice = totalPrice - discountAmount;
                     </td>
                     <td className="text-right flex justify-end item-top font-bold py-2">
                       {/* Rs {item.pricePerItem * item.quantity} */}
-  Rs {item.packagename === 'Annual Membership' ? (item.pricePerItem * item.quantity) : item.pricePerItem}
-
+  {/* Rs {item.packagename === 'Annual Membership' ? (item.pricePerItem * item.quantity) : item.pricePerItem} */}
+Rs{ item.pricePerItem}
                       </td>
                   </tr>
                 ))}
@@ -235,7 +239,7 @@ const finalPrice = totalPrice - discountAmount;
               </div>
               <div className="border-y p-5 flex justify-between">
                 <p className="text-gray-500">Subtotal</p>
-                <strong className='text-black font-bold'>Rs {totalPrice}</strong>
+                <strong className='text-black font-bold'>Rs {finalPrice}</strong>
               </div>
               <div className="p-5 flex justify-between font-bold">
                 <p>Total</p>
@@ -262,11 +266,19 @@ const finalPrice = totalPrice - discountAmount;
 
         <div className="mt-8">
           <h3 className="text-xl font-bold pb-3">Membership Details</h3>
-          <p className="text-gray-500 pb-2">This is an {packageName} package.</p>
+          {/* <p className="text-gray-500 pb-2">This is an {packageName} package.</p>
           <p className="text-gray-500 pb-2">The price for membership is PKR{packagePrice} now.</p>
           {packageName === 'Annual Membership' && (
             <p className="text-gray-500 pb-2">Membership expires after 1 year (365 Days)</p>
           )}
+ */}
+   <ul className="list-disc list-inside space-y-2">
+            {(cart.length && cart[0].description ? cart[0].description : '').split('\n')
+              .filter(item => item.trim() !== '') // Filter out empty lines
+              .map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+          </ul>
 
 
           {/* <p className="text-gray-500 pb-2">Membership expires after 1 year (365 Days)</p> */}

@@ -157,14 +157,14 @@ function SingleKahani() {
     setIsDropdownOpen(prev => !prev);
   };
 
-  const handleLogout = async () => {
-    try {
-      await getlogout();
-      window.location.href = 'login';
-    } catch (error) {
-      console.error('Error logging out:', error);
-    }
-  };
+  // const handleLogout = async () => {
+  //   try {
+  //     await getlogout();
+  //     // window.location.href = 'login';
+  //   } catch (error) {
+  //     console.error('Error logging out:', error);
+  //   }
+  // };
 
   return (
     <div className='bg-[#18003c]'>
@@ -201,15 +201,17 @@ function SingleKahani() {
                     <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                       Profile
                     </Link>
+                <Link to="/Package" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Packages Details</Link>
+
                     <Link to="/Member" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                       Membership Details
                     </Link>
                     <Link to="Order" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                       Order Details
                     </Link>
-                    <button onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
+                    {/* <button onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
                       Logout
-                    </button>
+                    </button> */}
                   </div>
                 )}
               </div>

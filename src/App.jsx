@@ -52,6 +52,7 @@ function App() {
           <Route path="FAQs" element={<FAQs />} />
           <Route path="Lifetime" element={<Lifetime />} />
           <Route path="Yearly" element={<Yearly/>} />
+          <Route path="package/:id" element={<Lifetime />} />
        
           <Route path="Paidcontent" element={<MemberRoute component={Paidcontent} />} />
         </Route>
