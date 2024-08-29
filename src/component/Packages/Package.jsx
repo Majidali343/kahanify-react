@@ -45,7 +45,7 @@ function Package() {
     fetchUserData();
   }, []);
 
-  const addToCart = (packagename, pricePerItem, image , description) => {
+  const addToCart = (packagename, pricePerItem, image , description, id) => {
     const existingCart = sessionStorage.getItem('cart');
     const cart = existingCart ? JSON.parse(existingCart) : [];
 
@@ -59,7 +59,8 @@ function Package() {
         pricePerItem,
         quantity: 1,
         image,
-        description
+        description,
+        id
       });
     }
 
@@ -129,7 +130,7 @@ function Package() {
       </p>
       <button 
         className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
-        onClick={() => addToCart(pkg.name, pkg.price, pkg.image , pkg.Description)}
+        onClick={() => addToCart(pkg.name, pkg.price, pkg.image , pkg.Description, pkg.id)}
       >
         Purchase
       </button>

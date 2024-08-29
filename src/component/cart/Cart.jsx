@@ -102,8 +102,10 @@ const finalPrice = totalPrice - discountAmount;
       
       const isAnnualMembership = cart.some(item => item.packagename === 'Annual Membership');
       const purchaseData = cart.map(item => ({
-        price: totalPrice,
-        years: isAnnualMembership ? item.quantity : undefined
+        // price: totalPrice,
+        id: item.id,
+      
+        // years: isAnnualMembership ? item.quantity : undefined
       }));
       
       await parchacemembership(purchaseData);
@@ -140,6 +142,11 @@ const finalPrice = totalPrice - discountAmount;
     }
   };
 
+  // const isInvalidPrice = Array.isArray(finalPrice) && finalPrice.length > 1;
+
+  // if (isInvalidPrice) {
+  //   return <div className="text-red-600">Error</div>;
+  // }
 
 
   // if (membership==true) {
@@ -239,11 +246,15 @@ Rs{ item.pricePerItem}
               </div>
               <div className="border-y p-5 flex justify-between">
                 <p className="text-gray-500">Subtotal</p>
-                <strong className='text-black font-bold'>Rs {finalPrice}</strong>
+                <strong className='text-black font-bold'>
+      Rs {cart.length === 1 ? finalPrice : 'ERROR'}
+ </strong>
               </div>
               <div className="p-5 flex justify-between font-bold">
                 <p>Total</p>
-                <strong className='text-black'>Rs {finalPrice}</strong>
+                <strong className='text-black font-bold'>
+   Rs {cart.length === 1 ? finalPrice : 'ERROR'}
+    </strong>
               </div>
             </div>
             <button 
@@ -289,3 +300,38 @@ Rs{ item.pricePerItem}
 }
 
 export default Cart;
+
+
+
+
+// const handleCheckOut = async () => {
+//   setLoading(true);
+//   try {
+//     console.log("Proceeding to checkout...");
+    
+//     if (cart.length !== 1) {
+//       toast.error('You must have exactly one item in your cart to proceed to checkout.');
+//       return;
+//     }
+    
+//     // Extract the `id` from the cart item
+//     const item = cart[0]; // Assuming there's only one item in the cart
+//     const isAnnualMembership = item.packagename === 'Annual Membership';
+//     const purchaseData = {
+//       id: item.id,
+//       price: totalPrice,
+//       years: isAnnualMembership ? item.quantity : undefined
+//     };
+    
+//     await parchacemembership(purchaseData);
+//     console.log('Checkout successful!');
+//     navigate("/Paidcontent"); // Uncomment if you want to navigate after success
+//     sessionStorage.removeItem('cart');
+//   } catch (error) {
+//     console.error('Error during checkout:', error);
+//   } finally {
+//     setLoading(false);
+//   }
+// };
+
+

@@ -159,71 +159,116 @@ export const userprofile = async () => {
   }
 };
 ////////////
-export const parchacemembership = async (memberpackage) => {
-  try {
-    const token = Cookies.get('token');
-    console.log("helllo");
-console.log(memberpackage);
+// export const parchacemembership = async (memberpackage) => {
+//   try {
+//     const token = Cookies.get('token');
+//     console.log("helllo");
+// console.log(memberpackage);
 
 
-const data = JSON.stringify(memberpackage);
+// const data = JSON.stringify(memberpackage);
 
-const parsedData = JSON.parse(data);
+// const parsedData = JSON.parse(data);
 
-const firstElement = parsedData[0];
+// const firstElement = parsedData[0];
 
-if(firstElement.years != "undefined"){
-  var years =  firstElement.years;
-  // var price =firstElement.price;
-  var price = 1;
+// if(firstElement.years != "undefined"){
+//   var years =  firstElement.years;
+//   // var price =firstElement.price;
+//   var price = 1;
 
-  console.log(price, years)
-  const response = await axios.post(
-    `${API_URL}/createorder`,
-    {
-       price
-        , years
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'    
-      }
-    }
-  );
-  console.log(response);
-  console.log (response.data.checkout_url);
-  window.location.href = response.data.checkout_url;
-}else{
+//   console.log(price, years)
+//   const response = await axios.post(
+//     `${API_URL}/createorder`,
+//     {
+//        price
+//         , years
+//     },
+//     {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//         'Content-Type': 'application/json'    
+//       }
+//     }
+//   );
+//   console.log(response);
+//   console.log (response.data.checkout_url);
+//   window.location.href = response.data.checkout_url;
+// }else{
 
-  // var Price =firstElement.price;
-  var Price = 1;
+//   // var Price =firstElement.price;
+//   var Price = 1;
   
-  const response = await axios.post(
-    `${API_URL}/createorder`,
-    {
-       Price 
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'    
-      }
-    }
-  );
-  console.log(response);
-  window.location.href = response.data.checkout_url;
+//   const response = await axios.post(
+//     `${API_URL}/createorder`,
+//     {
+//        Price 
+//     },
+//     {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//         'Content-Type': 'application/json'    
+//       }
+//     }
+//   );
+//   console.log(response);
+//   window.location.href = response.data.checkout_url;
  
-}
+// }
 
     
-  } catch (error) {
-    console.error('Error update image', error);
+//   } catch (error) {
+//     console.error('Error update image', error);
 
-    throw error;
-  }
-};
+//     throw error;
+//   }
+// };
 ////////////////////////////////
+
+export const parchacemembership = async (memberpackage) => {
+    try {
+      const token = Cookies.get('token');
+      console.log("helllo");
+  console.log(memberpackage);
+  
+  
+  const data = JSON.stringify(memberpackage);
+  
+  const parsedData = JSON.parse(data);
+  
+  const firstElement = parsedData[0];
+  
+    var package_id =  firstElement.id;
+  
+    console.log('fbvbvhfbvhbehhbchebchebch', package_id)
+    const response = await axios.post(
+      `${API_URL}/createorder`,
+      {
+  package_id
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'    
+        }
+      }
+    );
+    console.log(response);
+    console.log (response.data.checkout_url);
+    window.location.href = response.data.checkout_url;
+  
+  
+      
+    } catch (error) {
+      console.error('Error update image', error);
+  
+      throw error;
+    }
+  };
+  
+
+
+///////////////////////
 export const famousStories = async () => {
   try {
     const response = await axios.get(`${API_URL}/getfamouskahanis`, {

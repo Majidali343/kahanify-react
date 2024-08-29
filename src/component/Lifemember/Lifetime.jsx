@@ -25,7 +25,7 @@ function Lifetime() {
     fetchPackageDetails();
   }, [id]);
 
-  const addToCart = (packagename, pricePerItem, image, description) => {
+  const addToCart = (packagename, pricePerItem, image, description,id) => {
     const existingCart = sessionStorage.getItem('cart');
     const cart = existingCart ? JSON.parse(existingCart) : [];
 
@@ -39,7 +39,8 @@ function Lifetime() {
         pricePerItem,
         quantity: 1,
         image,
-        description
+        description,
+        id
       });
     }
 
@@ -74,7 +75,7 @@ function Lifetime() {
           </p>
           <button
             className="bg-blue-600 text-white py-2 px-3 font-bold rounded hover:bg-blue-700 transition-transform duration-300 ease-in-out transform hover:scale-105"
-            onClick={() => addToCart(packageDetails.name, packageDetails.price, packageDetails.image, packageDetails.Description)}
+            onClick={() => addToCart(packageDetails.name, packageDetails.price, packageDetails.image, packageDetails.Description, packageDetails.id)}
           >
             Purchase
           </button>
@@ -111,7 +112,7 @@ function Lifetime() {
               </p>
               <button 
                 className="bg-[#18003c] mb-3 text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
-                onClick={() => addToCart(pkg.name, pkg.price, pkg.image)}
+                onClick={() => addToCart(pkg.name, pkg.price, pkg.image,  pkg.Description, pkg.id)}
               >
                 Purchase
               </button>
