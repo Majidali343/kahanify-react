@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {asset38, asset39 ,asset40} from '../imageLoader' ;
-import {likekahani , isfavourite} from '../Service/api';
+import {likekahani , isfavourite, getCurrentUser} from '../Service/api';
 import {
   faPlay,
   faPause,
@@ -12,9 +12,9 @@ import {
   faVolumeMute,
   faEye,
 } from "@fortawesome/free-solid-svg-icons";
+import PopPaid from "./PopPaid";
 
-
-const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, description }) => {
+const Singleplayer = ({ id ,videoSrc, audioSrc, imageSrc, viewCount, title, description }) => {
 
 
   const audioRef = useRef(null);
@@ -25,7 +25,28 @@ const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, description })
   const [showStory, setShowStory] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [volume, setVolume] = useState(1);
+const [permissions, setPermissions]= useState()
+  useEffect(() => {
+    const fetchUserData = async () => {
+      
+      try {
+        const userResponse = await getCurrentUser();
+      console.log( 'vuervubh',userResponse);
+        if (userResponse && userResponse.permissions!== undefined) {
+          setPermissions(userResponse.permissions);
+          console.log( 'permissions',userResponse.permissions);
+        }
+        
+      } catch (error) {
+        console.error('Error fetching user or package data:', error);
+      }
+    };
 
+    fetchUserData();
+  }, []);
+  
+  
+  
   useEffect(() => {
     const handleLoadedMetadata = () => {
       setDuration(audioRef.current.duration);
@@ -47,12 +68,32 @@ const Singleplayer = ({ id ,audioSrc, imageSrc, viewCount, title, description })
     
   }, []);
 
+
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.playbackRate = playbackRate;
       audioRef.current.volume = volume;
     }
   }, [playbackRate, volume]);
+
+  // const togglePlayPause = () => {
+  //   if (permissions== 'Reading ')
+  //   {
+  //    setIsPlaying(!isPlaying);
+    //  <PopPaid/>
+  //   }
+  //    else{
+  //      if (isPlaying) {
+  //        audioRef.current.pause();
+  //      } else {
+  //        audioRef.current.play();
+  //      }}
+  //      setIsPlaying(!isPlaying);
+     
+  //  };
+ 
+
+
 
   const togglePlayPause = () => {
     if (isPlaying) {
@@ -132,6 +173,23 @@ const handleClose =() =>{
       <div className="flex flex-col items-center justify-center p-0 m-0">
         <div className="text-white p-4 rounded-lg  w-full max-w-lg">
           <div className="text-center mb-4">
+          {/* {permissions == 'Reading + Listening + Watching' ? <video
+              ref={videoRef}
+              src={videoSrc}
+              controls
+              className="w-full max-w-lg"
+              
+            />
+              :
+              <img
+                src={imageSrc}
+                alt="Audio Thumbnail"
+ onClick={() => return <PopPaid/>}
+                className="mx-auto w-[300px] h-[300px] md:w-[480px] md:h-[480px]"
+              />
+            } */}
+
+
             <img
               src={imageSrc}
               alt="Audio Thumbnail"
@@ -244,7 +302,11 @@ const handleClose =() =>{
               <span>{viewCount}</span>
             </div>
           </div>
+          {/* {permissions = 'Reading + Listening' ? <audio ref={audioRef} src={audioSrc} />
+            :
+            <audio ref={audioRef} src={audioSrc} />
 
+          } */}
           <audio ref={audioRef} src={audioSrc} />
         </div>
       </div>
