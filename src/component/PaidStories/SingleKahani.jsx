@@ -14,6 +14,7 @@ function SingleKahani() {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [audio, setAudio] = useState('');
+  const [video, setVideo] = useState('');
   const [image, setImage] = useState('');
   const [views, setViews] = useState(0);
   const [title, setTitle] = useState('');
@@ -42,6 +43,8 @@ function SingleKahani() {
       setViews(storyData.views);
       setTitle(storyData.title);
       setDescription(storyData.description);
+      setVideo(storyData.video);
+      
       setComments(storyData.comments || []);
     } catch (error) {
       console.error('Error fetching story:', error);
@@ -223,6 +226,7 @@ function SingleKahani() {
       {loading ? <div className='flex justify-center items-center'> <Loader /> </div> :
         <Singleplayer
           id={id}
+          videoSrc={`https://kahanifylaravel.kahanify.com/storage/${video}`}
           audioSrc={`https://kahanifylaravel.kahanify.com/storage/${audio}`}
           imageSrc={`https://kahanifylaravel.kahanify.com/storage/${image}`}
           viewCount={views}

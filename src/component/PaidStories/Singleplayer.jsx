@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {asset38, asset39 ,asset40} from '../imageLoader' ;
 import {likekahani , isfavourite, getCurrentUser} from '../Service/api';
+import { Link } from 'react-router-dom';
+import { IoClose } from "react-icons/io5";
 import {
   faPlay,
   faPause,
@@ -12,7 +14,7 @@ import {
   faVolumeMute,
   faEye,
 } from "@fortawesome/free-solid-svg-icons";
-import PopPaid from "./PopPaid";
+import "../Css/skahani.css";
 
 const Singleplayer = ({ id ,videoSrc, audioSrc, imageSrc, viewCount, title, description }) => {
 
@@ -23,9 +25,10 @@ const Singleplayer = ({ id ,videoSrc, audioSrc, imageSrc, viewCount, title, desc
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [showStory, setShowStory] = useState(false);
+  const [pop, setPop] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [volume, setVolume] = useState(1);
-const [permissions, setPermissions]= useState()
+let [permissions, setPermissions]= useState(null);
   useEffect(() => {
     const fetchUserData = async () => {
       
@@ -34,7 +37,7 @@ const [permissions, setPermissions]= useState()
       console.log( 'vuervubh',userResponse);
         if (userResponse && userResponse.permissions!== undefined) {
           setPermissions(userResponse.permissions);
-          console.log( 'permissions',userResponse.permissions);
+          console.log( 'pers',userResponse.permissions);
         }
         
       } catch (error) {
@@ -76,34 +79,19 @@ const [permissions, setPermissions]= useState()
     }
   }, [playbackRate, volume]);
 
-  // const togglePlayPause = () => {
-  //   if (permissions== 'Reading ')
-  //   {
-  //    setIsPlaying(!isPlaying);
-    //  <PopPaid/>
-  //   }
-  //    else{
-  //      if (isPlaying) {
-  //        audioRef.current.pause();
-  //      } else {
-  //        audioRef.current.play();
-  //      }}
-  //      setIsPlaying(!isPlaying);
-     
-  //  };
- 
-
-
-
   const togglePlayPause = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
+    if (permissions === "1") {
+      setPop(true);
     } else {
-      audioRef.current.play();
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
     }
-    setIsPlaying(!isPlaying);
-  };
-
+   };
+ 
   const handleRewind = () => {
     audioRef.current.currentTime -= 10;
   };
@@ -144,6 +132,7 @@ const [permissions, setPermissions]= useState()
   };
 
   const toggleStory = () => {
+ 
     setShowStory(!showStory);
   };
 
@@ -165,6 +154,9 @@ const handleClose =() =>{
   const muteVolume = () => {
     setVolume(0);
   };
+  const handleClosePopup = () => {
+    setPop(false);
+  };
 
   const isMuted = volume === 0;
 
@@ -173,28 +165,40 @@ const handleClose =() =>{
       <div className="flex flex-col items-center justify-center p-0 m-0">
         <div className="text-white p-4 rounded-lg  w-full max-w-lg">
           <div className="text-center mb-4">
-          {/* {permissions == 'Reading + Listening + Watching' ? <video
-              ref={videoRef}
-              src={videoSrc}
-              controls
-              className="w-full max-w-lg"
-              
-            />
-              :
+          {permissions === "3" || permissions === "4" ? (
+           <div> 
+          <h1 className="text-center py-6 font-bold underline text-2xl text-yellow-500">
+            Video Story
+          </h1>
+           <video className="w-full max-w-lg" src={videoSrc} controls  controlsList="nodownload"  />
+        <div >
+          <h1 className="text-center py-6 font-bold underline text-2xl text-yellow-500">
+            Audio Story
+          </h1>
+        <img
+                src={imageSrc}
+                alt="Audio Thumbnail"
+                // className="mx-auto w-[100px] h-[100px] md:w-[180px] md:h-[180px] rounded-full  {isPlaying?rotate:''}"
+                className={`mx-auto w-[100px] h-[100px] md:w-[180px] md:h-[180px] rounded-full ${isPlaying ? 'rotate' : ''}`}
+
+              />
+        </div>
+           </div>
+            ) : (
               <img
                 src={imageSrc}
                 alt="Audio Thumbnail"
- onClick={() => return <PopPaid/>}
                 className="mx-auto w-[300px] h-[300px] md:w-[480px] md:h-[480px]"
+                onClick={() => setPop(true)}
               />
-            } */}
+            )}
+          
 
-
-            <img
+            {/* <img
               src={imageSrc}
               alt="Audio Thumbnail"
                className="mx-auto w-[300px] h-[300px] md:w-[480px] md:h-[480px]"
-            />
+            /> */}
           </div>
 
           <div className="flex items-center justify-between">
@@ -302,12 +306,35 @@ const handleClose =() =>{
               <span>{viewCount}</span>
             </div>
           </div>
-          {/* {permissions = 'Reading + Listening' ? <audio ref={audioRef} src={audioSrc} />
-            :
-            <audio ref={audioRef} src={audioSrc} />
-
-          } */}
           <audio ref={audioRef} src={audioSrc} />
+
+{pop && 
+
+ (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/3">
+            <div className='flex justify-end'>
+              <button
+             onClick={handleClosePopup}
+             className="p-2 text-gray-600 hover:text-gray-800"
+              >
+                <IoClose size={24} />
+              </button>
+            </div>
+            <h2 className="text-xl text-black font-bold mb-4">You do not have permission to use this feature</h2>
+            <p className="text-gray-600 mb-4">Upgrade your package to access exciting features and enjoy more benefits!</p>
+            <Link to='/Package'>
+              <button className='bg-blue-700 text-white py-2 px-4 rounded hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-blue-500'>
+                Upgrade Package
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
+    
+
+
+          {/* <audio ref={audioRef} src={audioSrc} /> */}
         </div>
       </div>
 
@@ -328,7 +355,7 @@ const handleClose =() =>{
         }`}
         style={{ fontFamily: "Noto Nastaliq Urdu, sans-serif" }}
       >
-        {showStory && (
+        {showStory  && (
           <div className="px-2 md:px-7 lg:px-24">
             <h1 className="text-3xl font-bold py-4 pb-4">
               {title}
@@ -345,8 +372,6 @@ const handleClose =() =>{
           </div>
         )}
       </div>
-
-      
     </div>
   );
 };
