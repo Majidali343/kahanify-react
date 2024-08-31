@@ -15,6 +15,9 @@ function Package() {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [packageName, setPackageName] = useState('default');
+  const [packagePrice, setPackagePrice] = useState('');
+  const [packageid, setPackageid] = useState('');
+
   const [bankName, setBankName] = useState('default');
   const [paymentProof, setPaymentProof] = useState(null);
   const [packages, setPackages] = useState([]);
@@ -79,11 +82,22 @@ function Package() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await Manual(packageName, bankName, paymentProof);
+      await Manual(packageName, bankName, paymentProof,packageid);
     } catch (error) {
       toast.error(error.response?.data?.message || error.message);
     }
   }
+
+  useEffect(() => {
+    const selectedPackage = packages.find((pkg) => pkg.name == packageName);
+    if (selectedPackage) {
+      setPackagePrice(selectedPackage.price);
+      setPackageid(selectedPackage.id);
+    } else {
+      setPackagePrice(''); 
+    }
+  }, [packageName, packages]);
+
 
   if (loading) {
     return (
@@ -186,6 +200,10 @@ function Package() {
               </button>
             </div>
             <form>
+
+
+
+
               <div className="mb-4">
                 <label htmlFor="package-name" className="block text-sm font-medium text-gray-700">Package Name</label>
                 <select
@@ -195,10 +213,29 @@ function Package() {
                   className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
                   <option value="default">Select Package</option>
-                  <option value="Annual Membership">Annual Membership</option>
-                  <option value="Life Time Membership">Life Time Membership</option>
-                </select>
+            {packages.map((pkg) => ( 
+                  <option value={pkg.name}>{pkg.name}</option>
+              
+            ))}         
+</select>
               </div>
+              
+
+
+
+              <div className="mb-4">
+                <label htmlFor="package-price" className="block text-sm font-medium text-gray-700">Package Price</label>
+                <input type='text'
+                  id="package-price"
+                  value={packagePrice}
+                  onChange={(e) => setPackagePrice(e.target.value)}                
+                  className="mt-1 block w-full px-2 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                readOnly
+                />
+                  
+              </div>
+            
+
               <div className="mb-4">
                 <label htmlFor="bank-name" className="block text-sm font-medium text-gray-700">Bank Name</label>
                 <select

@@ -527,15 +527,20 @@ export const getlogout = async () => {
   }
 };
 ///////////////////
-export const Manual = async ( PackageName ,BankName, payment_image ) => {
+export const Manual = async ( PackageName ,BankName, payment_image , packageid) => {
   try {
     const token = Cookies.get('token');
     console.log('Token:', payment_image);
  const bank_name=BankName;
 const package_name=PackageName;
+console.log ('Package Name:', package_name);
+console.log ('bank_name:', bank_name);
+
+const package_id= packageid;
+console.log('package_id',package_id)
 
 
-         const response = await axios.post(`${API_URL}/manual-payment`,{bank_name , package_name, payment_image}  ,{
+         const response = await axios.post(`${API_URL}/manual-payment`,{bank_name , package_name, payment_image, package_id}  ,{
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'multipart/form-data',
