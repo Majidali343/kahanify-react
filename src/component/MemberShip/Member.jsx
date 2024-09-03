@@ -11,7 +11,7 @@ function Member() {
       setLoading(true);
       try {
         const response = await detail();
-        console.log(response);
+        console.log( 'vhcvdhch',response);
         if (response.data) {
           setMemberData(response.data);
         } else {

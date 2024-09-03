@@ -20,8 +20,8 @@ function Order() {
           setOrderData(response.data.order_id);
           setStatus(response.data.status);
           setName(response.data.name);
-          setYear(response.data.years);
-          setAmount(response.data.amount);
+          setYear(response.data.purchase_date);
+          setAmount(response.data.price);
         } else {
           setOrderData(null); 
         }
@@ -69,7 +69,7 @@ function Order() {
                 <td className="border border-gray-300 p-2">{name}</td>
               </tr>
               <tr>
-                <td className="border border-gray-300 p-2 font-bold">Years</td>
+                <td className="border border-gray-300 p-2 font-bold">Purchase Date</td>
                 <td className="border border-gray-300 p-2">{year}</td>
               </tr>
               <tr>

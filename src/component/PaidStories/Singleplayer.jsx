@@ -16,7 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../Css/skahani.css";
 
-const Singleplayer = ({ id ,videoSrc, audioSrc, imageSrc, viewCount, title, description }) => {
+const Singleplayer = ({ id ,videoSrc, audioSrc, imageSrc, viewCount, title, description, thumbnailSrc }) => {
 
 
   const audioRef = useRef(null);
@@ -186,8 +186,11 @@ const handleClose =() =>{
            </div>
             ) : (
               <img
-                src={imageSrc}
-                alt="Audio Thumbnail"
+                // src={imageSrc}
+                // thumbnailSrc
+                src={thumbnailSrc}
+
+                alt="Video Thumbnail"
                 className="mx-auto w-[300px] h-[300px] md:w-[480px] md:h-[480px]"
                 onClick={() => setPop(true)}
               />
@@ -360,9 +363,16 @@ const handleClose =() =>{
             <h1 className="text-3xl font-bold py-4 pb-4">
               {title}
             </h1>
-            <p className=" text-sm  leading-7">
+            {/* <p className=" text-sm  leading-7">
            {description}  
-            </p>
+            </p> */}
+          <div className="text-sm leading-7">
+  {(description ? description : '').split('\n')
+    .filter(item => item.trim() !== '') 
+    .map((item, index) => (
+      <p className="my-3" key={index}>{item}</p>
+    ))}
+</div>
             <div className="p-4 flex justify-center items-center" onClick={handleClose}>
             <button className="  flex justify-center items-center font-bold rounded text-yellow-500 font-sans hover:underline "> 
               Close

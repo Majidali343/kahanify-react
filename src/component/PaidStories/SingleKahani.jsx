@@ -16,6 +16,8 @@ function SingleKahani() {
   const [audio, setAudio] = useState('');
   const [video, setVideo] = useState('');
   const [image, setImage] = useState('');
+  const [thumbnail, setThumbnail] = useState('');
+
   const [views, setViews] = useState(0);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -44,7 +46,7 @@ function SingleKahani() {
       setTitle(storyData.title);
       setDescription(storyData.description);
       setVideo(storyData.video);
-      
+      setThumbnail(storyData.thumbnail)
       setComments(storyData.comments || []);
     } catch (error) {
       console.error('Error fetching story:', error);
@@ -229,6 +231,7 @@ function SingleKahani() {
           videoSrc={`https://kahanifylaravel.kahanify.com/storage/${video}`}
           audioSrc={`https://kahanifylaravel.kahanify.com/storage/${audio}`}
           imageSrc={`https://kahanifylaravel.kahanify.com/storage/${image}`}
+          thumbnailSrc={`https://kahanifylaravel.kahanify.com/storage/${thumbnail}`}
           viewCount={views}
           title={title}
           description={description}
