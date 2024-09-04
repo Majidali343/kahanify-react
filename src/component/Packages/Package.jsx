@@ -82,7 +82,7 @@ function Package() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await Manual(packageName, bankName, paymentProof,packageid);
+      await Manual(packageName, bankName, paymentProof,packageid, packagePrice);
     } catch (error) {
       toast.error(error.response?.data?.message || error.message);
     }
