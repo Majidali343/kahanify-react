@@ -99,12 +99,11 @@ const finalPrice = totalPrice - discountAmount;
         toast.error('You must have exactly one item in your cart to proceed to checkout.');
         return;
       }
-      
       const isAnnualMembership = cart.some(item => item.packagename === 'Annual Membership');
       const purchaseData = cart.map(item => ({
-        // price: totalPrice,
+        price: finalPrice,
         id: item.id,
-      
+        Coupon_code:couponCode
         // years: isAnnualMembership ? item.quantity : undefined
       }));
       

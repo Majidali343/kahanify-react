@@ -238,14 +238,18 @@ export const parchacemembership = async (memberpackage) => {
   const parsedData = JSON.parse(data);
   
   const firstElement = parsedData[0];
-  
+  console.log ('nfvnj', firstElement);
     var package_id =  firstElement.id;
-  
-    console.log('fbvbvhfbvhbehhbchebchebch', package_id)
+  var  price = firstElement.price;
+  var  coupon_code = firstElement.Coupon_code;
+
+    console.log('fbvbvhfbvhbehhbchebchebch', package_id , coupon_code,price )
     const response = await axios.post(
       `${API_URL}/createorder`,
       {
-  package_id
+  package_id,
+  price,
+  coupon_code,
       },
       {
         headers: {
@@ -254,7 +258,7 @@ export const parchacemembership = async (memberpackage) => {
         }
       }
     );
-    console.log(response);
+    console.log(response.data);
     console.log (response.data.checkout_url);
     window.location.href = response.data.checkout_url;
   
