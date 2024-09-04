@@ -206,7 +206,7 @@ function SingleKahani() {
                     <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                       Profile
                     </Link>
-                <Link to="/Package" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Packages Details</Link>
+                {/* <Link to="/Package" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Packages Details</Link> */}
 
                     <Link to="/Member" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                       Membership Details
