@@ -16,11 +16,11 @@ function FreeStory() {
     <Helmet>
     <title>Free Story - Engaging Storytelling with Audio | Kahanify</title>
     <meta name="description" content="Listen to an engaging free story with audio, perfect for relaxing or entertainment. Explore more stories on Kahanify." />
-    <meta name="keywords" content="free story, audio story, storytelling, entertainment, relaxation" />
-    <meta property="og:title" content="Free Story - Engaging Storytelling with Audio |Kahanify" />
-    <meta property="og:description" content="Listen to an engaging free story with audio, perfect for relaxing or entertainment. Explore more stories on Kahanify." />
+    <meta name="keywords" content="free story, audio story, video story, read story, storytelling, entertainment, relaxation" />
+    <meta property="og:title" content="Free Story - Engaging Storytelling with Audio and video |Kahanify" />
+    <meta property="og:description" content="Listen to an engaging free story with audio ,video and read, perfect for relaxing or entertainment. Explore more stories on Kahanify." />
     <meta property="og:image" content={asset37} />
-    <meta property="og:url" content="https://Kahanify.com/freestory" />
+    <meta property="og:url" content="https://Kahanify.com/FreeStory" />
     <meta property="og:type" content="website" />
   </Helmet>
     <div>

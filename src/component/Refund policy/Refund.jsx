@@ -24,11 +24,10 @@ function Refund() {
         <title>Refund Policy - Kahanify</title>
         <meta name="description" content="Read the Refund Policy for Kahanify, outlining our non-refundable membership fees, subscription management, billing details, and more. Learn about our guidelines for refunds and cancellations." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.kahanify.com/refund-policy" />
+        <link rel="canonical" href="https://www.kahanify.com/Refund" />
         <meta property="og:title" content="Refund Policy - Kahanify" />
         <meta property="og:description" content="Read the Refund Policy for Kahanify, outlining our non-refundable membership fees, subscription management, billing details, and more. Learn about our guidelines for refunds and cancellations." />
-        <meta property="og:url" content="https://www.kahanify.com/refund-policy" />
-        <meta property="og:image" content="https://www.kahanify.com/images/refund-policy-thumbnail.jpg" />
+        <meta property="og:url" content="https://www.kahanify.com/Refund" />
       </Helmet>
 
       <div className="p-4 sm:p-6 md:p-8 lg:p-6 xl:p-6">

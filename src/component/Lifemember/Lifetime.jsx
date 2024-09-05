@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { getSinglePackages, getPackages } from '../Service/api';
-
+import { Helmet } from 'react-helmet'; 
 function Lifetime() {
   const { id } = useParams(); // Extract the package ID from the URL
   const navigate = useNavigate();
@@ -58,6 +58,38 @@ function Lifetime() {
   // const relatedPackages = packages.filter(pkg => pkg.id !== id);
   const relatedPackages = packages.filter(pkg => pkg.id !== Number(id));
   return (
+    <>
+    <Helmet>
+    <title>{packageDetails.name} | kahanify</title>
+    <meta name="description" content={`Discover the ${packageDetails.name} package with details and pricing. Explore similar options and add to cart easily.`} />
+    <meta property="og:title" content={packageDetails.name} />
+    <meta property="og:description" content={`Discover the ${packageDetails.name} package with details and pricing. Explore similar options and add to cart easily.`} />
+    <meta property="og:image" content={`https://kahanifylaravel.kahanify.com/storage/app/public/${packageDetails.image}`} />
+    <meta property="og:url" content={`https://www.kahanify.com//package/${id}`} />
+    <meta name="twitter:card" content={`https://kahanifylaravel.kahanify.com/storage/app/public/${packageDetails.image}`} />
+    <meta name="twitter:title" content={packageDetails.name} />
+    <meta name="twitter:description" content={`Discover the ${packageDetails.name} package with details and pricing. Explore similar options and add to cart easily.`} />
+    <meta name="twitter:image" content={`https://kahanifylaravel.kahanify.com/storage/app/public/${packageDetails.image}`} />
+    <Helmet>
+  <script type="application/ld+json">
+    {`
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "${packageDetails.name}",
+        "image": "https://kahanifylaravel.kahanify.com/storage/app/public/${packageDetails.image}",
+        "description": "${packageDetails.Description}",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "PKR",
+          "price": "${packageDetails.price}"
+        }
+      }
+    `}
+  </script>
+</Helmet>
+
+  </Helmet>
     <div className="p-8">
       {/* Main Membership Details */}
       <div className="flex flex-col md:flex-row items-center bg-white rounded-lg overflow-hidden">
@@ -121,6 +153,7 @@ function Lifetime() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

@@ -14,26 +14,26 @@ function Conditions() {
         />
         <meta
           name="keywords"
-          content="terms and conditions, Kahanify, audio stories, membership, payment, content usage"
+          content="terms and conditions, Kahanify, audio stories, video stories, Read story, membership, payment, content usage"
         />
         <meta property="og:title" content="Terms and Conditions | Kahanify.com" />
         <meta
           property="og:description"
           content="Read the terms and conditions for using Kahanify.com, including membership, payment, content usage, and privacy policies."
         />
-        <meta property="og:url" content="https://www.kahanify.com/terms-conditions" />
+        <meta property="og:url" content="https://www.kahanify.com/Conditions" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Kahanify.com" />
-        <link rel="canonical" href="https://www.kahanify.com/terms-conditions" />
+        <link rel="canonical" href="https://www.kahanify.com/Conditions" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
+              
               "@type": "WebPage",
               name: "Terms and Conditions",
               description: "Terms and Conditions page of Kahanify.com",
-              url: "https://www.kahanify.com/terms-conditions",
+              url: "https://www.kahanify.com/Conditions",
             }),
           }}
         />

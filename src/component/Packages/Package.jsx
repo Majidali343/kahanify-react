@@ -111,15 +111,15 @@ function Package() {
     <>
       <Helmet>
         <title>Kahanify - Membership Packages</title>
-        <meta name="description" content="Get access to all the audio stories on Kahanify with our annual and monthly membership packages. Enjoy unlimited stories and more!" />
-        <meta name="keywords" content="audio stories, Kahanify, membership, annual membership, monthly membership, unlimited stories" />
+        <meta name="description" content="Get access to all the audio and video stories and also read on Kahanify with our annual and monthly membership packages. Enjoy unlimited stories and more!" />
+        <meta name="keywords" content="audio and video stories and also read stories, Kahanify, membership, annual membership, monthly membership, unlimited stories" />
         <meta property="og:title" content="Kahanify - Membership Packages" />
         <meta property="og:description" content="Get access to all the audio stories on Kahanify with our annual and monthly membership packages. Enjoy unlimited stories and more!" />
         {/* <meta property="og:image" content={asset31} /> */}
         <meta property="og:url" content="https://Kahanify.com/package" />
         <meta name="twitter:card" content="Kahanify" />
         <meta name="twitter:title" content="Kahanify - Membership Packages" />
-        <meta name="twitter:description" content="Get access to all the audio stories on Kahanify with our annual and monthly membership packages. Enjoy unlimited stories and more!" />
+        <meta name="twitter:description" content="Get access to all the audio stories and video stories and also read on Kahanify with our annual and monthly membership packages. Enjoy unlimited stories and more!" />
         {/* <meta name="twitter:image" content={asset31} /> */}
       </Helmet>
       <div className="bg-white sm:p-8 rounded-lg shadow-md">

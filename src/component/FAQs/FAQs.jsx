@@ -9,11 +9,11 @@ function FAQs() {
      <Helmet>
         <title>Frequently Asked Questions - Kahanify</title>
         <meta name="description" content="Find answers to frequently asked questions about Kahanify.com, including membership details, subscription management, and more." />
-        <meta name="keywords" content="FAQ, Kahanify, audio stories, membership, subscription, customer support" />
+        <meta name="keywords" content="FAQ, Kahanify, audio stories, video stories, read stories, membership, subscription, customer support" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Frequently Asked Questions - Kahanify" />
         <meta property="og:description" content="Find answers to frequently asked questions about Kahanify.com, including membership details, subscription management, and more." />
-        <meta property="og:url" content="https://www.kahanify.com/faqs" />
+        <meta property="og:url" content="https://www.kahanify.com/FAQs" />
       </Helmet>
       <div className=" bg-[#18003c] text-white">
         <div className="text-center py-6">

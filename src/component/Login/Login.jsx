@@ -54,14 +54,35 @@ function Login() {
   return (
     <div className="container mx-auto flex items-center justify-center h-[80vh] p-4">
       <div className="max-w-md w-full p-6 bg-white shadow-lg rounded-lg border border-gray-200">
-        <Helmet>
-          <title>Login | Kahanify</title>
-          <meta property="og:title" content="Login | Kahanify" />
-          <meta property="og:description" content="Login to your account on Kahanify." />
-        <meta property="og:url" content="http://Kahanify.com" />
-          <meta name="description" content="Login to your account on Kahanify." />
-        </Helmet>
+      <Helmet>
+        {/* Basic Meta Tags */}
+        <title>Login | Kahanify</title>
+        <meta name="description" content="Login to your account on Kahanify. Access your dashboard, view your subscriptions, and manage your account, and Listen to an engaging  story with audio and video, perfect for relaxing or entertainment." />
+        <link rel="canonical" href="http://kahanify.com/login" />
         
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Login | Kahanify" />
+        <meta property="og:description" content="Login to your account on Kahanify. Access your dashboard, view your subscriptions, and manage your account, and Listen to an engaging  story with audio and video, perfect for relaxing or entertainment." />
+        <meta property="og:url" content="http://kahanify.com/login" />
+        <meta property="og:image" content="http://kahanify.com/images/login-og-image.jpg" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Kahanify" />
+
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Login | Kahanify",
+              "description": "Login to your account on Kahanify. Access your dashboard, view your subscriptions, and manage your account.",
+              "url": "http://kahanify.com/login",
+              "image": "http://kahanify.com/images/login-og-image.jpg"
+            }
+          `}
+        </script>
+      </Helmet>
         <h1 className="text-black font-bold py-2 px-4 mb-4 text-xl rounded-t-lg">Sign In</h1>
         
         {error && <div className="text-red-500 font-bold text-center mb-4">{error}</div>}

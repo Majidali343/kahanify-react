@@ -161,14 +161,14 @@ const finalPrice = totalPrice - discountAmount;
     <>
       <Helmet>
         <title>Your Cart - Kahanify</title>
-        <meta name="description" content="View and manage your cart on Kahanify. Review your selected audio story memberships, adjust quantities, and proceed to checkout." />
-        <meta name="keywords" content="cart, Kahanify, audio stories, membership, checkout" />
+        <meta name="description" content="View and manage your cart on Kahanify. Review your selected and video stories and also read  story memberships, adjust quantities, and proceed to checkout." />
+        <meta name="keywords" content="cart, Kahanify, audio and video stories and also read stories, membership, checkout" />
         <meta property="og:title" content="Your Cart - Kahanify" />
-        <meta property="og:description" content="View and manage your cart on Kahanify. Review your selected audio story memberships, adjust quantities, and proceed to checkout." />        
+        <meta property="og:description" content="View and manage your cart on Kahanify. Review your selected audio and video stories and also read story memberships, adjust quantities, and proceed to checkout." />        
         <meta property="og:url" content="https://Kahanify.com/cart" />
         <meta name="twitter:title" content="Your Cart - Kahanify" />
-        <meta name="twitter:description" content="View and manage your cart on Kahanify. Review your selected audio story memberships, adjust quantities, and proceed to checkout." />
-        <meta name="twitter:image" content="URL-to-your-image" />
+        <meta name="twitter:description" content="View and manage your cart on Kahanify. Review your selected audio and video stories and also read story memberships, adjust quantities, and proceed to checkout." />
+       
       </Helmet>
 
       <div className="container mx-auto px-3 sm:px-3 md:px-16 py-8">

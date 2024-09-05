@@ -386,6 +386,7 @@ setEmail(user.email);
                 className="border border-gray-300 p-2 w-full h-24"
                 value={experience}
                 onChange={(e) => setExperience(e.target.value)}
+               maxLength="100"
               />
               <div className='flex justify-end'>
                 <button

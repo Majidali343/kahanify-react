@@ -256,6 +256,7 @@ function SingleKahani() {
                 className="px-0 w-full text-sm text-[#ffffff] border-0 focus:ring-0 focus:outline-none bg-[#18003c]"
                 placeholder="Write a comment..."
                 required
+                maxLength="80"
               />
             </div>
             <div className='m-3 flex justify-end'>
@@ -320,6 +321,7 @@ function SingleKahani() {
           className="px-0 w-full text-sm text-[#ffffff] border-b border-gray-200 focus:ring-0 focus:outline-none bg-[#18003c]"
           placeholder="Write a reply..."
           required
+           maxLength="60"
         />
         <div className='m-3 flex justify-end'>
           <button

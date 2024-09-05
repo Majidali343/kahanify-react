@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { detail } from '../Service/api';
 import Loader from '../loader/Loader';
-
+import { Helmet } from 'react-helmet';
 function Member() {
   const [memberData, setMemberData] = useState(null); 
   const [loading, setLoading] = useState(false);
@@ -29,6 +29,33 @@ function Member() {
 
   return (
     <div className="p-4 md:p-14 mx-2 md:mx-30 lg:mx-44 xl:mx-52 min-h-[80vh]">
+  
+  <Helmet>
+        <title>Membership Details | Kahanify</title>
+        <meta name="description" content="View your membership details on Kahanify. Check your membership ID, validity, package name, and creation date." />
+        <link rel="canonical" href="http://kahanify.com/Member" />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Membership Details | Kahanify" />
+        <meta property="og:description" content="View your membership details on Kahanify. Check your membership ID, validity, package name, and creation date." />
+        <meta property="og:url" content="http://kahanify.com/Member" />
+        <meta property="og:type" content="profile" />
+        <meta property="og:site_name" content="Kahanify" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Kahanify Member",
+              "description": "Membership details for Kahanify users.",
+              "url": "http://kahanify.com/Member"
+            }
+          `}
+        </script>
+      </Helmet>
+  
       <div>
         <h1 className="font-bold text-xl border-b-2 pb-3">
           <span className="border-b-2 border-b-blue-500 py-3">My Memb</span>
