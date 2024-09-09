@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { asset34 } from '../imageLoader';
 import { updateReview } from '../Service/api';
 import Loader from '../loader/Loader';
@@ -58,11 +58,11 @@ const Testimonial = () => {
             return 3; 
         }
     };
+
     const reviewsToShow = getReviewsToShow();
     const translatePercentage = 100 / reviewsToShow; 
 
     const truncateText = (text) => {
-        const maxLines = 4;
         const maxCharacters = 90; 
 
         if (text.length > maxCharacters) {
@@ -116,7 +116,7 @@ const Testimonial = () => {
                                 />
                                 <p className="text-lg  italic mb-2 overflow-hidden h-[120px] text-ellipsis 
            display-webkit-box -webkit-box-orient-vertical -webkit-line-clamp-4">
-                                   "{truncateText(review.description)}"
+  &quot;                             {truncateText(review.description)}&quot;
                                     {/* "{review.description}" */}
                                 </p>
                                  <h3 className="mt-4 font-semibold text-xl">

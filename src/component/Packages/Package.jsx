@@ -124,10 +124,11 @@ function Package() {
       </Helmet>
       <div className="bg-white sm:p-8 rounded-lg shadow-md">
         <h2 className="text-2xl text-center text-[#18003c] font-bold m-8">Get Access to All The Audio Stories on Kahanify</h2>
-
+        {packages.length === 0 ? <div className='m-10 text-center  font-bold text-gray-600'><h2>Now!Package are not available</h2></div>: 
+ 
         <div className="container mx-auto px-8 py-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-  {packages.map((pkg) => (
+ {packages.map((pkg) => (
     <div key={pkg.id} className="flex flex-col py-4 items-center">
       {/* <Link to={`/${pkg.route}`}> */}
       {/* <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}> */}
@@ -152,7 +153,7 @@ function Package() {
   ))}
 </div>
  </div>
-
+}
         <div className="flex bg-gray-100 items-center m-8 p-3 border-t border-sky-600">
           <img src={asset33} alt="#" className="w-4 h-4 mr-3" />
           <span className='text-gray-800'>Your cart is currently empty.</span>

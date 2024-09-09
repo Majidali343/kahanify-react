@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import  { useState, useEffect, useCallback } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { asset0 } from '../imageLoader';
@@ -41,7 +41,14 @@ function Header() {
       console.error('Error logging out:', error);
     }
   };
+  const truncateText = (text) => {
+    const maxCharacters = 6; 
 
+    if (text.length > maxCharacters) {
+        return text.substring(0, maxCharacters) + '...';
+    }
+    return text;
+};
   return (
     <header className="bg-white text-black border-b-4 border-[#ff0087]">
       <div className=" mx-auto lg:mx-8 max-w-full px-2 sm:px-6 lg:px-4">
@@ -86,7 +93,7 @@ function Header() {
                 >
                   <span className="sr-only">Open user menu</span>
                   <FaRegUser />
-                  <span className="ml-2">hey, {name}</span>
+                  <span className="ml-2">hey, {truncateText(name)}</span>
                   <FaSortDown className="ml-1" />
                 </button>
                 {isDropdownOpen && (
