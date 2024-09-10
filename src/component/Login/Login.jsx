@@ -97,7 +97,7 @@ function Login() {
               name="username_or_email"
               {...register('username_or_email', { required: 'Username or Email is required' })} 
               className="border border-gray-300 rounded-md w-full py-2 px-3 pl-10 mt-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Username / Email"
+              placeholder="Username / Email / Phone no"
             />
             <FontAwesomeIcon icon={faUser} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           </div>

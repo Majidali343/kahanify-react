@@ -80,3 +80,31 @@
     -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.containers {
+  height: 25rem; /* Adjust height as needed */
+  overflow-y: auto; /* Ensure scrollbar appears only when needed */
+  position: relative;
+  padding-right: 12px; /* Adjust if necessary to fit the thinner scrollbar */
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styles for WebKit browsers (Chrome, Safari) */
+.containers::-webkit-scrollbar {
+  width: 2px; /* Thinner scrollbar */
+ } 
+ 
+
+.containers::-webkit-scrollbar-thumb {
+  background:purple; /* Gradient color */
+  border-radius: 6px; /* Slightly rounded corners for the thumb */
+}
+ 
+.containers::-webkit-scrollbar-track {
+  background:transparent;
+}
+
+/* Optional: Style the scrollbar for Firefox */
+ .containers {
+  scrollbar-width: none; /* Thinner scrollbar */
+   scrollbar-color: #ff912c #f1f1f100; /* Gradient is not supported, use solid colors */
+ }  

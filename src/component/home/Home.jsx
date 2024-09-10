@@ -8,6 +8,8 @@ import Testimonial from '../Testimonial/Testimonial';
 import Pic from '../../assets/Mom.png';
 import { MdNavigateNext } from "react-icons/md";
 import PopupModal from './PopupModal';
+import YouTube from './YouTube';
+import Partner from './Partner';
 function Home() {
  
 
@@ -85,9 +87,9 @@ function Home() {
       </div>
     </div>
   </div>
-  <div class="bg-[#18003c] lg:h-[110vh] md:h-auto m-0 p-0 flex flex-col lg:flex-row">
-  <div class="w-full lg:w-1/2 flex-shrink-0">
-    <img src={asset1} alt="story" class=" object-fill h-[50vh] md:h-full w-full" />
+  <div className="bg-[#18003c] lg:h-[110vh] md:h-auto m-0 p-0 flex flex-col lg:flex-row">
+  <div className="w-full lg:w-1/2 flex-shrink-0">
+    <img src={asset1} alt="story" className=" object-fill h-[50vh] md:h-full w-full" />
   </div>
 {/* <div className='w-full lg:w-1/2 h-full'>
   <div class=" bg-cover bg-center flex flex-col items-center justify-between  sm:p-16 lg:p-7 pt-[30px] sm:pt-[80px]"
@@ -116,8 +118,8 @@ function Home() {
   <div className='w-full lg:w-1/2 h-full flex items-center justify-center flex-col'>
   
   <div> 
-    <h1 class="text-white font-bold text-4xl md:text-5xl  sm:px-0 sm:m-o sm:text-xl mt-10 mb-10 md:mb-10 lg:mb-10   px-8   text-center">
-      <a  class="hover:underline">FREE STORY</a>
+    <h1 className="text-white font-bold text-4xl md:text-5xl  sm:px-0 sm:m-o sm:text-xl mt-10 mb-10 md:mb-10 lg:mb-10   px-8   text-center">
+      <a  className="hover:underline">FREE STORY</a>
     </h1>
     </div>
   <div className='mt-6 sm:mt-6 md:mt-0 lg:mt-8 xl:mt-8 2xl:mt-10'>
@@ -127,9 +129,9 @@ function Home() {
 
        }}/>
   </div>
-  <div class="flex flex-col items-center  mt-8 sm:mt-8 md:mt-10 lg:mt-8 xl:mt-8 2xl:mt-16">
-      <p class="text-white font-bold text-lg   md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
-      <button class="bg-white text-[#18003c] py-2 text-lg my-4 lg:my-10 lg:mt-10 px-7 font-bold  hover:bg-pink-600 hover:text-white">
+  <div className="flex flex-col items-center  mt-8 sm:mt-8 md:mt-10 lg:mt-8 xl:mt-8 2xl:mt-16">
+      <p className="text-white font-bold text-lg   md:text-xl mb-4 text-center hover:underline">Discover the magic of storytelling with Kahanify</p>
+      <button className="bg-white text-[#18003c] py-2 text-lg my-4 lg:my-10 lg:mt-10 px-7 font-bold  hover:bg-pink-600 hover:text-white">
         <Link to='/FreeStory'>Try For Free</Link>
       </button>
       </div>
@@ -150,20 +152,21 @@ function Home() {
   </h1>
 </div>
 
-<div class="px-4">
+<div className="px-4">
 </div>
 <Slider />
   </div>
 
-<div className="px-0 sm:px-8 mx-0 sm:mx-8">
-<div className='urdu leading-loose'>
-<h1 className='text-[#ff912c] text-center font-bold  text-2xl sm:text-4xl'>محترم والدین</h1>
-<p className='text-right  text-gray-500 leading-loose text-xl m-4 sm:m-8 '>
+ <div className="px-0 sm:px-8 mx-0 sm:mx-8">
+  <div className='urdu leading-loose'>
+<div className='urdu leading-loose containers  ' >
+<h1 className='fade text-[#ff912c] text-center font-bold  text-2xl sm:text-4xl'>محترم والدین</h1>
+<p className='text-right fade text-gray-500 leading-loose text-xl m-4 sm:m-8 '>
 
 چھوٹے بچے خود تو کہانیاں نہیں پڑھ سکتے، لیکن اگر ان کو کہانی سنائی جائے تو بہت شوق سے سنتے ہیں، اور باربار سنانے کی فرمائش کرتے ہیں۔ اگر ان کہانیوں میں کوئی مثبت پیغام ہو تو بارہا سننے کی وجہ سے وہ انہیں ہمیشہ یاد رہتا ہے اور بچوں کی شخصیت سازی میں بہترین کردار ادا کرتا ہے۔ لیکن آج کے اس مصروف دور میں اکثر والدین کو یہ فرصت میسر نہیں ہوتی کہ وہ بچوں کو باقاعدگی سے کہانیاں سنا سکیں۔
 </p>
 
-<p className='text-right text-gray-500 leading-loose text-xl  m-4 sm:m-8'>
+<p className='text-right fade text-gray-500 leading-loose text-xl  m-4 sm:m-8'>
 اسی لئے والدین کی سہولت کے پیش نظر  
 <span className='font-bold '>کہانیفائے  </span>
 
@@ -179,19 +182,19 @@ function Home() {
 
 
 </p>
-<h3 className= "text-right text-blue-700 font-sans leading-loose text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-right text-blue-700 fade font-sans leading-loose text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
 
 
-<p className='text-right text-gray-500 leading-loose text-xl  m-4 sm:m-8 '>
+<p className='text-right text-gray-500 fade leading-loose text-xl  m-4 sm:m-8 '>
 وہ والدین جو بچوں کو موبائل کا ایکسس نہیں دینا چاہتے وہ با آسانی آڈیو کہانی پلے کرکے موبائل سکرین لاک کر سکتے ہیں۔ بیک گراؤنڈ میں کہانی چلتی رہے گی اور بچے بھی موبائل ایکسس کے بغیر معیاری کونٹینٹ سے لطف اٹھاتے رہیں گے۔
 </p>
 
-<p className='text-right text-gray-500 leading-loose text-xl  m-4 sm:m-8'>
+<p className='text-right text-gray-500 fade leading-loose text-xl  m-4 sm:m-8'>
 معیاری اور بامقصد کونٹینٹ کی فراہمی کے لئے کہانیفائے  کی ماہانہ اور سالانہ ممبرشپ کے تحت معمولی فیس رکھی گئی ہے۔ جس کے فائدے بیشمار ہونگے اور تفریح ہی تفریح میں بچے بہت سی اچھی باتیں سیکھیں گے۔
 </p>
 
-<h3 className= "text-right text-blue-700 font-sans sm:text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
-<div className='text-right text-gray-500 leading-loose text-xl   m-4 sm:m-8'>
+<h3 className= "text-right text-blue-700 font-sans fade sm:text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
+<div className='text-right text-gray-500 leading-loose fade text-xl   m-4 sm:m-8'>
   <ol  className=' list-right list-inside space-y-2'>
     <li> آڈیو کہانیاں سننے سے بچوں کا حافظہ بہتر ہوگا۔ </li>
     <li>بچوں کے اٹینشن سپین ( توجہ کا دورانیہ) میں اضافہ ہوگا۔</li>
@@ -207,13 +210,14 @@ function Home() {
   </ol>  
 </div>
 </div>
+
 <div className='flex justify-center'>
-<button className="bg-blue-700 urdu  text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+<button className="bg-blue-700 urdu my-8 text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
   <Link to='/signup' > رجسٹر کریں</Link></button>
-  
+  </div>   
 </div>
 
-<div className='px-4 sm:px-8 sm:mx-8'>
+<div className='px-4 containers sm:px-8 sm:mx-8'>
 <h1 className='text-[#ff912c] font-bold mt-8 text-xl sm:text-2xl'>Welcome to Kahanify – Your Destination for Immersive Urdu Audio Stories!</h1>
 <p className='text-gray-500 text-sm font-bold  my-4 '>Looking for the best Urdu kahaniyan for kids? Look no further! Our curated collection of stories in Urdu will captivate young minds and instill important life lessons through moral stories.
 </p>
@@ -354,22 +358,23 @@ function Home() {
   </ol>
   <h1 className='text-[#ff912c] font-bold mt-8 text-xl sm:text-2xl'>  Unleash the magic of Urdu storytelling – Join Kahanify today!
   </h1>
-  <div className='flex justify-center m-4 sm:m-8'>
+</div>
+
+
+<div className='flex justify-center m-4 sm:m-8'>
   <button className="bg-blue-700 text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
   <Link to='/signup' > Register Now</Link></button>  
       </div>
 </div>
-</div>
 
-
-<div class="bg-[#18003c]  h-auto m-0 p-0">
-  <div class="flex flex-col md:flex-row h-full w-full">
-    <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
-      <img src={Pic} alt="story" class="w-full sm:h-[100vh] h-auto lg:min-h-svh  object-cover" />
+<div className="bg-[#18003c]  h-auto m-0 p-0">
+  <div className="flex flex-col md:flex-row  md:justify-center md:items-center h-full w-full">
+    <div className="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
+      <img src={Pic} alt="story" className="w-full sm:h-[100vh] h-auto lg:min-h-svh  object-cover" />
     </div>
     
-    <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right ">
-    <div className='sm:flex   sm:flex-col sm:text-xl'>
+    <div className="w-full md:w-1/2 sm:h-1/2  bg-cover bg-center text-right ">
+    <div className='sm:flex   sm:flex-col sm:text-xl '>
       <div className='urdu flex flex-col items-center h-[100vh] md:h-auto  justify-center'>
   <h1 className='gradient-text  font-bold py-8 text-xl md:text-3xl ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
     بچوں کے لیےنت نئی پر لطف کہانیاں
@@ -397,7 +402,7 @@ function Home() {
     <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
   </p>
 </div>
-<button class="bg-white text-[#18003c] text-center urdu px-8 py-3 my-8  md:my-10 lg:my-8 xl:my-10 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
+<button className="bg-white text-[#18003c] text-center urdu px-8 py-3 my-8  md:my-10 lg:my-8 xl:my-10 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
         <Link to='/signup'> رجسٹر کریں</Link>
       </button>
      
@@ -409,9 +414,18 @@ function Home() {
 
 </div>
 <div className=' flex flex-col justify-center items-center bg-white'>
+<div className='w-[90vw] mt-12'>
+<h1 className="text-3xl font-bold text-center text-[#18003c] ">
+  Some Special Reveiws
+</h1>
+<YouTube/>
+</div>
 
 <div className='w-[90vw]'>
 <Testimonial/>
+  </div>
+  <div className='w-[90vw] my-6'>
+<Partner/>
   </div>
 
 </div>
