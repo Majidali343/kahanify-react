@@ -678,3 +678,24 @@ export const getSinglePackages = async (id) => {
     throw error;
   }
 };
+///////////////////////////////
+export const getLink = async () => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', token);
+
+    const response = await axios.get(`${API_URL}/youtubevideo`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    console.log('This is Response getLink:', response.data);
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error updating getLink:', error);
+    throw error;
+  }
+};
+/////////////////
