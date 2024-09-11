@@ -718,3 +718,23 @@ export const getFree = async () => {
     throw error;
   }
 };
+/////////////////
+export const getLogo = async () => {
+  try {
+    const token = Cookies.get('token');
+    console.log('Token:', token);
+
+    const response = await axios.get(`${API_URL}/partners`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    console.log('This is Response getLogo', response.data);
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error updating getLogo', error);
+    throw error;
+  }
+};
