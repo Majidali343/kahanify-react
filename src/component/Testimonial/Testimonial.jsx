@@ -71,6 +71,14 @@ const Testimonial = () => {
         return text;
     };
 
+    const NameText = (text) => {
+        const maxCharacters = 15; 
+
+        if (text.length > maxCharacters) {
+            return text.substring(0, maxCharacters) + '...';
+        }
+        return text;
+    };
     return (
         <div className="relative">
             <div className="overflow-hidden w-full max-w-4xl mx-auto">
@@ -120,7 +128,8 @@ const Testimonial = () => {
                                     {/* "{review.description}" */}
                                 </p>
                                  <h3 className="mt-4 font-semibold text-xl">
-                                    {review.user.username}
+                                 {NameText(review.user.username)}
+                                    
                                 </h3>
                             </div>
                         </div>

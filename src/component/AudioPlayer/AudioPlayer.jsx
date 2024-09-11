@@ -124,6 +124,7 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
           <div className="text-center mb-4">
             <img
               src={imageSrc}
+             
               alt="Audio Thumbnail"
               className="mx-auto w-full h-full"
             />
@@ -232,7 +233,7 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
 <img src={asset40} alt="eye" className="h-10 w-10 mr-3" />
               
               {/* <FontAwesomeIcon icon={faEye} className="text-xl mx-2" /> */}
-              <span>{viewCount}<span>k</span> </span>
+              <span>{viewCount} </span>
             </div>
           </div>
 

@@ -88,23 +88,24 @@
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar styles for WebKit browsers (Chrome, Safari) */
+
 .containers::-webkit-scrollbar {
-  width: 2px; /* Thinner scrollbar */
+  width: 2px; 
  } 
  
 
 .containers::-webkit-scrollbar-thumb {
-  background:purple; /* Gradient color */
-  border-radius: 6px; /* Slightly rounded corners for the thumb */
+  scrollbar-color:purple; 
+  border-radius: 6px;
 }
  
-.containers::-webkit-scrollbar-track {
+/* .containers::-webkit-scrollbar-track {
   background:transparent;
-}
+} */
 
 /* Optional: Style the scrollbar for Firefox */
  .containers {
   scrollbar-width: none; /* Thinner scrollbar */
    scrollbar-color: #ff912c #f1f1f100; /* Gradient is not supported, use solid colors */
- }  
+   border-radius: 6px;
+  }  

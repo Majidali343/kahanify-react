@@ -216,8 +216,8 @@ function Home() {
   <Link to='/signup' > رجسٹر کریں</Link></button>
   </div>   
 </div>
-
-<div className='px-4 containers sm:px-8 sm:mx-8'>
+<div className='containers'>
+<div className='px-4  sm:px-8 sm:mx-8'>
 <h1 className='text-[#ff912c] font-bold mt-8 text-xl sm:text-2xl'>Welcome to Kahanify – Your Destination for Immersive Urdu Audio Stories!</h1>
 <p className='text-gray-500 text-sm font-bold  my-4 '>Looking for the best Urdu kahaniyan for kids? Look no further! Our curated collection of stories in Urdu will captivate young minds and instill important life lessons through moral stories.
 </p>
@@ -359,7 +359,7 @@ function Home() {
   <h1 className='text-[#ff912c] font-bold mt-8 text-xl sm:text-2xl'>  Unleash the magic of Urdu storytelling – Join Kahanify today!
   </h1>
 </div>
-
+</div>
 
 <div className='flex justify-center m-4 sm:m-8'>
   <button className="bg-blue-700 text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">

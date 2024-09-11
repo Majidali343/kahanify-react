@@ -25,7 +25,7 @@ const Singleplayer = ({ id ,videoSrc, audioSrc, imageSrc, viewCount, title, desc
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [showStory, setShowStory] = useState(false);
-  const [pop, setPop] = useState(false);
+  // const [pop, setPop] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [volume, setVolume] = useState(1);
 let [permissions, setPermissions]= useState(null);
@@ -81,7 +81,8 @@ let [permissions, setPermissions]= useState(null);
 
   const togglePlayPause = () => {
     if (permissions === "1") {
-      setPop(true);
+      // setPop(true);
+      console.log(true);
     } else {
       if (isPlaying) {
         audioRef.current.pause();
@@ -155,7 +156,8 @@ const handleClose =() =>{
     setVolume(0);
   };
   const handleClosePopup = () => {
-    setPop(false);
+    // setPop(false);
+    console.log(false);
   };
 
   const isMuted = volume === 0;
@@ -192,7 +194,7 @@ const handleClose =() =>{
 
                 alt="Video Thumbnail"
                 className="mx-auto w-[300px] h-[300px] md:w-[480px] md:h-[480px]"
-                onClick={() => setPop(true)}
+                // onClick={() => setPop(true)}
               />
             )}
           
@@ -311,7 +313,7 @@ const handleClose =() =>{
           </div>
           <audio ref={audioRef} src={audioSrc} />
 
-{pop && 
+{/* {pop && 
 
  (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
@@ -333,7 +335,7 @@ const handleClose =() =>{
             </Link>
           </div>
         </div>
-      )}
+      )} */}
     
 
 

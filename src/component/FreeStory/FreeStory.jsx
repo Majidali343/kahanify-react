@@ -1,16 +1,35 @@
-import React from 'react'
+import React, { useState , useEffect} from 'react'
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faPause, faHeart, faBackward, faForward, faEye } from '@fortawesome/free-solid-svg-icons';
-import { asset37 ,asset10 ,asset9, asset24, asset25, asset26, asset27 } from '../imageLoader';
+import { asset37 ,asset10 , asset24, asset25, asset26, asset27 } from '../imageLoader';
 import Pic from '../../assets/Mom.png';
-import audio from '../../assets/audio/Bheriya-aur-chalaak-Bakri.mp3'
 library.add(faPlay, faPause, faHeart, faBackward, faForward, faEye);
 import { Helmet } from 'react-helmet';
 import { Link, NavLink } from 'react-router-dom';
 import '../Css/home.css'
-
+import { getFree, veiws } from '../Service/api';
 function FreeStory() {
+  const [audio, setAudio] = useState([]);
+  const [image, setImage] = useState([]);
+  const [views, setViews] = useState([]);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await getFree();
+        setAudio(response.data.audio);
+        setImage(response.data.image);
+        setViews(response.data.views);
+
+      } catch (error) {
+        console.error('Failed to fetch videos:', error);
+      }
+    };
+
+    fetchVideos();
+  }, []);
+
   return (
     <>
     <Helmet>
@@ -28,19 +47,20 @@ function FreeStory() {
 
 
       <AudioPlayer
-        audioSrc={audio}
-        imageSrc={asset37}
-        viewCount={5.6}
-      />
+        // audioSrc={links.audio}
+        audioSrc={`https://kahanifylaravel.kahanify.com/storage/${audio}`}
+        imageSrc={`https://kahanifylaravel.kahanify.com/storage/${image}`}
+        viewCount={views}
+   />
 
 
-<div class="bg-[#18003c]  h-auto m-0 p-0">
-  <div class="flex flex-col md:flex-row h-full w-full">
-    <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
-      <img src={Pic} alt="story" class="w-full  h-[100vh]   object-cover" />
+<div className="bg-[#18003c]  h-auto m-0 p-0">
+  <div className="flex flex-col md:flex-row h-full w-full">
+    <div className="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
+      <img src={Pic} alt="story" className="w-full  h-[100vh]   object-cover" />
     </div>
     
-    <div class="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right p-8">
+    <div className="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center text-right p-8">
     <div className='sm:flex  sm:flex-col sm:text-xl'>
       <div className='urdu flex flex-col items-center justify-center'>
   <h1 className='gradient-text  font-bold py-8 text-xl md:text-3xl' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
@@ -69,7 +89,7 @@ function FreeStory() {
     <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
   </p>
 </div>
-<button class="bg-white text-[#18003c] text-center urdu px-8 py-3 my-8  md:my-10 lg:my-8 xl:my-10 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
+<button className="bg-white text-[#18003c] text-center urdu px-8 py-3 my-8  md:my-10 lg:my-8 xl:my-10 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
         <Link to='/signup'> رجسٹر کریں</Link>
       </button>
      
