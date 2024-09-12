@@ -105,7 +105,7 @@ function YouTube() {
         const firstCard = containerRef.current.querySelector('div');
         if (firstCard) {
           const cardWidth = firstCard.offsetWidth;
-          const totalCards = links.length * 2; // Double the number of links for continuous scroll
+          const totalCards = links.length ; // Double the number of links for continuous scroll
           setScrollWidth(cardWidth * totalCards);
         }
       }
@@ -144,8 +144,10 @@ function YouTube() {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {[...links, ...links].map((link) => (
-          <div
+        {/* {[...links, ...links].map((link) => ( */}
+        {[ ...links].map((link) => (
+   
+   <div
             key={link.id}
             className="flex-shrink-0 bg-gray-100 rounded shadow-xl overflow-hidden w-80 mx-8 h-96"
           >
