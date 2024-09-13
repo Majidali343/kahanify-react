@@ -31,12 +31,14 @@
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 330px) {
   .responsive-background {
     background-image: url('../../assets/HomepageMobile.png'); 
-    background-position: top center;
+    /* background-position: top center; */
+background-size: contain !important;
 
-    margin: 0 !important;
+   height: 70vh !important ;
+   margin: 0 !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,15 +49,70 @@
   }
 }
 
+@media (max-width: 370px) {
+  .responsive-background {
+    background-image: url('../../assets/HomepageMobile.png'); 
+    /* background-position: top center; */
+background-size: contain !important;
+
+   height: 78vh  ;
+   margin: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .rest{
+  margin: 0 !important;
+
+  }
+}
+
+@media (max-width: 400px) {
+  .responsive-background {
+    background-image: url('../../assets/HomepageMobile.png'); 
+    /* background-position: top center; */
+background-size: contain !important;
+
+   height: 82vh ;
+   margin: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .rest{
+  margin: 0 !important;
+
+  }
+}
+
+@media (max-width: 500px) {
+  .responsive-background {
+    background-image: url('../../assets/HomepageMobile.png'); 
+     background-position: top center; ;
+
+   margin: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .rest{
+  margin: 0 !important;
+
+  }
+}
+
+
 @media (min-width: 601px) and (max-width: 1024px) {
   .responsive-background {
     background-image: url('../../assets/asset14.png'); 
+ height:100vh;
   }
 }
 
 @media (min-width: 1025px) {
   .responsive-background {
     background-image: url('../../assets/Homepage.png'); 
+  height:100vh;
   }
 }
 

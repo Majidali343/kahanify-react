@@ -34,11 +34,11 @@ function Home() {
   
 
     <div
-      className="h-screen bg-cover   responsive-background"
+      className=" bg-cover   responsive-background"
     >   
-      <div className="flex main   ">
+      <div className="flex main    ">
         <div 
-          className="text-white text-center rest  "
+          className="text-white  text-center rest  "
           style={{ margin: '14% 20% 8% 5%' }}
         >
           <h1
@@ -73,12 +73,12 @@ function Home() {
     <div className="flex justify-center items-center flex-col  sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-8">
     <div className=" p-4 sm:p-6 md:p-8 md:mx-5 lg:p-10 xl:p-4">
       <div className="text-center mx-2 w-auto sm:mx-4 md:mx-6 lg:mx-8 xl:mx-4">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-sans lg:text-3xl xl:text-3xl 2xl:text-3xl main mx-20 font-bold text-[#200899] border-b border-[#200899]  mb-4 pb-2">
+        <h1 className="text-base sm:text-sm md:text-3xl font-sans lg:text-3xl xl:text-3xl 2xl:text-3xl main mx-0 md:mx-20 font-bold text-[#200899] border-b border-[#200899]  mb-4 pb-2">
           Audio Tales: Where Imagination Meets the Power of Sound.
         </h1>
       </div>
-      <div className="flex flex-col justify-center items-center font-sans text-center text-[#200899] mx-2 sm:mx-4 md:mx-6 lg:mx-12 xl:mx-12">
-        <p className="text-[0.95rem] pt-2 mb-4 sm:mb-6 md:mb-6 lg:mb-6 leading-relaxed xl:mb-8">
+      <div className="flex flex-col justify-center items-center font-sans  text-[#200899] mx-2 sm:mx-4 md:mx-6 lg:mx-12 xl:mx-12">
+        <p className="text-[0.95rem]  text-justify md:text-center pt-2 mb-4 sm:mb-6 md:mb-6 lg:mb-6 leading-relaxed xl:mb-8">
           Kahanify brings the charm of storytelling to young minds. Embark on a captivating audio journey. Immerse in a world where stories come to life through the magic of sound. Our curated collection of audio stories is tailored for children, fostering imagination, language development, and a love for storytelling. Dive into a world of fanciful narratives, charming characters, and moralistic adventures, designed to spark interest and ignite the joy of listening in the hearts of the little ones. With Kahanify, every moment becomes an opportunity for young minds to explore, learn, and be delighted.
         </p>
         <button className="bg-blue-700 rounded font-bold flex justify-center self-center text-white  px-6 py-3 text-sm   transition-transform duration-300 ease-in-out  transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
