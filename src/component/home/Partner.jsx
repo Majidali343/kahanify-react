@@ -74,12 +74,14 @@ function Partner() {
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         {links.map((link, index) => (
           <div key={index} className="flex justify-center items-center">
+         <div className='flex-col text-center'>
             <img 
             src={`https://kahanifylaravel.kahanify.com/storage/${link.logo}`}
             alt="logo" 
             className="w-auto h-20" 
             />
-          </div>
+            <h2 className='mt-4 font-bold text-gray-800'>{link.title}</h2>
+            </div>    </div>
         ))}
       </div>
     </div>
