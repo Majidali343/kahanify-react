@@ -60,7 +60,8 @@ function Home() {
           <button
             className="bg-blue-600 text-base sm:text-lg btn md:text-xl lg:text-xl xl:text-xl 2xl:text-2xl   text-white py-2 px-4 rounded-[6px] text-center transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
           >
-            <Link to='/signup' className='flex' > Get Started  <span className='text-white self-center '>
+            {/* to='/signup' */}
+            <Link  to ='/FreeStory' className='flex' > Get Started  <span className='text-white self-center '>
               <MdNavigateNext  />
               {/* &gt; */}
               </span> </Link>
@@ -82,7 +83,7 @@ function Home() {
           Kahanify brings the charm of storytelling to young minds. Embark on a captivating audio journey. Immerse in a world where stories come to life through the magic of sound. Our curated collection of audio stories is tailored for children, fostering imagination, language development, and a love for storytelling. Dive into a world of fanciful narratives, charming characters, and moralistic adventures, designed to spark interest and ignite the joy of listening in the hearts of the little ones. With Kahanify, every moment becomes an opportunity for young minds to explore, learn, and be delighted.
         </p>
         <button className="bg-blue-700 rounded font-bold flex justify-center self-center text-white  px-6 py-3 text-sm   transition-transform duration-300 ease-in-out  transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
-          <Link to='/signup'>Register Now </Link>
+          <Link to ='/FreeStory'>Get Started </Link>
         </button>
       </div>
     </div>
@@ -182,7 +183,7 @@ function Home() {
 
 
 </p>
-<h3 className= "text-right text-blue-700 fade font-sans leading-loose text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-right text-blue-700 fade font-sans leading-loose text-xl hover:underline font-bold m-4 sm:m-8"><Link to ='/FreeStory' > Get Started</Link></h3>
 
 
 <p className='text-right text-gray-500 fade leading-loose text-xl  m-4 sm:m-8 '>
@@ -193,7 +194,7 @@ function Home() {
 معیاری اور بامقصد کونٹینٹ کی فراہمی کے لئے کہانیفائے  کی ماہانہ اور سالانہ ممبرشپ کے تحت معمولی فیس رکھی گئی ہے۔ جس کے فائدے بیشمار ہونگے اور تفریح ہی تفریح میں بچے بہت سی اچھی باتیں سیکھیں گے۔
 </p>
 
-<h3 className= "text-right text-blue-700 font-sans fade sm:text-xl hover:underline font-bold m-4 sm:m-8"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-right text-blue-700 font-sans fade sm:text-xl hover:underline font-bold m-4 sm:m-8"><Link to ='/FreeStory' > Get Started</Link></h3>
 <div className='text-right text-gray-500 leading-loose fade text-xl   m-4 sm:m-8'>
   <ol  className=' list-right list-inside space-y-2'>
     <li> آڈیو کہانیاں سننے سے بچوں کا حافظہ بہتر ہوگا۔ </li>
@@ -213,7 +214,7 @@ function Home() {
 
 <div className='flex justify-center'>
 <button className="bg-blue-700 urdu my-8 text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
-  <Link to='/signup' > رجسٹر کریں</Link></button>
+  <Link to ='/FreeStory' > شروع کریں</Link></button>
   </div>   
 </div>
 <div className='containers'>
@@ -241,7 +242,7 @@ function Home() {
 <p className='text-gray-500 text-sm font-bold  my-4 '><span className='text-black'>Family-Friendly:</span>Kids’ bedtime stories to thought-provoking moral tales.
 </p>
 
-<h3 className= "text-blue-700   hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700   hover:underline font-bold my-4"><Link to ='/FreeStory' > Get Started</Link></h3>
 
 <h1 className='text-[#ff912c] font-bold mt-8 '>Membership Benefits</h1>
 <p className='text-black-500 text-sm font-bold  my-4 '>Unlock a world of Urdu storytelling with a Kahanify membership:</p>
@@ -280,7 +281,7 @@ function Home() {
 <p className='text-gray-500 text-sm font-bold  my-4 '>Embark on a storytelling adventure with Kahanify. Whether you’re rediscovering childhood favorites or exploring new narratives, our platform promises an immersive and rewarding experience.
 </p>
 
-<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to ='/FreeStory' > Get Started</Link></h3>
 
 
 <h1 className='text-[#ff912c] text-xl sm:text-3xl font-bold mt-8 '>Urdu Stories: Nurturing Imagination and Values in Children</h1>
@@ -298,7 +299,7 @@ function Home() {
 <p className='text-gray-500 text-sm font-bold  my-3 '>Urdu stories come in various forms, from traditional written narratives to modern audio adaptations. They include moral stories, adventure tales, and bedtime fables, each designed to impart important life lessons.
 </p>
 
-<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to ='/FreeStory' > Get Started</Link></h3>
 <h1 className='text-[#ff912c] font-bold mt-6 '>Benefits of Reading Urdu Stories</h1>
 <p className='text-gray-500 text-sm font-bold  my-3 '>Reading Urdu stories benefits children in multiple ways. It enhances language skills, promotes empathy, and stimulates imagination. Moreover, these stories often convey valuable moral teachings in a subtle and engaging manner.
 </p>
@@ -316,7 +317,7 @@ function Home() {
 
 <h1 className='text-[#ff912c] font-bold mt-6 '>Tips for Making Story Time Engaging</h1>
 <p className='text-gray-500 text-sm font-bold  my-3 '> To maximize the benefits of Urdu stories, incorporate interactive elements and use engaging reading techniques. This not only captures children’s attention but also fosters a love for storytelling.</p>
-<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to ='/FreeStory' > Get Started</Link></h3>
 
 
 <h1 className='text-[#ff912c] font-bold mt-6 '>Incorporating Moral Lessons in Urdu Stories</h1>
@@ -325,7 +326,7 @@ function Home() {
 
 <h1 className='text-[#ff912c] font-bold mt-6 '>Audio Stories: A Modern Approach</h1>
 <p className='text-gray-500 text-sm font-bold  my-3 '> Audio stories provide a dynamic way to experience Urdu narratives. They offer convenience and accessibility, allowing children to enjoy stories anytime, anywhere.</p>
-<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to ='/FreeStory' > Get Started</Link></h3>
 
 <h1 className='text-[#ff912c] font-bold mt-6 '>Encouraging Children to Create Their Own Urdu Stories</h1>
 <p className='text-gray-500 text-sm font-bold  my-3 '> Encouraging children to write or narrate their own Urdu stories promotes creativity and self-expression. This process enhances language skills and boosts confidence in young storytellers.</p>
@@ -335,7 +336,7 @@ function Home() {
 
 <h1 className='text-[#ff912c] font-bold mt-6 '>Conclusion</h1>
 <p className='text-gray-500 text-sm font-bold  my-3 '> Urdu stories play a pivotal role in educating and entertaining children. They foster language development, nurture creativity, and impart important life lessons. By incorporating these stories into a child’s routine, parents and educators can contribute significantly to their holistic growth.</p>
-<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to='/signup' > Register Now</Link></h3>
+<h3 className= "text-blue-700  hover:underline font-bold my-4"><Link to ='/FreeStory' > Get Started</Link></h3>
 
 <h1 className='text-[#ff912c] font-bold mt-6  '>FAQs About Urdu Stories</h1>
 
@@ -363,7 +364,7 @@ function Home() {
 
 <div className='flex justify-center m-4 sm:m-8'>
   <button className="bg-blue-700 text-white py-2 px-4 rounded  transition-transform duration-300 ease-in-out transform hover:scale-105 hover:bg-pink-600 hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
-  <Link to='/signup' > Register Now</Link></button>  
+  <Link to ='/FreeStory' > Get Started</Link></button>  
       </div>
 </div>
 
@@ -403,7 +404,7 @@ function Home() {
   </p>
 </div>
 <button className="bg-white text-[#18003c] text-center urdu px-8 py-3 my-8  md:my-10 lg:my-8 xl:my-10 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
-        <Link to='/signup'> رجسٹر کریں</Link>
+        <Link to ='/FreeStory'> شروع کریں</Link>
       </button>
      
 </div>

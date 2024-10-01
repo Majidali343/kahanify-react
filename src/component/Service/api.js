@@ -277,7 +277,9 @@ export const parchacemembership = async (memberpackage) => {
 export const famousStories = async () => {
   try {
     const response = await axios.get(`${API_URL}/getfamouskahanis`, {
+   
     });
+    console.log('Famous' , response)
     return response.data;
   } catch (error) {
     console.error('Error fetching famous kahanis:', error);
@@ -735,6 +737,21 @@ export const getLogo = async () => {
     
   } catch (error) {
     console.error('Error updating getLogo', error);
+    throw error;
+  }
+};
+/////////////////
+export const freepackages = async () => {
+  try {
+   
+    const response = await axios.get(`${API_URL}/allpackages`, {
+    });
+
+    console.log('This is Response freepackages', response.data);
+    return response.data;
+    
+  } catch (error) {
+    console.error('Error updating freepackages', error);
     throw error;
   }
 };

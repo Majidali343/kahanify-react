@@ -1,4 +1,9 @@
 import React, { useState , useEffect} from 'react'
+import { useSelector } from 'react-redux';
+import { asset1, asset3 } from '../imageLoader';
+import StarRating from '../home/StarRating'; 
+import Loader from '../loader/Loader';
+import fav from'../../assets/Fav.png';
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faPause, faHeart, faBackward, faForward, faEye } from '@fortawesome/free-solid-svg-icons';
@@ -6,13 +11,22 @@ import { asset37 ,asset10 , asset24, asset25, asset26, asset27 } from '../imageL
 import Pic from '../../assets/Mom.png';
 library.add(faPlay, faPause, faHeart, faBackward, faForward, faEye);
 import { Helmet } from 'react-helmet';
-import { Link, NavLink } from 'react-router-dom';
+import {useNavigate, Link, NavLink } from 'react-router-dom';
 import '../Css/home.css'
-import { getFree, veiws } from '../Service/api';
+import { freepackages, getFree, veiws, famousStories } from '../Service/api';
+import Slider from '../home/Card';
 function FreeStory() {
   const [audio, setAudio] = useState([]);
   const [image, setImage] = useState([]);
   const [views, setViews] = useState([]);
+  const [packages, setPackages] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [cards, setCards] = useState([]);
+  
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector(state => state.auth.status);
+
+  const cardsPerPage = 6;
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -22,13 +36,68 @@ function FreeStory() {
         setImage(response.data.image);
         setViews(response.data.views);
 
-      } catch (error) {
+                const packageResponse = await freepackages();
+                setPackages(packageResponse || []);
+      
+              } catch (error) {
         console.error('Failed to fetch videos:', error);
       }
     };
 
     fetchVideos();
   }, []);
+
+  useEffect(() => {
+    const fetchStories = async () => {
+      try {
+        const response = await famousStories();
+        if (response && response.data) {
+          setCards(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching stories:', error);
+      }
+    };
+
+    fetchStories();
+  }, []);
+
+
+
+  const addToCart = (packagename, pricePerItem, image , description, id) => {
+    const existingCart = sessionStorage.getItem('cart');
+    const cart = existingCart ? JSON.parse(existingCart) : [];
+
+    const itemIndex = cart.findIndex(item => item.packagename === packagename);
+
+    if (itemIndex > -1) {
+      cart[itemIndex].quantity += 1;
+    } else {
+      cart.push({
+        packagename,
+        pricePerItem,
+        quantity: 1,
+        image,
+        description,
+        id
+      });
+    }
+
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+    navigate('/cart'); 
+  };
+  const nextPage = () => {
+    if (currentIndex + cardsPerPage < cards.length) {
+      setCurrentIndex(currentIndex + cardsPerPage);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentIndex - cardsPerPage >= 0) {
+      setCurrentIndex(currentIndex - cardsPerPage);
+    }
+  };
+
 
   return (
     <>
@@ -129,6 +198,122 @@ function FreeStory() {
       </div>
     </div>
     <div>
+
+
+
+
+
+
+    <div className='bg-[#18003c] -mt-8'>
+    <div >
+  <h1 className='text-center  text-4xl lg:text-6xl text-yellow-500 py-4 mt-4 font-bold '>
+  POPULAR STORIES
+  </h1>
+</div>
+
+<div className="px-4">
+</div>
+<div className="p-4 mx-3 md:mx-6">
+      <div className="relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {cards.length === 0 ? (
+
+              <div className="min-h-[30vh] w-[50vw] m-auto justify-end items-end flex">
+            
+            <Loader />
+            </div>
+          ) : (
+            cards.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
+              <div 
+                key={card.kahani_id} 
+                className="  rounded-lg lg:mx-4 overflow-hidden flex flex-col p-4"
+                // onClick={() => handleCardClick(card.kahani_id)}
+                style={{ cursor: 'pointer' }}
+              >
+                <img 
+                  src={`https://kahanifylaravel.kahanify.com/storage/${card.image}`} 
+                  alt="story" 
+                  className="w-full h-full object-cover mb-4" 
+                />
+                <h3 className="text-xl text-gray-200 font-semibold text-right mb-2">{card.title}</h3>
+                <p className="text-gray-400 mb-2 text-right">{card.duration}</p>
+                <div>
+                <div className='w-full h-auto flex justify-between items-center bg-[#cee9f541] '>
+                  <div className='p-1 flex'>
+<button className='bg-[#200899] text-white px-1 rounded-lg '>PG</button>
+                  <button className="flex self-center  mx-2 rounded border border-black  text-center font-bold text-xs p-1">3+</button>
+                  </div>
+                  <div className='p-1 flex'>
+                    <img src={fav} alt="icon" className='h-8 w-8' />
+                  <p className=" text-gray-500 flex self-center text-sm ml-2">{card.views}</p>
+                  </div>
+
+                </div>
+                </div>
+                <div className="flex items-center mt-2">
+                  <StarRating 
+                    rating={card.average_rating} 
+                  />
+                  <p className='mx-3 text-gray-400'>{Number(card.average_rating).toFixed(1)}</p>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+        <div className="flex justify-center m-4">
+          <button
+            onClick={prevPage}
+            disabled={currentIndex === 0}
+            className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400 mx-2"
+          >
+            Previous
+          </button>
+          <button
+            onClick={nextPage}
+            disabled={currentIndex + cardsPerPage >= cards.length}
+            className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400 mx-2"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+    <div className="bg-[#18003c] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+ {packages.map((pkg) => (
+    <div key={pkg.id} className="flex flex-col py-4 items-center">
+      {/* <Link to={`/${pkg.route}`}> */}
+      {/* <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}> */}
+      <Link to={`/package/${pkg.id}`}>
+        <img 
+        // src={pkg.image}
+        src={`https://kahanifylaravel.kahanify.com/storage/app/public/${pkg.image}`}
+        className="mb-3 h-[300px] w-[300px]" alt={pkg.name} />
+      </Link>
+      <p className="text-2xl text-[#18003c] mb-1 font-bold">{pkg.name}</p>
+      <p className="font-bold mb-2 text-pink-600 text-xl">
+        {/* <span className='text-gray-500 line-through'>{`Rs ${pkg.price}`}</span>  */}
+        <span className='underline'>{`Rs ${pkg.price}`}</span>
+      </p>
+      <button 
+        className="bg-[blue] mb-3 text-white py-2 px-4 rounded hover:bg-pink-600 transition-transform duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50"
+        onClick={() => addToCart(pkg.name, pkg.price, pkg.image , pkg.Description, pkg.id)}
+      >
+        Purchase
+      </button>
+    </div>
+  ))}
+</div>
+
+
+
+
+
 
     <footer className="bg-[#18003c] text-white py-4 border-t border-yellow-500">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
