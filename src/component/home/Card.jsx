@@ -248,6 +248,7 @@ import { useSelector } from 'react-redux';
 import { famousStories } from '../Service/api';
 import Loader from '../loader/Loader';
 import fav from '../../assets/Fav.png';
+import AudioPlay from './Audioplay';
 import StarRating from './StarRating';
 import { useNavigate } from 'react-router-dom';
 import Modal from './Modal'; // Create a separate Modal component
@@ -409,33 +410,8 @@ const Slider = () => {
                   className="w-full h-full object-cover mb-4" 
                 />
                 <h3 className="text-xl font-semibold text-right mb-2">{card.title}</h3>
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span>{formatTime(currentTime[card.kahani_id] || 0)}</span>
-                    <input
-                      type="range"
-                      min="0"
-                      max={duration[card.kahani_id] || 0}
-                      value={currentTime[card.kahani_id] || 0}
-                      onChange={(e) => {
-                        const newTime = parseFloat(e.target.value);
-                        audioRefs.current[card.kahani_id].currentTime = newTime;
-                        setCurrentTime(prev => ({ ...prev, [card.kahani_id]: newTime }));
-                      }}
-                      className="w-full mx-2"
-                    />
-                    <span>{formatTime(duration[card.kahani_id] || 0)}</span>
-                  </div>
-                  <div className="flex justify-center items-center">
-                    <button
-                      onClick={() => togglePlayPause(`https://kahanifylaravel.kahanify.com/storage/${card.audio}`, card.kahani_id)}
-                      className="text-sm flex self-center sm:text-lg md:text-xl mx-2"
-                      aria-label={isPlaying === card.kahani_id ? "Pause" : "Play"}
-                    >
-                      <FontAwesomeIcon icon={isPlaying === card.kahani_id ? faPause : faPlay} />
-                    </button>
-                  </div>
-                </div>
+
+                <AudioPlay   audioUrl={card.audio} />
                 <div className="w-full h-auto flex justify-between items-center bg-gray-100">
                   <div className="p-1 flex">
                     <button className="bg-[#18003c] text-white px-1 rounded-lg">PG</button>
