@@ -1,9 +1,11 @@
 import { useRef, useState, useEffect } from 'react';
 import { toast } from 'react-toastify'; 
+import Modal from './Modal'; 
 
 function AudioPlay({ audioUrl }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -16,7 +18,9 @@ function AudioPlay({ audioUrl }) {
         audioElement.pause();
         audioElement.currentTime = 0; // Optional: Reset the audio to the beginning
         setIsPlaying(false);
-        toast.warning('Please purchase membership to listen full story');
+        // toast.warning('Please purchase membership to listen full story');
+        setShowModal(true); 
+
         return;
       }
     };
@@ -37,6 +41,7 @@ function AudioPlay({ audioUrl }) {
     }
     setIsPlaying(!isPlaying);
   };
+  const closeModal = () => setShowModal(false);
 
   return (
     <div className="audio-player">
@@ -49,7 +54,12 @@ function AudioPlay({ audioUrl }) {
         {isPlaying ? 'Pause' : 'Play'}
       </button>
 
-      {/* You can add more custom controls like volume, progress bar, etc. */}
+        {showModal && (
+          <Modal isOpen={showModal} onClose={closeModal}>
+            <h2 className="text-lg font-semibold">Unlock the Full Story</h2>
+            <p>To enjoy the entire story and explore more exciting content, simply become a member. Get access to exclusive stories, extended versions, and much more by joining today!</p>
+          </Modal>
+        )}
     </div>
   );
 }

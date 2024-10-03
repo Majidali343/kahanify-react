@@ -15,6 +15,7 @@ import {useNavigate, Link, NavLink } from 'react-router-dom';
 import '../Css/home.css'
 import { freepackages, getFree, veiws, famousStories } from '../Service/api';
 import Slider from '../home/Card';
+
 function FreeStory() {
   const [audio, setAudio] = useState([]);
   const [image, setImage] = useState([]);
@@ -200,88 +201,17 @@ function FreeStory() {
     <div>
 
 
-
-
-
-
-    <div className='bg-[#18003c] -mt-8'>
-    <div >
-  <h1 className='text-center  text-4xl lg:text-6xl text-yellow-500 py-4 mt-4 font-bold '>
-  POPULAR STORIES
+<div className='bg-[#18003c]'>
+  <h1 className='text-center text-xl md:text-3xl lg:text-5xl font-bold text-yellow-500 underline'>
+    All Stories
   </h1>
 </div>
 
-<div className="px-4">
-</div>
-<div className="p-4 mx-3 md:mx-6">
-      <div className="relative">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {cards.length === 0 ? (
 
-              <div className="min-h-[30vh] w-[50vw] m-auto justify-end items-end flex">
-            
-            <Loader />
-            </div>
-          ) : (
-            cards.slice(currentIndex, currentIndex + cardsPerPage).map(card => (
-              <div 
-                key={card.kahani_id} 
-                className="  rounded-lg lg:mx-4 overflow-hidden flex flex-col p-4"
-                // onClick={() => handleCardClick(card.kahani_id)}
-                style={{ cursor: 'pointer' }}
-              >
-                <img 
-                  src={`https://kahanifylaravel.kahanify.com/storage/${card.image}`} 
-                  alt="story" 
-                  className="w-full h-full object-cover mb-4" 
-                />
-                <h3 className="text-xl text-gray-200 font-semibold text-right mb-2">{card.title}</h3>
-                <p className="text-gray-400 mb-2 text-right">{card.duration}</p>
-                <div>
-                <div className='w-full h-auto flex justify-between items-center bg-[#cee9f541] '>
-                  <div className='p-1 flex'>
-<button className='bg-[#200899] text-white px-1 rounded-lg '>PG</button>
-                  <button className="flex self-center  mx-2 rounded border border-black  text-center font-bold text-xs p-1">3+</button>
-                  </div>
-                  <div className='p-1 flex'>
-                    <img src={fav} alt="icon" className='h-8 w-8' />
-                  <p className=" text-gray-500 flex self-center text-sm ml-2">{card.views}</p>
-                  </div>
+<div className='bg-[#18003c]'>
+    <Slider/>
 
-                </div>
-                </div>
-                <div className="flex items-center mt-2">
-                  <StarRating 
-                    rating={card.average_rating} 
-                  />
-                  <p className='mx-3 text-gray-400'>{Number(card.average_rating).toFixed(1)}</p>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-        <div className="flex justify-center m-4">
-          <button
-            onClick={prevPage}
-            disabled={currentIndex === 0}
-            className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400 mx-2"
-          >
-            Previous
-          </button>
-          <button
-            onClick={nextPage}
-            disabled={currentIndex + cardsPerPage >= cards.length}
-            className="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-gray-400 mx-2"
-          >
-            Next
-          </button>
-        </div>
-      </div>
     </div>
-  </div>
-
-
-
 
 
     <div className="bg-[#18003c] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
