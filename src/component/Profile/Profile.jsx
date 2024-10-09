@@ -28,7 +28,7 @@ const fileInputRef = useRef(null);
 const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  // const [old_phone , setOldPhone]= useState('');
+  const [old_phone , setOldPhone]= useState('');
   const [new_phone , setNewPhone] = useState("");
 
 
@@ -93,6 +93,11 @@ setEmail(user.email);
           if (user.username) {
             console.log(user.username);
             setName(user.username);
+          }
+          
+          if (user.phone) {
+            console.log(user.phone);
+            setOldPhone(user.phone);
           }
         }
       } catch (error) {
@@ -304,6 +309,16 @@ try {
               <div className='p-4 bg-blue-100'>
 
                   <div className="grid  grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                  <div className="relative">
+              <label htmlFor="newPassword">Phone no</label>
+              <input
+                type='text'
+                id="new-phone"
+                value={old_phone}
+                placeholder='Enter new phone no'
+                className="border border-gray-300 p-2 w-full"
+              />
+            </div>
 
             <div className="relative">
               <label htmlFor="newPassword">New Phone no</label>
