@@ -59,7 +59,36 @@ export const getCurrentUser = async () => {
     throw error;
   }
 };
+///////////////////////////////
 
+export const updatephone = async ( phone) => {
+  try {
+    const token = Cookies.get('token');
+    console.log(token);
+    console.log('hello profile phone no');
+    console.log( phone);
+
+    const response = await axios.post(
+      `${API_URL}/updateProfile`, phone,
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }
+    );
+    console.log(response);
+    console.log(response.data.user.phone );
+    console.log("This is response");
+    toast.success("phone no update successful!");
+
+    return response.data;
+  } catch (error) {
+    console.error('Error updating phone no', error);
+   
+    throw error;
+  }
+};
+//////////////////////
 
 export const updateimage = async (formData) => {
   try {

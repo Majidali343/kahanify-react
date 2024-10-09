@@ -6,7 +6,7 @@ import { asset34, asset35, asset36 } from '../imageLoader';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice';
 import Cookies from 'js-cookie';
-import { getCurrentUser, updateimage, userprofile, sendReveiw, getlogout } from '../Service/api';
+import { getCurrentUser, updateimage, userprofile, sendReveiw, getlogout, updatephone } from '../Service/api';
 export const API_URL = import.meta.env.VITE_API_URL;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -28,6 +28,8 @@ const fileInputRef = useRef(null);
 const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  // const [old_phone , setOldPhone]= useState('');
+  const [new_phone , setNewPhone] = useState("");
 
 
 
@@ -140,6 +142,8 @@ setEmail(user.email);
 
 
   const handleImageChange = async (e) => {
+   
+   
     const file = e.target.files[0];
     if (file) {
       setImageFile(file);
@@ -156,9 +160,47 @@ setEmail(user.email);
         setError(error.response?.data?.message || error.message);
       }
     }
+      
+    
   };
 
+  const handlePhoneChange = async (e) => {
+  
+    console.log(new_phone)
+  
+    const phoneObject = {
+      phone: new_phone
+    };
 
+try {
+  const token = Cookies.get('token');
+  console.log(token);
+  console.log('hello profile phone no');
+  
+  console.log( phoneObject);
+
+  const response = await axios.post(
+    `${API_URL}/updateProfile`, phoneObject ,
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }
+  );
+  console.log(response);
+  console.log(response.data.user.phone );
+  console.log("This is response");
+  toast.success("phone no update successful!");
+
+  return response.data;
+} catch (error) {
+  console.error('Error updating phone no', error);
+ 
+  throw error;
+}
+
+
+}
 
   const handleLogout = async () => {
     try {
@@ -256,6 +298,42 @@ setEmail(user.email);
                 />
               </div>
             </div>
+            
+            <div className="mt-4">
+              <h3 className="text-lg pt-4 font-bold">Change Phone no</h3>
+              <div className='p-4 bg-blue-100'>
+
+                  <div className="grid  grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+
+            <div className="relative">
+              <label htmlFor="newPassword">New Phone no</label>
+              <input
+                type='text'
+                id="new-phone"
+                value={new_phone}
+                placeholder='Enter new phone no'
+                onChange={(e) => setNewPhone(e.target.value)}
+                className="border border-gray-300 p-2 w-full"
+              />
+            </div>
+  
+                    <div className='flex flex-col md:flex-row justify-start '>
+                      <button
+                        onClick={handlePhoneChange}
+                        className="bg-blue-500 hover:bg-pink-700 text-white p-3 font-bold h-19 px-4 rounded mb-4 md:mb-0"
+                      >
+                        Save Phone no
+                      </button>
+
+                    </div>
+
+                  </div>
+              </div>
+              </div>
+
+
+
+
             <div className="mt-4">
               <h3 className="text-lg pt-4 font-bold">Change Password</h3>
               <div className='p-4 bg-blue-100'>
