@@ -14,7 +14,7 @@ import { Helmet } from 'react-helmet';
 import {useNavigate, Link, NavLink } from 'react-router-dom';
 import '../Css/home.css'
 import { freepackages, getFree, veiws, famousStories } from '../Service/api';
-import Slider from '../home/Card';
+import Card from '../home/Card';
 
 function FreeStory() {
   const [audio, setAudio] = useState([]);
@@ -131,7 +131,7 @@ function FreeStory() {
 
 
 <div className='bg-[#18003c]'>
-    <Slider/>
+    <Card/>
 
     </div>
 

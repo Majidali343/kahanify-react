@@ -1,6 +1,6 @@
 import React from 'react';
 import { asset14, asset1, asset23, asset9, asset10 } from '../imageLoader';
-import Slider from './Card';
+import Card from './Card';
 import { Link } from 'react-router-dom';
  import "../Css/home.css"
  import { Helmet } from 'react-helmet';
@@ -155,7 +155,7 @@ function Home() {
 
 <div className="px-4">
 </div>
-<Slider />
+<Card />
   </div>
 
  <div className="px-0 sm:px-8 mx-0 sm:mx-8">
