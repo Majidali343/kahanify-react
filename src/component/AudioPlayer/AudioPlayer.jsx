@@ -119,10 +119,12 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
   </li>
 </ul>
 </div>
+<h1 className="bg-[#18003c] text-center text-4xl font-bold text-white p-7"> Try a Free Story, Subscribe for More       </h1>
+          
       <div className="flex flex-col items-center justify-center p-0 m-0">
         <div className="text-white p-4 rounded-lg  w-full max-w-lg">
           <div className="text-center mb-4">
-            <img
+    <img
               src={imageSrc}
              
               alt="Audio Thumbnail"
@@ -240,6 +242,12 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
           <audio ref={audioRef} src={audioSrc} />
         </div>
       </div>
+      <div className="bg-[#18003c] text-center text-3xl font-bold text-white p-7">
+<h3>
+فری کہانی سنیں اور مزید کہانیوں کے لئے ممبرشپ حاصل کریں
+</h3>
+
+</div>
 
       <div className="border-b-2 mx-0 border-yellow-500 p-0">
         <h1 className="text-sm my-8 text-center text-white">

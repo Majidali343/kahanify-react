@@ -123,7 +123,6 @@ function FreeStory() {
         viewCount={views}
    />
 
-
 <div className="bg-[#18003c]  h-auto m-0 p-0">
   <div className="flex flex-col md:flex-row h-full w-full">
     <div className="w-full md:w-1/2 sm:h-1/2 md:h-full bg-cover bg-center">
