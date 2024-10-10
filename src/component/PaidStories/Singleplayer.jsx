@@ -190,7 +190,7 @@ const handleClose =() =>{
               <img
                 // src={imageSrc}
                 // thumbnailSrc
-                src={thumbnailSrc}
+                src={imageSrc}
 
                 alt="Video Thumbnail"
                 className="mx-auto w-[300px] h-[300px] md:w-[480px] md:h-[480px]"
