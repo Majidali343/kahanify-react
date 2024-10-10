@@ -192,14 +192,14 @@ const Slider = () => {
           <button
             onClick={prevPage}
             disabled={currentIndex === 0}
-            className={`px-4 py-2 mx-2 rounded-md ${currentIndex === 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#18003c] text-white'}`}
+            className={`px-4 py-2 mx-2 rounded-md ${currentIndex === 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#18003c] border text-white'}`}
           >
             Previous
           </button>
           <button
             onClick={nextPage}
             disabled={currentIndex + cardsPerPage >= filteredCards.length}
-            className={`px-4 py-2 mx-2 rounded-md ${currentIndex + cardsPerPage >= filteredCards.length ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#18003c] text-white'}`}
+            className={`px-4 py-2 mx-2 rounded-md ${currentIndex + cardsPerPage >= filteredCards.length ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#18003c] border text-white'}`}
           >
             Next
           </button>
