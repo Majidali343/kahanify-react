@@ -1,9 +1,13 @@
-import React, { useState , useEffect} from 'react'
 import { useSelector } from 'react-redux';
-import { asset1, asset3 } from '../imageLoader';
-import StarRating from '../home/StarRating'; 
+import React, { useState, useEffect, useRef } from 'react';
+
 import Loader from '../loader/Loader';
-import fav from'../../assets/Fav.png';
+import fav from '../../assets/Fav.png';
+import AudioPlay from '../home/Audioplay';
+import StarRating from '../home/StarRating';
+import Modal from '../home/Modal';
+import Slider from 'react-slick';
+
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faPause, faHeart, faBackward, faForward, faEye } from '@fortawesome/free-solid-svg-icons';
@@ -22,8 +26,12 @@ function FreeStory() {
   const [views, setViews] = useState([]);
   const [packages, setPackages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [cards, setCards] = useState([]);
   
+  const [cards, setCards] = useState([]);
+  const [currentTime, setCurrentTime] = useState({});
+  const [duration, setDuration] = useState({});
+  const audioRefs = useRef({});
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const isLoggedIn = useSelector(state => state.auth.status);
 
@@ -87,17 +95,178 @@ function FreeStory() {
     sessionStorage.setItem('cart', JSON.stringify(cart));
     navigate('/cart'); 
   };
-  const nextPage = () => {
-    if (currentIndex + cardsPerPage < cards.length) {
-      setCurrentIndex(currentIndex + cardsPerPage);
-    }
+
+  useEffect(() => {
+    const fetchStories = async () => {
+      try {
+        const response = await famousStories();
+        if (response && response.data) {
+          setCards(response.data);
+          const initialTimes = {};
+          const initialDurations = {};
+          response.data.forEach((card) => {
+            initialTimes[card.kahani_id] = 0;
+            initialDurations[card.kahani_id] = 0;
+          });
+          setCurrentTime(initialTimes);
+          setDuration(initialDurations);
+        }
+      } catch (error) {
+        console.error('Error fetching stories:', error);
+      }
+    };
+
+    fetchStories();
+  }, []);
+
+  // Separate refs for each slider
+  const sliderRefPG3 = useRef(null);
+  const sliderRefPG7 = useRef(null);
+  const sliderRefPG10 = useRef(null);
+
+  // Separate functions for next/previous navigation for each slider
+  const nextPG3 = () => {
+    sliderRefPG3.current.slickNext();
+  };
+  const previousPG3 = () => {
+    sliderRefPG3.current.slickPrev();
   };
 
-  const prevPage = () => {
-    if (currentIndex - cardsPerPage >= 0) {
-      setCurrentIndex(currentIndex - cardsPerPage);
-    }
+  const nextPG7 = () => {
+    sliderRefPG7.current.slickNext();
   };
+  const previousPG7 = () => {
+    sliderRefPG7.current.slickPrev();
+  };
+
+  const nextPG10 = () => {
+    sliderRefPG10.current.slickNext();
+  };
+  const previousPG10 = () => {
+    sliderRefPG10.current.slickPrev();
+  };
+
+  const sliderSettings = {
+    centerMode: true,
+    infinite: false,
+    lazyLoad: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    speed: 500,
+    arrows: false,
+    dots: true, 
+  };
+
+  const handleTimeUpdate = (cardId) => {
+    const audioElement = audioRefs.current[cardId];
+    setCurrentTime((prev) => ({
+      ...prev,
+      [cardId]: audioElement.currentTime,
+    }));
+    setDuration((prev) => ({
+      ...prev,
+      [cardId]: audioElement.duration,
+    }));
+  };
+
+  useEffect(() => {
+    const audioElements = cards.map((card) => {
+      const audioElement = new Audio();
+      audioRefs.current[card.kahani_id] = audioElement;
+
+      audioElement.addEventListener('timeupdate', () =>
+        handleTimeUpdate(card.kahani_id)
+      );
+      audioElement.addEventListener('loadedmetadata', () => {
+        setDuration((prev) => ({
+          ...prev,
+          [card.kahani_id]: audioElement.duration,
+        }));
+      });
+
+      return audioElement;
+    });
+
+    return () => {
+      audioElements.forEach((audioElement) => {
+        audioElement.pause();
+        audioElement.src = '';
+      });
+    };
+  }, [cards]);
+
+  const closeModal = () => setShowModal(false);
+
+  
+  const category3Plus = cards.filter((card) => card.pg == 3);
+  const category7Plus = cards.filter((card) => card.pg == 7);
+  const category10Plus = cards.filter((card) => card.pg == 10);
+
+  const renderSlider = (categoryCards, sliderRef, next, previous) => (
+    <div>
+      <Slider ref={sliderRef} {...sliderSettings}>
+        {categoryCards.length === 0 ? (
+          <div className="min-h-[30vh] w-[50vw] m-auto flex justify-center items-center">
+            <Loader />
+          </div>
+        ) : (
+          categoryCards.map((card) => (
+            <div
+            key={card.kahani_id}
+            className=" lg:mx-10 overflow-hidden flex flex-col p-4"
+            style={{ cursor: 'pointer' }}
+          >
+            <img
+              src={`https://kahanifylaravel.kahanify.com/storage/${card.image}`}
+              alt={card.title}
+              className="w-full h-full object-cover mb-4"
+            />
+            <h3 className="text-xl font-semibold  text-white text-right mb-2">
+              {card.title}
+            </h3>
+            <AudioPlay audioUrl={card.audio} />
+            <div className="w-full h-auto flex justify-between items-center bg-[#ffffff2c]">
+              <div className="p-1 flex">
+                <button className="bg-[#18003c] text-white px-1 rounded-lg">
+                  PG
+                </button>
+                <button className="flex self-center mx-2 rounded border border-black text-center font-bold text-xs p-1">
+                  {card.pg}+{' '}
+                </button>
+              </div>
+              <div className="p-1 flex">
+                <img src={fav} alt="Favorite icon" className="h-8 w-8" />
+                <p className="text-gray-500 flex self-center text-sm ml-2">
+                  {card.views}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center mt-2">
+              <StarRating rating={card.average_rating} />
+              <p className="mx-3 text-gray-400">
+                {Number(card.average_rating).toFixed(1)}
+              </p>
+            </div>
+          </div>
+        ))
+        )}
+      </Slider>
+      <div className="flex  justify-center mt-4 space-x-4">
+        <button
+          onClick={previous}
+          className="py-2 w-[90px] my-6 bg-yellow-500 hove:bg-pink-600 rounded text-white"
+        >
+          Previous
+        </button>
+        <button
+          onClick={next}
+          className="py-2 w-[90px] my-6 bg-yellow-500 hove:bg-pink-500  hove:bg-pink-600 rounded text-white"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
 
 
   return (
@@ -131,11 +300,45 @@ function FreeStory() {
 
 
 <div className='bg-[#18003c]'>
-    <Card/>
+<div className="p-6 mx-3 md:mx-6">
+      <div className="relative">
+        {/* Slider for PG 3+ */}
+        <h2 className="text-2xl py-6 text-center text-yellow-500 font-bold mb-4">
+          PG 3+ Stories
+        </h2>
+        <div className="slider-container mb-8">
+          {renderSlider(category3Plus, sliderRefPG3, nextPG3, previousPG3)}
+        </div>
 
+        {/* Slider for PG 7+ */}
+        <h2 className="text-2xl font-bold text-center text-yellow-500 mb-4">
+          PG 7+ Stories
+        </h2>
+        <div className="slider-container mb-8">
+          {renderSlider(category7Plus, sliderRefPG7, nextPG7, previousPG7)}
+        </div>
+
+        {/* Slider for PG 10+ */}
+        <h2 className="text-2xl font-bold text-center text-yellow-500 mb-4">
+          PG 10+ Stories
+        </h2>
+        <div className="slider-container">
+          {renderSlider(category10Plus, sliderRefPG10, nextPG10, previousPG10)}
+        </div>
+
+        {showModal && (
+          <Modal isOpen={showModal} onClose={closeModal}>
+            <h2 className="text-lg font-semibold">Modal Title</h2>
+            <p>Some modal content</p>
+          </Modal>
+        )}
+      </div>
+    </div>
     </div>
 
-
+<div className='bg-[#18003c] py-10'>
+  <h1 className='text-center text-xl md:text-3xl lg:text-5xl font-bold text-yellow-500 underline'> Our Packages</h1>
+</div>
     <div className="bg-[#18003c] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
  {packages.map((pkg) => (
     <div key={pkg.id} className="flex flex-col py-4 items-center">
@@ -175,7 +378,7 @@ function FreeStory() {
     
     <div className="w-full lg:w-1/2 sm:h-1/2  bg-cover bg-center text-right ">
     <div className='sm:flex   sm:flex-col sm:text-xl '>
-      <div className='urdu flex flex-col items-center h-auto  justify-center'>
+      <div className='urdu flex flex-col items-end px-8 h-auto  justify-center'>
   <h1 className='gradient-text  font-bold py-8 text-xl md:text-3xl ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
     بچوں کے لیےنت نئی پر لطف کہانیاں
   </h1>

@@ -372,7 +372,7 @@ function Home() {
   <div className="flex flex-col lg:flex-row  justify-center items-center h-full w-full">
     <div className="w-full lg:w-1/2 flex-shrink-0"
        >
-      <img src={Pic} alt="story" className="object-fill h-[50vh] md:h-full w-full   " />
+      <img src={Pic} alt="story" className="object-contain h-[50vh] md:h-full w-full   " />
     </div>
     
     <div className="w-full lg:w-1/2 sm:h-1/2  bg-cover bg-center text-right ">

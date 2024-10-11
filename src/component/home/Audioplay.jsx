@@ -18,8 +18,8 @@ function AudioPlay({ audioUrl }) {
         audioElement.pause();
         audioElement.currentTime = 0; // Optional: Reset the audio to the beginning
         setIsPlaying(false);
-        // toast.warning('Please purchase membership to listen full story');
-        setShowModal(true); 
+        toast.warning('Please purchase membership to listen full story');
+        // setShowModal(true); 
 
         return;
       }
@@ -54,12 +54,12 @@ function AudioPlay({ audioUrl }) {
         {isPlaying ? 'Pause' : 'Play'}
       </button>
 
-        {showModal && (
+        {/* {showModal && (
           <Modal isOpen={showModal} onClose={closeModal}>
             <h2 className="text-lg font-semibold">Unlock the Full Story</h2>
             <p>To enjoy the entire story and explore more exciting content, simply become a member. Get access to exclusive stories, extended versions, and much more by joining today!</p>
           </Modal>
-        )}
+        )} */}
     </div>
   );
 }
