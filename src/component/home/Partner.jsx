@@ -76,7 +76,7 @@ function Partner() {
           <div key={index} className="flex justify-center items-center">
          <div className='flex-col text-center'>
             <img 
-            src={`https://kahanifylaravel.kahanify.com/storage/${link.logo}`}
+            src={`https://admin.kahanify.com/storage/${link.logo}`}
             alt="logo" 
             className="w-auto h-20" 
             />

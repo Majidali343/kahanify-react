@@ -217,7 +217,7 @@ function FreeStory() {
             style={{ cursor: 'pointer' }}
           >
             <img
-              src={`https://kahanifylaravel.kahanify.com/storage/${card.image}`}
+              src={`https://admin.kahanify.com/storage/${card.image}`}
               alt={card.title}
               className="w-full h-full object-cover mb-4"
             />
@@ -287,8 +287,8 @@ function FreeStory() {
 
       <AudioPlayer
         // audioSrc={links.audio}
-        audioSrc={`https://kahanifylaravel.kahanify.com/storage/${audio}`}
-        imageSrc={`https://kahanifylaravel.kahanify.com/storage/${image}`}
+        audioSrc={`https://admin.kahanify.com/storage/${audio}`}
+        imageSrc={`https://admin.kahanify.com/storage/${image}`}
         viewCount={views}
    />
 
@@ -347,7 +347,7 @@ function FreeStory() {
       <Link to={`/package/${pkg.id}`}>
         <img 
         // src={pkg.image}
-        src={`https://kahanifylaravel.kahanify.com/storage/app/public/${pkg.image}`}
+        src={`https://admin.kahanify.com/storage/app/public/${pkg.image}`}
         className="mb-3 h-[300px] w-[300px]" alt={pkg.name} />
       </Link>
       <p className="text-2xl text-[#18003c] mb-1 font-bold">{pkg.name}</p>
@@ -364,11 +364,6 @@ function FreeStory() {
     </div>
   ))}
 </div>
-
-
-
-
-
 <div className="bg-[#18003c]  h-auto m-0 p-0">
   <div className="flex flex-col lg:flex-row  justify-center items-center h-full w-full">
     <div className="w-full lg:w-1/2 flex-shrink-0"

@@ -64,12 +64,12 @@ function Lifetime() {
     <meta name="description" content={`Discover the ${packageDetails.name} package with details and pricing. Explore similar options and add to cart easily.`} />
     <meta property="og:title" content={packageDetails.name} />
     <meta property="og:description" content={`Discover the ${packageDetails.name} package with details and pricing. Explore similar options and add to cart easily.`} />
-    <meta property="og:image" content={`https://kahanifylaravel.kahanify.com/storage/app/public/${packageDetails.image}`} />
+    <meta property="og:image" content={`https://admin.kahanify.com/storage/app/public/${packageDetails.image}`} />
     <meta property="og:url" content={`https://www.kahanify.com//package/${id}`} />
-    <meta name="twitter:card" content={`https://kahanifylaravel.kahanify.com/storage/app/public/${packageDetails.image}`} />
+    <meta name="twitter:card" content={`https://admin.kahanify.com/storage/app/public/${packageDetails.image}`} />
     <meta name="twitter:title" content={packageDetails.name} />
     <meta name="twitter:description" content={`Discover the ${packageDetails.name} package with details and pricing. Explore similar options and add to cart easily.`} />
-    <meta name="twitter:image" content={`https://kahanifylaravel.kahanify.com/storage/app/public/${packageDetails.image}`} />
+    <meta name="twitter:image" content={`https://admin.kahanify.com/storage/app/public/${packageDetails.image}`} />
     <Helmet>
   <script type="application/ld+json">
     {`
@@ -77,7 +77,7 @@ function Lifetime() {
         "@context": "https://schema.org",
         "@type": "Product",
         "name": "${packageDetails.name}",
-        "image": "https://kahanifylaravel.kahanify.com/storage/app/public/${packageDetails.image}",
+        "image": "https://admin.kahanify.com/storage/app/public/${packageDetails.image}",
         "description": "${packageDetails.Description}",
         "offers": {
           "@type": "Offer",
@@ -96,7 +96,7 @@ function Lifetime() {
         <div className="p-4">
           <img 
           
-        src={`https://kahanifylaravel.kahanify.com/storage/app/public/${packageDetails.image}`}
+        src={`https://admin.kahanify.com/storage/app/public/${packageDetails.image}`}
           
           alt={packageDetails.name} className="w-full h-[350px] object-cover" />
         </div>
@@ -133,7 +133,7 @@ function Lifetime() {
             <div key={pkg.id} className="flex flex-col py-4 items-center">
               <Link to={`/package/${pkg.id}`}>
                 <img 
-                  src={`https://kahanifylaravel.kahanify.com/storage/app/public/${pkg.image}`}
+                  src={`https://admin.kahanify.com/storage/app/public/${pkg.image}`}
                   className="mb-3 h-[300px] w-[300px]" 
                   alt={pkg.name} 
                 />

@@ -228,10 +228,10 @@ function SingleKahani() {
       {loading ? <div className='flex justify-center items-center'> <Loader /> </div> :
         <Singleplayer
           id={id}
-          videoSrc={`https://kahanifylaravel.kahanify.com/storage/${video}`}
-          audioSrc={`https://kahanifylaravel.kahanify.com/storage/${audio}`}
-          imageSrc={`https://kahanifylaravel.kahanify.com/storage/${image}`}
-          thumbnailSrc={`https://kahanifylaravel.kahanify.com/storage/${thumbnail}`}
+          videoSrc={`https://admin.kahanify.com/storage/${video}`}
+          audioSrc={`https://admin.kahanify.com/storage/${audio}`}
+          imageSrc={`https://admin.kahanify.com/storage/${image}`}
+          thumbnailSrc={`https://admin.kahanify.com/storage/${thumbnail}`}
           viewCount={views}
           title={title}
           description={description}
@@ -287,7 +287,7 @@ function SingleKahani() {
                         <p className="inline-flex items-center mr-3 text-sm font-semibold">
                           <img
                             className="mr-2 w-6 h-6 rounded-full"
-                            src={comment.user.profileimage ? `https://kahanifylaravel.kahanify.com/storage/app/public/${comment.user.profileimage}` : asset34}
+                            src={comment.user.profileimage ? `https://admin.kahanify.com/storage/app/public/${comment.user.profileimage}` : asset34}
                             alt={comment.user.username || 'Anonymous'}
                           />
                           {comment.user.username || 'Anonymous'}
@@ -353,7 +353,7 @@ function SingleKahani() {
             <p className="text-sm font-semibold">
               <img
                 className="mr-2 w-6 h-6 rounded-full"
-                src={reply.user.profileimage ? `https://kahanifylaravel.kahanify.com/storage/app/public/${reply.user.profileimage}` : asset34}
+                src={reply.user.profileimage ? `https://admin.kahanify.com/storage/app/public/${reply.user.profileimage}` : asset34}
                 alt={reply.user.username || 'Anonymous'}
               />
               {reply.user.username || 'Anonymous'}

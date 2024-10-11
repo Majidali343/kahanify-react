@@ -139,7 +139,7 @@ const Card = () => {
             style={{ cursor: 'pointer' }}
           >
             <img
-              src={`https://kahanifylaravel.kahanify.com/storage/${card.image}`}
+              src={`https://admin.kahanify.com/storage/${card.image}`}
               alt={card.title}
               className="w-full h-full object-cover mb-4"
             />

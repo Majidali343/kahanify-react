@@ -135,7 +135,7 @@ function Package() {
       <Link to={`/package/${pkg.id}`}>
         <img 
         // src={pkg.image}
-        src={`https://kahanifylaravel.kahanify.com/storage/app/public/${pkg.image}`}
+        src={`https://admin.kahanify.com/storage/app/public/${pkg.image}`}
         className="mb-3 h-[300px] w-[300px]" alt={pkg.name} />
       </Link>
       <p className="text-2xl text-[#18003c] mb-1 font-bold">{pkg.name}</p>

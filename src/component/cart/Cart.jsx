@@ -194,7 +194,7 @@ const finalPrice = totalPrice - discountAmount;
                       <div className="flex items-center">
                         <img 
                         // src={item.image} 
-        src={`https://kahanifylaravel.kahanify.com/storage/app/public/${item.image}`}
+        src={`https://admin.kahanify.com/storage/app/public/${item.image}`}
                         
                         alt="Product Image" className="w-20 h-20 mr-4" />
                         <div>

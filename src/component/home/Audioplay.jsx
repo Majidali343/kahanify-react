@@ -46,7 +46,7 @@ function AudioPlay({ audioUrl }) {
   return (
     <div className="audio-player">
       <audio ref={audioRef} controlsList="nodownload">
-        <source src={`https://kahanifylaravel.kahanify.com/storage/${audioUrl}`} type="audio/mpeg" />
+        <source src={`https://admin.kahanify.com/storage/${audioUrl}`} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
 

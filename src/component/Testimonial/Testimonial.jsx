@@ -117,7 +117,7 @@ const Testimonial = () => {
                         >
                             <div className="bg-white p-6 rounded-2xl  border border-gray-200 shadow-lg text-center">
                                 <img
-                                src={review.user.profileimage ? `https://kahanifylaravel.kahanify.com/storage/app/public/${review.user.profileimage}` : asset34}
+                                src={review.user.profileimage ? `https://admin.kahanify.com/storage/app/public/${review.user.profileimage}` : asset34}
 
                                     alt={review.user.username}
                                     className="w-16 h-16 rounded-full mx-auto mb-4"

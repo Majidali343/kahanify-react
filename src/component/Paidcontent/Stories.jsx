@@ -177,7 +177,7 @@ const Stories = () => {
       <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}>
         <div className="bg-white  h-[520px] w-[360px] rounded-lg overflow-hidden flex flex-col   mx-4 p-4">
           <img 
-            src={`https://kahanifylaravel.kahanify.com/storage/${card.image}`} 
+            src={`https://admin.kahanify.com/storage/${card.image}`} 
             alt="story" 
             className="h-[360px] w-[360px] object-fill mb-4" 
           />
