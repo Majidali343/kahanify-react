@@ -69,7 +69,7 @@ const Card = () => {
   };
 
   const sliderSettings = {
-    centerMode: true,
+    centerMode: false,
     infinite: false,
     lazyLoad: true,
     slidesToShow: 3,
