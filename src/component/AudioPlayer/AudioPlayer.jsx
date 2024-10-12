@@ -110,9 +110,9 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
  </Link>
 </li>
   <li className="p-5">
-  <Link to="/login" >
+  <Link to="/signup" >
                 <button className="bg-white hover:text-white  px-4 py-2 rounded text-[#18003c] font-bold hover:bg-[#ff0087] transition-transform duration-300 ease-in-out transform hover:scale-105">
-                  Sign In
+                  Sign Up
                 </button>
               </Link>
 
@@ -246,7 +246,9 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
 <h3>
 فری کہانی سنیں اور مزید کہانیوں کے لئے ممبرشپ حاصل کریں
 </h3>
-
+<button className="bg-white text-[#18003c] mt-10 py-2 px-4 rounded hover:text-white hover:bg-pink-700 transition-transform duration-300 ease-in-out transform hover:scale-105  hover:border-light-blue-300 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
+              <Link to="/signup"> Register Now</Link>
+            </button>
 </div>
 
       <div className="border-b-2 mx-0 border-yellow-500 p-0">

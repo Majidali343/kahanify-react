@@ -54,7 +54,8 @@ const ResetPassword = () => {
             
             {errors.password && <span className="text-red-500 text-sm">{errors.password.message}</span>} 
             {errors.confirmPassword && <span className="text-red-500 text-sm">{errors.confirmPassword.message}</span>} 
-            
+
+
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-4 relative flex items-center">
                     <input 
@@ -62,7 +63,7 @@ const ResetPassword = () => {
                         {...register('password', { 
                             required: 'Password is required',
                             pattern: {
-                                value: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/,
+                                value: /^[a-zA-Z0-9!@#$%^&*]{8,20}$/,
                                 message: 'Password must be 8-20 characters long, include at least one capital letter and one number.'
                             }
                         })} 

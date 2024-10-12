@@ -124,8 +124,8 @@ function SignUp() {
               {...register('password', { 
                 required: 'Password is required',
                 pattern: {
-                  value: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/,
-                  message: 'Password must be 8-20 characters long, include at least one capital letter and one number.'
+                  value: /^[a-zA-Z0-9!@#$%^&*]{8,20}$/,
+                  message: 'Password must be 8-20 characters long'
                 }
               })} 
               className="form-input transition-all duration-300 ease-in-out border-gray-300 rounded-md w-full py-2 px-3 pl-10 mt-1 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -142,7 +142,7 @@ function SignUp() {
           </div>
 
           <div className="mb-4 text-gray-600 text-xs">
-            The password must have a minimum of 8 characters, including numbers and letters, with at least 1 capital letter, and should not exceed 20 characters.
+            The password must have a minimum of 8 characters and should not exceed 20 characters.
           </div>
 
           <div className="mb-4 relative flex items-center">

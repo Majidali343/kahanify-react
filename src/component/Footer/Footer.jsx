@@ -8,7 +8,7 @@ function Footer() {
     <footer className="bg-[#18003c] text-white py-4 border-t-4 border-[#ff0087]">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
         <div className="text-center md:text-left mb-4 md:mb-0">
-          <p className="text-xs ">Copyright © 2024 Khanify | Powered by Kahanify</p>
+          <p className="text-xs ">Copyright © 2024 Kahanify | Powered by Kahanify</p>
         </div>
         <nav className=" flex justify-center ">
           <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-5 items-center">

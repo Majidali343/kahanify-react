@@ -146,10 +146,16 @@ const Card = () => {
               <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
               <AudioPlay audioUrl={card.audio} />
               <div className="flex justify-between items-center bg-gray-100 p-2">
-                <button className="bg-[#18003c] text-white px-2 rounded-lg">
+              <span className='flex space-x-5'>
+               <button className="bg-[#18003c] text-white px-2 rounded-lg">
                   PG
                 </button>
-                <span className="flex items-center">
+               <button className="flex self-center mx-2 rounded border border-black text-center font-bold text-xs p-1">
+                  {card.pg}+{' '}
+                </button>
+             
+                </span>
+              <span className="flex items-center">
                   <img src={fav} alt="Favorite icon" className="h-8 w-8" />
                   <p className="ml-2">{card.views}</p>
                 </span>
