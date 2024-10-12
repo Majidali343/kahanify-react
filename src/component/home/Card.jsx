@@ -56,6 +56,7 @@ const Card = () => {
 
   const sliderSettings = {
     infinite: true,
+
     lazyLoad: true,
     slidesToShow: 3,
     slidesToScroll: 1,
