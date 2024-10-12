@@ -157,8 +157,143 @@ function Home() {
 </div>
 <Card />
   </div>
+{/*  */}
+<div className=' flex flex-col justify-center items-center bg-white'>
+<div className='w-[90vw] mt-12'>
+<h1 className="text-3xl font-bold text-center text-[#18003c] ">
+  Some Special Reveiws
+</h1>
+<YouTube/>
+</div>
 
- <div className="px-0 sm:px-8 mx-0 sm:mx-8">
+<div className='w-[90vw]'>
+<Testimonial/>
+  </div>
+  <div className='w-[90vw] my-6'>
+<Partner/>
+  </div>
+
+  </div>
+
+
+{/*  */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/*  */}
+
+<div className="bg-[#18003c]  h-auto m-0 p-0">
+  <div className="flex flex-col lg:flex-row  justify-center items-center h-full w-full">
+    <div className="w-full lg:w-1/2 h-[50vh] md:h-auto lg:h-[800px]  overflow-hidden"
+       >
+      <img src={Pic} alt="story" className=" h-[50vh] md:h-auto lg:h-[800px] object-cover  w-full   " />
+    </div>
+    
+    <div className="w-full lg:w-1/2 sm:h-1/2  bg-cover bg-center text-right ">
+    <div className='sm:flex   sm:flex-col sm:text-xl '>
+      <div className='urdu flex flex-col items-center h-auto  justify-center'>
+  <h1 className='gradient-text  font-bold py-8 text-xl md:text-3xl ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    بچوں کے لیےنت نئی پر لطف کہانیاں
+  </h1>
+<div className='flex flex-col justify-start'>  
+  <p className='text-white my-2  ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>نئے دور کے مطابق کہانیاں
+    </span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+  </p>
+  
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>جدید انداز میں پرانی کہانیاں
+    </span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+
+  </p>
+  
+  <p className='text-white my-2' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>معیاری اور بامقصد تفریح
+    </span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+
+  </p>
+  
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>خوبصورت لہجے میں وائس اوور
+    </span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+  </p>
+
+  
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>ساونڈ افیکٹس کا استعمال
+
+    </span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+  </p>
+
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>محفوظ اور اشتہارات سے پاک کونٹینٹ
+    </span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+  </p>
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>آڈیو اور تحریری شکل میں کہانیاں
+    </span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+  </p>
+
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block mx-1'> سے 13 سال تک کے بچوں کے لئے مخصوص کہانیاں
+    </span>
+    <span>2</span>
+    
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+  </p>
+
+
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>ہر ہفتے نئی کہانی
+    </span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+  </p>
+  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
+    <span className='inline-block'>سال  میں 50 سے زائد کہانیاں
+    </span>
+    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+  </p>
+
+</div>
+<button className="bg-white text-[#18003c] text-center urdu px-8 py-3 my-8  md:my-10 lg:my-8 xl:my-10 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
+        <Link to ='/FreeStory'> شروع کریں</Link>
+      </button>
+     
+</div>
+    </div>
+    </div>
+  </div>
+  
+
+</div>
+
+
+
+
+
+
+{/* text start */}
+
+
+<div className="px-0 sm:px-8 my-10 mx-0 sm:mx-8">
   <div className='urdu leading-loose'>
 <div className='urdu leading-loose containers  ' >
 <h1 className='fade text-[#ff912c] text-center font-bold  text-2xl sm:text-4xl'>محترم والدین</h1>
@@ -368,113 +503,9 @@ function Home() {
       </div>
 </div>
 
-<div className="bg-[#18003c]  h-auto m-0 p-0">
-  <div className="flex flex-col lg:flex-row  justify-center items-center h-full w-full">
-    <div className="w-full lg:w-1/2 flex-shrink-0"
-       >
-      <img src={Pic} alt="story" className="object-contain h-[50vh] md:h-full w-full   " />
-    </div>
-    
-    <div className="w-full lg:w-1/2 sm:h-1/2  bg-cover bg-center text-right ">
-    <div className='sm:flex   sm:flex-col sm:text-xl '>
-      <div className='urdu flex flex-col items-center h-auto  justify-center'>
-  <h1 className='gradient-text  font-bold py-8 text-xl md:text-3xl ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    بچوں کے لیےنت نئی پر لطف کہانیاں
-  </h1>
-<div className='flex flex-col justify-start'>  
-  <p className='text-white my-2  ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    <span className='inline-block'>نئے دور کے مطابق کہانیاں
-    </span>
-    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
-  </p>
-  
-  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    <span className='inline-block'>جدید انداز میں پرانی کہانیاں
-    </span>
-    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
 
-  </p>
-  
-  <p className='text-white my-2' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    <span className='inline-block'>معیاری اور بامقصد تفریح
-    </span>
-    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
+{/*  */}
 
-  </p>
-  
-  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    <span className='inline-block'>خوبصورت لہجے میں وائس اوور
-    </span>
-    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
-  </p>
-
-  
-  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    <span className='inline-block'>ساونڈ افیکٹس کا استعمال
-
-    </span>
-    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
-  </p>
-
-  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    <span className='inline-block'>محفوظ اور اشتہارات سے پاک کونٹینٹ
-    </span>
-    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
-  </p>
-  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    <span className='inline-block'>آڈیو اور تحریری شکل میں کہانیاں
-    </span>
-    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
-  </p>
-
-  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    <span className='inline-block mx-1'> سے 13 سال تک کے بچوں کے لئے مخصوص کہانیاں
-    </span>
-    <span>2</span>
-    
-    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
-  </p>
-
-
-  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    <span className='inline-block'>ہر ہفتے نئی کہانی
-    </span>
-    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
-  </p>
-  <p className='text-white my-2 ' style={{ fontFamily: 'Noto Nastaliq Urdu, serif' }}>
-    <span className='inline-block'>سال  میں 50 سے زائد کہانیاں
-    </span>
-    <img className='inline-block w-6 h-6 sm:w-4 sm:h-4 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-10 xl:h-10 ml-2' src={asset10} alt="logo" />
-  </p>
-
-</div>
-<button className="bg-white text-[#18003c] text-center urdu px-8 py-3 my-8  md:my-10 lg:my-8 xl:my-10 text-sm font-bold rounded hover:bg-pink-600 hover:text-white">
-        <Link to ='/FreeStory'> شروع کریں</Link>
-      </button>
-     
-</div>
-    </div>
-    </div>
-  </div>
-  
-
-</div>
-<div className=' flex flex-col justify-center items-center bg-white'>
-<div className='w-[90vw] mt-12'>
-<h1 className="text-3xl font-bold text-center text-[#18003c] ">
-  Some Special Reveiws
-</h1>
-<YouTube/>
-</div>
-
-<div className='w-[90vw]'>
-<Testimonial/>
-  </div>
-  <div className='w-[90vw] my-6'>
-<Partner/>
-  </div>
-
-</div>
    </>
   );
 }

@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 
 function Paidcontent() {
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen overflow-hidden'>
       <Helmet>
     <title>Amazing Story - Engaging Storytelling with Audio | Kahanify</title>
     <meta name="description" content="Listen to an engaging amazing story with audio and video  , perfect for relaxing or entertainment and also read it. Explore more stories on Kahanify." />

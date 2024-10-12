@@ -41,42 +41,46 @@ const Card = () => {
     fetchStories();
   }, []);
 
-  // Separate refs for each slider
   const sliderRefPG3 = useRef(null);
   const sliderRefPG7 = useRef(null);
   const sliderRefPG10 = useRef(null);
 
-  // Separate functions for next/previous navigation for each slider
-  const nextPG3 = () => {
-    sliderRefPG3.current.slickNext();
-  };
-  const previousPG3 = () => {
-    sliderRefPG3.current.slickPrev();
-  };
+  const nextPG3 = () => sliderRefPG3.current.slickNext();
+  const previousPG3 = () => sliderRefPG3.current.slickPrev();
 
-  const nextPG7 = () => {
-    sliderRefPG7.current.slickNext();
-  };
-  const previousPG7 = () => {
-    sliderRefPG7.current.slickPrev();
-  };
+  const nextPG7 = () => sliderRefPG7.current.slickNext();
+  const previousPG7 = () => sliderRefPG7.current.slickPrev();
 
-  const nextPG10 = () => {
-    sliderRefPG10.current.slickNext();
-  };
-  const previousPG10 = () => {
-    sliderRefPG10.current.slickPrev();
-  };
+  const nextPG10 = () => sliderRefPG10.current.slickNext();
+  const previousPG10 = () => sliderRefPG10.current.slickPrev();
 
   const sliderSettings = {
-    centerMode: true,
-    infinite: false,
+    infinite: true,
     lazyLoad: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 2000,
     arrows: false,
-    dots: true, // Disable built-in arrows
+    dots: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+        },
+      },
+    ],
   };
 
   const handleTimeUpdate = (cardId) => {
@@ -119,111 +123,85 @@ const Card = () => {
 
   const closeModal = () => setShowModal(false);
 
-  
   const category3Plus = cards.filter((card) => card.pg == 3);
   const category7Plus = cards.filter((card) => card.pg == 7);
   const category10Plus = cards.filter((card) => card.pg == 10);
 
   const renderSlider = (categoryCards, sliderRef, next, previous) => (
-    <div>
+    <div className="relative">
       <Slider ref={sliderRef} {...sliderSettings}>
         {categoryCards.length === 0 ? (
-          <div className="min-h-[30vh] w-[50vw] m-auto flex justify-center items-center">
+          <div className="min-h-[30vh] w-[50vw] m-20 flex justify-center items-center">
             <Loader />
           </div>
         ) : (
           categoryCards.map((card) => (
-            <div
-            key={card.kahani_id}
-            className=" lg:mx-10 overflow-hidden flex flex-col p-4"
-            style={{ cursor: 'pointer' }}
-          >
-            <img
-              src={`https://admin.kahanify.com/storage/${card.image}`}
-              alt={card.title}
-              className="w-full h-full object-cover mb-4"
-            />
-            <h3 className="text-xl font-semibold text-right mb-2">
-              {card.title}
-            </h3>
-            <AudioPlay audioUrl={card.audio} />
-            <div className="w-full h-auto flex justify-between items-center bg-gray-100">
-              <div className="p-1 flex">
-                <button className="bg-[#18003c] text-white px-1 rounded-lg">
+            <div key={card.kahani_id} className="flex flex-col p-4">
+              <img
+                src={`https://admin.kahanify.com/storage/${card.image}`}
+                alt={card.title}
+                className="w-full h-full object-cover mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+              <AudioPlay audioUrl={card.audio} />
+              <div className="flex justify-between items-center bg-gray-100 p-2">
+                <button className="bg-[#18003c] text-white px-2 rounded-lg">
                   PG
                 </button>
-                <button className="flex self-center mx-2 rounded border border-black text-center font-bold text-xs p-1">
-                  {card.pg}+{' '}
-                </button>
+                <span className="flex items-center">
+                  <img src={fav} alt="Favorite icon" className="h-8 w-8" />
+                  <p className="ml-2">{card.views}</p>
+                </span>
               </div>
-              <div className="p-1 flex">
-                <img src={fav} alt="Favorite icon" className="h-8 w-8" />
-                <p className="text-gray-500 flex self-center text-sm ml-2">
-                  {card.views}
+              <div className="flex items-center mt-2">
+                <StarRating rating={card.average_rating} />
+                <p className="ml-3 text-gray-400">
+                  {Number(card.average_rating).toFixed(1)}
                 </p>
               </div>
             </div>
-            <div className="flex items-center mt-2">
-              <StarRating rating={card.average_rating} />
-              <p className="mx-3 text-gray-400">
-                {Number(card.average_rating).toFixed(1)}
-              </p>
-            </div>
-          </div>
-        ))
+          ))
         )}
       </Slider>
-      {/* <div className="flex justify-center mt-4 space-x-4">
-        <button
-          onClick={previous}
-          className="px-4 py-2 bg-yellow-500 rounded-full text-white"
-        >
-          Previous
-        </button>
-        <button
-          onClick={next}
-          className="px-4 py-2 bg-yellow-500 rounded-full text-white"
-        >
-          Next
-        </button>
-      </div> */}
-    </div>
+      {/* <div className="absolute top-1/2 -left-10 transform -translate-y-1/2">
+  <button
+    onClick={previous}
+    className="w-16 h-16 text-5xl flex flex-col justify-center items-center border-2 border-black bg-white rounded-full text-black
+               transition-transform duration-300 ease-in-out hover:scale-125"
+  >
+    &larr;
+  </button>
+</div>
+<div className="absolute top-1/2 -right-10 transform -translate-y-1/2">
+  <button
+    onClick={next}
+    className="w-16 h-16 text-5xl flex flex-col justify-center items-center border-2 border-black bg-white rounded-full text-black
+               transition-transform duration-300 ease-in-out hover:scale-125"
+  >
+    &rarr;
+  </button>
+</div> */}
+</div>
+
   );
 
   return (
     <div className="p-6 mx-3 md:mx-6">
-      <div className="relative">
-        {/* Slider for PG 3+ */}
-        <h2 className="text-2xl py-6 text-center text-yellow-500 font-bold mb-4">
-          PG 3+ Stories
-        </h2>
-        <div className="slider-container mb-8">
-          {renderSlider(category3Plus, sliderRefPG3, nextPG3, previousPG3)}
-        </div>
+      <h2 className="text-2xl font-bold text-start md:text-center text-yellow-500 my-8">PG 3+ Stories</h2>
+      {renderSlider(category3Plus, sliderRefPG3, nextPG3, previousPG3)}
 
-        {/* Slider for PG 7+ */}
-        <h2 className="text-2xl font-bold text-center text-yellow-500 mb-4">
-          PG 7+ Stories
-        </h2>
-        <div className="slider-container mb-8">
-          {renderSlider(category7Plus, sliderRefPG7, nextPG7, previousPG7)}
-        </div>
+      <h2 className="text-2xl font-bold text-start md:text-center text-yellow-500  my-8">PG 7+ Stories</h2>
+      {renderSlider(category7Plus, sliderRefPG7, nextPG7, previousPG7)}
 
-        {/* Slider for PG 10+ */}
-        <h2 className="text-2xl font-bold text-center text-yellow-500 mb-4">
-          PG 10+ Stories
-        </h2>
-        <div className="slider-container">
-          {renderSlider(category10Plus, sliderRefPG10, nextPG10, previousPG10)}
-        </div>
+      <h2 className="text-2xl font-bold text-start md:text-center text-yellow-500  my-8">PG 10+ Stories</h2>
+      {renderSlider(category10Plus, sliderRefPG10, nextPG10, previousPG10)}
 
-        {showModal && (
-          <Modal isOpen={showModal} onClose={closeModal}>
-            <h2 className="text-lg font-semibold">Modal Title</h2>
-            <p>Some modal content</p>
-          </Modal>
-        )}
-      </div>
+      {showModal && (
+        <Modal isOpen={showModal} onClose={closeModal}>
+          <h2 className="text-lg font-semibold">Modal Title</h2>
+          <p>Some modal content</p>
+        </Modal>
+      )}
     </div>
   );
 };

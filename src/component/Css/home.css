@@ -35,7 +35,7 @@
   .responsive-background {
     background-image: url('../../assets/HomepageMobile.png'); 
     /* background-position: top center; */
-background-size: contain !important;
+/* background-size: contain !important; */
 height: 60vh;
    margin: 0 !important;
   display: flex;
