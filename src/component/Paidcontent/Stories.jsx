@@ -196,7 +196,7 @@ const Stories = () => {
 <div className='w-full h-auto flex justify-between items-center bg-gray-100'>
                   <div className='p-1 flex'>
 <button className='bg-[#200899] text-white px-1 rounded-lg '>PG</button>
-                  <button className="flex self-center  mx-2 rounded border border-black  text-center font-bold text-xs p-1">3+</button>
+                  <button className="flex self-center  mx-2 rounded border border-black  text-center font-bold text-xs p-1">{card.pg} +</button>
                   </div>
                   <div className='p-1 flex'>
                     <img src={fav} alt="icon" className='h-8 w-8' />
