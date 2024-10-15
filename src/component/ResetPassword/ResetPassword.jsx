@@ -68,7 +68,7 @@ const ResetPassword = () => {
                                     required: 'Password is required',
                                     pattern: {
                                         value: /^[a-zA-Z0-9!@#$%^&*]{8,20}$/,
-                                        message: 'Password must be 8-20 characters long, include at least one capital letter and one number.'
+                                        message: 'Password must be 8-20 characters long.'
                                     }
                                 })}
                                 placeholder="New Password"
