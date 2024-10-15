@@ -175,7 +175,7 @@ const Stories = () => {
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-0 md:mx-6 gap-4">
     {filteredData.slice(0, currentIndex + cardsPerPage).map(card => (
       <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}>
-        <div className="bg-white h-[460px] w-[auto]   md:h-[520px] md:w-[360px] rounded-lg overflow-hidden flex flex-col   mx-4 p-4">
+        <div className="bg-white h-[460px] w-[auto] md:h-[490px] md:w-[auto]    lg:h-[520px] lg:w-[360px] rounded-lg overflow-hidden flex flex-col   mx-4 p-4">
           <img 
             src={`https://admin.kahanify.com/storage/${card.image}`} 
             alt="story" 

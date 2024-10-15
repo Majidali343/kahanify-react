@@ -170,7 +170,7 @@ function Header() {
                 <Link to="/Package" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Packages Details</Link>
 
                 <Link to="/Member" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Membership Details</Link>
-                <Link to="Order" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Order Details</Link>
+                <Link to="/Order" className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600">Order Details</Link>
                 <button onClick={handleLogout} className="block  px-4 py-2 text-sm text-gray-700 hover:text-pink-600 border-none">Logout</button>
               </div>
             </>
