@@ -127,7 +127,7 @@ const Stories = () => {
           <Loader />
         </div>
       ) : (
-        <div className="p-4">
+        <div className=" px-0 py-4 md:px-4 overflow-hidden ">
           <SearchBar onSearch={handleSearch} />
         
           <div className='flex justify-center pb-3 md:pb-7 items-center md:space-x-28 space-x-3 sm:space-x-3'>
@@ -172,10 +172,10 @@ const Stories = () => {
   </div>}
   endMessage={<p className="text-gray-500 py-4 font-bold text-center">No more stories to load</p>}
 >
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-2 md:mx-6 gap-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-0 md:mx-6 gap-4">
     {filteredData.slice(0, currentIndex + cardsPerPage).map(card => (
       <Link key={card.kahani_id} to={`/kahani/${card.kahani_id}`}>
-        <div className="bg-white  h-[520px] w-[360px] rounded-lg overflow-hidden flex flex-col   mx-4 p-4">
+        <div className="bg-white h-[460px] w-[auto]   md:h-[520px] md:w-[360px] rounded-lg overflow-hidden flex flex-col   mx-4 p-4">
           <img 
             src={`https://admin.kahanify.com/storage/${card.image}`} 
             alt="story" 

@@ -293,9 +293,9 @@ function Home() {
 {/* text start */}
 
 
-<div className="px-0 sm:px-8 my-10 mx-0 sm:mx-8">
-  <div className='urdu leading-loose'>
-<div className='urdu leading-loose containers  ' >
+<div className="px-0 sm:px-8  my-10 mx-0  sm:mx-8">
+  <div className='urdu leading-loose '>
+<div className='urdu leading-loose bg-gray-200 containers   ' >
 <h1 className='fade text-[#ff912c] text-center font-bold  text-2xl sm:text-4xl'>محترم والدین</h1>
 <p className='text-right fade text-gray-500 leading-loose text-xl m-4 sm:m-8 '>
 
@@ -352,7 +352,8 @@ function Home() {
   <Link to ='/FreeStory' > شروع کریں</Link></button>
   </div>   
 </div>
-<div className='containers'>
+<div className='containers bg-gray-200'>
+
 <div className='px-4  sm:px-8 sm:mx-8'>
 <h1 className='text-[#ff912c] font-bold mt-8 text-xl sm:text-2xl'>Welcome to Kahanify – Your Destination for Immersive Urdu Audio Stories!</h1>
 <p className='text-gray-500 text-sm font-bold  my-4 '>Looking for the best Urdu kahaniyan for kids? Look no further! Our curated collection of stories in Urdu will captivate young minds and instill important life lessons through moral stories.
