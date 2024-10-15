@@ -148,8 +148,9 @@ function Header() {
           {isLoggedIn ? (
             <>
               <NavLink
-                to="/Package"
-                className={({ isActive }) =>
+                    to={membership ? "/Paidcontent" : "/Package"}
+         
+         className={({ isActive }) =>
                   `block font-bold text-base md:text-xl px-5 hover:text-pink-500 ${isActive ? "text-pink-500" : "text-[#18003c]"}`
                 }
               >
