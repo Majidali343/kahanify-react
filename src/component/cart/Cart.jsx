@@ -95,10 +95,10 @@ const finalPrice = totalPrice - discountAmount;
     try {
       console.log("Proceeding to checkout...");
       
-      if (cart.length !== 1) {
-        toast.error('You must have exactly one item in your cart to proceed to checkout.');
-        return;
-      }
+      // if (cart.length !== 1) {
+      //   toast.error('You must have exactly one item in your cart to proceed to checkout.');
+      //   return;
+      // }
       const isAnnualMembership = cart.some(item => item.packagename === 'Annual Membership');
       const purchaseData = cart.map(item => ({
         price: finalPrice,
@@ -107,8 +107,10 @@ const finalPrice = totalPrice - discountAmount;
         // years: isAnnualMembership ? item.quantity : undefined
       }));
       
-      await parchacemembership(purchaseData);
+      // await parchacemembership(purchaseData);
       console.log('Checkout successful!');
+      toast.warning('Please use mannual payments method online payment is not active now');
+      navigate("/Package");
       // navigate("/Paidcontent");
 
       sessionStorage.removeItem('cart');    
