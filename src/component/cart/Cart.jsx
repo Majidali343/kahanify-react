@@ -107,10 +107,10 @@ const finalPrice = totalPrice - discountAmount;
         // years: isAnnualMembership ? item.quantity : undefined
       }));
       
-      // await parchacemembership(purchaseData);
+      await parchacemembership(purchaseData);
       console.log('Checkout successful!');
-      toast.warning('Please use mannual payments method online payment is not active now');
-      navigate("/Package");
+      // toast.warning('Please use mannual payments method online payment is not active now');
+      // navigate("/Package");
       // navigate("/Paidcontent");
 
       sessionStorage.removeItem('cart');    
