@@ -13,7 +13,13 @@ function Member() {
         const response = await detail();
         console.log( 'vhcvdhch',response);
         if (response.data) {
-          setMemberData(response.data);
+if(response.data.status ==  "completed"){
+  setMemberData(response.data);
+console.log ("statue", response.data.status)
+}
+
+// setMemberData(response.data);
+
         } else {
           setMemberData(null); 
         }
@@ -65,6 +71,7 @@ function Member() {
      
     {loading ?
       
+
 
       <div className="flex justify-center items-center min-h-[85vh] w-full">
     

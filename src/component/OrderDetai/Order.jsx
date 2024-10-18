@@ -37,7 +37,7 @@ function Order() {
   }, []);
 
   return (
-    <div className="p-4 md:p-14 mx-2 md:mx-52 min-h-[88vh]">
+    <div className="p-4 md:p-14 mx-2 lg:mx-52 min-h-[88vh]">
 
 
 <Helmet>

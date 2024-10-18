@@ -81,8 +81,10 @@ function Package() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       await Manual(packageName, bankName, paymentProof,packageid, packagePrice);
+      setIsModalOpen(false);
     } catch (error) {
       toast.error(error.response?.data?.message || error.message);
     }
