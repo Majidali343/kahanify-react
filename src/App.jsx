@@ -43,7 +43,7 @@ function App() {
           <Route path="profile" element={<PrivateRoute element={<Profile />} />} />
           <Route path="Order" element={<PrivateRoute element={<Order />} />} />
           <Route path="Member" element={<PrivateRoute element={<Member />} />} />
-          {/* <Route path="Paidcontent" element={<PrivateRoute element={<Paidcontent />} />} /> */}
+          <Route path="Paidcontent" element={<PrivateRoute element={<Paidcontent />} />} />
           <Route path="Privacy" element={<Privacy />} />
           <Route path="Conditions" element={<Conditions />} />
           <Route path="ForgotPassword" element={<ForgotPassword />} />
@@ -54,7 +54,7 @@ function App() {
           <Route path="Yearly" element={<Yearly/>} />
           <Route path="package/:id" element={<Lifetime />} />
        
-          <Route path="Paidcontent" element={<MemberRoute component={Paidcontent} />} />
+          {/* <Route path="Paidcontent" element={<MemberRoute component={Paidcontent} />} /> */}
         </Route>
 
         <Route path="kahani/:id" element={<MemberRoute component={SingleKahani} />} />

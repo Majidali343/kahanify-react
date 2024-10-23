@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { asset3 } from '../imageLoader';
 import { Link } from 'react-router-dom';
 import StarRating from '../home/StarRating'; 
-import { allStories, favouritestories } from '../Service/api';
+import { allStories, favouritestories, getCurrentUser } from '../Service/api';
 import SearchBar from '../SearchBar/SearchBar'; 
 import Loader from '../loader/Loader';
 import { FaFire } from "react-icons/fa6";
@@ -13,6 +13,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Load from '../../assets/Loader.gif'
 import fav from'../../assets/Fav.png';
 
+
 const Stories = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -21,6 +22,7 @@ const Stories = () => {
   const [filter, setFilter] = useState('default');
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
+  const [membership, setMembership] = useState(null);
 
   // Determine the number of cards to show per page based on screen size
   const getCardsPerPage = () => {
@@ -44,11 +46,17 @@ const Stories = () => {
     const fetchStories = async () => {
       setLoading(true);
       try {
-        const response = await allStories();
-        if (response && response.data) {
-          setData(response.data);
-          setFilteredData(response.data);
-        }
+
+        const member = await getCurrentUser();
+                if (member && member.membership == true) {
+                    setMembership(member.membership);
+                    const response = await allStories();
+                    if (response && response.data) {
+                      setData(response.data);
+                      setFilteredData(response.data);
+                    }        
+                  }
+                
       } catch (error) {
         console.error('Error fetching stories:', error);
       } finally {

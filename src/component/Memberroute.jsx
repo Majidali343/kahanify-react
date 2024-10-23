@@ -22,6 +22,7 @@ const MemberRoute = ({ component: Component }) => {
             }
         };
 
+        
         fetchUserData();
     }, []);
 
