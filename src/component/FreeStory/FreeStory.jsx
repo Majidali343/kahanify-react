@@ -7,6 +7,8 @@ import AudioPlay from '../home/Audioplay';
 import StarRating from '../home/StarRating';
 import Modal from '../home/Modal';
 import Slider from 'react-slick';
+import left  from '../../assets/leftarrow.png';
+import right  from '../../assets/rightarrow.png';
 
 import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -140,7 +142,7 @@ function FreeStory() {
     lazyLoad: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2000,
     arrows: false,
     dots: true,
@@ -249,24 +251,28 @@ function FreeStory() {
           ))
         )}
       </Slider>
-      {/* <div className="absolute top-1/2 -left-10 transform -translate-y-1/2">
-  <button
-    onClick={previous}
-    className="w-16 h-16 text-5xl flex flex-col justify-center items-center border-2 border-black bg-white rounded-full text-black
-               transition-transform duration-300 ease-in-out hover:scale-125"
-  >
-    &larr;
-  </button>
-</div>
-<div className="absolute top-1/2 -right-10 transform -translate-y-1/2">
+      <div className="flex flex-row mt-10 justify-end gap-10">
+
+<div className="">
   <button
     onClick={next}
-    className="w-16 h-16 text-5xl flex flex-col justify-center items-center border-2 border-black bg-white rounded-full text-black
+    className=" w-10 h-10  md:w-16 md:h-16 text-5xl flex flex-col justify-center items-center border border-white bg-transparent rounded-full text-white
                transition-transform duration-300 ease-in-out hover:scale-125"
   >
-    &rarr;
+    <img src={left} alt="left" />
   </button>
-</div> */}
+</div>
+
+<div >
+  <button
+    onClick={previous}
+    className=" w-10 h-10  md:w-16 md:h-16 text-5xl self-center flex flex-col justify-center items-center border border-white bg-transparent rounded-full text-white
+               transition-transform duration-300 ease-in-out hover:scale-125"
+  >
+    <img src={right} alt="left" />
+    </button>
+</div>
+</div>
 </div>
 
   );

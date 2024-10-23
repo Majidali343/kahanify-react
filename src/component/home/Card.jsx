@@ -8,7 +8,9 @@ import StarRating from './StarRating';
 import { useNavigate } from 'react-router-dom';
 import Modal from './Modal';
 import Slider from 'react-slick';
-
+import {Link} from "react-router-dom";
+import black1 from '../../assets/black1.png'
+import black2 from '../../assets/black2.png'
 const Card = () => {
   const [cards, setCards] = useState([]);
   const [currentTime, setCurrentTime] = useState({});
@@ -60,7 +62,7 @@ const Card = () => {
     lazyLoad: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2000,
     arrows: false,
     dots: true,
@@ -138,11 +140,11 @@ const Card = () => {
         ) : (
           categoryCards.map((card) => (
             <div key={card.kahani_id} className="flex flex-col p-4">
-              <img
+      <Link to="Paidcontent">        <img
                 src={`https://admin.kahanify.com/storage/${card.image}`}
                 alt={card.title}
                 className="w-full h-full object-cover mb-4"
-              />
+              /></Link>
               <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
               <AudioPlay audioUrl={card.audio} />
               <div className="flex justify-between items-center bg-gray-100 p-2">
@@ -170,24 +172,29 @@ const Card = () => {
           ))
         )}
       </Slider>
-      {/* <div className="absolute top-1/2 -left-10 transform -translate-y-1/2">
-  <button
-    onClick={previous}
-    className="w-16 h-16 text-5xl flex flex-col justify-center items-center border-2 border-black bg-white rounded-full text-black
-               transition-transform duration-300 ease-in-out hover:scale-125"
-  >
-    &larr;
-  </button>
-</div>
-<div className="absolute top-1/2 -right-10 transform -translate-y-1/2">
+      <div className="flex flex-row mt-10 justify-end gap-10">
+      <div className="">
   <button
     onClick={next}
-    className="w-16 h-16 text-5xl flex flex-col justify-center items-center border-2 border-black bg-white rounded-full text-black
+    className=" w-10 h-10  md:w-16 md:h-16 text-5xl flex flex-col justify-center items-center border border-black bg-white rounded-full text-black
                transition-transform duration-300 ease-in-out hover:scale-125"
   >
-    &rarr;
+        <img src={black2} alt="left" />
+
   </button>
-</div> */}
+</div>
+
+      <div >
+  <button
+    onClick={previous}
+    className=" w-10 h-10  md:w-16 md:h-16 text-5xl self-center flex flex-col justify-center items-center border border-black bg-white rounded-full text-black
+               transition-transform duration-300 ease-in-out hover:scale-125"
+  >
+    <img src={black1} alt="left" />
+  </button>
+</div>
+</div>
+      
 </div>
 
   );
