@@ -74,7 +74,7 @@ const YouTube = () => {
                         }}
                     >
                         {links.map((link, index) => (
-                            <div key={link.id} className="  flex-shrink-0 mx-5 w-[300px] h-[300px]">
+                            <div key={link.id} className="  flex-shrink-0 mx-5  w-[300px] md:h-[600px]   h-[300px] ">
                                 <iframe
                                     className="h-full w-full"
                                     src={link.embed_link}
@@ -96,7 +96,7 @@ const YouTube = () => {
             </div>
 
             {!loading && links.length > 0 && (
-                <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between pb-8">
+                <div className="absolute top-1/2 transform -translate-y-1/2 w-full flex justify-between ">
                     <button
                         onClick={handlePrev}
                         className="bg-gray-800 text-white w-12 h-12 rounded-full flex items-center justify-center focus:outline-none"

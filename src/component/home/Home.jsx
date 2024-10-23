@@ -19,10 +19,10 @@ function Home() {
 
 <Helmet>
         <title>Kids Audio Stories | Kahanify</title>
-        <meta name="description" content="Kahanify offers captivating audio stories and video stories  for kids, fostering imagination and language development through enchanting narratives." />
+        <meta name="description" content="Kahanify offers captivating audio stories    for kids, fostering imagination and language development through enchanting narratives." />
         <meta name="keywords" content="kids audio stories, kids video stories, story, Read story, children's stories, Urdu stories, educational audio, storytelling" />
         <meta property="og:title" content="Kids Audio Stories | Kahanify" />
-        <meta property="og:description" content="Kahanify offers captivating audio and video stories for kids, fostering imagination and language development through enchanting narratives." />
+        <meta property="og:description" content="Kahanify offers captivating audio   for kids, fostering imagination and language development through enchanting narratives." />
         <meta property="og:image" content={asset14} />
         <meta property="og:url" content="http://Kahanify.com" />
         <meta name="twitter:card" content={asset14} />
