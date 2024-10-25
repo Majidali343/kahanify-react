@@ -213,7 +213,7 @@ const YouTube = () => {
             </div>
 
             {!loading && links.length > 0 && (
-                <div className="flex justify-center items-center gap-8 my-5">
+                <div className="flex justify-center items-center gap-8 my-1 lg:my-5">
                     <button
                         onClick={handlePrev}
                         className="bg-gray-800 text-white w-12 h-12 rounded-full flex items-center justify-center focus:outline-none"
