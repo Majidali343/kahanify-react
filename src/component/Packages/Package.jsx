@@ -86,7 +86,7 @@ function Package() {
       await Manual(packageName, bankName, paymentProof,packageid, packagePrice);
       setIsModalOpen(false);
     } catch (error) {
-      toast.error(error.response?.data?.message || error.message);
+      toast.error(error.response?.data?.message.slice(0, 40) || error.message);
     }
   }
 
@@ -247,7 +247,7 @@ function Package() {
                   onChange={(e) => setBankName(e.target.value)}                
                   className="mt-1 block w-full py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
-                  <option value="default">Select Bank</option>
+              
                   <option value="BANK ISLAMI PAKISTAN LTD">BANK ISLAMI PAKISTAN LTD.</option>
                   <option value="EasyPaisa">Easy Paisa</option>
                 </select>
