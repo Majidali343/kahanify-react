@@ -184,7 +184,7 @@ const YouTube = () => {
                     <p className="text-center text-gray-500">No videos available at the moment.</p>
                 ) : (
                     <div
-                        className="pt-10 flex self-center h-[500px] transition-transform duration-500"
+                        className="pt-10 flex self-center h-[400px] md:h-[500px] transition-transform duration-500"
                         style={{
                             transform: `translateX(-${currentReviewIndex * translatePercentage}%)`,
                             display: 'flex',
