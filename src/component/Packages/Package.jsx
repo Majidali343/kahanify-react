@@ -66,6 +66,15 @@ function Package() {
         id
       });
     }
+// Track the AddToCart event
+fbq('track', 'AddToCart', {
+  content_name: packagename,
+  content_category: 'Membership Packages',
+  content_ids: [id],
+  content_type: 'product',
+  value: pricePerItem,
+  currency: 'PKR' 
+});
 
     sessionStorage.setItem('cart', JSON.stringify(cart));
     navigate('/cart'); 

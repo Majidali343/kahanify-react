@@ -94,7 +94,11 @@ const finalPrice = totalPrice - discountAmount;
     setLoading(true);
     try {
       console.log("Proceeding to checkout...");
-      
+        // Track InitiateCheckout event
+        fbq('track', 'InitiateCheckout', {
+          value: finalPrice,
+          currency: 'PKR' // Change this to your actual currency
+      });
       // if (cart.length !== 1) {
       //   toast.error('You must have exactly one item in your cart to proceed to checkout.');
       //   return;
@@ -109,6 +113,11 @@ const finalPrice = totalPrice - discountAmount;
       
       await parchacemembership(purchaseData);
       console.log('Checkout successful!');
+            // Track Purchase event
+            fbq('track', 'Purchase', {
+              value: finalPrice,
+              currency: 'PKR'
+          });
       // toast.warning('Please use mannual payments method online payment is not active now');
       // navigate("/Package");
       // navigate("/Paidcontent");

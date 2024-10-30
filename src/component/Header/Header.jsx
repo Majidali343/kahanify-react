@@ -11,7 +11,10 @@ function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { userData: user, status: isLoggedIn } = useSelector((state) => state.auth);
-
+// Meta pixel 
+  const handleContactClick = () => {
+    fbq('track', 'Contact');
+  }; 
   const fetchUserData = useCallback(async () => {
     try {
       const response = await getCurrentUser();
@@ -73,6 +76,7 @@ function Header() {
                   </NavLink>
                   <NavLink
                     to="/contact-us"
+                    onClick={handleContactClick}
                     className={({ isActive }) =>
                       `font-bold text-xs md:text-xl px-5 hover:text-pink-500 ${isActive ? "text-pink-500" : "text-[#18003c]"}`
                     }
@@ -158,6 +162,7 @@ function Header() {
               </NavLink>
               <NavLink
                 to="/contact-us"
+                onClick={handleContactClick}
                 className={({ isActive }) =>
                   `block font-bold text-base md:text-xl px-5 hover:text-pink-500 ${isActive ? "text-pink-500" : "text-[#18003c]"}`
                 }

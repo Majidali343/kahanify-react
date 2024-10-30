@@ -18,7 +18,7 @@
 
   
 <!-- Meta Pixel Code -->
-<script>
+<!-- <script>
   !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () {
       n.callMethod ?
@@ -38,6 +38,19 @@ fbq('track', 'InitiateCheckout');
 fbq('track', 'Purchase');
 fbq('track', 'Contact');
 fbq('track', 'ViewContent');
+</script> -->
+<!-- // Meta Pixel Code (already included in your original code) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1130577751974899'); // Your Pixel ID
+fbq('track', 'PageView'); // Track page view
 </script>
 
 <!-- End Meta Pixel Code -->

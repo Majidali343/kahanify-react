@@ -140,7 +140,7 @@ const Card = () => {
         ) : (
           categoryCards.map((card) => (
             <div key={card.kahani_id} className="flex flex-col p-4">
-      <Link to="Paidcontent">        <img
+      <Link to="/Package">        <img
                 src={`https://admin.kahanify.com/storage/${card.image}`}
                 alt={card.title}
                 className="w-full h-full object-cover mb-4"
