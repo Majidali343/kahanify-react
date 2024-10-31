@@ -6,10 +6,7 @@ import React , {useEffect} from 'react';
     function Thanks() {
         const navigate = useNavigate(); 
       // Track Purchase event
-      fbq('track', 'Purchase', {
-        value: finalPrice,
-        currency: 'PKR'
-    });
+      fbq('track', 'Purchase');
         useEffect(() => {
             const timer = setTimeout(() => {
                 navigate('/paidcontent'); 
