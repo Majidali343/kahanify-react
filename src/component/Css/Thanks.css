@@ -1,0 +1,24 @@
+.thanks-background {
+    background-image: url('../../assets/bigthanks.png');
+    background-size: cover; /* Change to cover for better fitting */
+    background-position: center;
+    color: #333;
+    background-repeat: no-repeat;
+    /* height: 100vh; Full viewport height */
+}
+
+@media (min-width: 426px) and (max-width: 1380px) {
+    .thanks-background {
+        background-image: url('../../assets/thanks.png'); 
+        /* Additional styles can be added here if needed */
+    }
+}
+
+
+@media  (max-width: 425px) {
+    .thanks-background {
+        background-image: url('../../assets/smallthanks.png'); 
+        height:auto;
+        /* Additional styles can be added here if needed */
+    }
+}

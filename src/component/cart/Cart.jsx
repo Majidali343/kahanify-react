@@ -113,11 +113,7 @@ const finalPrice = totalPrice - discountAmount;
       
       await parchacemembership(purchaseData);
       console.log('Checkout successful!');
-            // Track Purchase event
-            fbq('track', 'Purchase', {
-              value: finalPrice,
-              currency: 'PKR'
-          });
+          
       // toast.warning('Please use mannual payments method online payment is not active now');
       // navigate("/Package");
       // navigate("/Paidcontent");
