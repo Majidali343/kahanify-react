@@ -54,6 +54,7 @@ const AudioPlayer = ({ audioSrc, imageSrc, viewCount }) => {
       audioRef.current.pause();
     } else {
       audioRef.current.play();
+      fbq('track', 'ViewContent');
     }
     setIsPlaying(!isPlaying);
   };

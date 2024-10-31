@@ -11,9 +11,7 @@ import PopupModal from './PopupModal';
 import YouTube from './YouTube';
 import Partner from './Partner';
 function Home() {
-  const handleFreeClick = () => {
-    fbq('track', 'ViewContent');
-  }; 
+ 
 
  
   return (
@@ -85,7 +83,7 @@ function Home() {
           Kahanify brings the charm of storytelling to young minds. Embark on a captivating audio journey. Immerse in a world where stories come to life through the magic of sound. Our curated collection of audio stories is tailored for children, fostering imagination, language development, and a love for storytelling. Dive into a world of fanciful narratives, charming characters, and moralistic adventures, designed to spark interest and ignite the joy of listening in the hearts of the little ones. With Kahanify, every moment becomes an opportunity for young minds to explore, learn, and be delighted.
         </p>
         <button className="bg-blue-700 rounded font-bold flex justify-center self-center text-white  px-6 py-3 text-sm   transition-transform duration-300 ease-in-out  transform hover:scale-105 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-light-blue-500 focus:ring-opacity-50">
-          <Link to ='/FreeStory'  onClick={handleFreeClick}>Get Started </Link>
+          <Link to ='/FreeStory'  >Get Started </Link>
         </button>
       </div>
     </div>

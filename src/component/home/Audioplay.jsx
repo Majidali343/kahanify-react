@@ -38,6 +38,8 @@ function AudioPlay({ audioUrl }) {
       audioElement.pause();
     } else {
       audioElement.play();
+      fbq('track', 'ViewContent');
+
     }
     setIsPlaying(!isPlaying);
   };

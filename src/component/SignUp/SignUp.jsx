@@ -33,6 +33,7 @@ function SignUp() {
       if (response) {
         
         navigate("/login");
+        fbq('track', 'CompleteRegistration');
       }
     } catch (error) {
       setError(error.response.data.errors);
