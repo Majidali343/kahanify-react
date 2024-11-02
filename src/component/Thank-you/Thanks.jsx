@@ -10,7 +10,7 @@ import React , {useEffect} from 'react';
         useEffect(() => {
             const timer = setTimeout(() => {
                 navigate('/paidcontent'); 
-            }, 15000); 
+            }, 45000); 
     
             return () => clearTimeout(timer); 
         }, [navigate]);
