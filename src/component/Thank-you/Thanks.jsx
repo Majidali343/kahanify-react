@@ -2,6 +2,7 @@ import React , {useEffect} from 'react';
     import { useNavigate } from 'react-router-dom'; // Import useNavigate
     import '../Css/Thanks.css';
     import { asset0 } from '../imageLoader';
+    import Load from '../../assets/lg.gif';
     
     function Thanks() {
         const navigate = useNavigate(); 
@@ -10,7 +11,7 @@ import React , {useEffect} from 'react';
         useEffect(() => {
             const timer = setTimeout(() => {
                 navigate('/paidcontent'); 
-            }, 15000); 
+            }, 30000); 
     
             return () => clearTimeout(timer); 
         }, [navigate]);
@@ -24,6 +25,8 @@ import React , {useEffect} from 'react';
         <h2 className="text-xl md:text-3xl font-semibold text-blue-800 mt-4">
           For Your Purchase!
         </h2>
+        <img src={Load} alt="loader" className='h-40' />
+ <p className='font-bold -mt-16'> <span className="text-blue-600 ">Please wait,</span>  <span className="text-pink-500">we are redirecting you to the Stories page.</span> </p>
         <p className="text-pink-500 text-lg pt-10 px-5 md:px-20 lg:px-48 md:text-xl mt-2">
           Your payment has been processed successfully. We’re thrilled to have you as a part of the Kahanify family!
         </p>
